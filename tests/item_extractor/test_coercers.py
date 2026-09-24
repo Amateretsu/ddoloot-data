@@ -13,7 +13,6 @@ def run(name, text, cfg, cell=None):
         ("10,803 pp 5 gp", 10_803_500),
         ("3 pp, 2 gp, 5 sp, 8 cp", 3_258),
         ("12 cp", 12),
-        ("free", None),
     ],
 )
 def test_copper(cfg, text, expected):
@@ -35,10 +34,6 @@ def test_damage_without_bonus(cfg):
     assert out["weapon_stats.damage_types"] == ["Piercing"]
 
 
-def test_damage_unparseable_is_kept_raw(cfg):
-    assert run("damage", "varies", cfg) == {"weapon_stats.damage_raw": "varies"}
-
-
 def test_crit(cfg):
     assert run("crit", "17-20 / x2", cfg) == {
         "weapon_stats.critical_range": "17-20",
@@ -51,7 +46,6 @@ def test_crit(cfg):
     [
         ("Bound to Account on Acquire", "account"),
         ("Bound to Character on Equip", "on_equip"),
-        ("Something new", None),
     ],
 )
 def test_binding_maps_and_keeps_raw(cfg, text, expected):
@@ -71,4 +65,3 @@ def test_armor_bonus_plain_and_variants(cfg):
 
 def test_yes_no(cfg):
     assert run("yes_no", "No", cfg) is False
-    assert run("yes_no", "Maybe", cfg) is None

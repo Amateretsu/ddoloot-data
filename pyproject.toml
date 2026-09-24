@@ -8,7 +8,7 @@ name = "ddoloot-data"
 version = "0.1.0"
 description = "Catalog data, scraper and bundle build for DDOLoot (Dungeons & Dragons Online named items)"
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.11,<4.0"
 license = {file = "LICENSE"}
 authors = [
     {name = "Justin Belter", email = "jstnbelter@gmail.com"},
@@ -24,7 +24,6 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: Implementation :: CPython",
@@ -54,7 +53,6 @@ lint = [
     "codespell>=2.2.4",
     "ruff",
     "vulture",
-    "tomli",           # required for codespell to parse pyproject.toml on Python < 3.11
     "validate-pyproject[all]",
     "isort",
     "black",
@@ -72,7 +70,6 @@ test = [
     "deepdiff",
     "xdoctest",
     "Pygments",
-    "tomli",           # required for pytest-cov to parse pyproject.toml on Python < 3.11
 ]
 
 exe = [
@@ -104,11 +101,12 @@ skip = "htmlcov,.doctrees,*.pyc,*.class,*.ico,*.out,*.PNG,*.inv,*.png,*.jpg,*.do
 
 [tool.black]
 line-length = 88
+target-version = ["py311"]
 
 
 [tool.isort]
 profile = "black"
-known_first_party = ["ddowiki_scraper", "item_normalizer", "item_db", "ddo_sync"]
+known_first_party = ["ddowiki_scraper", "item_extractor", "ddo_sync"]
 
 
 [tool.ruff]
@@ -166,10 +164,10 @@ ignore = [
 
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.11"
 follow_imports = "skip"
 ignore_missing_imports = true
-files = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync"]
+files = ["src/ddowiki_scraper", "src/item_extractor", "src/ddo_sync"]
 
 
 [tool.pytest.ini_options]
@@ -184,9 +182,9 @@ markers = [
 
 [tool.coverage.run]
 branch = true
-source = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync"]
+source = ["src/ddowiki_scraper", "src/item_extractor", "src/ddo_sync"]
 
 
 [tool.vulture]
 min_confidence = 100
-paths = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync", "tests"]
+paths = ["src/ddowiki_scraper", "src/item_extractor", "src/ddo_sync", "tests"]

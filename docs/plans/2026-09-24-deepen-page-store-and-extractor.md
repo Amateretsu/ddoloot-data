@@ -125,3 +125,62 @@ each leaves tests green and the CLI working end to end.
 - The UUID registry (ADR 0003) and the `catalog-src/items/<update>/<category>/<uuid>-<slug>`
   layout writer.
 - The compile stage (registry + rules → bundle `items.json`) and the ADR 0008 review gate.
+
+## Decisions made during execution
+
+### Step 0 (orchestrator)
+
+- Baseline committed as `cadab04` and pushed; `origin` exists, so each step ships as a branch
+  plus a GitHub PR merged before the next step starts.
+- The only interpreter on the machine was Python 3.9, which is below the 3.11 floor this plan
+  sets. The local `.venv` was rebuilt on Python 3.12 using `uv`. `uv` is a developer tool only
+  and is not a project dependency. Baseline on 3.12: 644 tests, 643 passed, 1 failed
+  (`tests/ddowiki_scraper/test_fetcher.py::TestWikiFetcherSync::test_rate_limiting_between_requests`,
+  a timing-sensitive test in a package that step 2 deletes). Source + tests: 14,339 Python lines.
+- CI also runs `black --check` and `isort --check`, so every step keeps both green in
+  addition to `ruff check src tests` and `pytest -q`.
+- Fixture pages are copied from the existing local `cache/html/` rather than fetched live,
+  keeping live wiki traffic to a handful of pages for the whole run.
+- Correction to the baseline note: the "timing-sensitive" failure was really a live
+  `robots.txt` fetch. `WikiFetcher` read `https://ddowiki.com/robots.txt` through urllib. Two
+  such requests were made, one in the baseline run and one in step 1's first test run. Step 1
+  added an autouse network guard in `tests/conftest.py` that blocks non-local DNS in all
+  tests.
+
+### Step 1: retire the old normalizer
+
+- The `ddoloot` CLI is now subcommands (`sync`, `extract-item`; step 2 adds `sample`). A bare
+  `ddoloot` exits 2 instead of starting a crawl. `--verbose` is set per subcommand.
+- The old `--item` and `--item-override` sync flags are removed; `extract-item` replaces them
+  and does no network I/O.
+- `extract-item NAME [--html PATH]` prints `{"item", "report"}` JSON. NAME is matched against
+  `cache/index.json` names, ignoring case. `--html` reads a file directly, so the committed
+  fixtures work without a cache.
+- `sync` writes to the fixed path `cache/extracted/`, with no output flag; step 2's
+  `config/scraper.yaml` owns paths. `--rate-limit` defaults to 4 and is clamped to at least 4.
+- `JsonItemWriter` writes `<page-slug>.json` (URL title, non-alphanumerics → `_`) and appends
+  `{name, url, **report}` to `report.jsonl`. Per-update folders are left to step 3.
+- `ScrapedItemWriterProtocol.write(item, report)` replaces `ItemRepositoryProtocol` now. The
+  in-memory fake lives in the tests. `DDOSyncer` loads `load_config()` once and calls
+  `extract()` directly.
+- Coercers raise `Unparseable`; the extractor records `extraction_errors[target] = raw_text`,
+  keyed by the `fields.yaml` target.
+- Spread targets name a primary field so every error has a unique key:
+  `weapon_stats.damage_dice`, `weapon_stats.critical_range`, `armor_stats.armor_bonus`.
+  `damage_raw` and `critical_raw` are gone.
+- Unknown binding text is an extraction error: `binding` and `binding_raw` are both null and
+  the raw text is kept in `extraction_errors`.
+- `ScrapedItem` keeps `required_class`, which the plan's field list omits, because
+  `fields.yaml` maps it and dropping it would lose data.
+- A `fields.yaml` target must be a `ScrapedItem` field or a template input (today only
+  `slot`); `load_config` rejects anything else.
+- List fields default to `[]`, not null. Scalars and submodels default to null.
+- `CustomisationHint` is typed as `kind`, `raw`, `name`, `colour`, `text`, `children`.
+  `Effect.value_kind` and `binding` stay `str`.
+- `scripts/sync_named_items.py` was deleted in step 1, not step 2, because it imported
+  `item_db` and `item_normalizer`. `src/ddo_sync/debug_commands.py` went too, as it was
+  normalizer-only.
+- Finding, not fixed: weapon damage never parses. The wiki writes
+  `5.20[1d8+2] + 15 Pierce, Magic`; the damage coercer does not match it, and the model has no
+  multiplier field. It now shows up in `extraction_errors` instead of hiding in `damage_raw`.
+  A fixture test pins this behaviour. Left for a follow-up.

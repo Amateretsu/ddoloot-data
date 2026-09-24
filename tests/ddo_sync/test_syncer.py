@@ -12,10 +12,12 @@ from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.syncer import DDOSyncer
 from tests.ddo_sync.conftest import (
+    ITEM_PAGE_HTML,
     MODIFIED_AFTER,
     MODIFIED_BEFORE,
     SYNCED_AT,
     UPDATE_PAGE_HTML,
+    InMemoryItemWriter,
     utc,
 )
 
@@ -35,25 +37,21 @@ def queue_repo() -> QueueRepository:
     repo.close()
 
 
+def _serve(url: str) -> str:
+    """Update pages get the update-page HTML, item pages a real item page."""
+    return ITEM_PAGE_HTML if "/page/Item:" in url else UPDATE_PAGE_HTML
+
+
 @pytest.fixture
 def mock_fetcher() -> MagicMock:
     fetcher = MagicMock()
-    fetcher.fetch_url.return_value = UPDATE_PAGE_HTML
+    fetcher.fetch_url.side_effect = _serve
     return fetcher
 
 
 @pytest.fixture
-def mock_normalizer() -> MagicMock:
-    normalizer = MagicMock()
-    normalizer.normalize.return_value = MagicMock()
-    return normalizer
-
-
-@pytest.fixture
-def mock_item_repo() -> MagicMock:
-    repo = MagicMock()
-    repo.upsert.return_value = 1
-    return repo
+def writer() -> InMemoryItemWriter:
+    return InMemoryItemWriter()
 
 
 @pytest.fixture
@@ -64,17 +62,9 @@ def mock_api_client() -> MagicMock:
 
 
 @pytest.fixture
-def syncer(
-    mock_fetcher,
-    mock_normalizer,
-    mock_item_repo,
-    queue_repo,
-    mock_api_client,
-) -> DDOSyncer:
-    s = DDOSyncer(mock_fetcher, mock_normalizer, mock_item_repo, queue_repo)
-    # Inject the mock api client so no real HTTP is made
-    s._api_client = mock_api_client
-    return s
+def syncer(mock_fetcher, writer, queue_repo, mock_api_client) -> DDOSyncer:
+    # The mock api client means no real HTTP is made.
+    return DDOSyncer(mock_fetcher, writer, queue_repo, api_client=mock_api_client)
 
 
 # ── Registration ──────────────────────────────────────────────────────────────
@@ -184,34 +174,30 @@ class TestProcessQueue:
         success, _ = syncer.process_queue(limit=1)
         assert success == 1
 
-    def test_upserts_to_item_repo(
-        self, syncer, mock_item_repo, queue_repo  # noqa: ARG002
-    ):
-        syncer.register_update_page(PAGE_NAME)
-        syncer.sync_update_page(PAGE_NAME)
-        syncer.process_queue()
-        assert mock_item_repo.upsert.call_count > 0
-
-    def test_normalizer_called_per_item(self, syncer, mock_normalizer, queue_repo):
+    def test_writes_one_scraped_item_per_queued_page(self, syncer, writer, queue_repo):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         item_count = queue_repo.get_queue_stats().pending
         syncer.process_queue()
-        assert mock_normalizer.normalize.call_count == item_count
+        assert len(writer.written) == item_count
+        item, report = writer.written[0]
+        assert item.name == "Breaker of Bodies"
+        assert item.wiki.url.startswith("https://ddowiki.com/page/Item:")
+        assert report["template"] == "shield"
 
-    def test_one_failure_does_not_stop_others(
-        self, syncer, mock_normalizer, queue_repo
+    def test_page_that_cannot_be_extracted_is_marked_failed(
+        self, syncer, writer, queue_repo, mock_fetcher
     ):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         total = queue_repo.get_queue_stats().pending
-        # Fail only the first normalization call
-        mock_normalizer.normalize.side_effect = [Exception("bad html")] + [
-            MagicMock()
-        ] * (total - 1)
+        pages = iter(["<html><body>no infobox</body></html>"])
+        mock_fetcher.fetch_url.side_effect = lambda _url: next(pages, ITEM_PAGE_HTML)
         success, failures = syncer.process_queue()
         assert failures == 1
         assert success == total - 1
+        assert len(writer.written) == total - 1
+        assert queue_repo.get_queue_stats().failed == 1
 
 
 # ── get_status ────────────────────────────────────────────────────────────────
@@ -263,14 +249,14 @@ class TestSyncAll:
         # (no pending items either, so call_count == 0)
         mock_fetcher.fetch_url.assert_not_called()
 
-    def test_resets_failed_items_first(self, syncer, queue_repo):
+    def test_resets_failed_items_first(self, syncer, queue_repo, mock_api_client):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         items = queue_repo.get_pending_items()
         queue_repo.mark_failed(items[0].id, utc(2025, 11, 1), "err")
         assert queue_repo.get_queue_stats().failed == 1
         # Simulate api says no change so no re-fetch of update page
-        syncer._api_client.get_last_modified.return_value = MODIFIED_BEFORE
+        mock_api_client.get_last_modified.return_value = MODIFIED_BEFORE
         queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
         syncer.sync_all()
         # Failed item should have been reset and then processed
@@ -287,16 +273,14 @@ class TestSyncAll:
         def fetch_side_effect(url):
             if "Page_A" in url:
                 raise Exception("Page A broken")
-            return UPDATE_PAGE_HTML
+            return _serve(url)
 
         mock_fetcher.fetch_url.side_effect = fetch_side_effect
         # Should not raise even though Page_A fails
         result = syncer.sync_all()
         assert isinstance(result, SyncStatus)
 
-    def test_mark_complete_raises_item_gets_marked_failed(
-        self, syncer, queue_repo, mock_fetcher, mock_normalizer  # noqa: ARG002
-    ):
+    def test_mark_complete_raises_item_gets_marked_failed(self, syncer, queue_repo):
         """If mark_complete raises, the item is counted as a failure."""
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)

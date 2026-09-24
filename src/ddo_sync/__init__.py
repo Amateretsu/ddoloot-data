@@ -3,6 +3,7 @@
 Public API:
 
     DDOSyncer         — top-level sync orchestrator
+    JsonItemWriter    — writes each Scraped Item as JSON
     QueueRepository   — SQLite scrape queue (update pages + items)
     WikiApiClient     — MediaWiki Action API thin client
     UpdatePageParser  — HTML parser for item links on update pages
@@ -17,16 +18,14 @@ Exceptions:
 
 Example:
 
-    >>> from ddo_sync import DDOSyncer, QueueRepository
+    >>> from ddo_sync import DDOSyncer, JsonItemWriter, QueueRepository
     >>> from ddowiki_scraper import WikiFetcher
-    >>> from item_normalizer import ItemNormalizer
-    >>> from item_db import ItemRepository
     >>> with (
     ...     WikiFetcher(config) as fetcher,
-    ...     ItemRepository("loot.db") as item_repo,
     ...     QueueRepository("queue.db") as queue_repo,
     ... ):
-    ...     syncer = DDOSyncer(fetcher, ItemNormalizer(), item_repo, queue_repo)
+    ...     writer = JsonItemWriter(Path("cache/extracted"))
+    ...     syncer = DDOSyncer(fetcher, writer, queue_repo)
     ...     syncer.register_update_page("Update_5_named_items")
     ...     status = syncer.sync_all()
 """
@@ -38,6 +37,7 @@ from ddo_sync.exceptions import (
     UpdatePageError,
     WikiApiError,
 )
+from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import (
     ItemLink,
     QueueItem,
@@ -48,9 +48,8 @@ from ddo_sync.models import (
 from ddo_sync.page_discovery import UpdatePageDiscoverer
 from ddo_sync.protocols import (
     FetcherProtocol,
-    ItemRepositoryProtocol,
-    NormalizerProtocol,
     QueueRepositoryProtocol,
+    ScrapedItemWriterProtocol,
     UpdatePageParserProtocol,
     WikiApiClientProtocol,
 )
@@ -66,8 +65,7 @@ __all__ = [
     "DDOSyncer",
     "FetcherProtocol",
     "ItemLink",
-    "ItemRepositoryProtocol",
-    "NormalizerProtocol",
+    "JsonItemWriter",
     "QueueDbError",
     "QueueItem",
     "QueueRepository",
@@ -75,6 +73,7 @@ __all__ = [
     "QueueSchemaError",
     "QueueStats",
     "ScrapeQueueRepository",
+    "ScrapedItemWriterProtocol",
     "SyncStatus",
     "UpdatePageDiscoverer",
     "UpdatePageError",

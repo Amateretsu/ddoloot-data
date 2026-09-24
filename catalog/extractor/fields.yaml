@@ -3,9 +3,12 @@
 # labels:  every wording of the row label seen on the wiki (matched lowercased, with
 #          colons and non-breaking spaces normalised).
 # coerce:  a named coercer from item_extractor.coercers.
-# target:  dotted output path. Ignored when spread is true: the coercer then returns a
-#          {dotted.path: value} dict and each entry is set.
-# Cell text equal to any of null_values (case-insensitive) becomes null.
+# target:  dotted ScrapedItem field path (checked at load), or a template input such as
+#          `slot` that a template consumes. When spread is true the coercer returns a
+#          {dotted.path: value} dict and each entry is set; target then names the field
+#          an extraction error is recorded under.
+# Cell text equal to any of null_values (case-insensitive) becomes null. Text a coercer
+# cannot parse leaves the field null and is recorded in the item's extraction_errors.
 null_values: ["none", "", "n/a", "-"]
 
 fields:
@@ -33,8 +36,8 @@ fields:
 
   # Weapon rows
   - {target: weapon_stats.proficiency, labels: [proficiency class, proficiency], coerce: text}
-  - {target: weapon_stats, labels: [damage and type, damage], coerce: damage, spread: true}
-  - {target: weapon_stats, labels: [critical threat range, critical roll], coerce: crit, spread: true}
+  - {target: weapon_stats.damage_dice, labels: [damage and type, damage], coerce: damage, spread: true}
+  - {target: weapon_stats.critical_range, labels: [critical threat range, critical roll], coerce: crit, spread: true}
   - {target: weapon_stats.weapon_type, labels: [weapon type], coerce: first_segment}
   - {target: weapon_stats.handedness, labels: [handedness], coerce: text}
   - {target: weapon_stats.attack_mod, labels: [attack mod], coerce: text}
@@ -42,7 +45,7 @@ fields:
 
   # Armor rows
   - {target: armor_stats.armor_type, labels: [armor type], coerce: text}
-  - {target: armor_stats, labels: [armor bonus], coerce: armor_bonus, spread: true}
+  - {target: armor_stats.armor_bonus, labels: [armor bonus], coerce: armor_bonus, spread: true}
   - {target: armor_stats.max_dex_bonus, labels: [maximum dexterity bonus, maximum dex bonus, max dex bonus], coerce: int}
   - {target: armor_stats.armor_check_penalty, labels: [armor check penalty], coerce: int}
   - {target: armor_stats.arcane_spell_failure, labels: [arcane spell failure], coerce: int}

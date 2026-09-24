@@ -1,4 +1,9 @@
-"""Config-driven extraction of one wiki item page into a scraped-item dict."""
+"""Config-driven extraction of one wiki item page into a Scraped Item.
+
+``extract()`` is the module's whole interface: a pure function from page HTML to a
+:class:`~item_extractor.scraped_item.ScrapedItem` plus a report of what the config did not
+cover. Rows, coercers, templates and effect rules are implementation behind it.
+"""
 
 from __future__ import annotations
 
@@ -7,9 +12,10 @@ from typing import Any
 
 from bs4 import BeautifulSoup, Tag
 
-from item_extractor.coercers import COERCERS
+from item_extractor.coercers import COERCERS, Unparseable
 from item_extractor.config import Config, normalize_label
 from item_extractor.enchantments import classify, read_entry
+from item_extractor.scraped_item import ScrapedItem
 
 
 class ExtractionError(ValueError):
@@ -77,12 +83,13 @@ def _page_meta(html: str, soup: BeautifulSoup, url: str) -> dict[str, Any]:
     }
 
 
-def extract(html: str, url: str, cfg: Config) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Extract a scraped item and a report of everything the config did not cover.
+def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, Any]]:
+    """Extract a Scraped Item and a report of everything the config did not cover.
 
     Returns:
         (item, report). ``report`` has ``template``, ``unmapped_rows``, ``ignored_rows``,
-        ``rule_hits`` and ``unclassified_effects``.
+        ``rule_hits`` and ``unclassified_effects`` (and ``unknown_categories`` when an item
+        type's category is not in the category map).
 
     Raises:
         ExtractionError: no infobox table could be found.
@@ -133,6 +140,7 @@ def extract(html: str, url: str, cfg: Config) -> tuple[dict[str, Any], dict[str,
     for span in soup.find_all("span", class_=["tooltip", "sortkey"]):
         span.decompose()
 
+    errors: dict[str, str] = {}
     labels_seen: list[str] = []
     for th, td in rows:
         label = normalize_label(th.get_text())
@@ -153,7 +161,11 @@ def extract(html: str, url: str, cfg: Config) -> tuple[dict[str, Any], dict[str,
             continue
         if text.lower() in cfg.null_values:
             continue
-        value = COERCERS[entry_cfg["coerce"]](text, td, cfg)
+        try:
+            value = COERCERS[entry_cfg["coerce"]](text, td, cfg)
+        except Unparseable:
+            errors[entry_cfg["target"]] = text
+            continue
         if entry_cfg.get("spread"):
             for path, v in value.items():
                 _set_path(item, path, v)
@@ -161,7 +173,10 @@ def extract(html: str, url: str, cfg: Config) -> tuple[dict[str, Any], dict[str,
             _set_path(item, entry_cfg["target"], value)
 
     _apply_template(item, labels_seen, cfg, report)
-    return item, report
+    for field in cfg.template_inputs:
+        item.pop(field, None)
+    item["extraction_errors"] = errors
+    return ScrapedItem.model_validate(item), report
 
 
 def _apply_template(
@@ -216,4 +231,3 @@ def _apply_template(
         ]
     else:
         item["equip_slots"] = list(tpl.get("equip_slots", []))
-        item.pop("slot", None)

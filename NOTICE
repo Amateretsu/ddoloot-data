@@ -11,3 +11,23 @@ Source code in this repository is licensed under GPL-3.0 (see LICENSE).
 DDOLoot is a fan project and is not affiliated with or endorsed by Standing Stone
 Games or Daybreak. Dungeons & Dragons Online is a trademark of its owners. No game
 art is included.
+
+Test fixtures
+
+tests/fixtures/pages/ holds six unmodified item pages from the Dungeons & Dragons
+Online Wiki (https://ddowiki.com), used under the Creative Commons
+Attribution-ShareAlike 2.5 licence (https://creativecommons.org/licenses/by-sa/2.5/).
+Authors are the contributors listed in each page's history on ddowiki.com.
+
+  Item_Legendary_Gnollish_War_Bow.html
+    https://ddowiki.com/page/Item:Legendary_Gnollish_War_Bow (revision 632346)
+  Item_Full_Plate_of_the_Ringleader.html
+    https://ddowiki.com/page/Item:Full_Plate_of_the_Ringleader (revision 631017)
+  Item_Breaker_of_Bodies.html
+    https://ddowiki.com/page/Item:Breaker_of_Bodies (revision 628767)
+  Item_Bound_Elemental_Ring_of_Frost.html
+    https://ddowiki.com/page/Item:Bound_Elemental_Ring_of_Frost (revision 628702)
+  Item_Epic_Whirling_Words.html
+    https://ddowiki.com/page/Item:Epic_Whirling_Words (revision 630591)
+  Item_Dark_Ressurectionist_s_Frock_Vest.html
+    https://ddowiki.com/page/Item:Dark_Ressurectionist%27s_Frock_Vest (revision 656101)

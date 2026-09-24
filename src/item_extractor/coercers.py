@@ -1,8 +1,9 @@
 """Named coercers referenced from fields.yaml.
 
 A coercer takes ``(text, cell, cfg)`` and returns either one value (for a plain target)
-or, for ``spread`` fields, a ``{dotted.path: value}`` dict. ``cell`` is the ``<td>`` Tag
-for coercers that declare ``needs_cell``; otherwise the text is enough.
+or, for ``spread`` fields, a ``{dotted.path: value}`` dict. ``cell`` is the row's ``<td>``
+Tag. A coercer that cannot read the text raises :class:`Unparseable`; the extractor then
+leaves the field null and records the raw text in ``extraction_errors``.
 """
 
 from __future__ import annotations
@@ -14,6 +15,11 @@ from bs4 import Tag
 
 Coercer = Callable[[str, Any, Any], Any]
 
+
+class Unparseable(ValueError):
+    """The cell text does not have the shape this coercer reads."""
+
+
 _DAMAGE_RE = re.compile(r"^\[?(\d+d\d+)\]?\s*(?:([+-])\s*(\d+))?\s*(.*)$", re.I)
 _CRIT_RE = re.compile(r"(\d+(?:-\d+)?)\s*/\s*[xX×]?(\d+)")  # noqa: RUF001
 _INT_RE = re.compile(r"-?\d+")
@@ -23,12 +29,16 @@ _VARIANT_RE = re.compile(r"([A-Za-z][A-Za-z ]*?):\s*\+?(\d+)")
 
 def _int(text: str, cell: Any, cfg: Any) -> int | None:
     m = _INT_RE.search(text)
-    return int(m.group()) if m else None
+    if not m:
+        raise Unparseable(text)
+    return int(m.group())
 
 
 def _float(text: str, cell: Any, cfg: Any) -> float | None:
     m = _FLOAT_RE.search(text)
-    return float(m.group()) if m else None
+    if not m:
+        raise Unparseable(text)
+    return float(m.group())
 
 
 def _text(text: str, cell: Any, cfg: Any) -> str:
@@ -39,32 +49,37 @@ def _first_segment(text: str, cell: Any, cfg: Any) -> str:
     return text.split(" / ", maxsplit=1)[0].strip()
 
 
-def _yes_no(text: str, cell: Any, cfg: Any) -> bool | None:
+def _yes_no(text: str, cell: Any, cfg: Any) -> bool:
     lowered = text.lower()
     if lowered in ("yes", "true"):
         return True
     if lowered in ("no", "false"):
         return False
-    return None
+    raise Unparseable(text)
 
 
-def _copper(text: str, cell: Any, cfg: Any) -> int | None:
+def _copper(text: str, cell: Any, cfg: Any) -> int:
     denominations = cfg.mappings["denominations"]
     total, found = 0, False
     for m in re.finditer(r"([\d,]+)\s*(pp|gp|sp|cp)\b", text, re.I):
         total += int(m.group(1).replace(",", "")) * denominations[m.group(2).lower()]
         found = True
-    return total if found else None
+    if not found:
+        raise Unparseable(text)
+    return total
 
 
 def _binding(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
-    return {"binding": cfg.mappings["binding"].get(text.lower()), "binding_raw": text}
+    binding = cfg.mappings["binding"].get(text.lower())
+    if binding is None:
+        raise Unparseable(text)
+    return {"binding": binding, "binding_raw": text}
 
 
 def _damage(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
     m = _DAMAGE_RE.match(text)
     if not m:
-        return {"weapon_stats.damage_raw": text}
+        raise Unparseable(text)
     dice, sign, bonus, rest = m.groups()
     types = [
         cfg.mappings["damage_types"].get(t.strip().lower(), t.strip())
@@ -83,7 +98,7 @@ def _damage(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
 def _crit(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
     m = _CRIT_RE.search(text)
     if not m:
-        return {"weapon_stats.critical_raw": text}
+        raise Unparseable(text)
     return {
         "weapon_stats.critical_range": m.group(1),
         "weapon_stats.critical_multiplier": int(m.group(2)),

@@ -14,14 +14,10 @@ Example:
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Optional
-
-try:
-    from typing import Protocol, runtime_checkable
-except ImportError:  # Python < 3.8 (not a target, but be explicit)
-    from typing_extensions import Protocol, runtime_checkable  # type: ignore
+from typing import Any, List, Optional, Protocol, runtime_checkable
 
 from ddo_sync.models import ItemLink, QueueItem, QueueStats, UpdatePageStatus
+from item_extractor import ScrapedItem
 
 
 @runtime_checkable
@@ -41,32 +37,15 @@ class FetcherProtocol(Protocol):
 
 
 @runtime_checkable
-class NormalizerProtocol(Protocol):
-    """Parses raw item-page HTML into a structured DDO item."""
+class ScrapedItemWriterProtocol(Protocol):
+    """Seam where the syncer hands off each Scraped Item and its extraction report.
 
-    def normalize(self, html: str, url: str) -> object:
-        """Parse *html* fetched from *url* into a DDO item object.
+    Adapters: :class:`~ddo_sync.item_writer.JsonItemWriter` in production, an in-memory
+    fake in tests.
+    """
 
-        Args:
-            html: Raw HTML of the item page.
-            url:  Source URL (used for logging / slug extraction).
-
-        Returns:
-            A structured item object (e.g. ``DDOItem``).
-        """
-        ...
-
-
-@runtime_checkable
-class ItemRepositoryProtocol(Protocol):
-    """Persists DDO item data."""
-
-    def upsert(self, item: object) -> None:
-        """Insert or update *item* in the backing store.
-
-        Args:
-            item: Item object returned by :class:`NormalizerProtocol`.
-        """
+    def write(self, item: ScrapedItem, report: dict[str, Any]) -> None:
+        """Persist *item* and the report ``extract()`` produced for it."""
         ...
 
 

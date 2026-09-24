@@ -19,7 +19,7 @@ def test_normalize_label_handles_nbsp_and_colons():
 
 
 def _copy_config(tmp_path):
-    dest = tmp_path / "normalizer"
+    dest = tmp_path / "extractor"
     shutil.copytree(DEFAULT_CONFIG_DIR, dest)
     return dest
 
@@ -27,9 +27,18 @@ def _copy_config(tmp_path):
 def test_duplicate_label_is_rejected(tmp_path):
     dest = _copy_config(tmp_path)
     data = yaml.safe_load((dest / "fields.yaml").read_text())
-    data["fields"].append({"target": "x", "labels": ["Material"], "coerce": "text"})
+    data["fields"].append({"target": "notes", "labels": ["Material"], "coerce": "text"})
     (dest / "fields.yaml").write_text(yaml.safe_dump(data))
     with pytest.raises(ConfigError, match="mapped twice"):
+        load_config(dest)
+
+
+def test_target_that_is_not_a_scraped_item_field_is_rejected(tmp_path):
+    dest = _copy_config(tmp_path)
+    data = yaml.safe_load((dest / "fields.yaml").read_text())
+    data["fields"][0]["target"] = "weapon_stats.nonsense"
+    (dest / "fields.yaml").write_text(yaml.safe_dump(data))
+    with pytest.raises(ConfigError, match="not a ScrapedItem field"):
         load_config(dest)
 
 

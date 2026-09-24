@@ -3,12 +3,28 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import List
+from pathlib import Path
+from typing import Any, List
 
 import pytest
 
 from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
+from item_extractor import ScrapedItem
+
+PAGES = Path(__file__).resolve().parents[1] / "fixtures" / "pages"
+ITEM_PAGE_HTML = (PAGES / "Item_Breaker_of_Bodies.html").read_text(encoding="utf-8")
+
+
+class InMemoryItemWriter:
+    """In-memory adapter for ScrapedItemWriterProtocol."""
+
+    def __init__(self) -> None:
+        self.written: list[tuple[ScrapedItem, dict[str, Any]]] = []
+
+    def write(self, item: ScrapedItem, report: dict[str, Any]) -> None:
+        self.written.append((item, report))
+
 
 # ── Datetime helpers ──────────────────────────────────────────────────────────
 
