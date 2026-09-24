@@ -1,0 +1,93 @@
+{
+  "id": "371f1b23-36cc-4860-9faa-93ce36a69a83",
+  "name": "Corsair's Cufflinks",
+  "wiki": {
+    "page_id": 24360,
+    "revision_id": 629173,
+    "title": "Item:Corsair's Cufflinks",
+    "url": "https://ddowiki.com/page/Item:Corsair%27s_Cufflinks"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Leather",
+  "hardness": 11,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Armor Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Armor Bonus +5 : This item surrounds the wearer with an invisible but tangible field of force, granting +5 armor bonus to AC, just as though he were wearing armor.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Haggle",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Haggle +5 : Passive: +5 Competence bonus to the Haggle skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Attack Bonus",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "attack",
+      "tooltip": "Attack Bonus +1 : Provides a +1 competence bonus to your attack rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Corsair's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Corsair's Cunning : 2 Item Set Bonus: Underwater Action 3 Item Set Bonus: Feather Falling",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Fancy cufflinks! The sign of a pirate with a sense of fashion.",
+  "notes": null,
+  "tips": "The Pirate Treasure Map , the 3 items from the Corsair's Cunning set, the 4 'Scoundrel's type' weapons and Brine Shaman's Staff have a chance of appearing in the end reward list of any of the Three-Barrel Cove (heroic) quests, except Guard Duty . Every third completion you will receive a complete list.",
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , End reward"
+  },
+  "extraction_errors": {}
+}

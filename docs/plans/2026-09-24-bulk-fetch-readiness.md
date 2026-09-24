@@ -1428,3 +1428,30 @@ nothing left to decide.
   requests a run and 204 held back for the worst case, one invocation makes about 10 runs,
   about 5 hours. The step 6 estimate for the whole backlog is about 8,150 requests, so
   plan on about 8 invocations.
+
+### Batch 2: Updates 8, 9, 14 and 15 (first bulk_fetch run)
+
+- **run-001** (17:52-17:58): 87 requests (`grep -c 'GET '`), 84 items completed and 4
+  failed. The pacing was a steady 4 s: 81 of 86 gaps were 4 s.
+  - It stopped with exit 1 on `Item:Wall_of_Wood_(level_23)`, reported as "WAF challenge
+    not cleared". The browser document was in fact a **503 with no WAF header**, which the
+    adapter disguised as a challenge after waiting 30 s ("Fix: browser returns real
+    statuses").
+- **An earlier run between 17:44 and 17:52 is not in `logs/`.** It read `Update_14` and
+  wrote the first Update 8 files. Its requests are not counted in this record.
+- **Failed:**
+  - Commendation of Heroism, Potion of Restoration and Pirate Treasure Map fail with
+    `no infobox table`. All three are in `Consumables without a type`, so they are not
+    Named Items ("Fix: skip consumables").
+  - Violet Gelatinous Cube-let is a 404: the update page links a page the wiki does not
+    have. That is correct behaviour.
+- **Committed:** 94 new item files (update-8: 19, update-9: 18, update-14: 44,
+  update-15: 13) and 94 registry lines. No line was removed or changed.
+- **Offline verification over Updates 5-15:** 0 fetch attempts, no change to committed
+  files, a second run left the tree identical, and `check_catalog` returns [].
+- **Gaps baseline:** entries for 9 pages were added: the 3 consumables
+  (`extraction_failed`), 4 ingredient Marks (`skipped`) and Quivering Quiver's unmapped
+  rows `max stack size` and `unique item capacity`. The quiver rows have no field yet and
+  are left for review.
+- **Queue:** 355 total, 310 complete, 41 pending (Update 15 onwards), 4 failed.
+- Tests: 465 passed, 1 skipped.

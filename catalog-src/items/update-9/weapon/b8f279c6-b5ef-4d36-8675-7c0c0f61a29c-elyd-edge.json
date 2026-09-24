@@ -1,0 +1,139 @@
+{
+  "id": "b8f279c6-b5ef-4d36-8675-7c0c0f61a29c",
+  "name": "Elyd Edge",
+  "wiki": {
+    "page_id": 10937,
+    "revision_id": 672658,
+    "title": "Item:Elyd Edge",
+    "url": "https://ddowiki.com/page/Item:Elyd_Edge"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Rapier",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 13,
+  "durability": 95,
+  "base_value_cp": 2011000,
+  "weight": 2.0,
+  "upgradeable": "Epic Crafting to Epic Elyd Edge",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Rapier",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Silver",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX, CHA",
+    "damage_mod": "STR, DEX, CHA"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +5 : Passive: +5 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Charisma",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +4 : This item makes the wearer have more flair, granting a +4 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Devotion",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +59 : Passive: +59 Equipment bonus to Positive (Healing) Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Anthem",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Anthem : When equipped by a character with Bard levels, this item begins to hum an inspiring tune. Your bard songs regenerate slowly over time.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Silver , Alchemical",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Elven script on this fine silver blade reads 'Anthem of the heart; Anthem of the mind'.",
+  "notes": null,
+  "tips": "This was also offered as an Eleven Year Old Cake reward.",
+  "source": {
+    "quests": [
+      "The Tide Turns"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The Tide Turns , End chest"
+  },
+  "extraction_errors": {}
+}

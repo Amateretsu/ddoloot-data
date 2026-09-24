@@ -1,0 +1,93 @@
+{
+  "id": "b1c80a86-f47b-43c0-abb6-e2ca1c95f60a",
+  "name": "Corsair's Bandana",
+  "wiki": {
+    "page_id": 24543,
+    "revision_id": 629171,
+    "title": "Item:Corsair's Bandana",
+    "url": "https://ddowiki.com/page/Item:Corsair%27s_Bandana"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Cloth",
+  "hardness": 10,
+  "durability": 110,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spot",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Spot +5 : Passive: +5 Competence bonus to the Spot skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Swim",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Swim +5 : Passive: +5 Competence bonus to the Swim skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Resistance",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +2 : Passive: +2 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Corsair's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Corsair's Cunning : 2 Item Set Bonus: Underwater Action 3 Item Set Bonus: Feather Falling",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A stylish bandana. Ownership of one like this is a sign of respect from the pirates of Three-Barrel Cove.",
+  "notes": null,
+  "tips": "The Pirate Treasure Map , the 3 items from the Corsair's Cunning set, the 4 'Scoundrel's type' weapons and Brine Shaman's Staff have a chance of appearing in the end reward list of any of the Three-Barrel Cove (heroic) quests, except Guard Duty . Every third completion you will receive a complete list.",
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , End reward"
+  },
+  "extraction_errors": {}
+}

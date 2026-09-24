@@ -1,0 +1,159 @@
+{
+  "id": "dba11674-a21e-4f97-bcf2-7694cbf7d23c",
+  "name": "Wall of Wood (level 22)",
+  "wiki": {
+    "page_id": 26493,
+    "revision_id": 635748,
+    "title": "Item:Wall of Wood (level 22)",
+    "url": "https://ddowiki.com/page/Item:Wall_of_Wood_(level_22)"
+  },
+  "template": "shield",
+  "category": "shield",
+  "item_type": "Large Shield",
+  "equip_slots": [
+    "off_hand"
+  ],
+  "minimum_level": 22,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Densewood",
+  "hardness": 30,
+  "durability": 310,
+  "base_value_cp": 9103000,
+  "weight": 10.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Shield Proficiency (General)",
+    "weapon_type": null,
+    "handedness": null,
+    "damage_multiplier": 4.0,
+    "damage_dice": "2d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": {
+    "armor_type": null,
+    "armor_bonus": null,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": -1,
+    "arcane_spell_failure": 15
+  },
+  "shield_stats": {
+    "shield_type": "Large Shield",
+    "shield_bonus": 14,
+    "damage_reduction": 13
+  },
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 18,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +18 : Passive: +18 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class , attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Shield Bashing",
+      "value": 20,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Shield Bashing +20% : +20% Enhancement bonus to your chance of a Secondary Shield Bash. This stacks with bonuses granted by any relevant feats.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Natural Armor",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Natural Armor +6 : Passive: +6 Natural Armor Bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Equipment Healing Amplification",
+      "value": 40,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Healing Amplification : This effect amplifies all incoming positive energy healing by +40 ( Equipment bonus ). Includes spells, potions, and other effects.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Devotion",
+      "value": 102,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +102 : Passive: +102 Equipment bonus to Positive (Healing) Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "DR/Slashing",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 10/Slashing : Reduces physical damage by 10, except from Slashing attacks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This splendid heavy shield is made out of rare densewood, harvested from the King's Forest. Obviously reinforced with magical enchantments, it provides much greater protection than a normal shield of its size.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Overgrowth"
+    ],
+    "detail": "Wood Woads chest (Epic Normal)",
+    "crafted_from": [],
+    "raw": "Overgrowth , Wood Woads chest (Epic Normal)"
+  },
+  "extraction_errors": {}
+}

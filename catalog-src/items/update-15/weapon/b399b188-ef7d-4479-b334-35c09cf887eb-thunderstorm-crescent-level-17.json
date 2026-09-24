@@ -1,0 +1,128 @@
+{
+  "id": "b399b188-ef7d-4479-b334-35c09cf887eb",
+  "name": "Thunderstorm Crescent (level 17)",
+  "wiki": {
+    "page_id": 28699,
+    "revision_id": 672977,
+    "title": "Item:Thunderstorm Crescent (level 17)",
+    "url": "https://ddowiki.com/page/Item:Thunderstorm_Crescent_(level_17)"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Sickle",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 17,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 27,
+  "durability": 220,
+  "base_value_cp": 6800600,
+  "weight": 2.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Sickle",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +15 : Passive: +15 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Voltaic",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Voltaic : This weapon is sheathed in Powerful electricity. A voltaic weapon deals an extra 2 to 12 points of electricity damage on a successful hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Lightning Strike",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Lightning Strike : This weapon stores the power of a volatile thunderstorm deep within. Occasionally, this dynamic power comes to the surface, devastating enemies with a massive lightning strike.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Magnetism",
+      "value": 84,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Magnetism +84 : Passive: +84 Equipment bonus to Electricity Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This sickle sparks with electricity, summoning the power of a thunderstorm to your hand.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Outbreak"
+    ],
+    "detail": "Optional chest",
+    "crafted_from": [],
+    "raw": "Outbreak , Optional chest"
+  },
+  "extraction_errors": {}
+}

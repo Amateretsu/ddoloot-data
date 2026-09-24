@@ -1,0 +1,118 @@
+{
+  "id": "ade5f754-fbd9-4fde-84c0-0f11ee4cde2f",
+  "name": "Tiefling Assassin's Blade",
+  "wiki": {
+    "page_id": 24288,
+    "revision_id": 678012,
+    "title": "Item:Tiefling Assassin's Blade",
+    "url": "https://ddowiki.com/page/Item:Tiefling_Assassin%27s_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Short Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 95,
+  "base_value_cp": 1601000,
+  "weight": 2.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Short Sword",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "15-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Wounding",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Wounding : A wounding weapon deals 1 point of Constitution damage from blood loss when it hits a creature. Creatures immune to critical hits are immune to the Constitution damage dealt by this weapon.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Poison",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Poison : This weapon is dripping with poison. It deals an additional 1 to 6 poison damage on a successful hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This shortsword is viciously serrated, increasing the likelyhood of dealing critical damage to an enemy. The blade is coated with a potent toxin, inflaming any wounds inflicted by this weapon.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Ithun Orenah 's chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Ithun Orenah 's chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

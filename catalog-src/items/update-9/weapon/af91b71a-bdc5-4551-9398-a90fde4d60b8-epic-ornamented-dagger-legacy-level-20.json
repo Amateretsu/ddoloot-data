@@ -1,0 +1,150 @@
+{
+  "id": "af91b71a-bdc5-4551-9398-a90fde4d60b8",
+  "name": "Epic Ornamented Dagger (legacy) (level 20)",
+  "wiki": {
+    "page_id": 13884,
+    "revision_id": 671181,
+    "title": "Item:Epic Ornamented Dagger (legacy) (level 20)",
+    "url": "https://ddowiki.com/page/Item:Epic_Ornamented_Dagger_(legacy)_(level_20)"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dagger",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "exclusive": true,
+  "material": "Steel",
+  "hardness": 21,
+  "durability": 150,
+  "base_value_cp": 25000200,
+  "weight": 1.0,
+  "upgradeable": "Treasure of Crystal Cove",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Dagger",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +15 : Passive: +15 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Concentration",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +15 : Passive: +15 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Potency",
+      "value": 48,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +48 : Passive: +48 Equipment bonus to each Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Efficient Metamagic - Maximize",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Maximize II : The additional spell point cost for using the Maximize Metamagic feat is reduced by 4 SP .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_upgrade",
+      "raw": "Upgradeable - Tier 1",
+      "name": "Tier 1",
+      "colour": null,
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "unique_system",
+      "raw": "Lesser Maximize — 3 Charges",
+      "name": "Lesser Maximize — 3 Charges",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Upgradeable - Tier 2 Adds Spell Lore III",
+        "Adds Spell Lore III",
+        "Upgradeable - Tier 3 Adds Yellow Augment Slot Potency +48 becomes Potency +52",
+        "Adds Yellow Augment Slot",
+        "Potency +48 becomes Potency +52"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A dagger set with precious gems, each of which are enchanted with spell-enhancing magic. Most likely it was seized from nobles by a band of pirates as part of their pillaging.",
+  "notes": null,
+  "tips": "See also: Ornamented Dagger - Full table of the Ornamented Dagger line. Tier 2 Tier 3",
+  "source": {
+    "quests": [
+      "Treasure of Crystal Cove"
+    ],
+    "detail": "Turn in at Dusty Old",
+    "crafted_from": [],
+    "raw": "Treasure of Crystal Cove , Turn in at Dusty Old Treasure of Crystal Cove"
+  },
+  "extraction_errors": {}
+}
