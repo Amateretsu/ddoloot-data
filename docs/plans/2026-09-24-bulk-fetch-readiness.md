@@ -140,6 +140,9 @@ with ADR 0006.
   it is the smallest change. Until then, D stands.
 - **Decision needed:** the maintainer decides between A and D (or checks the 5 items in
   game). C needs a ddoloot-app change and an ADR-level decision about the Binding enum.
+- **Decided by the maintainer (2026-09-24):** A. The wiki's untimed forms mean on acquire:
+  `Bound to Character` → `character` and `Bound to Account` → `account`. See "Decision 4c"
+  below.
 
 ## Proposal: alignment DR and Exceptional Fortification
 
@@ -955,6 +958,44 @@ with ADR 0006.
 - **Queue after the probe:** 253 total, 201 complete, 47 pending, 5 failed. 42 of the 47
   pending are unheld.
 - Nothing more was fetched.
+
+### Decision 4c: untimed binding
+
+- **Maintainer decision (2026-09-24):** option A of "Proposal: binding with no timing". The
+  wiki's untimed `Bound to Character` and `Bound to Account` mean on acquire, so they map
+  to the existing `character` and `account` values, the same as the timed on acquire
+  forms.
+- **Implementation:** two entries in the `binding` map of `catalog/extractor/mappings.yaml`
+  (`"bound to account": account`, `"bound to character": character`), with a comment
+  naming the decision. No code, schema or enum change. The `, Exclusive` suffix is still
+  stripped before the lookup (step 4d), so the untimed Exclusive forms map too, with
+  `exclusive` true. `binding_raw` keeps the untimed text, so the reading stays auditable.
+  Any other unknown binding text is still an extraction error.
+- **Tests (through `extract()`):** `test_row_is_coerced_into_its_field` gains 3 cases
+  (untimed Character, untimed Account, untimed Character with Exclusive);
+  `test_binding_keeps_the_raw_wiki_text` gains the untimed Account case;
+  step 4d's 2 untimed cases in `test_exclusive_is_read_from_the_binding_row` now expect
+  `character` and no error. All 6 failed before the mapping change.
+- **Files:** `catalog/extractor/mappings.yaml`, `tests/item_extractor/test_extract.py`,
+  `tests/item_extractor/extractor_gaps.json` (the 5 `binding` entries removed), this plan,
+  and 5 item files under `catalog-src/items`.
+- **`catalog-src` diff:** 5 item files (Glorious Obscenity; Phiarlan Veil Shield round and
+  angular; Stormreach Marketplace Shield round and angular). In each, `binding` goes from
+  null to `account` (Glorious Obscenity) or `character` (the 4 shields), `binding_raw`
+  from null to the untimed text, and `extraction_errors` from `{"binding": …}` to `{}`.
+  `exclusive` stays false. No registry change and no other file.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, the inner sync
+  exit code is 2, and 42 unheld pages are skipped (43 before the probe fetched Crimson
+  Chain). A second run left `git status` and the diff unchanged, and
+  `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 211 | 0 | 7 | 5 | 0 | 5 |
+  | After | 211 | 0 | 7 | 0 | 0 | 5 |
+
+- Tests after decision 4c: 404 passed, 1 skipped.
 
 ## Session summary
 

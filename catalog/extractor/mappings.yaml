@@ -9,6 +9,10 @@ binding:
   "bound to account on equip": on_equip
   "bound to character on equip": on_equip
   "unbound": unbound
+  # The wiki gives no timing for these; the maintainer decided (2026-09-24, decision 4c)
+  # that they mean on acquire. `binding_raw` keeps the untimed text.
+  "bound to account": account
+  "bound to character": character
 
 damage_types:
   slash: Slashing
