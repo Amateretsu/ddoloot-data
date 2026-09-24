@@ -246,3 +246,42 @@ each leaves tests green and the CLI working end to end.
 - Live wiki traffic so far: 5 `robots.txt` reads (2 from the pre-guard test runs, 3 from
   smoke runs and diagnosis) and 2 challenged reads of one item page. No further live
   requests are planned.
+
+### Step 3: discovery and results
+
+- The discovery index is `https://ddowiki.com/page/Named_items` (`NAMED_ITEMS_INDEX_URL`),
+  **not verified against the live wiki**. Cached item pages link only to
+  `Category:Update_N_named_items`. If the index yields no update page, discovery raises
+  `UpdatePageError`, so a wrong title fails loudly; `sync --page` works without the index.
+  Check this title on the first live run.
+- An update page counts only if its link is `/page/Update_<N>_named_items` inside
+  `#mw-content-text`. `Category:` links, `…_revamped_named_items`, red links, edit links and
+  skin chrome are ignored. Update pages are sorted by update number.
+- Item URLs keep the wiki's percent-encoding. Item names are decoded, `_` → space.
+- `update_pages.wiki_modified_at` becomes `revision_id INTEGER`, taken from
+  `"wgCurRevisionId"` in the update page HTML and written by `mark_page_synced(...,
+  revision_id=)`.
+- Staleness is gone (`needs_resync` removed); `--refresh` is the only refetch. Every sync
+  re-reads each tracked update page (a held copy costs no request), so new links still get
+  queued. A refreshed page whose revision changed is logged as old → new.
+- The queue schema version lives in `PRAGMA user_version = 2`. An older DB raises
+  `QueueSchemaError` ("delete the file and rerun"); there is no migration.
+- One repository: `QueueRepository` in `queue_db.py`, with the schema folded in.
+  `ScrapeQueueRepository` and `UpdatePageRepository` are deleted. `QueueRepositoryProtocol`
+  is removed as it had one adapter, as are `UpdatePageParserProtocol` and the syncer's
+  `parser=` and `api_client=` seams. The remaining seams are `PageStoreProtocol` and
+  `ScrapedItemWriterProtocol`.
+- `sync_update_page` registers an untracked page instead of failing on the foreign key.
+  `sync_all(limit=)` replaces the CLI's private `_run_sync`.
+- `<update>` travels in the report (`report["update_page"]`), keeping the `write(item,
+  report)` signature. The writer maps it: `Update_8_named_items` → `update-8`, anything else
+  → `unknown`. An item listed on two update pages is written into both folders.
+- The page slug stays the step-1 writer slug (readable, `wiki.url` in the JSON), not the
+  Page Store's `<slug>-<hash8>`. Known risk: titles that differ only in punctuation collide.
+- `report.jsonl` is one per update folder. Each write replaces that page's line, matched by
+  URL, so the file matches the JSON beside it across runs and `--limit` batches. Writes are
+  atomic. A line is `{name, url, update_page, **extract report, extraction_errors,
+  warnings}`, with `warnings` `[]` until step 5.
+- `ddo_sync/discovery.py` absorbs `update_page_parser`. Its interface is
+  `discover_update_pages(store, refresh)`, `read_update_page(store, name, refresh) ->
+  UpdatePage`, `update_page_url`, `update_slug`.

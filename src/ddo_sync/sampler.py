@@ -15,7 +15,8 @@ from typing import List, Optional
 from loguru import logger
 
 from ddo_sync.models import QueueItem
-from ddo_sync.protocols import PageStoreProtocol, QueueRepositoryProtocol
+from ddo_sync.protocols import PageStoreProtocol
+from ddo_sync.queue_db import QueueRepository
 from page_store import CachedPage, RunStoppedError
 
 
@@ -29,7 +30,7 @@ class SampledPage:
 
 
 def sample_pages(
-    queue_repo: QueueRepositoryProtocol,
+    queue_repo: QueueRepository,
     page_store: PageStoreProtocol,
     count: int,
     seed: int = 1,
@@ -73,9 +74,7 @@ def sample_pages(
     return results
 
 
-def _pick(
-    queue_repo: QueueRepositoryProtocol, count: int, seed: int
-) -> List[QueueItem]:
+def _pick(queue_repo: QueueRepository, count: int, seed: int) -> List[QueueItem]:
     rng = random.Random(seed)
     by_update: dict[str, List[QueueItem]] = defaultdict(list)
     for update in queue_repo.list_update_pages():

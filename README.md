@@ -20,7 +20,7 @@ Catalog data and build pipeline for [DDOLoot](https://github.com/Amateretsu/ddol
 
 Requires Python 3.11+. `pip install -e ".[test,lint]"` installs the `ddoloot` command:
 
-- `ddoloot sync [--refresh] [--scraper-config PATH] [--queue-db PATH]`: discover update pages, read item pages through the Page Store and write Scraped Items to `cache/extracted/` (gitignored). The Page Store fetches only the pages it does not hold yet. See `docs/ddo_sync.md`.
+- `ddoloot sync [--refresh] [--scraper-config PATH] [--queue-db PATH]`: discover update pages from the wiki's named-items index page, read item pages through the Page Store and write Scraped Items to `cache/extracted/<update>/` with one `report.jsonl` per update (gitignored). The Page Store fetches only the pages it does not hold yet, and `--refresh` refetches. Nothing uses the MediaWiki API. See `docs/ddo_sync.md`.
 - `ddoloot sample --count N [--seed N]`: read a sample of queued item pages, spread across update pages, into the Page Store.
 - `ddoloot extract-item "<item name>" [--html PATH]`: print one page's Scraped Item and report, from the Page Store or a saved HTML file. It makes no network requests.
 

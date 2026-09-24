@@ -3,20 +3,16 @@
 from __future__ import annotations
 
 from datetime import timezone
-from unittest.mock import MagicMock
 
 import pytest
 
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
-from ddo_sync.queue_db import QueueRepository
 from ddo_sync.syncer import DDOSyncer
 from page_store import ChallengeError, FetchError
 from tests.ddo_sync.conftest import (
     ITEM_PAGE_HTML,
-    MODIFIED_AFTER,
-    MODIFIED_BEFORE,
-    SYNCED_AT,
+    UPDATE_PAGE_HTML,
     InMemoryItemWriter,
     InMemoryPageStore,
     serve_wiki,
@@ -39,14 +35,6 @@ def _raise(exc: Exception):
 
 
 @pytest.fixture
-def queue_repo() -> QueueRepository:
-    repo = QueueRepository(":memory:")
-    repo.open()
-    yield repo
-    repo.close()
-
-
-@pytest.fixture
 def store() -> InMemoryPageStore:
     return InMemoryPageStore(serve_wiki)
 
@@ -57,16 +45,8 @@ def writer() -> InMemoryItemWriter:
 
 
 @pytest.fixture
-def mock_api_client() -> MagicMock:
-    client = MagicMock()
-    client.get_last_modified.return_value = MODIFIED_BEFORE  # wiki older → no resync
-    return client
-
-
-@pytest.fixture
-def syncer(store, writer, queue_repo, mock_api_client) -> DDOSyncer:
-    # The mock api client means no real HTTP is made.
-    return DDOSyncer(store, writer, queue_repo, api_client=mock_api_client)
+def syncer(store, writer, queue_repo) -> DDOSyncer:
+    return DDOSyncer(store, writer, queue_repo)
 
 
 # ── Registration ──────────────────────────────────────────────────────────────
@@ -115,11 +95,23 @@ class TestSyncUpdatePage:
         stats = queue_repo.get_queue_stats()
         assert stats.pending > 0
 
-    def test_marks_page_synced(self, syncer, queue_repo):
+    def test_marks_page_synced_with_the_revision_read(self, syncer, queue_repo):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         status = queue_repo.get_update_page_status(PAGE_NAME)
         assert status.last_synced_at is not None
+        assert status.revision_id == 628001
+
+    def test_refreshed_page_records_its_new_revision(self, writer, queue_repo, store):
+        DDOSyncer(store, writer, queue_repo).sync_update_page(PAGE_NAME)
+        store.serve = lambda _url: UPDATE_PAGE_HTML.replace(
+            '"wgCurRevisionId":628001', '"wgCurRevisionId":628002'
+        )
+        DDOSyncer(store, writer, queue_repo).sync_update_page(PAGE_NAME)
+        assert queue_repo.get_update_page_status(PAGE_NAME).revision_id == 628001
+
+        DDOSyncer(store, writer, queue_repo, refresh=True).sync_update_page(PAGE_NAME)
+        assert queue_repo.get_update_page_status(PAGE_NAME).revision_id == 628002
 
     def test_fetch_error_raises_update_page_error(self, syncer, store):
         syncer.register_update_page(PAGE_NAME)
@@ -144,12 +136,8 @@ class TestSyncUpdatePage:
         syncer.sync_update_page(PAGE_NAME)
         assert store.requests == [PAGE_URL]
 
-    def test_refresh_refetches_held_pages(
-        self, store, writer, queue_repo, mock_api_client
-    ):
-        syncer = DDOSyncer(
-            store, writer, queue_repo, api_client=mock_api_client, refresh=True
-        )
+    def test_refresh_refetches_held_pages(self, store, writer, queue_repo):
+        syncer = DDOSyncer(store, writer, queue_repo, refresh=True)
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
@@ -209,6 +197,7 @@ class TestProcessQueue:
         assert item.name == "Breaker of Bodies"
         assert item.wiki.url.startswith("https://ddowiki.com/page/Item:")
         assert report["template"] == "shield"
+        assert report["update_page"] == PAGE_NAME
 
     def test_challenge_stops_processing_and_leaves_items_pending(
         self, syncer, writer, queue_repo, store
@@ -279,45 +268,42 @@ class TestSyncAll:
         result = syncer.sync_all()
         assert isinstance(result, SyncStatus)
 
-    def test_syncs_stale_page(self, syncer, mock_api_client, store):
-        """Page needs resync when wiki is newer than last sync."""
+    def test_reads_every_registered_update_page_and_processes_the_queue(
+        self, syncer, store, writer
+    ):
         syncer.register_update_page(PAGE_NAME)
-        # Simulate: we synced before, wiki has been updated since
-        syncer._queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
-        mock_api_client.get_last_modified.return_value = MODIFIED_AFTER
-        syncer.sync_all()
-        # the update page + queue items were read through the store
-        assert PAGE_URL in store.requests
+        status = syncer.sync_all()
+        assert store.requests[0] == PAGE_URL
+        assert status.queue_stats.complete == 3
+        assert status.update_pages[PAGE_NAME].revision_id == 628001
+        assert len(writer.written) == 3
 
-    def test_skips_up_to_date_page(self, syncer, mock_api_client, store):
-        """Page does NOT need resync when wiki is older than last sync."""
+    def test_second_cycle_makes_no_request(self, syncer, store):
         syncer.register_update_page(PAGE_NAME)
-        syncer._queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
-        mock_api_client.get_last_modified.return_value = MODIFIED_BEFORE
         syncer.sync_all()
-        # the update page is not read (no pending items either)
+        store.requests.clear()
+        syncer.sync_all()
         assert store.requests == []
 
-    def test_resets_failed_items_first(self, syncer, queue_repo, mock_api_client):
+    def test_limit_caps_processed_items(self, syncer):
+        syncer.register_update_page(PAGE_NAME)
+        status = syncer.sync_all(limit=1)
+        assert status.queue_stats.complete == 1
+        assert status.queue_stats.pending == 2
+
+    def test_resets_failed_items_first(self, syncer, queue_repo):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         items = queue_repo.get_pending_items()
         queue_repo.mark_failed(items[0].id, utc(2025, 11, 1), "err")
         assert queue_repo.get_queue_stats().failed == 1
-        # Simulate api says no change so no re-fetch of update page
-        mock_api_client.get_last_modified.return_value = MODIFIED_BEFORE
-        queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
         syncer.sync_all()
-        # Failed item should have been reset and then processed
         assert queue_repo.get_queue_stats().failed == 0
 
-    def test_update_page_error_does_not_abort_cycle(
-        self, syncer, store, mock_api_client
-    ):
+    def test_update_page_error_does_not_abort_cycle(self, syncer, store):
         """If one update page fails to sync, others still process."""
         syncer.register_update_page("Page_A")
         syncer.register_update_page("Page_B")
-        mock_api_client.get_last_modified.return_value = MODIFIED_AFTER
 
         def fetch_side_effect(url):
             if "Page_A" in url:
@@ -327,7 +313,9 @@ class TestSyncAll:
         store.serve = fetch_side_effect
         # Should not raise even though Page_A fails
         result = syncer.sync_all()
-        assert isinstance(result, SyncStatus)
+        assert result.update_pages["Page_A"].last_synced_at is None
+        assert result.update_pages["Page_B"].last_synced_at is not None
+        assert result.queue_stats.complete == 3
 
     def test_mark_complete_raises_item_gets_marked_failed(self, syncer, queue_repo):
         """If mark_complete raises, the item is counted as a failure."""
@@ -346,14 +334,3 @@ class TestSyncAll:
 
         queue_repo.mark_complete = original_mark_complete
         assert failures >= 1
-
-    def test_refresh_wiki_timestamp_api_failure_logs_warning_and_proceeds(
-        self, syncer, mock_api_client
-    ):
-        """If get_last_modified raises, sync_all still completes without error."""
-        syncer.register_update_page(PAGE_NAME)
-        mock_api_client.get_last_modified.side_effect = Exception("API is down")
-
-        # Should not raise; the exception is caught and logged as a warning
-        result = syncer.sync_all()
-        assert isinstance(result, SyncStatus)

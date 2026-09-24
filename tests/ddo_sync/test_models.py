@@ -48,45 +48,6 @@ class TestQueueStats:
             stats.pending = 99  # type: ignore[misc]
 
 
-class TestUpdatePageStatus:
-    def _make(self, last_synced=None, wiki_modified=None):
-        return UpdatePageStatus(
-            page_name="Update_5_named_items",
-            page_url="https://ddowiki.com/page/Update_5_named_items",
-            last_synced_at=last_synced,
-            wiki_modified_at=wiki_modified,
-        )
-
-    def test_needs_resync_when_both_none(self):
-        status = self._make()
-        assert status.needs_resync is True
-
-    def test_needs_resync_true_when_last_synced_none(self):
-        status = self._make(wiki_modified=datetime(2025, 11, 1, tzinfo=UTC))
-        assert status.needs_resync is True
-
-    def test_needs_resync_true_when_wiki_modified_none(self):
-        status = self._make(last_synced=datetime(2025, 11, 1, tzinfo=UTC))
-        assert status.needs_resync is True
-
-    def test_needs_resync_false_when_synced_after_modified(self):
-        synced = datetime(2025, 11, 2, tzinfo=UTC)
-        modified = datetime(2025, 11, 1, tzinfo=UTC)
-        status = self._make(last_synced=synced, wiki_modified=modified)
-        assert status.needs_resync is False
-
-    def test_needs_resync_true_when_modified_after_synced(self):
-        synced = datetime(2025, 11, 1, tzinfo=UTC)
-        modified = datetime(2025, 11, 2, tzinfo=UTC)
-        status = self._make(last_synced=synced, wiki_modified=modified)
-        assert status.needs_resync is True
-
-    def test_frozen(self):
-        status = self._make()
-        with pytest.raises((TypeError, AttributeError)):
-            status.page_name = "other"  # type: ignore[misc]
-
-
 class TestSyncStatus:
     def test_fields(self):
         stats = QueueStats(pending=1, in_progress=0, complete=5, failed=0, skipped=0)
@@ -94,7 +55,7 @@ class TestSyncStatus:
             page_name="Update_5_named_items",
             page_url="https://ddowiki.com/page/Update_5_named_items",
             last_synced_at=None,
-            wiki_modified_at=None,
+            revision_id=None,
         )
         status = SyncStatus(
             queue_stats=stats, update_pages={"Update_5_named_items": page}

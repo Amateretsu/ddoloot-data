@@ -1,42 +1,51 @@
-"""ddo_sync — DDO Wiki update-page scrape queue and sync orchestration.
+"""ddo_sync — DDO Wiki discovery, the crawl queue and sync orchestration.
 
 Public API:
 
-    DDOSyncer         — top-level sync orchestrator
-    JsonItemWriter    — writes each Scraped Item as JSON
-    QueueRepository   — SQLite scrape queue (update pages + items)
-    WikiApiClient     — MediaWiki Action API thin client
-    UpdatePageParser  — HTML parser for item links on update pages
-    sample_pages      — stratified sample of queued item pages into the Page Store
+    DDOSyncer             — top-level sync orchestrator
+    JsonItemWriter        — writes each Scraped Item under cache/extracted/<update>/
+    QueueRepository       — the queue module: SQLite update pages + scrape queue
+    discover_update_pages — named-items index page -> update page names
+    read_update_page      — update page -> item links and revision id
+    update_slug           — "Update_8_named_items" -> "update-8"
+    sample_pages          — stratified sample of queued item pages into the Page Store
 
 Models:
 
-    ItemLink, QueueItem, QueueStats, UpdatePageStatus, SyncStatus
+    ItemLink, QueueItem, QueueStats, UpdatePage, UpdatePageStatus, SyncStatus
 
 Exceptions:
 
-    DDOSyncError, UpdatePageError, WikiApiError, QueueDbError, QueueSchemaError
+    DDOSyncError, UpdatePageError, QueueDbError, QueueSchemaError
 
 Example:
 
     >>> from ddo_sync import DDOSyncer, JsonItemWriter, QueueRepository
+    >>> from ddo_sync import discover_update_pages
     >>> from page_store import PageStore, load_scraper_config
     >>> with (
     ...     PageStore(load_scraper_config()) as store,
     ...     QueueRepository("queue.db") as queue_repo,
     ... ):
-    ...     writer = JsonItemWriter(Path("cache/extracted"))
-    ...     syncer = DDOSyncer(store, writer, queue_repo)
-    ...     syncer.register_update_page("Update_5_named_items")
+    ...     syncer = DDOSyncer(store, JsonItemWriter(Path("cache/extracted")), queue_repo)
+    ...     for name in discover_update_pages(store):
+    ...         syncer.register_update_page(name)
     ...     status = syncer.sync_all()
 """
 
+from ddo_sync.discovery import (
+    NAMED_ITEMS_INDEX_URL,
+    UpdatePage,
+    discover_update_pages,
+    read_update_page,
+    update_page_url,
+    update_slug,
+)
 from ddo_sync.exceptions import (
     DDOSyncError,
     QueueDbError,
     QueueSchemaError,
     UpdatePageError,
-    WikiApiError,
 )
 from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import (
@@ -46,23 +55,13 @@ from ddo_sync.models import (
     SyncStatus,
     UpdatePageStatus,
 )
-from ddo_sync.page_discovery import UpdatePageDiscoverer
-from ddo_sync.protocols import (
-    PageStoreProtocol,
-    QueueRepositoryProtocol,
-    ScrapedItemWriterProtocol,
-    UpdatePageParserProtocol,
-    WikiApiClientProtocol,
-)
+from ddo_sync.protocols import PageStoreProtocol, ScrapedItemWriterProtocol
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.sampler import SampledPage, sample_pages
-from ddo_sync.scrape_queue_db import ScrapeQueueRepository
 from ddo_sync.syncer import DDOSyncer
-from ddo_sync.update_page_db import UpdatePageRepository
-from ddo_sync.update_page_parser import UpdatePageParser
-from ddo_sync.wiki_api import WikiApiClient
 
 __all__ = [
+    "NAMED_ITEMS_INDEX_URL",
     "DDOSyncError",
     "DDOSyncer",
     "ItemLink",
@@ -71,21 +70,17 @@ __all__ = [
     "QueueDbError",
     "QueueItem",
     "QueueRepository",
-    "QueueRepositoryProtocol",
     "QueueSchemaError",
     "QueueStats",
     "SampledPage",
-    "ScrapeQueueRepository",
     "ScrapedItemWriterProtocol",
     "SyncStatus",
-    "UpdatePageDiscoverer",
+    "UpdatePage",
     "UpdatePageError",
-    "UpdatePageParser",
-    "UpdatePageParserProtocol",
-    "UpdatePageRepository",
     "UpdatePageStatus",
-    "WikiApiClient",
-    "WikiApiClientProtocol",
-    "WikiApiError",
+    "discover_update_pages",
+    "read_update_page",
     "sample_pages",
+    "update_page_url",
+    "update_slug",
 ]
