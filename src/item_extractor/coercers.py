@@ -1,9 +1,14 @@
 """Named coercers referenced from fields.yaml.
 
+``COERCERS`` is the seam between ``fields.yaml`` and code: a row names its coercer, and
+``load_config()`` rejects a name that is not registered here. Coercers are implementation
+behind ``extract()``; they are tested through it, not one by one.
+
 A coercer takes ``(text, cell, cfg)`` and returns either one value (for a plain target)
 or, for ``spread`` fields, a ``{dotted.path: value}`` dict. ``cell`` is the row's ``<td>``
-Tag. A coercer that cannot read the text raises :class:`Unparseable`; the extractor then
-leaves the field null and records the raw text in ``extraction_errors``.
+Tag and ``cfg`` the typed :class:`~item_extractor.config.Config`. A coercer that cannot
+read the text raises :class:`Unparseable`; the extractor then leaves the field null and
+records the raw text in ``extraction_errors``.
 """
 
 from __future__ import annotations
@@ -59,7 +64,7 @@ def _yes_no(text: str, cell: Any, cfg: Any) -> bool:
 
 
 def _copper(text: str, cell: Any, cfg: Any) -> int:
-    denominations = cfg.mappings["denominations"]
+    denominations = cfg.mappings.denominations
     total, found = 0, False
     for m in re.finditer(r"([\d,]+)\s*(pp|gp|sp|cp)\b", text, re.I):
         total += int(m.group(1).replace(",", "")) * denominations[m.group(2).lower()]
@@ -70,7 +75,7 @@ def _copper(text: str, cell: Any, cfg: Any) -> int:
 
 
 def _binding(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
-    binding = cfg.mappings["binding"].get(text.lower())
+    binding = cfg.mappings.binding.get(text.lower())
     if binding is None:
         raise Unparseable(text)
     return {"binding": binding, "binding_raw": text}
@@ -82,7 +87,7 @@ def _damage(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
         raise Unparseable(text)
     dice, sign, bonus, rest = m.groups()
     types = [
-        cfg.mappings["damage_types"].get(t.strip().lower(), t.strip())
+        cfg.mappings.damage_types.get(t.strip().lower(), t.strip())
         for t in re.split(r"[,/]", rest)
         if t.strip()
     ]

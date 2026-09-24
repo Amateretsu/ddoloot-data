@@ -4,9 +4,12 @@
 #          colons and non-breaking spaces normalised).
 # coerce:  a named coercer from item_extractor.coercers.
 # target:  dotted ScrapedItem field path (checked at load), or a template input such as
-#          `slot` that a template consumes. When spread is true the coercer returns a
-#          {dotted.path: value} dict and each entry is set; target then names the field
-#          an extraction error is recorded under.
+#          `slot` that a template consumes. Required unless spread is true.
+# spread:  the coercer returns a {dotted.path: value} dict and each entry is set. target
+#          is then optional: when given it names the field an extraction error is
+#          recorded under, otherwise the error is keyed by the row's first label.
+# Unknown keys, unknown coercers, duplicate labels and targets that name no field are
+# rejected when the config loads (item_extractor.config).
 # Cell text equal to any of null_values (case-insensitive) becomes null. Text a coercer
 # cannot parse leaves the field null and is recorded in the item's extraction_errors.
 null_values: ["none", "", "n/a", "-"]
@@ -27,7 +30,7 @@ fields:
   - {target: weight, labels: [weight], coerce: float}
   - {target: item_type, labels: [item type], coerce: text}
   - {target: slot, labels: [slot, equips to], coerce: text}
-  - {target: source, labels: [location, locations], coerce: location, spread: true, needs_cell: true}
+  - {target: source, labels: [location, locations], coerce: location, spread: true}
   - {target: upgradeable, labels: ["upgradeable?"], coerce: text}
   - {target: flavor_text, labels: [description, flavor text], coerce: text}
   - {target: notes, labels: [notes], coerce: text}

@@ -9,7 +9,7 @@ from typing import Any
 
 from bs4 import Tag
 
-from item_extractor.config import Config
+from item_extractor.config import Config, EntryRule
 
 
 @dataclass
@@ -64,22 +64,22 @@ def read_entry(li: Tag) -> EntryView:
 
 
 def _bonus_type(
-    cfg: Config, entry: EntryView, rule: dict[str, Any], groups: dict[str, str]
+    cfg: Config, entry: EntryView, rule: EntryRule, groups: dict[str, str]
 ) -> str | None:
-    bt = cfg.enchantments["bonus_type"]
+    bt = cfg.enchantments.bonus_type
     if groups.get("btype"):
         return groups["btype"].lower()
     for href in entry.hrefs:
-        m = re.search(bt["link_pattern"], href)
+        m = bt.link_pattern.search(href)
         if m:
             return m.group(1).lower()
-    source = groups.get("text") if rule.get("bonus_type_from") == "text" else None
+    source = groups.get("text") if rule.bonus_type_from == "text" else None
     if source:
-        m = re.search(bt["text_pattern"], source)
+        m = bt.text_pattern.search(source)
         if m:
             return m.group(1).lower()
-    if entry.tooltip and "tooltip_pattern" in bt:
-        m = re.search(bt["tooltip_pattern"], entry.tooltip)
+    if entry.tooltip:
+        m = bt.tooltip_pattern.search(entry.tooltip)
         if m:
             return m.group(1).lower()
     return None
@@ -94,27 +94,28 @@ def _number(raw: str | None, sign: str | None) -> float | int | None:
 
 def classify(cfg: Config, entry: EntryView) -> Classified:
     """Return the first matching rule's interpretation of one list entry."""
-    roman = cfg.mappings["roman"]
-    for rule in cfg.enchantments["rules"]:
-        when = rule.get("when", {})
-        if "has_children" in when and when["has_children"] != bool(entry.children):
+    roman = cfg.mappings.roman
+    for rule in cfg.enchantments.rules:
+        when = rule.when
+        if when.has_children is not None and when.has_children != bool(entry.children):
             continue
-        if "tooltip_items_match" in when and not any(
-            re.match(when["tooltip_items_match"], t) for t in entry.tooltip_items
+        if when.tooltip_items_match is not None and not any(
+            when.tooltip_items_match.match(t) for t in entry.tooltip_items
         ):
             continue
-        m = re.match(rule["pattern"], entry.text)
+        m = rule.pattern.match(entry.text)
         if not m:
             continue
         g = {k: v for k, v in m.groupdict().items() if v is not None}
-        for key in rule.get("lowercase", []):
+        for key in rule.lowercase:
             if key in g:
                 g[key] = g[key].lower()
-        kind = rule["kind"]
+        kind = rule.kind
         if kind == "set":
+            assert rule.item_pattern is not None  # checked at load
             bonuses = []
             for text in entry.tooltip_items:
-                bm = re.match(rule["item_pattern"], text)
+                bm = rule.item_pattern.match(text)
                 if bm:
                     bg = bm.groupdict()
                     bonuses.append(
@@ -124,11 +125,10 @@ def classify(cfg: Config, entry: EntryView) -> Classified:
                             "bonus_type": _bonus_type(cfg, entry, rule, bg),
                         }
                     )
-            return Classified(
-                "set", rule["id"], {"name": g["name"], "bonuses": bonuses}
-            )
+            return Classified("set", rule.id, {"name": g["name"], "bonuses": bonuses})
         if kind == "hint":
-            hint_kind = rule["hint_kind"].format(**g)
+            assert rule.hint_kind is not None  # checked at load
+            hint_kind = rule.hint_kind.format(**g)
             data = {
                 "kind": hint_kind,
                 "raw": entry.text,
@@ -136,15 +136,15 @@ def classify(cfg: Config, entry: EntryView) -> Classified:
             }
             if entry.children:
                 data["children"] = entry.children
-            return Classified("hint", rule["id"], data)
+            return Classified("hint", rule.id, data)
         if kind == "set_bonus":
             data = {
                 "pieces": int(g["pieces"]),
                 "text": g["text"],
                 "bonus_type": _bonus_type(cfg, entry, rule, g),
             }
-            return Classified("set_bonus", rule["id"], data)
-        value_kind = rule.get("value_kind")
+            return Classified("set_bonus", rule.id, data)
+        value_kind: str | None = rule.value_kind
         value: float | int | None = None
         if "tier" in g:
             value, value_kind = roman.get(g["tier"]), "tier"
@@ -159,8 +159,8 @@ def classify(cfg: Config, entry: EntryView) -> Classified:
             "bonus_type": _bonus_type(cfg, entry, rule, g),
             "tooltip": entry.tooltip,
         }
-        unclassified = bool(rule.get("fallback")) and bool(re.search(r"\d", entry.text))
-        return Classified("effect", rule["id"], data, unclassified)
+        unclassified = rule.fallback and bool(re.search(r"\d", entry.text))
+        return Classified("effect", rule.id, data, unclassified)
     raise ValueError(
         f"no rule matched {entry.text!r}; the config needs a fallback rule"
     )

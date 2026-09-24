@@ -1,10 +1,16 @@
 # Item page templates. The first rule that matches wins; order matters.
 #
-# detect.first_label:  the label of the first infobox row.
-# detect.has_label:    a label that must be present.
-# category:            fixed category, or category_from to derive it from a field.
-# item_type_from:      output path holding the value to promote to item_type.
-# equip_slots:         fixed slots, or equip_slots_from to derive them from a field.
+# detect.first_label:    the label of the first infobox row.
+# detect.has_label:      a label that must be present.
+# detect.default:        matches every page; the last template must be the default.
+# category:              fixed category, or category_from to derive it from part `index`
+#                        of a field split on every separator in `split` (then looked up
+#                        in category_map).
+# item_type_from:        output path holding the value to promote to item_type, or
+#                        item_type_from_split to take one part of a split field.
+# equip_slots:           fixed slots, or equip_slots_from to derive them from every part
+#                        of a split field.
+# Unknown keys are rejected when the config loads.
 templates:
   - id: weapon
     detect: {first_label: [proficiency class]}
@@ -26,8 +32,8 @@ templates:
 
   - id: accessory
     detect: {has_label: [item type]}
-    category_from: {field: item_type, split: " / ", index: 0}
-    item_type_from_split: {field: item_type, split: " / ", index: 1}
+    category_from: {field: item_type, split: [" / "], index: 0}
+    item_type_from_split: {field: item_type, split: [" / "], index: 1}
     equip_slots_from: {field: slot, split: [",", " or "]}
 
   - id: accessory_untyped

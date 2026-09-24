@@ -11,9 +11,18 @@
 #                     item-unique systems. These are curated in catalog/rules (ADR 0007),
 #                     never stored as effects.
 #
-# value_kind: flat | percent | tier | number
-# `fallback: true` marks the catch-all; entries reaching it that contain digits or a
-# colon are reported as unclassified for review.
+# value_kind: flat | percent | tier | number (a `tier` or `pct` capture overrides it)
+# `fallback: true` marks the catch-all; entries reaching it that contain digits are
+# reported as unclassified for review.
+#
+# Other rule keys:
+#   when.has_children          the entry must (true) or must not (false) have a nested list
+#   when.tooltip_items_match   some tooltip <li> must match this regex
+#   item_pattern               (set rules, required) regex for each tooltip bonus item
+#   bonus_type_from: text      also read the Bonus Type from the `text` capture
+#   hint_kind                  (hint rules, required) kind; may use captures, e.g. '{hint}'
+#   lowercase                  captures to lowercase before use
+# Unknown keys are rejected and every regex is compiled when the config loads.
 bonus_type:
   # Tooltip/entry anchors such as /page/Insight_bonus.
   link_pattern: '/page/([A-Za-z]+)_bonus$'
