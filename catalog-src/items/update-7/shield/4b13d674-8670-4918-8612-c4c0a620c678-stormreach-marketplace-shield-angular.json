@@ -29,6 +29,7 @@
   "upgradeable": "Stone of Change to Enhanced Stormreach Marketplace Shield (angular)",
   "accepts_sentience": null,
   "umd_dc": null,
+  "umd_exempt_classes": null,
   "weapon_stats": {
     "proficiency": "Shield Proficiency (General)",
     "weapon_type": null,

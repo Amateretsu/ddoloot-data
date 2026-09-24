@@ -1,89 +1,4 @@
 {
-  "Item:+1 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+1 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+11 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+11 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+3 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+3 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+5 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+5 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+7 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+7 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+9 Eternal Wand of Disrupt Undead": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:+9 Eternal Wand of Nimbus of Light": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:Brimstone Verge": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:Cacophonic Verge": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:Dampened Cacophonic Verge": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:Epic Brimstone Verge": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
-  "Item:Epic Cacophonic Verge": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
   "Item:Epic Golden Guile": {
     "unclassified_effects": [
       "Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)"
@@ -92,11 +7,6 @@
   "Item:Epic Infested Armor": {
     "unclassified_effects": [
       "DR 15/Good"
-    ]
-  },
-  "Item:Epic Roderic's Wand": {
-    "unmapped_rows": [
-      "no umd check for"
     ]
   },
   "Item:Epic Templar's Bastion": {
@@ -149,11 +59,6 @@
       "binding"
     ]
   },
-  "Item:Roderic's Wand": {
-    "unmapped_rows": [
-      "no umd check for"
-    ]
-  },
   "Item:Stormreach Marketplace Shield (angular)": {
     "extraction_errors": [
       "binding"
@@ -182,11 +87,6 @@
   "Item:Token of the Twelve": {
     "skipped": [
       "not an equippable named item: wiki category 'Ingredients'"
-    ]
-  },
-  "Item:Wand of Blasting": {
-    "unmapped_rows": [
-      "no umd check for"
     ]
   }
 }

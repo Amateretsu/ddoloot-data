@@ -136,6 +136,8 @@ class ScrapedItem(_Strict):
     upgradeable: str | None = None
     accepts_sentience: bool | None = None
     umd_dc: str | None = None
+    # the wand row "No UMD check for:", as written, such as "Wiz, Sor"
+    umd_exempt_classes: str | None = None
     # stats
     weapon_stats: WeaponStats | None = None
     armor_stats: ArmorStats | None = None

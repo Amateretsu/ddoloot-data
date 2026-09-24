@@ -27,6 +27,7 @@
   "upgradeable": "Mabar Endless Night Festival to +3 Eternal Wand of Disrupt Undead",
   "accepts_sentience": null,
   "umd_dc": "15",
+  "umd_exempt_classes": "Wiz, Sor",
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,

@@ -27,6 +27,7 @@
   "upgradeable": "Epic Crafting to Epic Brimstone Verge",
   "accepts_sentience": null,
   "umd_dc": "20",
+  "umd_exempt_classes": "Wiz, Sor",
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,
