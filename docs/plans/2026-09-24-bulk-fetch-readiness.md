@@ -104,6 +104,43 @@ with ADR 0006.
 
 ### Session summary
 
+## Proposal: binding with no timing
+
+- **Gap:** 5 held items give a Binding with no timing. `Bound to Character` (4): Phiarlan
+  Veil Shield (round, angular) and Stormreach Marketplace Shield (round, angular).
+  `Bound to Account` (1): Glorious Obscenity. Each is written with `binding` and
+  `binding_raw` null, and the raw text kept in `extraction_errors.binding`.
+- **The source does not say either.** The wiki's `Template:Bind` adds
+  `Category:Binds on acquire` or `Category:Binds on equip` when it is given a timing. Of
+  the 202 held `Item:` pages, 190 are in the first and 4 in the second. These 5 pages are
+  in neither, only in `Binds to character` or `Binds to account`. The other 3 pages in
+  neither are `Unbound` or an ingredient. So the page, not the extractor, lacks the timing.
+- **What the docs say:** CONTEXT.md's Binding has three states: bound to a DDO Account,
+  bound to a Character, or bound on equip ("undecided until first equipped"). The
+  `spec/v1/item.schema.json` enum (app-owned) is `account`, `character`, `on_equip`,
+  `unbound` or null. `mappings.yaml` maps only timed forms: on acquire to the named target,
+  either on equip form to `on_equip`. The deepen-page-store plan decided that unknown
+  binding text is an extraction error, with `binding` and `binding_raw` null and the raw
+  text in `extraction_errors`. The backlog plan left this gap open because "acquire and
+  equip cannot be told apart". No doc says what an untimed wiki value means.
+- **Options:**
+  - A) Map the untimed forms to their named target, `bound to character` → `character`
+    and `bound to account` → `account` (two `mappings.yaml` lines; `binding_raw` keeps the
+    untimed text, so the guess stays auditable). If an item really binds on equip, its
+    Item Instances are recorded as bound when they may not be yet. CONTEXT.md already lets
+    a user move a Character-bound instance to the Shared Bank, so the harm is small.
+  - B) Map them to `on_equip`. This loses the known target (Character or Account), and
+    `on_equip` would claim a timing the source does not give. Not recommended.
+  - C) Add an "unknown timing" value to the enum, or a separate timing field. The enum is
+    in the app-owned `spec/v1`, so ddoloot-app must change too. Too big for 5 items.
+  - D) Keep the status quo: an extraction error, visible in `report.jsonl` and the gaps
+    baseline, until someone checks the items in game or the wiki pages gain a timing.
+- **Recommendation:** A, once the maintainer accepts treating untimed as on acquire.
+  On acquire is the wiki's usual case (190 of 194 timed pages), the target is known, and
+  it is the smallest change. Until then, D stands.
+- **Decision needed:** the maintainer decides between A and D (or checks the 5 items in
+  game). C needs a ddoloot-app change and an ADR-level decision about the Binding enum.
+
 ## Decisions made during execution
 
 ### Step 1: queue order
@@ -328,3 +365,30 @@ with ADR 0006.
   | After | 210 | 0 | 8 | 5 | 0 | 5 |
 
 - Tests after step 4b: 348 passed, 1 skipped.
+
+### Step 4c: binding with no timing
+
+- **Outcome: proposed**, not fixed. See "Proposal: binding with no timing" above.
+- **What the docs say:** CONTEXT.md (Binding), the `spec/v1` binding enum, `mappings.yaml`
+  and the earlier plans name only the timed forms. None says what the wiki's untimed
+  `Bound to Character` or `Bound to Account` means, and no ADR covers Binding. The held
+  pages confirm the wiki gives no timing: none of the 5 is in `Binds on acquire` or
+  `Binds on equip`.
+- **Decision:** the 5 stay unmapped. No enum value was added and nothing was mapped to
+  acquire. The current record is correct and kept. As the deepen-page-store plan decided,
+  `binding` and `binding_raw` are both null, and the raw text is in
+  `extraction_errors.binding`; the report line reads
+  `"extraction_errors": {"binding": "Bound to Character"}`. That names the field and the
+  unmapped text, so the report entry is clear as it is. (The step's task said
+  `binding_raw` keeps the text; it does not. The raw text lives only in
+  `extraction_errors`.)
+- **Files:** this plan only. No extractor, mapping, schema or writer change, so no
+  offline re-run and no baseline regeneration. `catalog-src` diff: none.
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 0 | 8 | 5 | 0 | 5 |
+  | After | 210 | 0 | 8 | 5 | 0 | 5 |
+
+- Tests after step 4c: 348 passed, 1 skipped (unchanged).
