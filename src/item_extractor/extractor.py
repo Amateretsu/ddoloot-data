@@ -2,7 +2,11 @@
 
 ``extract()`` is the module's whole interface: a pure function from page HTML to a
 :class:`~item_extractor.scraped_item.ScrapedItem` plus a report of what the config did not
-cover. Rows, coercers, templates and effect rules are implementation behind it.
+cover. Rows, coercers and templates are implementation behind it. The Effects cell goes
+through one internal seam, :func:`~item_extractor.effects.classify_effects`, which owns
+Effect routing, the named set merge and reading tooltips. The other cells have their
+tooltips stripped one cell at a time, so the Effects cell is never stripped and the order
+of the two does not matter.
 """
 
 from __future__ import annotations
@@ -14,7 +18,7 @@ from bs4 import BeautifulSoup, Tag
 
 from item_extractor.coercers import COERCERS, Unparseable
 from item_extractor.config import Config, normalize_label
-from item_extractor.enchantments import classify, read_entry
+from item_extractor.effects import classify_effects
 from item_extractor.scraped_item import ScrapedItem
 
 
@@ -88,8 +92,10 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
 
     Returns:
         (item, report). ``report`` has ``template``, ``unmapped_rows``, ``ignored_rows``,
-        ``rule_hits`` and ``unclassified_effects`` (and ``unknown_categories`` when an item
-        type's category is not in the category map).
+        ``rule_hits``, ``unclassified_effects`` and ``warnings`` (and
+        ``unknown_categories`` when an item type's category is not in the category map).
+        An Effects entry no rule matches is listed in ``unclassified_effects``; it never
+        raises.
 
     Raises:
         ExtractionError: no infobox table could be found.
@@ -106,39 +112,31 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
     meta = _page_meta(html, soup, url)
     name = meta.pop("_name")
     item: dict[str, Any] = {"name": name, "wiki": meta}
+    effects_cells = [
+        td
+        for th, td in rows
+        if normalize_label(th.get_text()) in cfg.fields.effects_labels
+    ]
+    block = (
+        classify_effects(effects_cells[0], cfg.enchantments) if effects_cells else None
+    )
+    warnings: list[str] = []
+    if block is not None:
+        item["effects"] = block.effects
+        item["customisation_hints"] = block.customisation_hints
+        item["named_set"] = block.named_set
+        warnings.extend(block.warnings)
+    if len(effects_cells) > 1:
+        warnings.append(
+            f"{len(effects_cells)} Effects rows; only the first was classified"
+        )
     report: dict[str, Any] = {
         "unmapped_rows": {},
         "ignored_rows": [],
-        "rule_hits": {},
-        "unclassified_effects": [],
+        "rule_hits": dict(block.rule_hits) if block is not None else {},
+        "unclassified_effects": list(block.unclassified) if block is not None else [],
+        "warnings": warnings,
     }
-
-    effects, hints = [], []
-    for th, td in rows:
-        label = normalize_label(th.get_text())
-        if label in cfg.fields.effects_labels:
-            for li in (td.find("ul") or td).find_all("li", recursive=False):
-                entry = read_entry(li)
-                if not entry.text:
-                    continue
-                result = classify(cfg, entry)
-                report["rule_hits"][result.rule_id] = (
-                    report["rule_hits"].get(result.rule_id, 0) + 1
-                )
-                if result.unclassified:
-                    report["unclassified_effects"].append(entry.text)
-                if result.kind == "set":
-                    item["named_set"] = result.data
-                elif result.kind == "set_bonus":
-                    item.setdefault("named_set", {"name": None, "bonuses": []})[
-                        "bonuses"
-                    ].append(result.data)
-                else:
-                    {"effect": effects, "hint": hints}[result.kind].append(result.data)
-    item["effects"], item["customisation_hints"] = effects, hints
-
-    for span in soup.find_all("span", class_=["tooltip", "sortkey"]):
-        span.decompose()
 
     errors: dict[str, str] = {}
     labels_seen: list[str] = []
@@ -147,6 +145,8 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
         labels_seen.append(label)
         if label in cfg.fields.effects_labels:
             continue
+        for span in td.find_all("span", class_=["tooltip", "sortkey"]):
+            span.decompose()
         rule = cfg.fields.rule_for(label)
         text = re.sub(
             r"\s+", " ", td.get_text(" ", strip=True).replace("\xa0", " ")

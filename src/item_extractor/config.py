@@ -138,11 +138,10 @@ class FieldsConfig(_Strict):
 
 
 class MappingsConfig(_Strict):
-    """``mappings.yaml``: value maps the coercers and effect rules apply."""
+    """``mappings.yaml``: value maps the coercers apply."""
 
     binding: dict[str, str]
     damage_types: dict[str, str]
-    roman: dict[str, int]
     denominations: dict[str, int]
 
 
@@ -232,9 +231,14 @@ class EntryRule(_Strict):
 
 
 class EnchantmentsConfig(_Strict):
-    """``enchantments.yaml``: Bonus Type patterns and the ordered entry rules."""
+    """``enchantments.yaml``: everything Effect classification reads.
+
+    Bonus Type patterns, the Roman numeral map for tier values, and the ordered entry
+    rules. It is the whole rules argument of ``classify_effects()``.
+    """
 
     bonus_type: BonusTypePatterns
+    roman: dict[str, int]
     rules: list[EntryRule] = Field(min_length=1)
 
 

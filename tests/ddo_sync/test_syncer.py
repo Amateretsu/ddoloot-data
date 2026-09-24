@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import json
 from datetime import timezone
 
 import pytest
 
+from ddo_sync import JsonItemWriter
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.syncer import DDOSyncer
@@ -17,6 +19,7 @@ from tests.ddo_sync.conftest import (
     InMemoryPageStore,
     serve_wiki,
     utc,
+    wiki_page,
 )
 
 UTC = timezone.utc
@@ -237,6 +240,28 @@ class TestProcessQueue:
         assert success == total - 1
         assert len(writer.written) == total - 1
         assert queue_repo.get_queue_stats().failed == 1
+
+    def test_nameless_set_warning_reaches_the_report_line(
+        self, store, queue_repo, tmp_path
+    ):
+        nameless_set = wiki_page(
+            "Item:Loose_Piece",
+            '<table class="wikitable"><tr><th>Minimum Level</th><td>5</td></tr>'
+            "<tr><th>Enchantments</th><td><ul>"
+            "<li>2 Pieces Equipped: +3 Artifact bonus to Strength</li>"
+            "</ul></td></tr></table>",
+        )
+        store.serve = lambda url: (
+            nameless_set if "/page/Item:" in url else serve_wiki(url)
+        )
+        syncer = DDOSyncer(store, JsonItemWriter(tmp_path), queue_repo)
+        syncer.register_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        syncer.process_queue(limit=1)
+
+        report_path = tmp_path / "update-5" / "report.jsonl"
+        [line] = [json.loads(raw) for raw in report_path.read_text().splitlines()]
+        assert line["warnings"] == ["named set with 1 bonus(es) has no name"]
 
 
 # ── get_status ────────────────────────────────────────────────────────────────

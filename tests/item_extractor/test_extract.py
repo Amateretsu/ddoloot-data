@@ -245,6 +245,190 @@ def test_spread_row_without_target_records_errors_under_its_first_label(tmp_path
     assert item.extraction_errors == {"binding": "Bound to nobody"}
 
 
+# ── The Effects cell: what each kind of entry becomes ─────────────────────────
+
+
+def effects_page(*entries):
+    """A page whose Enchantments cell lists *entries* (each the inner HTML of one <li>)."""
+    items = "".join(f"<li>{e}</li>" for e in entries)
+    return item_page(("Enchantments", f"<ul>{items}</ul>"))
+
+
+def extract_effects(cfg, *entries):
+    return extract(effects_page(*entries), "u", cfg)
+
+
+@pytest.mark.parametrize(
+    ("text", "name", "value", "value_kind"),
+    [
+        ("Corrosion +59", "Corrosion", 59, "flat"),
+        ("Ice Lore +22%", "Ice Lore", 22, "percent"),
+        ("Fortification  +94%", "Fortification", 94, "percent"),
+        ("Doublestrike 6%", "Doublestrike", 6, "percent"),
+        ("+7 Enhancement Bonus", "Enhancement Bonus", 7, "flat"),
+        ("Bloodletter VII", "Bloodletter", 7, "tier"),
+        ("Maximum Charge Tier : V", "Maximum Charge Tier", 5, "tier"),
+        ("Holy Burst 4", "Holy Burst", 4, "number"),
+        ("Adds +0.5 weapon dice multiplier", "weapon dice multiplier", 0.5, "flat"),
+        ("Armor Class -2", "Armor Class", -2, "flat"),
+    ],
+)
+def test_effect_entry_value(cfg, text, name, value, value_kind):
+    item, report = extract_effects(cfg, text)
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.value_kind) == (name, value, value_kind)
+    assert report["unclassified_effects"] == []
+
+
+def test_plain_effect_has_no_value_and_is_not_flagged(cfg):
+    item, report = extract_effects(cfg, "Antipodal")
+    assert (item.effects[0].name, item.effects[0].value) == ("Antipodal", None)
+    assert report["unclassified_effects"] == []
+    assert report["rule_hits"] == {"plain_effect": 1}
+
+
+def test_fallback_entry_with_digits_is_kept_and_flagged(cfg):
+    item, report = extract_effects(cfg, "Weird 3x thing")
+    assert [e.name for e in item.effects] == ["Weird 3x thing"]
+    assert report["unclassified_effects"] == ["Weird 3x thing"]
+
+
+def test_entry_no_rule_matches_is_unclassified_and_does_not_raise(tmp_path):
+    config_dir = tmp_path / "extractor"
+    shutil.copytree(DEFAULT_CONFIG_DIR, config_dir)
+    path = config_dir / "enchantments.yaml"
+    data = yaml.safe_load(path.read_text())
+    data["rules"] = [r for r in data["rules"] if not r.get("fallback")]
+    path.write_text(yaml.safe_dump(data))
+
+    item, report = extract(
+        effects_page("Corrosion +59", "Antipodal"), "u", load_config(config_dir)
+    )
+    assert [e.name for e in item.effects] == ["Corrosion"]
+    assert report["unclassified_effects"] == ["Antipodal"]
+    assert report["rule_hits"] == {"signed_suffix": 1}
+
+
+def test_bonus_type_from_tooltip_link(cfg):
+    item, _ = extract_effects(
+        cfg,
+        '<span class="popup"><a href="/page/x">Corrosion +59</a>'
+        '<span class="popup tooltip">Corrosion +59: +59 '
+        '<a href="/page/Equipment_bonus">Equipment bonus</a></span></span>',
+    )
+    [effect] = item.effects
+    assert (effect.name, effect.bonus_type) == ("Corrosion", "equipment")
+    assert effect.tooltip.startswith("Corrosion +59")
+
+
+def test_bonus_type_from_tooltip_text_when_no_link(cfg):
+    item, _ = extract_effects(
+        cfg,
+        'Quality Combat Mastery +3<span class="tooltip">Quality Combat Mastery +3 : '
+        "+3 Quality bonus to the DC.</span>",
+    )
+    assert item.effects[0].bonus_type == "quality"
+
+
+def test_tooltip_is_read_though_other_cells_have_theirs_stripped(cfg):
+    effects_cell = (
+        '<ul><li>Strength +5<span class="tooltip">+5 '
+        '<a href="/page/Insight_bonus">Insight bonus</a></span></li></ul>'
+    )
+    html = item_page(
+        ("Minimum Level", '5<span class="tooltip">Level 5 tooltip</span>'),
+        ("Enchantments", effects_cell),
+    )
+    item, _ = extract(html, "u", cfg)
+    assert item.minimum_level == 5
+    assert item.effects[0].bonus_type == "insight"
+    assert item.effects[0].tooltip == "+5 Insight bonus"
+
+
+def test_bonus_to_entry_takes_type_from_its_text(cfg):
+    item, _ = extract_effects(
+        cfg, "+6% Artifact bonus to Fire, Cold and Acid Spell Critical Chance"
+    )
+    [effect] = item.effects
+    assert (effect.bonus_type, effect.value) == ("artifact", 6)
+    assert effect.name.startswith("Fire, Cold")
+
+
+@pytest.mark.parametrize(
+    ("text", "hint_kind"),
+    [
+        ("Blue Augment Slot", "augment_slot"),
+        ("Mythic Weapon Boost +2 or +4", "mythic"),
+        ("Reaper Enhancement", "reaper"),
+        ("Upgradeable - Primary Augment ( Yellow )", "augment_upgrade"),
+    ],
+)
+def test_customisation_hints_are_not_effects(cfg, text, hint_kind):
+    item, _ = extract_effects(cfg, text)
+    assert item.effects == []
+    assert [h.kind for h in item.customisation_hints] == [hint_kind]
+
+
+def test_nested_list_is_a_unique_system_hint(cfg):
+    item, _ = extract_effects(
+        cfg,
+        "Nearly Finished<ul><li>Quality Intelligence +1</li>"
+        "<li>Quality Wisdom +1</li></ul>",
+    )
+    [hint] = item.customisation_hints
+    assert hint.kind == "unique_system"
+    assert hint.children == ["Quality Intelligence +1", "Quality Wisdom +1"]
+    assert item.effects == []
+
+
+SET_ROW = (
+    "Huntmaster's Favor"
+    '<span class="tooltip"><ul>'
+    "<li>2 Pieces Equipped: +3 Artifact bonus to Sneak Attack Dice</li>"
+    "<li>3 Pieces Equipped: +15% Artifact bonus to Doublestrike</li></ul></span>"
+)
+BARE_BONUS_ROW = "5 Pieces Equipped: +10 Insight bonus to Melee Power"
+
+
+def test_named_set_takes_its_bonuses_from_the_tooltip(cfg):
+    item, report = extract_effects(cfg, SET_ROW)
+    named_set = item.named_set
+    assert named_set.name == "Huntmaster's Favor"
+    assert [(b.pieces, b.bonus_type) for b in named_set.bonuses] == [
+        (2, "artifact"),
+        (3, "artifact"),
+    ]
+    assert item.effects == []
+    assert report["warnings"] == []
+
+
+def test_set_row_and_bare_set_bonus_rows_merge_the_same_in_any_order(cfg):
+    set_first, report_a = extract_effects(cfg, SET_ROW, "Keen", BARE_BONUS_ROW)
+    set_last, report_b = extract_effects(cfg, BARE_BONUS_ROW, "Keen", SET_ROW)
+    assert set_first.named_set == set_last.named_set
+    assert set_first.named_set.name == "Huntmaster's Favor"
+    assert [b.pieces for b in set_first.named_set.bonuses] == [2, 3, 5]
+    assert set_first.named_set.bonuses[2].bonus_type == "insight"
+    assert [e.name for e in set_last.effects] == ["Keen"]
+    assert report_a["warnings"] == report_b["warnings"] == []
+
+
+def test_set_bonuses_without_a_set_name_are_kept_with_a_warning(cfg):
+    item, report = extract_effects(
+        cfg, BARE_BONUS_ROW, "3 Pieces Equipped: +2 Artifact bonus to Strength"
+    )
+    assert item.named_set.name is None
+    assert [b.pieces for b in item.named_set.bonuses] == [5, 3]
+    assert report["warnings"] == ["named set with 2 bonus(es) has no name"]
+
+
+def test_page_without_an_effects_row_has_empty_effects_and_no_warnings(cfg):
+    item, report = extract(item_page(("Minimum Level", "5")), "u", cfg)
+    assert (item.effects, item.customisation_hints, item.named_set) == ([], [], None)
+    assert report["rule_hits"] == {}
+    assert report["warnings"] == []
+
+
 # ── Committed real pages ──────────────────────────────────────────────────────
 
 
