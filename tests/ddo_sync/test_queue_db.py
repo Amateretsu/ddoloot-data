@@ -97,13 +97,44 @@ def test_unknown_page_has_no_status(queue_repo):
     assert queue_repo.get_update_page_status("Nope") is None
 
 
-def test_update_pages_are_listed_by_name(queue_repo):
-    _register(queue_repo, "Zebra_Page")
-    _register(queue_repo, "Alpha_Page")
-    assert [p.page_name for p in queue_repo.list_update_pages()] == [
-        "Alpha_Page",
-        "Zebra_Page",
-    ]
+# Sorted as strings these are 10, 5, 9, Unknown; as numbers 5, 9, 10.
+UPDATE_PAGES_OUT_OF_ORDER = [
+    "Update_10_named_items",
+    "Unknown_release_named_items",
+    "Update_9_named_items",
+    "Update_5_named_items",
+    "Alpha_Page",
+]
+UPDATE_PAGES_IN_ORDER = [
+    "Update_5_named_items",
+    "Update_9_named_items",
+    "Update_10_named_items",
+    "Alpha_Page",
+    "Unknown_release_named_items",
+]
+
+
+def test_update_pages_are_listed_by_update_number_unnumbered_last(queue_repo):
+    for name in UPDATE_PAGES_OUT_OF_ORDER:
+        _register(queue_repo, name)
+    names = [p.page_name for p in queue_repo.list_update_pages()]
+    assert names == UPDATE_PAGES_IN_ORDER
+
+
+def test_pending_items_come_by_update_number_then_queue_order(queue_repo):
+    for page in UPDATE_PAGES_OUT_OF_ORDER:
+        _register(queue_repo, page)
+        queue_repo.enqueue_items(
+            [
+                ItemLink(
+                    f"{page} {n}", f"https://ddowiki.com/page/Item:{page}_{n}", page
+                )
+                for n in (1, 2)
+            ]
+        )
+    expected = [f"{page} {n}" for page in UPDATE_PAGES_IN_ORDER for n in (1, 2)]
+    assert [i.item_name for i in queue_repo.get_pending_items()] == expected
+    assert [i.item_name for i in queue_repo.get_pending_items(limit=3)] == expected[:3]
 
 
 # ── Queue ─────────────────────────────────────────────────────────────────────

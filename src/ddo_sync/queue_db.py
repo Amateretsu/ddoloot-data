@@ -20,6 +20,7 @@ Example:
 
 from __future__ import annotations
 
+import re
 import sqlite3
 from datetime import datetime, timezone
 from typing import Any, List, Optional, Tuple
@@ -32,6 +33,12 @@ from ddo_sync.models import ItemLink, QueueItem, QueueStats, UpdatePageStatus
 # Stored in PRAGMA user_version. Version 1 had update_pages.wiki_modified_at (from the
 # MediaWiki API); version 2 records the revision id read from the page HTML instead.
 QUEUE_SCHEMA_VERSION: int = 2
+
+# Update pages are processed in ascending update number, so an item listed on several
+# pages is read first under the update that introduced it. Pages with no number go last,
+# by name. ``update_number(page_name)`` is registered as an SQL function for ORDER BY.
+_UPDATE_PAGE_RE = re.compile(r"Update_(\d+)_named_items")
+_UPDATE_ORDER_SQL: str = "update_number({col}) IS NULL, update_number({col}), {col}"
 
 _SCHEMA_SQL: str = """
 CREATE TABLE IF NOT EXISTS update_pages (
@@ -95,6 +102,9 @@ class QueueRepository:
         try:
             self._conn = sqlite3.connect(self._db_path)
             self._conn.row_factory = sqlite3.Row
+            self._conn.create_function(
+                "update_number", 1, _update_number, deterministic=True
+            )
             self._conn.execute("PRAGMA foreign_keys = ON")
             _apply_schema(self._conn, self._db_path)
             logger.debug(f"queue_db opened: {self._db_path!r}")
@@ -186,11 +196,15 @@ class QueueRepository:
             ) from exc
 
     def list_update_pages(self) -> List[UpdatePageStatus]:
-        """Return :class:`UpdatePageStatus` for every registered update page."""
+        """Return :class:`UpdatePageStatus` for every registered update page.
+
+        Ordered by ascending update number; pages with no number come last, by name.
+        """
+        order = _UPDATE_ORDER_SQL.format(col="page_name")
         try:
             rows = (
                 self._get_conn()
-                .execute("SELECT * FROM update_pages ORDER BY page_name")
+                .execute(f"SELECT * FROM update_pages ORDER BY {order}")
                 .fetchall()
             )
             return [_row_to_update_page_status(r) for r in rows]
@@ -310,15 +324,22 @@ class QueueRepository:
     # ── Queue reads ──────────────────────────────────────────────────────────
 
     def get_pending_items(self, limit: Optional[int] = None) -> List[QueueItem]:
-        """Return pending items ordered by ``queued_at`` ascending (oldest first).
+        """Return pending items by update page, then in the order they were queued.
+
+        Update pages come in ascending update number, pages with no number last (by
+        name), so an item on several pages is written under its introducing update
+        first. Within a page, items keep their queue (document) order.
 
         Args:
             limit: Maximum number of rows to return. ``None`` means all pending.
 
         Returns:
-            List of :class:`QueueItem` in FIFO order.
+            List of :class:`QueueItem` in processing order.
         """
-        sql = "SELECT * FROM scrape_queue WHERE status = 'pending' ORDER BY queued_at"
+        order = _UPDATE_ORDER_SQL.format(col="update_page")
+        sql = (
+            f"SELECT * FROM scrape_queue WHERE status = 'pending' ORDER BY {order}, id"
+        )
         params: Tuple = ()
         if limit is not None:
             sql += " LIMIT ?"
@@ -431,6 +452,11 @@ def _apply_schema(conn: sqlite3.Connection, db_path: str) -> None:
     conn.executescript(_SCHEMA_SQL)
     conn.execute(f"PRAGMA user_version = {QUEUE_SCHEMA_VERSION}")
     conn.commit()
+
+
+def _update_number(page_name: str) -> Optional[int]:
+    match = _UPDATE_PAGE_RE.fullmatch(page_name)
+    return int(match.group(1)) if match else None
 
 
 def _utcnow() -> datetime:
