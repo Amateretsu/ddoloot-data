@@ -1,0 +1,116 @@
+{
+  "id": "c9c3eda9-0b72-4f48-b9a8-7f97dd004619",
+  "name": "Epic Mummy Wrappings",
+  "wiki": {
+    "page_id": 10746,
+    "revision_id": 630254,
+    "title": "Item:Epic Mummy Wrappings",
+    "url": "https://ddowiki.com/page/Item:Epic_Mummy_Wrappings"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cloth",
+  "hardness": 27,
+  "durability": 248,
+  "base_value_cp": 8000500,
+  "weight": 10.0,
+  "upgradeable": "Legendary Crafting to Legendary Mummy Wrappings",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 12,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 16,
+    "armor_check_penalty": 0,
+    "arcane_spell_failure": 5
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Proof Against Disease",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Disease +8 : This item grants its wearer immunity to natural diseases. This item also grants a +8 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 9 + their Fortitude save)."
+    },
+    {
+      "name": "Profane Lifeforce",
+      "value": 32,
+      "value_kind": "flat",
+      "bonus_type": "profane",
+      "tooltip": "Profane Lifeforce +32 : +32 Profane bonus to Hit Points."
+    },
+    {
+      "name": "Physical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating"
+    },
+    {
+      "name": "Immunity to Fear",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Immunity to Fear : The wearer of this item is immune to all fear effects."
+    },
+    {
+      "name": "Fearsome",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fearsome : This item causes those who strike the user to be overcome with terror, as from the Fear spell ."
+    },
+    {
+      "name": "The Epic Desert's Starless Nights",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "The Epic Desert's Starless Nights : 2 Pieces Equipped: +4% Artifact bonus to Negative and Poison Spellcrit Chance +20 Artifact bonus to Negative and Poison Spellpower +10% Artifact bonus to Damage vs the Helpless"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A suit of padded armor made using the wrappings from several mummies.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Mummy Wrappings"
+    ],
+    "raw": "Epic version of Mummy Wrappings"
+  },
+  "extraction_errors": {}
+}

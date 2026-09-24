@@ -1,0 +1,86 @@
+{
+  "id": "83179253-58bf-4c28-bbb8-f38f0daeb146",
+  "name": "Brawn's Spirits",
+  "wiki": {
+    "page_id": 11665,
+    "revision_id": 628763,
+    "title": "Item:Brawn's Spirits",
+    "url": "https://ddowiki.com/page/Item:Brawn%27s_Spirits"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Gem",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1620000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Brawn's Spirits",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Rage — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Rage Caster level: 5 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Intimidate",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Intimidate +6 : Passive: +6 Competence bonus to the Intimidate skill."
+    },
+    {
+      "name": "Incite",
+      "value": 38,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Incite +38 : +38% Enhancement bonus to increased threat generation from melee damage"
+    },
+    {
+      "name": "Curse of Foolishness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Curse of Foolishness : Passive -1 Penalty to Wisdom. (The minimum level required to equip this item is lower than normal due to this curse.)"
+    },
+    {
+      "name": "Curse of Dullness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Curse of Dullness : Passive -1 Penalty to Intelligence. (The minimum level required to equip this item is lower than normal due to this curse.)"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A powerful draught of the giant Brawn's spirits. One swig will give you great battle prowess and allow you to intimidate your foes, but it does make you a bit addle-brained.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "A Small Problem"
+    ],
+    "detail": "Brawnpits ' camp chest",
+    "crafted_from": [],
+    "raw": "A Small Problem , Brawnpits ' camp chest"
+  },
+  "extraction_errors": {}
+}

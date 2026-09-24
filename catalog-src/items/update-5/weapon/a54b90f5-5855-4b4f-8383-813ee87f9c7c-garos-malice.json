@@ -1,0 +1,104 @@
+{
+  "id": "a54b90f5-5855-4b4f-8383-813ee87f9c7c",
+  "name": "Garos' Malice",
+  "wiki": {
+    "page_id": 11774,
+    "revision_id": 672853,
+    "title": "Item:Garos' Malice",
+    "url": "https://ddowiki.com/page/Item:Garos%27_Malice"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Short Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 95,
+  "base_value_cp": 1601000,
+  "weight": 2.0,
+  "upgradeable": "Epic Crafting to Epic Garos' Malice",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Short Sword",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Fiery",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Fiery 2 : This effect causes the edges of this weapon to burn with enchanted flames, dealing 2d6 Fire damage on each hit."
+    },
+    {
+      "name": "Deception",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack."
+    },
+    {
+      "name": "Doublestrike",
+      "value": 4,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A shortsword imbued with the essence of a powerful red abishai . It assails those it is wielded against with flames, and its attacks on unaware targets are stronger.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Snitch"
+    ],
+    "detail": "Garos ' chest (does not drop on epic difficulties) needs verification",
+    "crafted_from": [],
+    "raw": "The Snitch , Garos ' chest (does not drop on epic difficulties) needs verification"
+  },
+  "extraction_errors": {}
+}

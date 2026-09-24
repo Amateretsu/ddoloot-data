@@ -1,0 +1,125 @@
+{
+  "id": "2276654b-26d8-4aef-988e-6ef17de28625",
+  "name": "Epic Sirocco",
+  "wiki": {
+    "page_id": 10416,
+    "revision_id": 645297,
+    "title": "Item:Epic Sirocco",
+    "url": "https://ddowiki.com/page/Item:Epic_Sirocco"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 250,
+  "base_value_cp": 8801500,
+  "weight": 4.0,
+  "upgradeable": "Legendary Crafting to Legendary Sirocco",
+  "accepts_sentience": true,
+  "umd_dc": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Sword",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Epic Telekinetic",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Epic Telekinetic : Targets that suffer a critical hit from a Telekinetic weapon must make a DC 35 Strength or Dexterity check or be knocked down. The target will then be forced to make DC 16 Balance checks to recover from this effect."
+    },
+    {
+      "name": "Force Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Force Blast 4 : This weapon ripples with intense force, dealing 4d6 Force damage on a successful hit, and an additional 4d6 Force damage on a critical hit."
+    },
+    {
+      "name": "Greater Sirocco",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Sirocco : A critical hit with this weapon causes a whirlwind of desert sand to swirl about the target, temporarily blinding it. A successful Reflex save (DC 35) prevents the effect."
+    },
+    {
+      "name": "Smoke Screen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Smoke Screen : You are surrounded by wisps of concealing smoke, giving opponents a 20% concealment chance to miss you."
+    },
+    {
+      "name": "Air Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Air Guard : This Weapon stores the incredible, dynamic power of the air deep within. When the user of this weapon is successfully attacked in melee, this power occasionally comes to the surface, knocking enemies over or speeding up the wearer with rushing winds."
+    },
+    {
+      "name": "The Epic Desert's Biting Sands",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "The Epic Desert's Biting Sands : 2 Pieces Equipped: +4% Artifact bonus to Force Spellcrit Chance +20 Artifact bonus to Force Spellpower +20 Artifact bonus to Magical Resistance Rating Cap"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A desert spirit bound to this sword summons a tiny sandstorm around its target on each hit. This sandstorm can blind even knock down your opponent.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Sirocco"
+    ],
+    "raw": "Epic version of Sirocco"
+  },
+  "extraction_errors": {}
+}

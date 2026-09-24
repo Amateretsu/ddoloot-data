@@ -1,0 +1,72 @@
+{
+  "id": "48d9fa4e-a6fb-4cbc-8436-9c399fcc6132",
+  "name": "Shimmering Pendant",
+  "wiki": {
+    "page_id": 11713,
+    "revision_id": 634646,
+    "title": "Item:Shimmering Pendant",
+    "url": "https://ddowiki.com/page/Item:Shimmering_Pendant"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gold",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Shimmering Pendant",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Charisma",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Diplomacy",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Diplomacy +6 : Passive: +6 Competence bonus to the Diplomacy skill."
+    },
+    {
+      "name": "Bluff",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Bluff +6 : Passive: +6 Competence bonus to the Bluff skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This beautiful necklace immediately makes the wearer appear more attractive and confident.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Partycrashers"
+    ],
+    "detail": "Private Rooms chest End chest",
+    "crafted_from": [],
+    "raw": "Partycrashers , Private Rooms chest, End chest"
+  },
+  "extraction_errors": {}
+}

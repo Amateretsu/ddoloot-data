@@ -1,0 +1,72 @@
+{
+  "id": "55d4b7aa-13b1-4314-9b60-a57e49e1e36a",
+  "name": "Grim's Bracelet",
+  "wiki": {
+    "page_id": 11768,
+    "revision_id": 631307,
+    "title": "Item:Grim's Bracelet",
+    "url": "https://ddowiki.com/page/Item:Grim%27s_Bracelet"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1602000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Grim's Bracelet",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Strength",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +3 : This item gives the wearer the power of Ogre Strength, granting a +3 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Natural Armor",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Natural Armor +3 : Passive: +3 Natural Armor Bonus to Armor Class ."
+    },
+    {
+      "name": "Doublestrike",
+      "value": 4,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "It seems one of Grim brothers (you're not sure which one) wore this bracelet around his wrist. Due to its size it will probably only fit around your neck.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "A Small Problem"
+    ],
+    "detail": "Brothers Grim survive chest",
+    "crafted_from": [],
+    "raw": "A Small Problem , Brothers Grim survive chest"
+  },
+  "extraction_errors": {}
+}

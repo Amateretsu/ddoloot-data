@@ -1,0 +1,95 @@
+{
+  "id": "7da3abbf-df0f-414a-adc2-ced6dc095e9d",
+  "name": "Utility Vest",
+  "wiki": {
+    "page_id": 11811,
+    "revision_id": 708545,
+    "title": "Item:Utility Vest",
+    "url": "https://ddowiki.com/page/Item:Utility_Vest"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 12,
+  "durability": 64,
+  "base_value_cp": 1601000,
+  "weight": 15.0,
+  "upgradeable": "Epic Crafting to Epic Utility Vest",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 6,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 6,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": 10
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Dexterity",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +3 : This item makes the wearer more nimble and dexterous, granting a +3 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Disable Device",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Disable Device +6 : Passive: +6 Competence bonus to the Disable Device skill."
+    },
+    {
+      "name": "Open Lock",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Open Lock +6 : Passive: +6 Competence bonus to the Open Lock skill."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "It looks like this leather outfit was designed by someone who wanted to be able to tamper with or escape from any trap or device. It is filled with secret pockets and odd tools.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}
