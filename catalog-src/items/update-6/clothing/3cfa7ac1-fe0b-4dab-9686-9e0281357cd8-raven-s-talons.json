@@ -38,21 +38,27 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Dexterity +5 : This item makes the wearer more nimble and dexterous, granting a +5 Enhancement bonus to Dexterity."
+      "tooltip": "Dexterity +5 : This item makes the wearer more nimble and dexterous, granting a +5 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Bluff",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Bluff +10 : Passive: +10 Competence bonus to the Bluff skill."
+      "tooltip": "Bluff +10 : Passive: +10 Competence bonus to the Bluff skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Raven's Eye",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot"
+      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

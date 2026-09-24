@@ -34,39 +34,49 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Haste — 3 Charges",
+      "name": "Haste",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)"
+      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Insightful Wisdom",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "insight",
-      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom."
+      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Search",
       "value": 17,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Search +17 : Passive: +17 Competence bonus to the Search skill."
+      "tooltip": "Search +17 : Passive: +17 Competence bonus to the Search skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spot",
       "value": 17,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Spot +17 : Passive: +17 Competence bonus to the Spot skill."
+      "tooltip": "Spot +17 : Passive: +17 Competence bonus to the Spot skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Speed",
       "value": 30,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed ."
+      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

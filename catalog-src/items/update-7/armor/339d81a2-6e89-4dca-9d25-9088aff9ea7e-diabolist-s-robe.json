@@ -41,46 +41,58 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Summon Monster III — 1 Charges",
+      "name": "Summon Monster III",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Summon Monster III Caster level: 5 Charges: 1 (1/day)"
+      "tooltip": "Summon Monster III Caster level: 5 Charges: 1 (1/day)",
+      "charges": 1,
+      "recharge_per_day": null
     },
     {
       "name": "Enhancement Bonus",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Intelligence",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Intelligence +3 : This item focuses the power of the wearer's mind, granting a +3 Enhancement bonus to Intelligence."
+      "tooltip": "Intelligence +3 : This item focuses the power of the wearer's mind, granting a +3 Enhancement bonus to Intelligence.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Conjuration Focus",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Conjuration Focus +2 : +2 Equipment bonus to the DC of Conjuration spells."
+      "tooltip": "Conjuration Focus +2 : +2 Equipment bonus to the DC of Conjuration spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Deadly Diabolist",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +4 to all Ability Scores."
+      "tooltip": "Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +4 to all Ability Scores.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

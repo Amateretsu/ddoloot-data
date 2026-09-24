@@ -38,21 +38,27 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Diplomacy",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Diplomacy +6 : Passive: +6 Competence bonus to the Diplomacy skill."
+      "tooltip": "Diplomacy +6 : Passive: +6 Competence bonus to the Diplomacy skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Bluff",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Bluff +6 : Passive: +6 Competence bonus to the Bluff skill."
+      "tooltip": "Bluff +6 : Passive: +6 Competence bonus to the Bluff skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

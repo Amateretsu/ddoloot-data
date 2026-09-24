@@ -34,46 +34,58 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Frost Lance — 3 Charges",
+      "name": "Frost Lance",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Frost Lance Caster level: 5 Charges: 3 (3/day)"
+      "tooltip": "Frost Lance Caster level: 5 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Glaciation",
       "value": 59,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Glaciation +59 : Passive: +59 Equipment bonus to Cold Spell Power ."
+      "tooltip": "Glaciation +59 : Passive: +59 Equipment bonus to Cold Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +4 : This item makes the wearer have more flair, granting a +4 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +4 : This item makes the wearer have more flair, granting a +4 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Magical Sheltering",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Magical Sheltering +9 : +9 Enhancement bonus to Magical Resistance Rating"
+      "tooltip": "Magical Sheltering +9 : +9 Enhancement bonus to Magical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Resistance",
       "value": 14,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Cold Resistance +14 : Passive: +14 Enhancement bonus to your Cold Resistance."
+      "tooltip": "Cold Resistance +14 : Passive: +14 Enhancement bonus to your Cold Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

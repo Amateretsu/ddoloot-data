@@ -38,28 +38,36 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a large electric shock (10 to 60 electric damage). A successful Reflex save (DC 22) reduces this damage by half."
+      "tooltip": "Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a large electric shock (10 to 60 electric damage). A successful Reflex save (DC 22) reduces this damage by half.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Strength",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Strength +4 : This item gives the wearer the power of Ogre Strength, granting a +4 Enhancement bonus to Strength."
+      "tooltip": "Strength +4 : This item gives the wearer the power of Ogre Strength, granting a +4 Enhancement bonus to Strength.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Electric Resistance",
       "value": 14,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Electric Resistance +14 : Passive: +14 Enhancement bonus to your Electric Resistance."
+      "tooltip": "Electric Resistance +14 : Passive: +14 Enhancement bonus to your Electric Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -38,42 +38,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Heal",
       "value": 13,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Heal +13 : Passive: +13 Competence bonus to the Heal skill."
+      "tooltip": "Heal +13 : Passive: +13 Competence bonus to the Heal skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "True Seeing",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing ."
+      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Reflex Save",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Reflex Save +6 : This item gives a +6 Resistance bonus to your Reflex saves."
+      "tooltip": "Reflex Save +6 : This item gives a +6 Resistance bonus to your Reflex saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Battle-Scarred",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Battle-Scarred : This item has obviously seen use in many fights. It is chipped and scratched, but perhaps in the future there will be a way to restore it to its former glory."
+      "tooltip": "Battle-Scarred : This item has obviously seen use in many fights. It is chipped and scratched, but perhaps in the future there will be a way to restore it to its former glory.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Wrath of Sora Kell",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Wrath of Sora Kell : 3 Pieces Equipped: +20 Artifact bonus to Universal Spell Power +5 Artifact bonus to Physical Resistance Rating +3 Artifact bonus to Hit and Damage +1 Artifact bonus to Imbue Dice"
+      "tooltip": "Wrath of Sora Kell : 3 Pieces Equipped: +20 Artifact bonus to Universal Spell Power +5 Artifact bonus to Physical Resistance Rating +3 Artifact bonus to Hit and Damage +1 Artifact bonus to Imbue Dice",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

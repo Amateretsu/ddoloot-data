@@ -54,53 +54,67 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Summon Monster IX — 3 Charges",
+      "name": "Summon Monster IX",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Summon Monster IX Caster level: 20 Charges: 3 (3/day)"
+      "tooltip": "Summon Monster IX Caster level: 20 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Enhancement Bonus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Intelligence",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence."
+      "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Conjuration Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells."
+      "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Resistance",
       "value": 28,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance ."
+      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Deadly Diabolist",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Epic Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +8 to all Ability Scores."
+      "tooltip": "Epic Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +8 to all Ability Scores.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

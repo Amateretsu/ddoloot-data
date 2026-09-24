@@ -65,21 +65,27 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhanced Haggle",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Enhanced Haggle +3 : Passive: +3 Enhancement bonus to the Haggle skill."
+      "tooltip": "Enhanced Haggle +3 : Passive: +3 Enhancement bonus to the Haggle skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Regeneration",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy."
+      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

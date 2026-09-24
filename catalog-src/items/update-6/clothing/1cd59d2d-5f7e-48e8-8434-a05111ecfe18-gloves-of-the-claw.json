@@ -38,21 +38,27 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage"
+      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Strength",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Strength +5 : This item gives the wearer the power of Ogre Strength, granting a +5 Enhancement bonus to Strength."
+      "tooltip": "Strength +5 : This item gives the wearer the power of Ogre Strength, granting a +5 Enhancement bonus to Strength.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Intimidate",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Intimidate +10 : Passive: +10 Competence bonus to the Intimidate skill."
+      "tooltip": "Intimidate +10 : Passive: +10 Competence bonus to the Intimidate skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

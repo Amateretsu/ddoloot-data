@@ -57,42 +57,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Holy Burst",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 10d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+      "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 10d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Undead Bane",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Undead Bane 4 : Those that have died must return, and this weapon is attuned specifically to lay them to rest. This weapon deals an additional 4d10 bane damage vs. Undead."
+      "tooltip": "Undead Bane 4 : Those that have died must return, and this weapon is attuned specifically to lay them to rest. This weapon deals an additional 4d10 bane damage vs. Undead.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Weaken Undead",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Weaken Undead : Undead creatures struck by this weapon find themselves more vulnerable. Each time this weapon deals damage to an undead creature, the target loses 20% of its Fortification for the next 20 seconds. This effect does not stack with itself."
+      "tooltip": "Weaken Undead : Undead creatures struck by this weapon find themselves more vulnerable. Each time this weapon deals damage to an undead creature, the target loses 20% of its Fortification for the next 20 seconds. This effect does not stack with itself.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Blunted Ammunition",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blunted Ammunition : The ammunition fired by this weapon deals blunt damage in addition to its other damage types."
+      "tooltip": "Blunted Ammunition : The ammunition fired by this weapon deals blunt damage in addition to its other damage types.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Silver , Alchemical",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable."
+      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

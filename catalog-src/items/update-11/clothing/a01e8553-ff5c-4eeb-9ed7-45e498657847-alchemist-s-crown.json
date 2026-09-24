@@ -38,28 +38,36 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Devotion",
       "value": 72,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Devotion +72 : Passive: +72 Equipment bonus to Positive (Healing) Spell Power ."
+      "tooltip": "Devotion +72 : Passive: +72 Equipment bonus to Positive (Healing) Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Radiance",
       "value": 72,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Radiance +72 : Passive: +72 Equipment bonus to Light and Alignment Spell Power ."
+      "tooltip": "Radiance +72 : Passive: +72 Equipment bonus to Light and Alignment Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nearly Finished - Alchemist's Lore",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Alchemist's Lore : Reduces the cost of Empower, Empower Healing, and Maximize by 2 SP. Spells cost 10%/20%/30% less when you are below 50%/25%/10% hp."
+      "tooltip": "Alchemist's Lore : Reduces the cost of Empower, Empower Healing, and Maximize by 2 SP. Spells cost 10%/20%/30% less when you are below 50%/25%/10% hp.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

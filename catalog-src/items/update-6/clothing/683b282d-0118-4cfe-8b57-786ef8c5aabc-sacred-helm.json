@@ -34,32 +34,40 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Negative Energy Absorption - 5 Charges (Recharged/Day: 5)",
+      "name": "Negative Energy Absorption",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects."
+      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects.",
+      "charges": 5,
+      "recharge_per_day": 5
     },
     {
       "name": "Deathblock",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Deathblock : The wearer of this item is immune to all death spells and magical death effects."
+      "tooltip": "Deathblock : The wearer of this item is immune to all death spells and magical death effects.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Eternal Faith",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Eternal Faith : An item with this quality assists only wearers who have the ability to turn undead. Eternal Faith increase the owner's effective level for the turning check by +2, his maximum Hit Dice turned by +2, and his total Hit Dice turned by +4."
+      "tooltip": "Eternal Faith : An item with this quality assists only wearers who have the ability to turn undead. Eternal Faith increase the owner's effective level for the turning check by +2, his maximum Hit Dice turned by +2, and his total Hit Dice turned by +4.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Divine Blessing",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower"
+      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

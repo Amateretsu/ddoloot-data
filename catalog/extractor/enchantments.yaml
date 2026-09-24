@@ -3,7 +3,8 @@
 # Each list entry is matched against `rules` in order; the first match wins. Patterns run
 # on the entry's visible text (tooltip and nested lists removed, whitespace collapsed).
 #
-# kind: effect     -> item.effects   (name, value, value_kind, bonus_type, tooltip)
+# kind: effect     -> item.effects   (name, value, value_kind, bonus_type, tooltip,
+#                     charges, recharge_per_day)
 # kind: set        -> item.named_set: an entry (the set's name) whose tooltip lists
 #                     "N Pieces Equipped: ..." items
 # kind: set_bonus  -> a bare "N Pieces Equipped: ..." entry, merged into item.named_set.
@@ -15,6 +16,7 @@
 #                     never stored as effects.
 #
 # value_kind: flat | percent | tier | number (a `tier` or `pct` capture overrides it)
+# `charges` and `recharge` captures fill a clicky's charges and recharge_per_day.
 # `fallback: true` marks the catch-all; entries reaching it that contain digits are
 # stored as Effects and also reported as unclassified for review. An entry no rule
 # matches is reported as unclassified and dropped; it never stops the extraction.
@@ -87,6 +89,12 @@ rules:
     hint_kind: '{hint}'
     pattern: '^(?P<hint>Mythic|Reaper)\b\s*(?P<text>.*)$'
     lowercase: [hint]
+
+  # A clicky: "Haste — 3 Charges", "Cone of Cold — 3 Charges (Recharged/Day:3)" or
+  # "Negative Energy Absorption - 5 Charges (Recharged/Day: 5)". The name is the spell.
+  - id: clicky
+    kind: effect
+    pattern: '^(?P<name>.+?)\s+[—-]\s+(?P<charges>\d+) Charges?(?:\s*\(Recharged/Day:\s*(?P<recharge>\d+)\))?$'
 
   - id: bonus_to
     kind: effect

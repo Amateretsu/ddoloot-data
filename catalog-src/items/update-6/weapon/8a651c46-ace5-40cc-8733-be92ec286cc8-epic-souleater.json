@@ -54,42 +54,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Trap the Soul",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Epic Trap the Soul: This equipment stores an overwhelming, merciless power deep within. When you strike an enemy with a melee or missile attack, this power occasionally comes to the surface, sucking out the life force of an enemy and imprisoning the essence of their body and soul in a gem."
+      "tooltip": "Epic Trap the Soul: This equipment stores an overwhelming, merciless power deep within. When you strike an enemy with a melee or missile attack, this power occasionally comes to the surface, sucking out the life force of an enemy and imprisoning the essence of their body and soul in a gem.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Demonic Might",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Demonic Might : This item gives the wearer the power of a demon, granting a +2 Profane bonus to Strength."
+      "tooltip": "Demonic Might : This item gives the wearer the power of a demon, granting a +2 Profane bonus to Strength.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Feeding",
       "value": 20,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Feeding 20 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +20 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)"
+      "tooltip": "Feeding 20 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +20 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Vampirism",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Vampirism 2 : This weapon thirsts for the blood of your enemies, healing you for +2d2 hit points with each hit. Note: internal cooldown of 1 second."
+      "tooltip": "Vampirism 2 : This weapon thirsts for the blood of your enemies, healing you for +2d2 hit points with each hit. Note: internal cooldown of 1 second.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Negativity",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Negativity 4 : This effect causes this weapon to be shrouded in dark mists, dealing 4d6 negative energy on each hit."
+      "tooltip": "Negativity 4 : This effect causes this weapon to be shrouded in dark mists, dealing 4d6 negative energy on each hit.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

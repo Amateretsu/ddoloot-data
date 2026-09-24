@@ -32,18 +32,22 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Elemental Surge — 10 Charges (Recharged/Day:10)",
+      "name": "Elemental Surge",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Elemental Surge Caster level: 12 Charges: 10 (10/day)"
+      "tooltip": "Elemental Surge Caster level: 12 Charges: 10 (10/day)",
+      "charges": 10,
+      "recharge_per_day": 10
     },
     {
       "name": "Potency",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Potency +36 : Passive: +36 Equipment bonus to each Spell Power ."
+      "tooltip": "Potency +36 : Passive: +36 Equipment bonus to each Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -38,28 +38,36 @@
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Glaciation +55 : Passive: +55 Equipment bonus to Cold Spell Power ."
+      "tooltip": "Glaciation +55 : Passive: +55 Equipment bonus to Cold Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Combustion",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power ."
+      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Magnetism",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Magnetism +55 : Passive: +55 Equipment bonus to Electricity Spell Power ."
+      "tooltip": "Magnetism +55 : Passive: +55 Equipment bonus to Electricity Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Corrosion",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Corrosion +55 : Passive: +55 Equipment bonus to Acid Spell Power ."
+      "tooltip": "Corrosion +55 : Passive: +55 Equipment bonus to Acid Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

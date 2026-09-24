@@ -54,42 +54,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Poison Blast",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit."
+      "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Paralyzing",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Paralyzing : Any creature struck by this weapon must succeed on a DC 28 Will save or be paralyzed. The target may attempt a new save to end the effect every several seconds; otherwise the paralysis lasts for 1 minute."
+      "tooltip": "Improved Paralyzing : Any creature struck by this weapon must succeed on a DC 28 Will save or be paralyzed. The target may attempt a new save to end the effect every several seconds; otherwise the paralysis lasts for 1 minute.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Armor-Piercing",
       "value": 15,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)"
+      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Deadly Spider Venom",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Deadly Spider Venom : This item is steeped in deadly spider venom. On an attack roll of 20 which is confirmed as a critical hit it will inflict the target with a poison that deals 10d6 poison damage every 2 seconds for 6 seconds. When the poison wears off, it also deals 3d6 Constitution damage to the target. A successful Fortitude save (DC 34) negates the Constitution damage."
+      "tooltip": "Deadly Spider Venom : This item is steeped in deadly spider venom. On an attack roll of 20 which is confirmed as a critical hit it will inflict the target with a poison that deals 10d6 poison damage every 2 seconds for 6 seconds. When the poison wears off, it also deals 3d6 Constitution damage to the target. A successful Fortitude save (DC 34) negates the Constitution damage.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enervation",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Enervation : This weapon stores a menacing, ravenous power deep within. When this weapon is used, this power occasionally comes to the surface, draining the life force of the enemy and giving negative levels ."
+      "tooltip": "Enervation : This weapon stores a menacing, ravenous power deep within. When this weapon is used, this power occasionally comes to the surface, draining the life force of the enemy and giving negative levels .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

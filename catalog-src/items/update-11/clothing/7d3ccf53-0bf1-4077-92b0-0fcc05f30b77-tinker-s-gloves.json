@@ -38,35 +38,45 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity."
+      "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Insightful Seeker",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "insight",
-      "tooltip": "Insightful Seeker +2 : Provides a +2 Insight bonus to confirm critical hits, and a +2 Insight bonus to critical hit damage (before multipliers are applied)."
+      "tooltip": "Insightful Seeker +2 : Provides a +2 Insight bonus to confirm critical hits, and a +2 Insight bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Open Lock",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Open Lock +10 : Passive: +10 Competence bonus to the Open Lock skill."
+      "tooltip": "Open Lock +10 : Passive: +10 Competence bonus to the Open Lock skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhanced Open Lock",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Enhanced Open Lock +5 : Passive: +5 Enhancement bonus to the Open Lock skill."
+      "tooltip": "Enhanced Open Lock +5 : Passive: +5 Enhancement bonus to the Open Lock skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nearly Finished - Tinker's Finesse",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Tinker's Finesse : True Seeing , and equivalent to Sneak Attack Bonus +5 : Provides a +5 to attack rolls and +8 damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue."
+      "tooltip": "Tinker's Finesse : True Seeing , and equivalent to Sneak Attack Bonus +5 : Provides a +5 to attack rolls and +8 damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

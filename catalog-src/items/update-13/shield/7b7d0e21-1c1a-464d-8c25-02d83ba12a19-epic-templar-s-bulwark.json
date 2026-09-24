@@ -67,42 +67,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class , attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class , attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fire Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance."
+      "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance."
+      "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Electric Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance."
+      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance."
+      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Mithral",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3."
+      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

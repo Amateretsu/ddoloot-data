@@ -38,28 +38,36 @@
       "value": 59,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Corrosion +59 : Passive: +59 Equipment bonus to Acid Spell Power ."
+      "tooltip": "Corrosion +59 : Passive: +59 Equipment bonus to Acid Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nullification",
       "value": 59,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Nullification +59 : Passive: +59 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+      "tooltip": "Nullification +59 : Passive: +59 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Resistance",
       "value": 14,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Acid Resistance +14 : Passive: +14 Enhancement bonus to your Acid Resistance."
+      "tooltip": "Acid Resistance +14 : Passive: +14 Enhancement bonus to your Acid Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

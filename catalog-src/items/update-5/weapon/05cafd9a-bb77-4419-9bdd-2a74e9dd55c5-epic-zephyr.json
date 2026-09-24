@@ -54,42 +54,54 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Destruction",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Destruction : On Hit: Your target gains a stack of Armor Destruction. (-1 penalty to Armor Class , -1% of its Fortification . 20 Second Duration. Stacks up to 15 times.) This effect may trigger once every second."
+      "tooltip": "Improved Destruction : On Hit: Your target gains a stack of Armor Destruction. (-1 penalty to Armor Class , -1% of its Fortification . 20 Second Duration. Stacks up to 15 times.) This effect may trigger once every second.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Shocking Blast",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Shocking Blast 4 : This weapon arcs with deadly electricity, dealing 4d6 Electric damage on a successful hit, and an additional 4d6 Electric damage on a critical hit."
+      "tooltip": "Shocking Blast 4 : This weapon arcs with deadly electricity, dealing 4d6 Electric damage on a successful hit, and an additional 4d6 Electric damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Blurry",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blurry : Equipping this item causes you to become slightly blurry. Attacks from enemies have a 20% chance to miss you due to concealment."
+      "tooltip": "Blurry : Equipping this item causes you to become slightly blurry. Attacks from enemies have a 20% chance to miss you due to concealment.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Doublestrike",
       "value": 11,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Doublestrike 11% : Passive: 11% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+      "tooltip": "Doublestrike 11% : Passive: 11% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "The Epic Desert's Writhing Storm",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "The Epic Desert's Writhing Storm : 2 Pieces Equipped: +4% Artifact bonus to Electric Spellcrit Chance +20 Artifact bonus to Electric Spellpower +20 Artifact bonus to Magical Resistance Rating"
+      "tooltip": "The Epic Desert's Writhing Storm : 2 Pieces Equipped: +4% Artifact bonus to Electric Spellcrit Chance +20 Artifact bonus to Electric Spellpower +20 Artifact bonus to Magical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -206,3 +206,77 @@ with ADR 0006.
   before this step. This count finds 205 lines before this step, not the 213 that the
   baseline records. The other totals match.
 - Tests after step 3: 339 passed, 1 skipped.
+
+### Step 4a: clicky charges
+
+- **Outcome: fixed.** The data gave the answer, with one backward-compatible schema
+  addition.
+- **What the docs say:**
+  - CONTEXT.md defines an Effect as "a named game effect on a Named Item, carrying a
+    tooltip explanation … with an optional value and Bonus Type", and says some Effects
+    have no value. A Scraped Item "carries every Effect with its raw name".
+  - The extractor already stored each clicky as an Effect: the `plain_effect` fallback
+    kept the whole text (`Haste — 3 Charges`) as its name and flagged it as unclassified.
+  - No ADR reserves a Scraped Item field. ADR 0008 reserves new effects and bonus types
+    for the review gate at catalog build. Parsing a clicky makes no gate decision: the
+    gate still decides each raw name. It now sees the spell (`Haste`) instead of a
+    per-item string such as `Haste — 3 Charges`. No new rule kind and no new Bonus Type
+    were added.
+  - The bundle's `item_effect` (`spec/v1`, owned by ddoloot-app) has only `effect`,
+    `bonus_type` and `value`. The Scraped Item lives in the data repo and is not part of
+    that spec, so this change needs nothing from ddoloot-app.
+- **Decision:**
+  - A clicky is an Effect named after its spell, with `value`, `value_kind` and
+    `bonus_type` null. `Effect` gains two optional fields, `charges` and
+    `recharge_per_day`, both `int | None` and defaulting to null. Every other Effect
+    writes them as null. Two scalars were chosen over a nested `clicky` object, because
+    that is the smaller interface.
+  - Charges are not put in `value`. `value` is the Effect's magnitude alongside a Bonus
+    Type, and a charge count would be read as one.
+  - Raw text: an Effect has no raw field. Like every other rule, the name holds the raw
+    name (the spell, as written), and the tooltip is kept. The parts removed from the
+    name are exactly the two numbers now held in `charges` and `recharge_per_day`.
+- **Rule:** in `enchantments.yaml`, `clicky` (`kind: effect`) sits before `bonus_to`:
+  `^(?P<name>.+?)\s+[—-]\s+(?P<charges>\d+) Charges?(?:\s*\(Recharged/Day:\s*(?P<recharge>\d+)\))?$`.
+  - It needs a spaced em dash or hyphen, a number and `Charge(s)` at the end, and it
+    optionally takes `(Recharged/Day:N)` with any spacing.
+  - Every form in the held data: em dash with or without recharge (48), and hyphen
+    with `Recharged/Day: N` (4). The wiki's double space collapses before matching.
+  - `_effect()` fills `charges` and `recharge_per_day` from the `charges` and `recharge`
+    captures, so the code has no clicky-specific branch.
+  - Over-match check: over all 202 held `Item:` pages, the rule hits exactly the 52
+    clicky entries. No other Effect, including `Maximum Charge Tier` and the
+    `Charged Gauntlets` names, changed.
+- **Not covered:** an Eternal Wand's infobox header also shows its spell, caster level,
+  `50/50 Charges` and `Recharged/Day: 50`. That is outside the Effects cell. It
+  duplicates the Enchantments entry, so it is left alone. Getting charges and recharge
+  into the bundle needs a place in the app-owned `item_effect` spec. That is for the
+  compile stage and ddoloot-app later, and is not needed to hold the data here.
+- **Files:** `src/item_extractor/scraped_item.py`, `src/item_extractor/effects.py`,
+  `catalog/extractor/enchantments.yaml`, `tests/item_extractor/test_extract.py`,
+  `tests/item_extractor/extractor_gaps.json`, and 197 item files under `catalog-src/items`.
+- **Tests (through `extract()`):**
+  - four clicky forms: em dash with and without recharge, hyphen with `&nbsp;` spacing
+    and a tooltip, and a name that contains parentheses;
+  - three near-misses that are not clickies.
+  All 7 fail on main.
+- **`catalog-src` diff:** 197 item files, and no registry change. It was verified
+  programmatically:
+  - every Effect gains `"charges": null, "recharge_per_day": null`, except the 52
+    clickies (26 with a recharge);
+  - each clicky's name loses only its charge suffix;
+  - nothing else in any file changed.
+  The gaps baseline loses the 52 clicky entries: 52 pages changed, 70 → 38 entries.
+- **Offline rerun, Updates 5-13:** 0 fetch attempts, 43 unheld pages skipped, and the
+  inner sync exit code is 2. A second run left `git status` and the diff unchanged, and
+  `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 20 | 60 | 5 | 0 | 5 |
+  | After | 210 | 20 | 8 | 5 | 0 | 5 |
+
+  The 8 left are 6 alignment DR entries, `Exceptional Fortification (+10%)` and the bug
+  note (steps 4e and 4f).
+- Tests after step 4a: 346 passed, 1 skipped.

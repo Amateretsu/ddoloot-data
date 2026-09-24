@@ -54,35 +54,45 @@
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Flaming Blast",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Flaming Blast 2 : This weapon burns with deadly magical fire, dealing 2d6 Fire damage on a successful hit, and an additional 2d6 Fire damage on a critical hit."
+      "tooltip": "Flaming Blast 2 : This weapon burns with deadly magical fire, dealing 2d6 Fire damage on a successful hit, and an additional 2d6 Fire damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Incineration",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage."
+      "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Feat : Precise Shot",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Feat : Precise Shot : While equipped this item grants the feat Precise Shot, allowing your ranged attacks to pass through other characters and monsters to strike your target."
+      "tooltip": "Feat : Precise Shot : While equipped this item grants the feat Precise Shot, allowing your ranged attacks to pass through other characters and monsters to strike your target.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
-      "name": "Scorching Ray — 3 Charges",
+      "name": "Scorching Ray",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Scorching Ray Caster level: 5 Charges: 3 (3/day)"
+      "tooltip": "Scorching Ray Caster level: 5 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

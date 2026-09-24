@@ -38,28 +38,36 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower"
+      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Lesser Turning",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Lesser Turning : Increases total number of Turn Undead uses by 2, once wielder rests. If you unequip the item you will lose these turns."
+      "tooltip": "Lesser Turning : Increases total number of Turn Undead uses by 2, once wielder rests. If you unequip the item you will lose these turns.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Wisdom",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Heal",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Heal +10 : Passive: +10 Competence bonus to the Heal skill."
+      "tooltip": "Heal +10 : Passive: +10 Competence bonus to the Heal skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

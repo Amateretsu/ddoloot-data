@@ -55,35 +55,45 @@
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Dodge",
       "value": 3,
       "value_kind": "percent",
       "bonus_type": "dodge",
-      "tooltip": "Dodge +3% : +3% Enhancement bonus to Dodge."
+      "tooltip": "Dodge +3% : +3% Enhancement bonus to Dodge.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Dexterity",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Dexterity +3 : This item makes the wearer more nimble and dexterous, granting a +3 Enhancement bonus to Dexterity."
+      "tooltip": "Dexterity +3 : This item makes the wearer more nimble and dexterous, granting a +3 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Deception",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack."
+      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Silver , Alchemical",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable."
+      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

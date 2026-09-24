@@ -34,32 +34,40 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Good Hope — 1 Charges",
+      "name": "Good Hope",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Good Hope Caster level: 5 Charges: 1 (1/day)"
+      "tooltip": "Good Hope Caster level: 5 Charges: 1 (1/day)",
+      "charges": 1,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Healing Lore",
       "value": 8,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Healing Lore +8 : Passive: Your Positive Energy spells gain a 8% Equipment bonus to their chance to critical hit."
+      "tooltip": "Healing Lore +8 : Passive: Your Positive Energy spells gain a 8% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Devotion",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Devotion +55 : Passive: +55 Equipment bonus to Positive (Healing) Spell Power ."
+      "tooltip": "Devotion +55 : Passive: +55 Equipment bonus to Positive (Healing) Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

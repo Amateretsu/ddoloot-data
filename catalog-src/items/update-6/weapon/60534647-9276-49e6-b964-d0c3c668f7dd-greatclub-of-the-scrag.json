@@ -55,28 +55,36 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Anarchic",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Anarchic 2 : This weapon is chaotic and used to undermine the righteous, dealing an additional 2d6 chaos damage on each hit. This effect makes the weapon chaotic aligned. (Lawful characters wielding this weapon will suffer one negative level .)"
+      "tooltip": "Anarchic 2 : This weapon is chaotic and used to undermine the righteous, dealing an additional 2d6 chaos damage on each hit. This effect makes the weapon chaotic aligned. (Lawful characters wielding this weapon will suffer one negative level .)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Chilling",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Chilling 2 : This effect causes the edges of this weapon to become frozen to the touch, dealing 2d6 Ice damage on each hit."
+      "tooltip": "Chilling 2 : This effect causes the edges of this weapon to become frozen to the touch, dealing 2d6 Ice damage on each hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Regeneration",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy."
+      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

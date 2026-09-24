@@ -38,21 +38,27 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Hide +6 : Passive: +6 Competence bonus to the Hide skill."
+      "tooltip": "Hide +6 : Passive: +6 Competence bonus to the Hide skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Move Silently",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Move Silently +6 : Passive: +6 Competence bonus to the Move Silently skill."
+      "tooltip": "Move Silently +6 : Passive: +6 Competence bonus to the Move Silently skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Resistance",
       "value": 17,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Spell Resistance +17: +17 Enhancement bonus to Spell Resistance ."
+      "tooltip": "Spell Resistance +17: +17 Enhancement bonus to Spell Resistance .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

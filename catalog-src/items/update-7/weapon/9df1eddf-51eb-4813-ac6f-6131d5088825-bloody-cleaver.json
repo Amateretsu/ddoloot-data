@@ -54,35 +54,45 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Bleeding",
       "value": 3,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Bleeding 3 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 3d8 bleeding damage to those that are vulnerable to it."
+      "tooltip": "Bleeding 3 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 3d8 bleeding damage to those that are vulnerable to it.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Humanoid Bane",
       "value": 3,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Humanoid Bane 3 : This weapon is attuned specifically to those that walk among us, dealing an additional 3d10 bane damage vs. Humanoids."
+      "tooltip": "Humanoid Bane 3 : This weapon is attuned specifically to those that walk among us, dealing an additional 3d10 bane damage vs. Humanoids.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Bodyfeeder",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Bodyfeeder : Whenever a bodyfeeder weapon you wield scores a critical hit, you gain 15 temporary hit points that last for up to 1 minute."
+      "tooltip": "Bodyfeeder : Whenever a bodyfeeder weapon you wield scores a critical hit, you gain 15 temporary hit points that last for up to 1 minute.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fusible",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Fusible : Something about this item looks incomplete. Perhaps in the future it will be compatible with another item to create a brand-new fusion of the two."
+      "tooltip": "Fusible : Something about this item looks incomplete. Perhaps in the future it will be compatible with another item to create a brand-new fusion of the two.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

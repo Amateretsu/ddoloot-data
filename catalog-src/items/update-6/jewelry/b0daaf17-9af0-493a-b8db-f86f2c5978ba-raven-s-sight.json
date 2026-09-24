@@ -38,21 +38,27 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot"
+      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Wisdom",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Reflex Save",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Reflex Save +5 : This item gives a +5 Resistance bonus to your Reflex saves."
+      "tooltip": "Reflex Save +5 : This item gives a +5 Resistance bonus to your Reflex saves.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

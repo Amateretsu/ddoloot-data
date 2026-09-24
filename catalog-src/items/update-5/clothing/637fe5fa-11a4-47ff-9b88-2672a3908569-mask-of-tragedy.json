@@ -34,32 +34,40 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Crushing Despair — 3 Charges",
+      "name": "Crushing Despair",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Crushing Despair Caster level: 7 Charges: 3 (3/day)"
+      "tooltip": "Crushing Despair Caster level: 7 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Wisdom",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +3 : This item makes the wearer more in tune with her surroundings, granting a +3 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +3 : This item makes the wearer more in tune with her surroundings, granting a +3 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Void Lore",
       "value": 8,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Void Lore +8 : Passive: Your Negative Energy and Poison spells gain a 8% Equipment bonus to their chance to critical hit."
+      "tooltip": "Void Lore +8 : Passive: Your Negative Energy and Poison spells gain a 8% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nullification",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Nullification +55 : Passive: +55 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+      "tooltip": "Nullification +55 : Passive: +55 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

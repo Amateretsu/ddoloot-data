@@ -45,35 +45,45 @@
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fortification",
       "value": 56,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Fortification +56% : +56% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+      "tooltip": "Fortification +56% : +56% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Disease Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Disease Guard : This item carries the Maggot Plague disease, which deals 1d6 Constitution damage and may be contracted by enemies that hit you. A successful Fortitude save (DC 20) will negate this effect."
+      "tooltip": "Disease Guard : This item carries the Maggot Plague disease, which deals 1d6 Constitution damage and may be contracted by enemies that hit you. A successful Fortitude save (DC 20) will negate this effect.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sheltering",
       "value": 8,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Sheltering +8 : +8 Enhancement bonus to Physical and Magical Resistance Ratings"
+      "tooltip": "Sheltering +8 : +8 Enhancement bonus to Physical and Magical Resistance Ratings",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "DR 5/Good",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Damage Reduction 5/Good : Reduces physical damage by 5, except from Good attacks."
+      "tooltip": "Damage Reduction 5/Good : Reduces physical damage by 5, except from Good attacks.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

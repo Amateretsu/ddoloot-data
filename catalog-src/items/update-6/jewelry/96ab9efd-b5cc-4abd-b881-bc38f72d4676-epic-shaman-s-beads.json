@@ -38,35 +38,45 @@
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Evocation Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Shield",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "shield",
-      "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield."
+      "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Efficient Metamagic - Maximize",
       "value": 2,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Efficient Metamagic - Maximize II : The additional spell point cost for using the Maximize Metamagic feat is reduced by 4 SP ."
+      "tooltip": "Efficient Metamagic - Maximize II : The additional spell point cost for using the Maximize Metamagic feat is reduced by 4 SP .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Shaman's Fury",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

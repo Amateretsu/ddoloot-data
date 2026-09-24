@@ -32,11 +32,13 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Nimbus of Light — 50 Charges (Recharged/Day:50)",
+      "name": "Nimbus of Light",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Nimbus of Light Caster level: 3 Charges: 50 (50/day)"
+      "tooltip": "Nimbus of Light Caster level: 3 Charges: 50 (50/day)",
+      "charges": 50,
+      "recharge_per_day": 50
     }
   ],
   "customisation_hints": [],

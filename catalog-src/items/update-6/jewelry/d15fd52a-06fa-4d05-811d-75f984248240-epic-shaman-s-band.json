@@ -38,35 +38,45 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Spell Penetration +6 : Passive: +6 Equipment bonus to Spell Penetration checks."
+      "tooltip": "Spell Penetration +6 : Passive: +6 Equipment bonus to Spell Penetration checks.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Conjuration Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells."
+      "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Armor Bonus",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": null,
-      "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor."
+      "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Reflex Save",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Reflex Save +9 : This item gives a +9 Resistance bonus to your Reflex saves."
+      "tooltip": "Reflex Save +9 : This item gives a +9 Resistance bonus to your Reflex saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Shaman's Fury",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

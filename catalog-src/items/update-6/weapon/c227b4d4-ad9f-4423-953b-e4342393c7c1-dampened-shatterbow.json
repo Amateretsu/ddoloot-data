@@ -54,35 +54,45 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhancement Bonus",
       "value": 1,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+1 Enhancement Bonus : +1 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+1 Enhancement Bonus : +1 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Screaming",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Screaming : Screaming weapons emit a piercing screech whenever they are used to make a successful attack. This screech does an additional 1 to 6 sonic damage."
+      "tooltip": "Screaming : Screaming weapons emit a piercing screech whenever they are used to make a successful attack. This screech does an additional 1 to 6 sonic damage.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Construct Bane",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Construct Bane : A bane weapon excels at attacking one type or subtype of creature. Against Constructs, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+      "tooltip": "Construct Bane : A bane weapon excels at attacking one type or subtype of creature. Against Constructs, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Move Silently",
       "value": -5,
       "value_kind": "flat",
       "bonus_type": null,
-      "tooltip": "Move Silently -5 : Passive: -5 penalty to the Move Silently skill."
+      "tooltip": "Move Silently -5 : Passive: -5 penalty to the Move Silently skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

@@ -58,35 +58,45 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "DR 15/Evil",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Damage Reduction 15/Evil : Reduces physical damage by 15, except from Evil attacks."
+      "tooltip": "Damage Reduction 15/Evil : Reduces physical damage by 15, except from Evil attacks.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Resistance",
       "value": 28,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance ."
+      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Magical Sheltering",
       "value": 24,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating"
+      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Radiance Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded."
+      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

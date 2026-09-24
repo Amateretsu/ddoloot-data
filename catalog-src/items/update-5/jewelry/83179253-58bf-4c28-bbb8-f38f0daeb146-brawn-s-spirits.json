@@ -34,39 +34,49 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Rage — 3 Charges",
+      "name": "Rage",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Rage Caster level: 5 Charges: 3 (3/day)"
+      "tooltip": "Rage Caster level: 5 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Intimidate",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Intimidate +6 : Passive: +6 Competence bonus to the Intimidate skill."
+      "tooltip": "Intimidate +6 : Passive: +6 Competence bonus to the Intimidate skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Incite",
       "value": 38,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Incite +38 : +38% Enhancement bonus to increased threat generation from melee damage"
+      "tooltip": "Incite +38 : +38% Enhancement bonus to increased threat generation from melee damage",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Curse of Foolishness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Curse of Foolishness : Passive -1 Penalty to Wisdom. (The minimum level required to equip this item is lower than normal due to this curse.)"
+      "tooltip": "Curse of Foolishness : Passive -1 Penalty to Wisdom. (The minimum level required to equip this item is lower than normal due to this curse.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Curse of Dullness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Curse of Dullness : Passive -1 Penalty to Intelligence. (The minimum level required to equip this item is lower than normal due to this curse.)"
+      "tooltip": "Curse of Dullness : Passive -1 Penalty to Intelligence. (The minimum level required to equip this item is lower than normal due to this curse.)",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

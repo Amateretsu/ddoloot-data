@@ -45,49 +45,63 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Proof Against Disease",
       "value": 8,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Proof Against Disease +8 : This item grants its wearer immunity to natural diseases. This item also grants a +8 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 9 + their Fortitude save)."
+      "tooltip": "Proof Against Disease +8 : This item grants its wearer immunity to natural diseases. This item also grants a +8 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 9 + their Fortitude save).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Profane Lifeforce",
       "value": 32,
       "value_kind": "flat",
       "bonus_type": "profane",
-      "tooltip": "Profane Lifeforce +32 : +32 Profane bonus to Hit Points."
+      "tooltip": "Profane Lifeforce +32 : +32 Profane bonus to Hit Points.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Physical Sheltering",
       "value": 24,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating"
+      "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Immunity to Fear",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Immunity to Fear : The wearer of this item is immune to all fear effects."
+      "tooltip": "Immunity to Fear : The wearer of this item is immune to all fear effects.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fearsome",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Fearsome : This item causes those who strike the user to be overcome with terror, as from the Fear spell ."
+      "tooltip": "Fearsome : This item causes those who strike the user to be overcome with terror, as from the Fear spell .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "The Epic Desert's Starless Nights",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "The Epic Desert's Starless Nights : 2 Pieces Equipped: +4% Artifact bonus to Negative and Poison Spellcrit Chance +20 Artifact bonus to Negative and Poison Spellpower +10% Artifact bonus to Damage vs the Helpless"
+      "tooltip": "The Epic Desert's Starless Nights : 2 Pieces Equipped: +4% Artifact bonus to Negative and Poison Spellcrit Chance +20 Artifact bonus to Negative and Poison Spellpower +10% Artifact bonus to Damage vs the Helpless",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -36,42 +36,54 @@
       "value": 2,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": null
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Bolts",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": null
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Absorption",
       "value": 10,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Cold Absorption +10% : Passive: 10% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+      "tooltip": "Cold Absorption +10% : Passive: 10% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Inherent Cold Resistance -",
       "value": 5,
       "value_kind": "number",
       "bonus_type": "insight",
-      "tooltip": "Inherent Cold Resistance - 5 : This item provides a +5 Insight bonus to your Cold resistance."
+      "tooltip": "Inherent Cold Resistance - 5 : This item provides a +5 Insight bonus to your Cold resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Rune Arm Imbue : Cold",
       "value": 1,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Rune Arm Imbue : Cold I: Wearing this Rune Arm will imbue any weapon you wield, dealing 1d4 points of cold damage per hit."
+      "tooltip": "Rune Arm Imbue : Cold I: Wearing this Rune Arm will imbue any weapon you wield, dealing 1d4 points of cold damage per hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Craftable Rune Arm",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

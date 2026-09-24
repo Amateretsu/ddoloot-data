@@ -34,39 +34,49 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Blood Sacrifice — 3 Charges (Recharged/Day:1)",
+      "name": "Blood Sacrifice",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blood Sacrifice Caster level: 1 Charges: 3 (1/day)"
+      "tooltip": "Blood Sacrifice Caster level: 1 Charges: 3 (1/day)",
+      "charges": 3,
+      "recharge_per_day": 1
     },
     {
       "name": "Blood Sacrifice",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blood Sacrifice : Exchanges 25 hit points for 50 spell points. (This enchantment has no effect.)"
+      "tooltip": "Blood Sacrifice : Exchanges 25 hit points for 50 spell points. (This enchantment has no effect.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Void Lore",
       "value": 10,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Void Lore +10 : Passive: Your Negative Energy and Poison spells gain a 10% Equipment bonus to their chance to critical hit."
+      "tooltip": "Void Lore +10 : Passive: Your Negative Energy and Poison spells gain a 10% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nullification",
       "value": 66,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Nullification +66 : Passive: +66 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+      "tooltip": "Nullification +66 : Passive: +66 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Profane Lifeforce",
       "value": 15,
       "value_kind": "flat",
       "bonus_type": "profane",
-      "tooltip": "Profane Lifeforce +15 : +15 Profane bonus to Hit Points."
+      "tooltip": "Profane Lifeforce +15 : +15 Profane bonus to Hit Points.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

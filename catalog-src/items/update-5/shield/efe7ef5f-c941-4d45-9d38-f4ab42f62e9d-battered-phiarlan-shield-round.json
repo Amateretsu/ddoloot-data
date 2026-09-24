@@ -65,28 +65,36 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Guard",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": null,
-      "tooltip": "Acid Guard +2: Chance to deal 2d8 Acid damage when hit."
+      "tooltip": "Acid Guard +2: Chance to deal 2d8 Acid damage when hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Absorption",
       "value": 15,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Acid Absorption +15% : Passive: 15% Enhancement Bonus to Acid Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+      "tooltip": "Acid Absorption +15% : Passive: 15% Enhancement Bonus to Acid Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
-      "name": "Absorb Enchantment Spells - 5 Charges (Recharged/Day: 5)",
+      "name": "Absorb Enchantment Spells",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Absorb Enchantment Spells : This effect absorbs most enchantment -based spells. Only a few such spells can be absorbed before the item ceases to function and must have time to dissipate the absorbed energy."
+      "tooltip": "Absorb Enchantment Spells : This effect absorbs most enchantment -based spells. Only a few such spells can be absorbed before the item ceases to function and must have time to dissipate the absorbed energy.",
+      "charges": 5,
+      "recharge_per_day": 5
     }
   ],
   "customisation_hints": [],

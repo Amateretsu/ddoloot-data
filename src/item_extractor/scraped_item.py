@@ -63,13 +63,20 @@ class ShieldStats(_Strict):
 
 
 class Effect(_Strict):
-    """One Effect with its raw name, value and Bonus Type."""
+    """One Effect with its raw name, value and Bonus Type.
+
+    A clicky (a spell the item casts, such as ``Haste — 3 Charges``) is an Effect named
+    after its spell, with no value, its ``charges`` and, when the wiki gives one, its
+    ``recharge_per_day``. Both are None on every other Effect.
+    """
 
     name: str
     value: int | float | None = None
     value_kind: str | None = None
     bonus_type: str | None = None
     tooltip: str | None = None
+    charges: int | None = None
+    recharge_per_day: int | None = None
 
 
 class CustomisationHint(_Strict):
