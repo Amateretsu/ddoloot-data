@@ -267,10 +267,14 @@ def _sync_options(argv: Sequence[str]) -> argparse.Namespace:
     return p.parse_known_args(list(argv))[0]
 
 
-def _queue_plan(
+def queue_plan(
     queue_db: Path, pages: Sequence[str], limit: Optional[int], max_retries: int
 ):
-    """Update pages the sync reads and rows it processes, from a copy of *queue_db*."""
+    """Update pages the sync reads and rows it processes, from a copy of *queue_db*.
+
+    The copy is made from a read-only (``mode=ro``) connection, so *queue_db* is never
+    written. A missing *queue_db* reads as an empty queue.
+    """
     with tempfile.TemporaryDirectory() as tmp:
         copy = Path(tmp) / "queue.db"
         if queue_db.exists():
@@ -289,20 +293,33 @@ def _queue_plan(
             return repo.list_update_pages(), repo.get_pending_items(limit=limit)
 
 
-def dry_run(sync_args: Sequence[str]) -> int:
+@dataclass
+class WorstCase:
+    """The dry run's result: its report lines and the bound on wiki requests."""
+
+    lines: list[str]
+    f: int
+    bound: str  # "=" exact, "<=" upper bound (``--limit``), ">=" lower bound only
+    worst: int  # 1 + 2F + min(F, k)
+    attempts: int  # 1 + max_retries from the scraper config
+
+    @property
+    def most_requests(self) -> Optional[int]:
+        """Most wiki requests the run can send, retries included; None if unbounded."""
+        return None if self.bound == ">=" else self.worst * self.attempts
+
+
+def worst_case_plan(sync_args: Sequence[str]) -> WorstCase:
+    """Work out a sync's worst case with no request sent (``--page`` required)."""
     logger.remove()  # the queue copy's DEBUG lines are not the report
     opts = _sync_options(sync_args)
-    if not opts.pages:
-        print(
-            "--dry needs --page: discovery would read the index and every update page."
-        )
-        return USAGE_ERROR
+    lines: list[str] = []
     config = load_scraper_config(opts.scraper_config)
     k = config.browser.consecutive_challenges
     queue_db = opts.queue_db or QUEUE_DB
     if not queue_db.exists():
-        print(f"no queue DB at {queue_db}: the sync would start a fresh one.")
-    update_pages, pending = _queue_plan(
+        lines.append(f"no queue DB at {queue_db}: the sync would start a fresh one.")
+    update_pages, pending = queue_plan(
         queue_db, opts.pages, opts.limit, opts.max_retries
     )
     with PageStore(
@@ -329,18 +346,18 @@ def dry_run(sync_args: Sequence[str]) -> int:
         unheld_rows = [i for i in pending if not held(i.wiki_url)]
 
     limit = "none" if opts.limit is None else opts.limit
-    print(
+    lines.append(
         f"update pages read: {len(update_pages)}, unheld: {len(unheld_pages)}"
         + (f" ({', '.join(unheld_pages)})" if unheld_pages else "")
     )
-    print(
+    lines.append(
         f"pending rows processed (--limit {limit}): {len(pending)}, "
         f"unheld: {len(unheld_rows)}"
     )
     f = len(unheld_pages) + len(unheld_rows)
     bound = "="
     if unread:
-        print(
+        lines.append(
             f"not yet read into the queue: {', '.join(unread)}; "
             "their item rows are not known offline."
         )
@@ -348,18 +365,33 @@ def dry_run(sync_args: Sequence[str]) -> int:
             bound = ">="
         else:
             f, bound = len(unheld_pages) + opts.limit, "<="
-            print(f"upper bound: all {opts.limit} processed rows unheld.")
+            lines.append(f"upper bound: all {opts.limit} processed rows unheld.")
     worst = worst_case(f, k)
-    print(f"k = browser.consecutive_challenges = {k}")
-    print(f"F {bound} {f}; worst case 1 + 2F + min(F, k) {bound} {worst} requests")
+    lines.append(f"k = browser.consecutive_challenges = {k}")
+    lines.append(
+        f"F {bound} {f}; worst case 1 + 2F + min(F, k) {bound} {worst} requests"
+    )
     if k > 1:
-        print("warning: k > 1; mixed challenged and clear plain fetches may cost more.")
-    if config.max_retries:
-        n = 1 + config.max_retries
-        print(
-            f"warning: max_retries {config.max_retries} in the scraper config; with "
-            f"retries, up to {n} x {worst} = {n * worst} requests."
+        lines.append(
+            "warning: k > 1; mixed challenged and clear plain fetches may cost more."
         )
+    attempts = 1 + config.max_retries
+    if config.max_retries:
+        lines.append(
+            f"warning: max_retries {config.max_retries} in the scraper config; with "
+            f"retries, up to {attempts} x {worst} = {attempts * worst} requests."
+        )
+    return WorstCase(lines, f, bound, worst, attempts)
+
+
+def dry_run(sync_args: Sequence[str]) -> int:
+    if not _sync_options(sync_args).pages:
+        print(
+            "--dry needs --page: discovery would read the index and every update page."
+        )
+        return USAGE_ERROR
+    for text in worst_case_plan(sync_args).lines:
+        print(text)
     return 0
 
 

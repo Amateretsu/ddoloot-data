@@ -1,0 +1,36 @@
+# Scraper policy for the live backlog runs (scripts/bulk_fetch.py, scripts/guarded_sync.py).
+#
+# Why this file exists: every live run in the backlog and bulk-fetch-readiness plans
+# (docs/plans/2026-09-24-*.md) used config/scraper.yaml with two changes, kept in a scratch
+# copy until now:
+# - max_retries: 0, so a request is never repeated and the worst case 1 + 2F + min(F, k)
+#   holds as written;
+# - browser.consecutive_challenges: 1, so the first challenged plain fetch switches the
+#   rest of the run to the browser (k = 1, where the worst-case bound is exact).
+#
+# Every other value MUST equal config/scraper.yaml. The politeness values (user_agent,
+# crawl_delay_seconds, robots) are ADR 0006's and are changed only there, by the
+# maintainer, and then here. tests/test_scraper_bulk_config.py fails if the two drift.
+#
+# cache_dir is resolved against this file's directory, so ../cache/pages is the repo's
+# cache/pages, the same Page Store as config/scraper.yaml.
+
+user_agent: "DDOLoot-data (+https://github.com/Amateretsu/ddoloot-data)"
+
+crawl_delay_seconds: 4
+
+timeout_seconds: 30
+
+# Bulk runs: no retries (config/scraper.yaml: 3).
+max_retries: 0
+
+respect_robots_txt: true
+robots_fail_open: true
+
+cache_dir: ../cache/pages
+
+browser:
+  enabled: true
+  # Bulk runs: switch to the browser on the first challenge (config/scraper.yaml: 5).
+  consecutive_challenges: 1
+  challenge_ratio: 0.2
