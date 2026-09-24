@@ -191,3 +191,32 @@ Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the
 - Step 1 live requests (8): `robots.txt`, then `Item:Boots_of_Corrosion` as plain 202,
   browser challenged, browser reload (stored; `page_id` 12387); `robots.txt`, then
   `Named_items` as plain 202, browser challenged, browser reload (stored).
+
+### Step 2: UUID registry
+
+- **A missing registry file loads as an empty registry.** `save()` creates the file and any
+  missing parent directories. The committed `catalog-src/registry.jsonl` is empty (0 bytes),
+  and an empty registry saves as an empty file.
+- The interface is exactly `Registry.load(path)`, `id_for(page_id, title)` and `save()`,
+  with no lookup or iteration method. `id_for` changes only the in-memory copy; nothing
+  reaches the file until `save()`.
+- Line format: `json.dumps({"id", "page_id", "title"}, ensure_ascii=False)` with default
+  separators. Lines are UTF-8, end in `\n` and are sorted by `page_id`. The same entries
+  always give the same bytes.
+- `save()` is atomic: it writes `<name>.tmp`, then calls `os.replace`.
+- `load` is strict. It raises `ValueError`, naming the file and line, for:
+  - bad JSON;
+  - any keys other than exactly `id`, `page_id` and `title`;
+  - an `id` that is not a lowercase hyphenated uuid4;
+  - a `page_id` that is not an int (bool is rejected);
+  - a `title` that is not a str;
+  - two entries with the same `page_id` or the same `id`.
+  Blank lines are skipped. There is no custom error class.
+- `id_for` raises `TypeError` for a non-int `page_id` (bool and None included) or a non-str
+  `title`. Null page IDs are the caller's job (step 3).
+- Minting uses `str(uuid.uuid4())` and retries if the new ID clashes with an existing one. A
+  new page ID gets a new UUID even when its title matches an existing entry. A rename keeps
+  the UUID and updates the stored title.
+- `catalog_registry` is added to isort `known_first_party` and to the mypy, coverage and
+  vulture paths. `.gitignore` needed no change.
+- Tests after step 2: 281 passed, 1 skipped. No network requests.

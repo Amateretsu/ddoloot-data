@@ -110,7 +110,7 @@ target-version = ["py311"]
 
 [tool.isort]
 profile = "black"
-known_first_party = ["page_store", "item_extractor", "ddo_sync"]
+known_first_party = ["page_store", "item_extractor", "ddo_sync", "catalog_registry"]
 
 
 [tool.ruff]
@@ -170,7 +170,7 @@ ignore = [
 python_version = "3.11"
 follow_imports = "skip"
 ignore_missing_imports = true
-files = ["src/page_store", "src/item_extractor", "src/ddo_sync"]
+files = ["src/page_store", "src/item_extractor", "src/ddo_sync", "src/catalog_registry"]
 
 
 [tool.pytest.ini_options]
@@ -184,9 +184,9 @@ markers = [
 
 [tool.coverage.run]
 branch = true
-source = ["src/page_store", "src/item_extractor", "src/ddo_sync"]
+source = ["src/page_store", "src/item_extractor", "src/ddo_sync", "src/catalog_registry"]
 
 
 [tool.vulture]
 min_confidence = 100
-paths = ["src/page_store", "src/item_extractor", "src/ddo_sync", "tests"]
+paths = ["src/page_store", "src/item_extractor", "src/ddo_sync", "src/catalog_registry", "tests"]

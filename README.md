@@ -7,10 +7,12 @@ Catalog data and build pipeline for [DDOLoot](https://github.com/Amateretsu/ddol
 | Path | Purpose |
 |---|---|
 | `src/page_store/` | Page Store: the local copy of wiki pages, fetched under the ADR 0006 policy |
+| `src/catalog_registry/` | UUID registry: mints each Named Item's UUID once and keeps it across wiki renames (ADR 0003); see `docs/catalog_registry.md` |
 | `src/item_extractor/`, `src/ddo_sync/`, `tests/` | Scraped Item extractor, sync orchestration and the `ddoloot` CLI |
 | `config/scraper.yaml` | scraper policy: user agent, crawl delay (4 s minimum), retries, robots.txt, Page Store directory, browser fallback |
 | `config/update_pages.yaml` | seed list of `Update_<N>_named_items` pages, used when the named-items index links to none |
 | `tests/fixtures/pages/` | committed wiki item pages used as test fixtures (CC BY-SA, see `NOTICE`) |
+| `catalog-src/registry.jsonl` | the committed UUID registry: one `{"id", "page_id", "title"}` line per Named Item, sorted by page ID |
 | `catalog-src/items/<update>/<category>/` | Scraped Item JSON per Named Item, filename leads with the UUID (ADR 0006) |
 | `catalog/extractor/` | extractor rules: row labels, templates, value maps, Effect classification |
 | `catalog/rules/` | option lists, slot compatibility, item overrides (ADR 0007) |
