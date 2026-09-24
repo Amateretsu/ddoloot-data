@@ -696,3 +696,113 @@ with ADR 0006.
   | After | 210 | 0 | 7 | 5 | 0 | 5 |
 
 - Tests after step 4g: 362 passed, 1 skipped (unchanged).
+
+### Step 5: bulk-run safety
+
+- **Committed:** `scripts/guarded_sync.py` and `tests/test_guarded_sync.py`. The script
+  replaces the scratch watchdog from batch 1 (found in an old scratchpad and reused: the
+  same 429/5xx warning pattern and the same `Failed: '` count). Every later live batch
+  needs both the stop guard and the worst case written down first, so it earns its place,
+  like `scripts/offline_rerun.py`.
+- **Where the logic lives:** in the script only. The tests load it with `importlib`. The
+  stop rules and the formula are operator tooling, not part of `ddo_sync`'s interface, so
+  nothing was added to `src`. That is the smallest option. CI runs the tests but does
+  not lint `scripts/`, so ruff, black and isort were run on the script by hand.
+- **Guarded run:** `.venv/bin/python scripts/guarded_sync.py --log PATH <sync args>` runs
+  one `ddoloot sync --verbose <sync args>` in its own session and writes all of its output
+  to the log. It reads each line as it is written and sends SIGINT (like Ctrl-C, so the
+  queue keeps its progress) when a stop rule holds. If the sync is still running 60 s
+  later, its process group gets SIGTERM, then SIGKILL 10 s after that. Ctrl-C on the
+  script is passed on as one SIGINT.
+- **Log lines, read from the source** (the loguru format is
+  `<time> | <LEVEL> | <message>`, coloured even into a file, so colours are removed first):
+  - wiki request: `GET <url> -> <status> (plain)` (`HttpTransport`, redirect hops
+    included), `GET <url> -> no response (plain)`, and `GET <url> (browser)`
+    (`BrowserTransport._route`, no status). `blocked ...` lines are not requests.
+  - 429/5xx: the Page Store's `<url>: HTTP <status> (attempt i/n)` warning. It is the one
+    line that gives the status for both adapters, retries included.
+  - items (`DDOSyncer.process_queue`): `Completed: '<name>'` (DEBUG), `Failed: '<name>' —
+    <error>`, `Skipped: '<name>' — <reason>` (always followed by its `Completed:` line),
+    and `Item '<name>' saved but mark_complete failed: ...` (a failure with no `Failed:`
+    line).
+- **Stop rules:**
+  - 3 consecutive 429/5xx: each Page Store warning adds 1. A plain `GET` with any other
+    status, or `Fetched '<title>'` (a page stored), resets the count. A browser `GET` line
+    has no status, so it neither adds nor resets. So a browser 404 does not reset the
+    count, which can only stop a run sooner.
+  - failure rate: processed is `Completed:` plus failed lines, and the run stops when
+    `failed >= 3 and failed * 10 > processed`. The floor of 3 was chosen over a minimum
+    sample (such as "after 20 processed"): 1 of 2 and 2 of 2 do not stop, 3 failures in a
+    row stop at once rather than after 20 items, and on a long run the rule is exactly
+    "over 10%". Batch 1's ">22 of about 218" is the same rule at the end of that run.
+    Skipped pages count as processed, not failed. An update page that cannot be read is
+    not an item and is not counted.
+- **Exit code:** the sync's own (0, 1 or 2), or 3 when the guard stopped it. Usage errors
+  exit 64. The last line printed gives the reason and the tally: items processed and
+  failed, and wiki `GET` lines in the log (the budget's request count).
+- **Dry run:** `--dry <sync args>`, with `--page` required. It sends no request. The Page
+  Store is built with transports that raise and a no-op sleep, and it is asked only
+  `get(url)` (the public way to learn whether a page is held: a held page returns with no
+  request, and an unheld one reaches a transport, which raises). The queue is read from a
+  temporary copy, made with SQLite's backup from a read-only (`mode=ro`) connection. Then
+  the queue's own interface runs on the copy, as the sync would:
+  `register_update_page` for each `--page`, `reset_failed_to_pending(--max-retries)`,
+  `list_update_pages()` and `get_pending_items(--limit)`. It prints
+  `1 + 2F + min(F, k)`, where:
+  - 1 is robots.txt;
+  - F is the unheld pages the sync could fetch: every update page the sync reads (every
+    page already in the queue, plus `--page`) that is not held, plus the unheld rows among
+    the pending rows it would process, in its order and capped by `--limit`, after its own
+    reset of failed rows;
+  - 2F is one browser load per page, which may send 2 wiki requests (the document and its
+    reload);
+  - k is `browser.consecutive_challenges` from the scraper config: the challenged plain
+    fetches in a row that switch the rest of the run to the browser. Before the switch,
+    each challenged page also pays its plain fetch. The bound is exact for k = 1, and the
+    script warns when k > 1. It also warns, with the `1 + max_retries` multiple, when the
+    config's `max_retries` is not 0.
+  - An update page that is unheld, or held but not yet read into the queue, adds rows that
+    cannot be counted offline. The dry run then prints `F >= …` as a lower bound, or, with
+    `--limit`, the upper bound `F <= unheld pages + limit`. `--refresh` counts every page
+    as unheld.
+- **The dry run cannot fetch, checked in the code:** the Page Store holds only the raising
+  transports (so no `HttpTransport` or `BrowserTransport` is made), the dry path never
+  starts a subprocess, and nothing else imported opens a connection. The sanity runs were
+  also made with `socket.getaddrinfo` and `socket.connect` patched to raise. `md5` of
+  `data/queue.db` and `cache/pages/index.json` was unchanged afterwards.
+- **Sanity runs** against the persistent `data/queue.db` and `cache/pages`, with a scratch
+  config (the committed values plus `max_retries: 0`, `browser.consecutive_challenges: 1`
+  and `cache_dir` set to the absolute path of the repo's `cache/pages`):
+  - `--page Update_8_named_items Update_9_named_items --limit 60 --max-retries 0`:
+    ```
+    update pages read: 9, unheld: 0
+    pending rows processed (--limit 60): 48, unheld: 43
+    k = browser.consecutive_challenges = 1
+    F = 43; worst case 1 + 2F + min(F, k) = 88 requests
+    ```
+    This matches the backlog plan: 48 pending, 43 unheld, worst case 88.
+  - `--page Update_14_named_items`:
+    ```
+    update pages read: 10, unheld: 1 (Update_14_named_items)
+    pending rows processed (--limit none): 53, unheld: 43
+    not yet read into the queue: Update_14_named_items; their item rows are not known offline.
+    k = browser.consecutive_challenges = 1
+    F >= 44; worst case 1 + 2F + min(F, k) >= 90 requests
+    ```
+    Two findings. First, the sync reads every update page in the queue and processes the
+    whole pending queue, not only `--page`'s rows, so this run would also finish the 43
+    unheld Update 8-9 rows. Second, without `--max-retries 0` the sync's default of 3 resets
+    batch 1's 5 failed ingredient rows (53 = 48 + 5). They are held, so they cost nothing
+    and are now skipped, but live runs should keep `--max-retries 0`.
+- **Tests (offline, `tests/test_guarded_sync.py`, 33):**
+  - the worst-case arithmetic;
+  - each stop rule, on synthetic lines and on coloured lines copied from batch 1's log;
+  - the 429/5xx rule on the Page Store's real warnings, captured from a `PageStore` whose
+    canned transport answers 429, 502 and 503;
+  - the dry run on a temporary queue and Page Store: queue order and `--limit`, failed-row
+    reset, an unread page (both bounds), a missing queue DB, the k and `max_retries`
+    warnings, and an unchanged queue file;
+  - the subprocess path with a fake `python -c` child: a throttled child stopped by
+    SIGINT, a child that ignores SIGINT and is terminated after the grace period, and an
+    unstopped child whose exit code and log are kept.
+- Tests after step 5: 395 passed, 1 skipped.
