@@ -1,5 +1,8 @@
+{"id": "b9befa4a-8a24-4c30-a8cd-9ad06f7a73a1", "page_id": 7977, "title": "Item:Dreamspitter"}
+{"id": "fbe9f2b3-bb1b-4cde-a8fe-ed870af8df9c", "page_id": 9637, "title": "Item:Epic Whirlwind"}
 {"id": "2276654b-26d8-4aef-988e-6ef17de28625", "page_id": 10416, "title": "Item:Epic Sirocco"}
 {"id": "c9c3eda9-0b72-4f48-b9a8-7f97dd004619", "page_id": 10746, "title": "Item:Epic Mummy Wrappings"}
+{"id": "b8f279c6-b5ef-4d36-8675-7c0c0f61a29c", "page_id": 10937, "title": "Item:Elyd Edge"}
 {"id": "83179253-58bf-4c28-bbb8-f38f0daeb146", "page_id": 11665, "title": "Item:Brawn's Spirits"}
 {"id": "76bee6c9-56fe-49e3-b57f-b688614f800b", "page_id": 11695, "title": "Item:Phiarlan Mirror Cloak"}
 {"id": "fb247532-903b-4f0f-aa4f-926e0b7d07ca", "page_id": 11696, "title": "Item:Phiarlan Spy Dagger"}
@@ -88,6 +91,10 @@
 {"id": "5978f3e5-6e5b-4136-b3ef-3a5636aea24d", "page_id": 12526, "title": "Item:Teraza's Sight"}
 {"id": "4da52edb-b3b1-4ee9-8b30-e7c73d3aca5d", "page_id": 12553, "title": "Item:Crimson Chain"}
 {"id": "c74b8586-fab1-4e40-a26d-de660db11f2e", "page_id": 12567, "title": "Item:Mask of Comedy"}
+{"id": "53e65dc5-9ca7-4282-a4ec-9d661f6af510", "page_id": 12614, "title": "Item:Staff of the Shadow"}
+{"id": "789d497f-06fd-4669-bc97-e5a2d5439965", "page_id": 12615, "title": "Item:Hooked Blade"}
+{"id": "32b881e6-c1f5-47c2-8d1c-ca37efd61c94", "page_id": 12616, "title": "Item:Ogrish War Axe"}
+{"id": "15a932f8-38ca-4f35-ae44-bd9e87b955f7", "page_id": 12617, "title": "Item:Gnollish War Bow"}
 {"id": "8dfa377c-577a-4362-ba88-ea677230a56f", "page_id": 12641, "title": "Item:Antique Greataxe"}
 {"id": "da3ea734-3d94-419e-b9b5-8f84207694c7", "page_id": 12648, "title": "Item:Epic Brimstone Verge"}
 {"id": "1cd59d2d-5f7e-48e8-8434-a05111ecfe18", "page_id": 12653, "title": "Item:Gloves of the Claw"}
@@ -104,22 +111,40 @@
 {"id": "d548f8e4-8277-4392-a273-9b25a2834508", "page_id": 12766, "title": "Item:Epic Diabolist's Robe"}
 {"id": "27956fd4-6901-43bc-b629-8f551c3172ab", "page_id": 12794, "title": "Item:Hellfire Crossbow"}
 {"id": "f4ee6a93-ed51-4c75-a907-2036a4f8bf5c", "page_id": 12796, "title": "Item:Wind Howler Bracers"}
+{"id": "f7adf7d4-ba86-4afc-925b-4b27468c1a37", "page_id": 12810, "title": "Item:Garments of Equilibrium"}
+{"id": "4661da70-9fca-48e9-8390-8031c82ae40f", "page_id": 12811, "title": "Item:Night Hag's Heartstone"}
 {"id": "b691223d-b185-4d18-bcbe-33a1498f8cb4", "page_id": 12814, "title": "Item:Brutish Cuirass"}
 {"id": "f98c6fdf-aa5f-4226-8328-1011d0723506", "page_id": 12818, "title": "Item:Epic Elder's Focus"}
+{"id": "ca68963e-6f76-49c5-9845-8de8add81d11", "page_id": 12870, "title": "Item:Frostflame Robe"}
 {"id": "5a3789ae-7b45-4b23-a212-dc2005b635c1", "page_id": 12904, "title": "Item:Stormsinger Cloak"}
 {"id": "908ab1b1-ed9c-4633-902f-292947525137", "page_id": 13006, "title": "Item:Epic Hellstroke Great Axe"}
 {"id": "d9815feb-e164-450d-b496-93370868700f", "page_id": 13007, "title": "Item:Epic Staff of Nat Gann"}
 {"id": "9a751368-ec71-431f-8fb7-e5a70d4af5cd", "page_id": 13008, "title": "Item:Epic Timeblade"}
 {"id": "a4917396-e3b0-4192-8e5b-fb3bf264b57b", "page_id": 13010, "title": "Item:Epic Hellfire Crossbow"}
+{"id": "5f215078-b35a-4fae-8158-c6233bfa48c9", "page_id": 13092, "title": "Item:Frostflame Docent"}
 {"id": "6a2240e6-dea7-4f1b-aff0-df3c43cb6617", "page_id": 13142, "title": "Item:Epic Twisted Talisman"}
 {"id": "05107a06-fde9-4349-8238-01fafa855852", "page_id": 13254, "title": "Item:Goggles of Time-Sensing"}
 {"id": "2e2a5c95-9767-4177-b39e-0d9a859b8e77", "page_id": 13698, "title": "Item:Epic Ring of Venom"}
+{"id": "af91b71a-bdc5-4551-9398-a90fde4d60b8", "page_id": 13884, "title": "Item:Epic Ornamented Dagger (legacy) (level 20)"}
 {"id": "4bc82b06-5bf8-4d43-8b65-f7f785e6bc0b", "page_id": 13899, "title": "Item:Epic Bracers of the Claw"}
+{"id": "1fef089f-aaf8-4d6c-b68d-bee6b28af256", "page_id": 13997, "title": "Item:Epic Ring of the Buccaneer (legacy) (level 20)"}
 {"id": "ebc8a965-e318-4918-834a-5ac9ffb0c947", "page_id": 14157, "title": "Item:Epic Goggles of Time-Sensing"}
 {"id": "9f537838-ec10-4626-974e-4bb63138dde6", "page_id": 14200, "title": "Item:Battered Marketplace Shield (round)"}
+{"id": "cd77be59-96da-412a-8e38-64328f07fe4f", "page_id": 14483, "title": "Item:Scepter of Mad Trickery"}
+{"id": "5e889347-4d8b-48e7-9656-652cafc8d4e1", "page_id": 14501, "title": "Item:Axe of Famine"}
+{"id": "08fa1776-6ec5-4843-978b-d20c29cf5c3b", "page_id": 14503, "title": "Item:Turbulent Epee"}
+{"id": "01269789-9f11-4fe2-baf5-830813a5ec86", "page_id": 14505, "title": "Item:Quivering Quiver"}
+{"id": "8bf37870-057e-49b5-be03-2a4391fd955a", "page_id": 14507, "title": "Item:Parasitic Breastplate"}
 {"id": "abcf6083-0adf-4c53-bd5d-d4d938ed67b6", "page_id": 14532, "title": "Item:Beholder Plate Armor"}
 {"id": "936f3ee2-4b34-4e70-947f-aa2f9e669bfc", "page_id": 14533, "title": "Item:Beholder Plate Docent"}
+{"id": "ded7675e-b200-46c3-9ec9-1a52850cd3d9", "page_id": 14534, "title": "Item:Bow of Sinew"}
+{"id": "42bd3677-e465-4a10-bdde-a99e83e73c89", "page_id": 14535, "title": "Item:Polycurse Dagger"}
+{"id": "90d2a131-9c74-4e6f-8fdf-58cd0a6990a7", "page_id": 14552, "title": "Item:Infused Chaosrobe"}
+{"id": "92c10683-e0ed-4f11-abe2-22c3aa42d1cd", "page_id": 14555, "title": "Item:Staff of Fleshshaping"}
+{"id": "7c191a89-6f4a-4edc-8edb-50b9f8791b0c", "page_id": 14582, "title": "Item:Thaarak Bracelet"}
+{"id": "a5048dd9-60a8-4939-8fda-ea434e8c2889", "page_id": 14628, "title": "Item:The Blood Stone"}
 {"id": "c242f446-bfef-4d11-a7b4-955dec622882", "page_id": 15042, "title": "Item:Diabolist's Docent"}
+{"id": "62df9b72-e310-4375-9ce9-86757df571a3", "page_id": 15889, "title": "Item:Mindfury Symbiont"}
 {"id": "cc26b816-6969-4cd1-9542-8b66c5419746", "page_id": 15890, "title": "Item:Belashyrra's Cleansed Scepter"}
 {"id": "fd4b52bb-5db8-4c6c-ab0e-3c6a34fd253a", "page_id": 16286, "title": "Item:Epic Ring of the Mire"}
 {"id": "ed68374b-e84c-4620-8a39-6e7712d7d864", "page_id": 16450, "title": "Item:Earthshatter Warhammer"}
@@ -138,6 +163,7 @@
 {"id": "7d3ccf53-0bf1-4077-92b0-0fcc05f30b77", "page_id": 17885, "title": "Item:Tinker's Gloves"}
 {"id": "990bb849-d6b4-4437-a3ad-ee26e43b2fbb", "page_id": 17888, "title": "Item:Magewright's Cloak"}
 {"id": "b41b1e50-9f43-4d2d-abc2-a231c22a2b14", "page_id": 17892, "title": "Item:The Pea Shooter"}
+{"id": "49cd0381-bb6d-4b55-bef4-513426455bab", "page_id": 17896, "title": "Item:Trial by Fire"}
 {"id": "e723cf42-5225-4167-8672-3c7a6f61376a", "page_id": 17943, "title": "Item:Alchemist's Pendant"}
 {"id": "51779960-94fe-40df-a557-e7095e03072c", "page_id": 17945, "title": "Item:Tinker's Goggles"}
 {"id": "ca496854-64bd-476d-81ea-c22e5814c5b7", "page_id": 17948, "title": "Item:Wolfinson's Monocular Enhancer"}
@@ -180,18 +206,86 @@
 {"id": "895df6b1-5f2a-489e-84c2-887a5012c358", "page_id": 22790, "title": "Item:Epic Cruel Nobility"}
 {"id": "898aaaa8-3217-4002-b080-0543e1224ba9", "page_id": 22792, "title": "Item:Epic Templar's Docent"}
 {"id": "151cd735-ed95-4531-a06f-db538a1fffe6", "page_id": 23267, "title": "Item:Epic Envenomed Blade"}
+{"id": "f92cd71a-db73-44f9-b14f-2cd26fe93ad4", "page_id": 24231, "title": "Item:Strinati's Hand Cannon"}
+{"id": "337fc1ad-f3b9-4e90-9b02-757d224e082d", "page_id": 24237, "title": "Item:War Wizard's Robes"}
+{"id": "85aa7a9f-9f2b-4076-842c-609f79e6e78a", "page_id": 24256, "title": "Item:Chieftain's Spear"}
+{"id": "94ee4939-7fec-4271-8284-4833302cc34c", "page_id": 24286, "title": "Item:Brine Shaman's Staff"}
+{"id": "acedfcbc-1e34-478d-8aa3-b56c8d6fb779", "page_id": 24287, "title": "Item:Greatbow of the Scrag"}
+{"id": "ade5f754-fbd9-4fde-84c0-0f11ee4cde2f", "page_id": 24288, "title": "Item:Tiefling Assassin's Blade"}
+{"id": "4e137ff8-8ae4-4f56-a65c-cca9187fc0e5", "page_id": 24309, "title": "Item:Kobold Admiral's Uniform"}
+{"id": "a8301fe3-cbc1-413c-9b5b-5598ef22cc18", "page_id": 24318, "title": "Item:Sky Pirate's Dagger"}
+{"id": "371f1b23-36cc-4860-9faa-93ce36a69a83", "page_id": 24360, "title": "Item:Corsair's Cufflinks"}
+{"id": "21723b65-c5f4-4b9b-8b40-1273f272b4bc", "page_id": 24362, "title": "Item:Corsair's Galoshes"}
+{"id": "1ea51c6d-edb5-4f7d-8d1a-06ffeba68860", "page_id": 24364, "title": "Item:Scoundrel's Greatsword"}
+{"id": "afc5c5d5-db20-49e0-b0b6-a8e7ee813ffd", "page_id": 24366, "title": "Item:Scoundrel's Repeating Heavy Crossbow"}
+{"id": "ca76b93a-517b-4711-91f1-2207046fe275", "page_id": 24537, "title": "Item:Scorching Wraps"}
+{"id": "b7f7c34a-9937-4377-82f0-a0b0510f0e43", "page_id": 24539, "title": "Item:Scoundrel's Longsword"}
+{"id": "0b18bad5-5eba-4c4a-b614-af4283729255", "page_id": 24541, "title": "Item:Scoundrel's Cutlass"}
+{"id": "b1c80a86-f47b-43c0-abb6-e2ca1c95f60a", "page_id": 24543, "title": "Item:Corsair's Bandana"}
+{"id": "bf68e218-1d45-4843-818b-44dfeaa14243", "page_id": 24646, "title": "Item:Moonhowl Axe"}
+{"id": "7583d33b-58eb-4ebe-a53c-9e4f039debf5", "page_id": 24664, "title": "Item:Orcish Privateer's Plate"}
+{"id": "0235c0be-e97b-40ec-a478-52d78633b562", "page_id": 24834, "title": "Item:Celestia, Brightest Star of Day"}
+{"id": "d591d092-64a7-4813-9fee-917e5f27ff82", "page_id": 24836, "title": "Item:Nightmare, the Fallen Moon"}
+{"id": "c7f36e3a-00c5-404a-8e79-d29531977985", "page_id": 24838, "title": "Item:Mornh, Hammer of the Mountains"}
+{"id": "84482788-13ac-4cdc-9d4d-a3f93dab656f", "page_id": 24840, "title": "Item:Pinion, Cloud-piercer"}
+{"id": "e65a47f3-8825-4ba0-801c-68e0a443dfd8", "page_id": 24842, "title": "Item:Sireth, Spear of the Sky"}
+{"id": "c9d5dd11-6cc1-4d0f-8131-b4f80f76a5cf", "page_id": 24849, "title": "Item:Cleaver, Hewer of Suffering"}
 {"id": "3fff50f1-5343-4dec-88fe-c326b4c6cf3a", "page_id": 25221, "title": "Item:Phiarlan Veil Shield (angular)"}
 {"id": "a80b9de7-0c7a-4097-95e9-de00a531c005", "page_id": 25224, "title": "Item:Phiarlan Veil Shield (round)"}
 {"id": "4b13d674-8670-4918-8612-c4c0a620c678", "page_id": 25227, "title": "Item:Stormreach Marketplace Shield (angular)"}
 {"id": "e6ed427b-7db5-43fe-a0ae-2ff924bccbf1", "page_id": 25230, "title": "Item:Stormreach Marketplace Shield (round)"}
+{"id": "b0f3bbe0-7323-4eda-84c1-8babc830be2e", "page_id": 25495, "title": "Item:Agony, the Knife in the Dark"}
+{"id": "25527a69-767e-40f4-8ef4-75a6a28ca38a", "page_id": 25534, "title": "Item:Tinah, Sword of the Sea"}
 {"id": "38a20266-6eb2-47c4-bbb9-0d512bd2fe46", "page_id": 25636, "title": "Item:Sphere of Silver Flame Essence"}
+{"id": "3bdf7fc1-85d9-423f-9961-cfaa5e77dd92", "page_id": 25639, "title": "Item:Twilight, Element of Magic"}
+{"id": "d088c84d-61c4-4deb-a848-b9ae72cf7046", "page_id": 25656, "title": "Item:Breach, The Dividing Blade"}
+{"id": "b5c75f90-3f94-452b-9c21-0130c24f7894", "page_id": 25657, "title": "Item:Needle, Quill-slinger"}
 {"id": "5b493cc3-6208-4e9b-b661-8bb7ff58116b", "page_id": 25690, "title": "Item:Trinket"}
+{"id": "24815449-27dc-4308-879c-fcf8d81fae5b", "page_id": 25804, "title": "Item:Balizarde, Protector of the King"}
+{"id": "3be68630-e422-4cc2-89ae-f22071ca2b96", "page_id": 26422, "title": "Item:Thunderstorm Crescent (level 24)"}
+{"id": "4263a821-96c7-492c-9b27-00d69bffb1da", "page_id": 26437, "title": "Item:Corruption of Nature (level 24)"}
+{"id": "9246a18f-09eb-4d76-9adf-32657064cb02", "page_id": 26468, "title": "Item:Corruption of Nature (level 23)"}
+{"id": "68a063a0-0bb2-477e-aa7c-7500868d4318", "page_id": 26469, "title": "Item:Corruption of Nature (level 15)"}
+{"id": "b9c4421c-4217-448b-b99e-51f14b8eaa12", "page_id": 26488, "title": "Item:Corruption of Nature (level 22)"}
+{"id": "b65a06b8-5635-484f-8519-932b1c64fa5d", "page_id": 26490, "title": "Item:Thunderstorm Crescent (level 23)"}
+{"id": "dba11674-a21e-4f97-bcf2-7694cbf7d23c", "page_id": 26493, "title": "Item:Wall of Wood (level 22)"}
+{"id": "a7aad32e-bdf9-41b5-9abb-3c82c7da6498", "page_id": 26500, "title": "Item:Thunderstorm Crescent (level 22)"}
+{"id": "c72f75a8-f8b6-4f5a-b957-f3241e732896", "page_id": 26555, "title": "Item:Antipode, Fist of the Horizon"}
+{"id": "4e4c1eb9-8339-4b9b-99fa-d44d8d62ac5b", "page_id": 26629, "title": "Item:Thunderstorm Crescent (level 15)"}
+{"id": "cba1d23c-9ff9-45d9-992a-30fb78642a51", "page_id": 26918, "title": "Item:Thunderstorm Crescent (level 16)"}
+{"id": "012f8715-ba03-4468-8d24-007659b80499", "page_id": 27140, "title": "Item:Corruption of Nature (level 16)"}
+{"id": "24b126e1-a8ef-434d-911b-73d609e9317a", "page_id": 27597, "title": "Item:Drow Greataxe of the Weapon Master"}
+{"id": "5d4a3d58-d79d-4faf-9fef-257c4231b9cb", "page_id": 27613, "title": "Item:Drow Shortsword of the Weapon Master"}
+{"id": "219cbf02-e8c8-4183-9864-3b61352b7c77", "page_id": 27614, "title": "Item:Drow Quarterstaff of the Weapon Master"}
+{"id": "b00a0136-c402-4956-8e44-8acd73516c14", "page_id": 27615, "title": "Item:Drow Maul of the Weapon Master"}
+{"id": "74cf13c3-d382-43da-a9b2-63a870e4acfc", "page_id": 27616, "title": "Item:Drow Light Mace of the Weapon Master"}
+{"id": "63b4ecb0-0fd1-490d-a126-ba2a72b05504", "page_id": 27617, "title": "Item:Drow Khopesh of the Weapon Master"}
+{"id": "b3fcd38a-d343-4f23-831e-fa9cf5caf4a9", "page_id": 27618, "title": "Item:Drow Dagger of the Weapon Master"}
+{"id": "463c34c5-5295-4c5f-aff6-a7acbbac355f", "page_id": 27766, "title": "Item:Drow Warhammer of the Weapon Master"}
+{"id": "0520edf5-7412-49ba-a069-e90900a49fe0", "page_id": 27835, "title": "Item:Drow Rapier of the Weapon Master"}
+{"id": "152a3e67-f6f7-4cdf-ad98-470276eee806", "page_id": 27836, "title": "Item:Drow Longsword of the Weapon Master"}
+{"id": "0798fcd6-68da-4cb9-b15e-6fa58f864b9f", "page_id": 27837, "title": "Item:Drow Bastard Sword of the Weapon Master"}
+{"id": "fd425849-ae5c-45c4-82de-b4a20e126a1c", "page_id": 27838, "title": "Item:Drow Scimitar of the Weapon Master"}
+{"id": "57c25b34-0e7a-4bc1-8e63-aaa8ee180fa3", "page_id": 27839, "title": "Item:Duergar Waraxe of the Weapon Master"}
+{"id": "b399b188-ef7d-4479-b334-35c09cf887eb", "page_id": 28699, "title": "Item:Thunderstorm Crescent (level 17)"}
 {"id": "52c9de5e-b742-49d3-888c-ea6d6b5e68ba", "page_id": 28829, "title": "Item:+11 Eternal Wand of Disrupt Undead"}
 {"id": "3cb5fb31-83fc-42f3-bd9b-7ef64a0be241", "page_id": 29710, "title": "Item:+11 Eternal Wand of Nimbus of Light"}
+{"id": "b27f76e4-e159-4e2c-bb07-68bf95c0d2f9", "page_id": 30324, "title": "Item:Corruption of Nature (level 17)"}
+{"id": "9fb830e3-3492-4953-b239-841ff07672dd", "page_id": 33920, "title": "Item:Insanity"}
 {"id": "f10790da-dd11-40b0-a7b8-8629fae52a1f", "page_id": 89983, "title": "Item:Brutish Cuirass (historic)"}
 {"id": "1567bf7b-30bc-4991-9661-037079795a97", "page_id": 91995, "title": "Item:Legendary Gem of Many Facets"}
 {"id": "9e4ed8c5-f5f4-4906-b603-bec9d9ed6a45", "page_id": 101355, "title": "Item:Legendary Stormsinger Cloak"}
+{"id": "6822be34-4a18-4ac6-afd9-632d3c85a80c", "page_id": 101356, "title": "Item:Legendary Trial by Fire"}
+{"id": "bcedc1c2-14f2-4422-ae1f-f32cc7b693e6", "page_id": 101361, "title": "Item:Legendary Gnollish War Bow"}
+{"id": "9182cfe4-948d-463d-9012-a61a5c68ca57", "page_id": 101363, "title": "Item:Legendary Hooked Blade"}
+{"id": "cfed8e7f-2dc2-488b-b0f1-b14531b228bd", "page_id": 101365, "title": "Item:Legendary Staff of the Shadow"}
+{"id": "b22b6fe0-1bea-4468-ac1d-55b9c6321698", "page_id": 101386, "title": "Item:Legendary Frostflame Robe"}
+{"id": "61e213b8-9d6c-4668-adec-241fc36654a8", "page_id": 101409, "title": "Item:Legendary Ogrish War Axe"}
+{"id": "bc8b929e-7afc-4b0d-aa84-08adcbbc1a1d", "page_id": 101411, "title": "Item:Legendary Frostflame Docent"}
 {"id": "07006ff5-11ae-4788-8bba-e91e9ee3bfd3", "page_id": 101478, "title": "Item:Legendary Scepter of the Ogre Magi"}
+{"id": "20679d34-6000-42d0-87db-5ce0dc63dc3a", "page_id": 101480, "title": "Item:Legendary Crimson Chain"}
+{"id": "1fd27ab3-ae66-427d-bab6-6fdc3ae121e0", "page_id": 101482, "title": "Item:Legendary Night Hag's Heartstone"}
+{"id": "b0de61b4-2f7b-41f5-baa2-6dfb8ca07242", "page_id": 101484, "title": "Item:Legendary Garments of Equilibrium"}
 {"id": "5ab548cb-de21-4f0b-b406-da396c554244", "page_id": 101487, "title": "Item:Legendary Brutish Cuirass"}
 {"id": "d5a7ef2e-4eb7-4627-ae4e-20f7e8185660", "page_id": 101490, "title": "Item:Legendary Wind Howler Bracers"}
 {"id": "efe7ef5f-c941-4d45-9d38-f4ab42f62e9d", "page_id": 124286, "title": "Item:Battered Phiarlan Shield (round)"}

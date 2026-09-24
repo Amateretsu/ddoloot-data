@@ -1,0 +1,124 @@
+{
+  "id": "1fef089f-aaf8-4d6c-b68d-bee6b28af256",
+  "name": "Epic Ring of the Buccaneer (legacy) (level 20)",
+  "wiki": {
+    "page_id": 13997,
+    "revision_id": 715993,
+    "title": "Item:Epic Ring of the Buccaneer (legacy) (level 20)",
+    "url": "https://ddowiki.com/page/Item:Epic_Ring_of_the_Buccaneer_(legacy)_(level_20)"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 13,
+  "durability": 120,
+  "base_value_cp": 12020000,
+  "weight": 0.1,
+  "upgradeable": "Treasure of Crystal Cove",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dexterity",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Swim",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Swim +15 : Passive: +15 Competence bonus to the Swim skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Underwater Action",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Underwater Action : This item grants the wearer the ability to breathe water as if it were air.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Good Luck",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "luck",
+      "tooltip": "Good Luck +1 : This item gives a +1 Luck bonus to all saves and skill checks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_upgrade",
+      "raw": "Upgradeable - Tier 1",
+      "name": "Tier 1",
+      "colour": null,
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "unique_system",
+      "raw": "Protection +5",
+      "name": "Protection +5",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Upgradeable - Tier 2 Dexterity +6 → Dexterity +7",
+        "Dexterity +6 → Dexterity +7",
+        "Upgradeable - Tier 3 Adds Green Augment Slot Good Luck +1 → Good Luck +2",
+        "Adds Green Augment Slot",
+        "Good Luck +1 → Good Luck +2"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Ring Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Ring Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This ring is coveted by many who travel by sea for its ability to make one more dexterous, and better able to survive the perils of the ocean.",
+  "notes": null,
+  "tips": "See also: Ring of the Buccaneer - Full table of the Ring of the Buccaneer line Tier 2 Tier 3 Update 9 Release Notes : Older versions of the Epic Ring of the Buccaneer were missing the +5 Protection, and may have a redundant Dexterity +6 entry. You can repair the ring by placing it by itself in the Stone of Change. This will clear the Green Epic Augment Slot as well. This repair should be done on old Tier 1 and Tier 2 rings before upgrading them further in the Barter Box in current Crystal Cove events, or the ring may end up missing +5 Protection and not be repairable ( DDO Forums ARCHIVE ME! ).",
+  "source": {
+    "quests": [
+      "Treasure of Crystal Cove"
+    ],
+    "detail": "Turn in 1200 600 35 at Dusty Old",
+    "crafted_from": [],
+    "raw": "Treasure of Crystal Cove , Turn in 1200 600 35 at Dusty Old Treasure of Crystal Cove"
+  },
+  "extraction_errors": {}
+}

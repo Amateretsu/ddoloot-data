@@ -1,0 +1,99 @@
+{
+  "id": "4e137ff8-8ae4-4f56-a65c-cca9187fc0e5",
+  "name": "Kobold Admiral's Uniform",
+  "wiki": {
+    "page_id": 24309,
+    "revision_id": 708546,
+    "title": "Item:Kobold Admiral's Uniform",
+    "url": "https://ddowiki.com/page/Item:Kobold_Admiral%27s_Uniform"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Leather",
+  "hardness": 12,
+  "durability": 64,
+  "base_value_cp": 1601000,
+  "weight": 15.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 6,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 6,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": 10
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Axeblock",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Axeblock III : Passive: Reduces physical damage taken by 6, except from Bludgeoning or Piercing weapons. (Damage Reduction: 6/Pierce, Bludgeon)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spearblock",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Spearblock III : Passive: Reduces physical damage taken by 6, except from Bludgeoning or Slashing weapons. (Damage Reduction: 6/Slash, Bludgeon)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "The self-styled kobold 'Admiral' Ancker gussied up this old set of leathers to the best of his ability, sticking several makeshift medals to the chest.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Admiral Ancker 's Chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Admiral Ancker 's Chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

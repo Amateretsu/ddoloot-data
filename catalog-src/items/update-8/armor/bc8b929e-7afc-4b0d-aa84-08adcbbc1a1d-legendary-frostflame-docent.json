@@ -1,0 +1,132 @@
+{
+  "id": "bc8b929e-7afc-4b0d-aa84-08adcbbc1a1d",
+  "name": "Legendary Frostflame Docent",
+  "wiki": {
+    "page_id": 101411,
+    "revision_id": 632306,
+    "title": "Item:Legendary Frostflame Docent",
+    "url": "https://ddowiki.com/page/Item:Legendary_Frostflame_Docent"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Docent",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 31,
+  "required_race": "Warforged",
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Gem",
+  "hardness": 41,
+  "durability": 360,
+  "base_value_cp": 12410000,
+  "weight": null,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Docent",
+    "armor_bonus": null,
+    "armor_bonus_variants": [
+      {
+        "name": "Adamantine Body",
+        "value": 16
+      },
+      {
+        "name": "Mithral Body",
+        "value": 7
+      },
+      {
+        "name": "Composite Plating",
+        "value": 2
+      }
+    ],
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Fire Lore",
+      "value": 22,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Fire Lore +22 : Passive: Your Fire spells gain a 22% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Ice Lore",
+      "value": 22,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Ice Lore +22 : Passive: Your Cold spells gain a 22% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Fire Absorption",
+      "value": 36,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Absorption +36% : Passive: 36% Enhancement Bonus to Fire Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Cold Absorption",
+      "value": 36,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Absorption +36% : Passive: 36% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Droaam ogre magi have enchanted these docents to make the fire and cold magic of the wearer more deadly. The enchantments also protect the wearer from those same elemental forces.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

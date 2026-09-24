@@ -1,0 +1,112 @@
+{
+  "id": "a5048dd9-60a8-4939-8fda-ea434e8c2889",
+  "name": "The Blood Stone",
+  "wiki": {
+    "page_id": 14628,
+    "revision_id": 694024,
+    "title": "Item:The Blood Stone",
+    "url": "https://ddowiki.com/page/Item:The_Blood_Stone"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 11,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Gem",
+  "hardness": 26,
+  "durability": 120,
+  "base_value_cp": 4420000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Bloodstone",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Seeker",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +6 : Provides a +6 Enhancement bonus to confirm critical hits, and a +6 Enhancement bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Deception",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +4 : +4 Enhancement bonus to hit and +6 to damage for any hit that would qualify as a sneak attack.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Accuracy",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Accuracy +9 : Passive: +9 Competence bonus to attack rolls",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Deadly",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Deadly +5 : +5 Competence bonus to weapon damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Vulkoor's Chosen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Vulkoor's Chosen : 2 Pieces Equipped: +10 Artifact bonus to Poison Resistance +1 Artifact bonus to Sneak Attack Dice +1 Artifact bonus to Saving Throws +1 Artifact bonus to Dexterity and Constitution",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A featureless blood red stone. Visions of murder and mayhem possess you the first time you pick up the Bloodstone.",
+  "notes": null,
+  "tips": "This item used to be known as \" Bloodstone \" before Update 9 , which was easily confused with the basic gem of the same name . Can also be used in Catalyst Crafting to make The Bloody Boulder",
+  "source": {
+    "quests": [
+      "Sands of Menechtarun"
+    ],
+    "detail": "The Thirsty One and Palumak the Scourer chests ; Masei Mkembe sells for 625 Antique Bronze Tokens (sold as 'Bloodstone'); Epic Zawabi's Revenge Warded chest.",
+    "crafted_from": [],
+    "raw": "Sands of Menechtarun , The Thirsty One and Palumak the Scourer chests ; Masei Mkembe sells for 625 Antique Bronze Tokens (sold as 'Bloodstone'); Epic Zawabi's Revenge , Warded chest."
+  },
+  "extraction_errors": {}
+}

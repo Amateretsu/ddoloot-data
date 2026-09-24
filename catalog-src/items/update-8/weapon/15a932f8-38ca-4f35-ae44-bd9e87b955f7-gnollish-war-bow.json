@@ -1,0 +1,119 @@
+{
+  "id": "15a932f8-38ca-4f35-ae44-bd9e87b955f7",
+  "name": "Gnollish War Bow",
+  "wiki": {
+    "page_id": 12617,
+    "revision_id": 631171,
+    "title": "Item:Gnollish War Bow",
+    "url": "https://ddowiki.com/page/Item:Gnollish_War_Bow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 17,
+  "durability": 200,
+  "base_value_cp": 4807500,
+  "weight": 3.0,
+  "upgradeable": "Malleable to Bloody War Bow Destructive War Bow Infectious War Bow Petrifying War Bow",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 1.4,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Crippling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Crippling : A crippling weapon is infused with binding power so that when a target is critically hit their movement is slowed by half. Note: Real slowdown is only 25%",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Feat : Bow Strength",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feat : Bow Strength : While equipped this item grants the feat Bow Strength, allowing you to apply your Strength bonus to ranged attacks made with bows.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Monstrous Humanoid Bane",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Monstrous Humanoid Bane 3 : This weapon is attuned specifically to hunt those who are descended from monsters dealing an additional 3d10 bane damage vs. Monstrous Humanoids.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Malleable",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Malleable : This item has a magical aura of malleability and can be combined with any item that has the Fusible property to create a new, more powerful fusion of the two items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Gnoll archers are sought throughout Droaam for their skilled marksmanship. This powerful bow, which lets the user apply a greater amount of his or her strength to the launch of its arrows, is equally sought-after.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

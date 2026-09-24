@@ -1,0 +1,99 @@
+{
+  "id": "acedfcbc-1e34-478d-8aa3-b56c8d6fb779",
+  "name": "Greatbow of the Scrag",
+  "wiki": {
+    "page_id": 24287,
+    "revision_id": 631226,
+    "title": "Item:Greatbow of the Scrag",
+    "url": "https://ddowiki.com/page/Item:Greatbow_of_the_Scrag"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 9,
+  "durability": 120,
+  "base_value_cp": 1625500,
+  "weight": 3.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Blunted Ammunition",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Blunted Ammunition : The ammunition fired by this weapon deals blunt damage in addition to its other damage types.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Once carried by the fearsome Scrag of the Three-Barrel Cove, Dulse, this longbow has a powerful draw, able to fire arrows with enough force to not only pierce the flesh, but even shatter bone.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Dulse 's chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Dulse 's chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

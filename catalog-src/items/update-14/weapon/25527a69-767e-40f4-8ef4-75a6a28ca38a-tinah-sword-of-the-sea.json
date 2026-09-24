@@ -1,0 +1,156 @@
+{
+  "id": "25527a69-767e-40f4-8ef4-75a6a28ca38a",
+  "name": "Tinah, Sword of the Sea",
+  "wiki": {
+    "page_id": 25534,
+    "revision_id": 635546,
+    "title": "Item:Tinah, Sword of the Sea",
+    "url": "https://ddowiki.com/page/Item:Tinah,_Sword_of_the_Sea"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Good",
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 300,
+  "base_value_cp": 9201500,
+  "weight": 4.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "32",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Sword",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Slashing",
+      "Good",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Supreme Good",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Supreme Good : This weapon is infused with the supreme Power of Good. It does an additional 3 to 18 damage to non-good targets and can only be wielded by Good-aligned characters.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Crushing Wave",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Crushing Wave : This weapon stores the unstoppable force of the ocean's fury deep within. When this weapon is used, this power occasionally comes to the surface, crushing enemies beneath a torrent of frigid water.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Freezing Ice",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Freezing Ice : On items: While you are wearing this item, your melee, ranged, and unarmed attacks gain the Freezing Ice ability. (When the weapon is used, an icy power occasionally comes to the surface, attempting to freeze an enemy solid and encase them in ice.) - (duration: 9 seconds) On weapons: This Weapon stores the pitiless immovable power of the ice deep within. When this weapon is used, this power occasionally comes to the surface, attempting to freeze an enemy solid and encase them in ice.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Greater Dragon Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Dragon Bane : A bane weapon excels at attacking one type or subtype of creature. Against Dragons, this weapon's effective enhancement bonus is +4 better than its normal enhancement bonus. It deals an extra 3 to 18 points of damage against the foe.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Underwater Action",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Underwater Action : This item grants the wearer the ability to breathe water as if it were air.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds +0.5 weapon dice multiplier",
+        "Adds +0.5 weapon dice multiplier",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Once wielded by the Legendary sailor, Paeyn the Bold, this blade was the scourge of dragons for miles around the Sea of Fallen Stars. How it came to be here is a mystery.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

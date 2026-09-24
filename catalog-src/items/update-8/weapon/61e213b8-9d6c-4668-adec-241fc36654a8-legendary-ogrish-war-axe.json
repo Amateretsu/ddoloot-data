@@ -1,0 +1,136 @@
+{
+  "id": "61e213b8-9d6c-4668-adec-241fc36654a8",
+  "name": "Legendary Ogrish War Axe",
+  "wiki": {
+    "page_id": 101409,
+    "revision_id": 632649,
+    "title": "Item:Legendary Ogrish War Axe",
+    "url": "https://ddowiki.com/page/Item:Legendary_Ogrish_War_Axe"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 41,
+  "durability": 410,
+  "base_value_cp": 12402000,
+  "weight": 12.0,
+  "upgradeable": "Malleable to Legendary Infectious War Axe Legendary Bloody War Axe Legendary Destructive War Axe Legendary Petrifying War Axe",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Axe",
+    "handedness": null,
+    "damage_multiplier": 5.2,
+    "damage_dice": "1d12",
+    "damage_bonus": 4,
+    "enhancement_bonus": 15,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Vengeful",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Vengeful : When its wielder is hit in battle, this item has a 10% chance to cause him or her to become full of anger and go into a Rage .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Humanoid Bane",
+      "value": 6,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Humanoid Bane 6 : This weapon is attuned specifically to those that walk among us, dealing an additional 6d10 bane damage vs. Humanoids.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Gashing",
+      "value": 15,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Gashing 15 : The edges of this weapon are sharpened beyond belief, dealing an additional 15d6 slashing damage on each critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Malleable",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Malleable : This item has a magical aura of malleability and can be combined with any item that has the Fusible property to create a new, more powerful fusion of the two items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Purple Augment Slot",
+      "name": null,
+      "colour": "Purple",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "The ogres of Droaam dress themselves in heavy armor and wield huge metallic weapons, unlike their more tribal cousins. This war axe is infused with the fury of such well-armed ogre brutes.",
+  "notes": null,
+  "tips": "Although this is a greataxe, it actually uses the greatsword wield model & swing animation, and thus swings slightly slower than a real greataxe.",
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

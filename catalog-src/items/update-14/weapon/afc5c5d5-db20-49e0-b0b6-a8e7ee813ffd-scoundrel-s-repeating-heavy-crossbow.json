@@ -1,0 +1,109 @@
+{
+  "id": "afc5c5d5-db20-49e0-b0b6-a8e7ee813ffd",
+  "name": "Scoundrel's Repeating Heavy Crossbow",
+  "wiki": {
+    "page_id": 24366,
+    "revision_id": 666375,
+    "title": "Item:Scoundrel's Repeating Heavy Crossbow",
+    "url": "https://ddowiki.com/page/Item:Scoundrel%27s_Repeating_Heavy_Crossbow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Repeating Heavy Crossbow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 6,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 11,
+  "durability": 150,
+  "base_value_cp": 2440000,
+  "weight": 12.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Repeating Heavy Crossbow",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Chaotic",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Acid",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Acid : This weapon is sheathed in corrosive acid. An acid weapon deals an extra 1 to 6 points of acid damage on a successful hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Anarchic",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Anarchic : An anarchic weapon is chaotically aligned and infused with the power of chaos. It makes the weapon chaos-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 damage against all of lawful alignment.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A complex weapon consisting of a heavy crossbow and a clip for bolts that is loaded by pulling the lever.",
+  "notes": null,
+  "tips": "The Pirate Treasure Map , the 3 items from the Corsair's Cunning set, the 4 'Scoundrel's type' weapons and Brine Shaman's Staff have a chance of appearing in the end reward list of any of the Three-Barrel Cove (heroic) quests, except Guard Duty . Every third completion you will receive a complete list.",
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , End reward"
+  },
+  "extraction_errors": {}
+}

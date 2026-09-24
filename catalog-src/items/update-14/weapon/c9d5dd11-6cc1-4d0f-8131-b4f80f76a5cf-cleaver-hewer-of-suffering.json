@@ -1,0 +1,145 @@
+{
+  "id": "c9d5dd11-6cc1-4d0f-8131-b4f80f76a5cf",
+  "name": "Cleaver, Hewer of Suffering",
+  "wiki": {
+    "page_id": 24849,
+    "revision_id": 629004,
+    "title": "Item:Cleaver, Hewer of Suffering",
+    "url": "https://ddowiki.com/page/Item:Cleaver,_Hewer_of_Suffering"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 330,
+  "base_value_cp": 9202000,
+  "weight": 12.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Axe",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "2d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Hemorrhaging",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Hemorrhaging : This weapon is viciously sharp and will do an additional 2 to 16 damage to targets that are vulnerable to bleeding.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Limb Chopper",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Limb Chopper : This potent and feared ability allows the weapon to sever the limbs of those it strikes. On an attack roll of 20 which is confirmed as a critical hit, the weapon severs an opponent's limb from its body. Some creatures, including many aberrations and all oozes , have no limbs. Others, such as golems and undead creatures, are not affected by the loss of their limbs. Most other creatures, however, have their movement slowed 75% and attacks slowed by 50% when a limb is cut off.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Improved Cursespewing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Cursespewing : On Vorpal Hit : Your enemy is cursed with a -4 morale penalty on attack rolls , saving throws , and skill checks . This painful curse also causes the victim to take 2d6 damage every two seconds for a duration of twelve seconds. Additional vorpal strikes while the curse is active will extend the duration by another twelve seconds.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Doublestrike",
+      "value": 6,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 6% : Passive: 6% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Hemorrhaging → Phlebotomizing",
+        "Hemorrhaging → Phlebotomizing",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Death is the only certainty in life.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

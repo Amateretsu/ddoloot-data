@@ -1,0 +1,98 @@
+{
+  "id": "a8301fe3-cbc1-413c-9b5b-5598ef22cc18",
+  "name": "Sky Pirate's Dagger",
+  "wiki": {
+    "page_id": 24318,
+    "revision_id": 691261,
+    "title": "Item:Sky Pirate's Dagger",
+    "url": "https://ddowiki.com/page/Item:Sky_Pirate%27s_Dagger"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dagger",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 80,
+  "base_value_cp": 1600200,
+  "weight": 1.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Dagger",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "17-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Previously the prized possession of the Air Pirate Captain, Ilmarin Tychonn, this dagger is perfectly balanced and of exquisite quality.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Ilmarin Tychonn 's Chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Ilmarin Tychonn 's Chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

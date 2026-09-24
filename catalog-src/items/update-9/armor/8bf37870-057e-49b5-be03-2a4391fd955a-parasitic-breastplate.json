@@ -1,0 +1,120 @@
+{
+  "id": "8bf37870-057e-49b5-be03-2a4391fd955a",
+  "name": "Parasitic Breastplate",
+  "wiki": {
+    "page_id": 14507,
+    "revision_id": 633874,
+    "title": "Item:Parasitic Breastplate",
+    "url": "https://ddowiki.com/page/Item:Parasitic_Breastplate"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Flesh",
+  "hardness": 24,
+  "durability": 228,
+  "base_value_cp": 5620000,
+  "weight": 30.0,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 16,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 9,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": 10
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Symbiotic Flexibility",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Symbiotic Flexibility : Because this suit of armor has merged with your body, the flexibility it affords you is practically unparalleled. A suit of armor that has this property has a maximum Dexterity bonus 4 higher than normal, and its armor check penalty is reduced by 4.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Diehard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Diehard : If you are incapacitated while this item is equipped, it will automatically stabilize you as if you had the Diehard feat.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Symbiotic Backlash",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Symbiotic Backlash : This item is symbiotic and grants you benefits, but it also deals 2 to 12 extra damage to you when enemies roll a 20 on an attack against you.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Rough Hide",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "primal",
+      "tooltip": "Rough Hide +3 : This item fuses with your body and toughens your skin, providing a +3 Primal bonus to your natural armor.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This grotesque breastplate appear to be at least partially alive. Its organic sinews cause it to be more flexible than most other armor of its type, and it will siphon some of its life into the wearer if he or she should become unconscious.",
+  "notes": "You can remove the Symbiotic Backlash penalty with a Sustaining Symbiont .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "In The Flesh"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "In The Flesh , End chest"
+  },
+  "extraction_errors": {}
+}

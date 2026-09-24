@@ -1,0 +1,102 @@
+{
+  "id": "4661da70-9fca-48e9-8390-8031c82ae40f",
+  "name": "Night Hag's Heartstone",
+  "wiki": {
+    "page_id": 12811,
+    "revision_id": 633716,
+    "title": "Item:Night Hag's Heartstone",
+    "url": "https://ddowiki.com/page/Item:Night_Hag%27s_Heartstone"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "exclusive": true,
+  "material": "Gem",
+  "hardness": 32,
+  "durability": 130,
+  "base_value_cp": 4805000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Deep Slumber",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deep Slumber Caster level: 5 Charges: 5 (5/day)",
+      "charges": 5,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Nightmare Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Nightmare Guard : This item has a chance to terrorizing foes that hit you, applying a Mind Thrust effect, when you are hit by them (dealing 5d8 force damage, Will save vs. Enchantments negates). It may also expose your foes to their greatest fears, acting as a Phantasmal Killer spell.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Proof Against Disease",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Disease +5 : This item grants its wearer immunity to natural diseases. This item also grants a +5 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 6 + their Fortitude save).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Proof Against Poison",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Poison +5 : This item grants its wearer immunity to natural poisons. This item also grants a +5 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 6 + their Fortitude save).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Trinket Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Trinket Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "The night hags of Droaam carry these vile gems with them wherever they go, which allow them to enter the dreams of others. This particular specimen can exhaust the wearer's foes, putting them to sleep or damaging their minds with terrible nightmares.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Siegebreaker"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Siegebreaker , end chest"
+  },
+  "extraction_errors": {}
+}

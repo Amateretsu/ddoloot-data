@@ -1,0 +1,103 @@
+{
+  "id": "62df9b72-e310-4375-9ce9-86757df571a3",
+  "name": "Mindfury Symbiont",
+  "wiki": {
+    "page_id": 15889,
+    "revision_id": 690580,
+    "title": "Item:Mindfury Symbiont",
+    "url": "https://ddowiki.com/page/Item:Mindfury_Symbiont"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 15,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Flesh",
+  "hardness": 21,
+  "durability": 61,
+  "base_value_cp": 3620000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Greater Efficacy",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Efficacy Caster level: 1 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": 3,
+      "note": null
+    },
+    {
+      "name": "Spell Focus",
+      "value": 1,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Focus I : +1 Equipment bonus to the DC of all spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spell Lore",
+      "value": 6,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Lore VI : Passive: All of your spells gain a 6% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Constitution",
+      "value": -2,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Constitution -2 : This item makes the wearer less healthy, granting -2 Constitution.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Fortitude Save",
+      "value": -2,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Fortitude Save -2 : This item gives a -2 penalty to your Fortitude saves.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Allow this leech-like creature to latch onto you and it will boost the power of your spells, as well as protecting your mind against incoming magic. However, it will also feed off of and weaken your body in exchange.",
+  "notes": null,
+  "tips": "Reportedly a rarer than normal drop.",
+  "source": {
+    "quests": [
+      "In The Flesh"
+    ],
+    "detail": "end chest (Heroic Hard or Elite)",
+    "crafted_from": [],
+    "raw": "In The Flesh , end chest (Heroic Hard or Elite)"
+  },
+  "extraction_errors": {}
+}

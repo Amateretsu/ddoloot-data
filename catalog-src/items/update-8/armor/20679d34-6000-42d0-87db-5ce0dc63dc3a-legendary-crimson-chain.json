@@ -1,0 +1,145 @@
+{
+  "id": "20679d34-6000-42d0-87db-5ce0dc63dc3a",
+  "name": "Legendary Crimson Chain",
+  "wiki": {
+    "page_id": 101480,
+    "revision_id": 631996,
+    "title": "Item:Legendary Crimson Chain",
+    "url": "https://ddowiki.com/page/Item:Legendary_Crimson_Chain"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Mithral",
+  "hardness": 45,
+  "durability": 454,
+  "base_value_cp": 12815000,
+  "weight": 40.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 33,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 12,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": 15
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dexterity",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +14 : This item makes the wearer more nimble and dexterous, granting a +14 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Reflex Save",
+      "value": 12,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Reflex Save +12 : This item gives a +12 Resistance bonus to your Reflex saves.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dodge",
+      "value": 14,
+      "value_kind": "percent",
+      "bonus_type": "dodge",
+      "tooltip": "Dodge +14% : +14% Enhancement bonus to Dodge.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Legendary Air Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Legendary Air Guard : This weapon stores the incredible, dynamic power of the air deep within. When the user of this weapon is successfully attacked in melee, this power occasionally comes to the surface, knocking enemies over or speeding up the wearer with rushing winds.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Mithral",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A suit of chainmail crafted for Droaam troops to make them react more swiftly. When the wearer is struck by an attack, it will sometimes increase the speed of his or her movements and attacks briefly.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Undermine"
+    ],
+    "detail": "Rhyolite's chest",
+    "crafted_from": [],
+    "raw": "Undermine , Rhyolite's chest"
+  },
+  "extraction_errors": {}
+}

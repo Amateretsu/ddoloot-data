@@ -1,0 +1,156 @@
+{
+  "id": "fbe9f2b3-bb1b-4cde-a8fe-ed870af8df9c",
+  "name": "Epic Whirlwind",
+  "wiki": {
+    "page_id": 9637,
+    "revision_id": 640364,
+    "title": "Item:Epic Whirlwind",
+    "url": "https://ddowiki.com/page/Item:Epic_Whirlwind"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 300,
+  "base_value_cp": 8005000,
+  "weight": 8.0,
+  "upgradeable": "Legendary Crafting to Legendary Whirlwind",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Sword",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "2d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Epic Telekinetic",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Epic Telekinetic : Targets that suffer a critical hit from a Telekinetic weapon must make a DC 35 Strength or Dexterity check or be knocked down. The target will then be forced to make DC 16 Balance checks to recover from this effect.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Shocking Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Shocking Blast 4 : This weapon arcs with deadly electricity, dealing 4d6 Electric damage on a successful hit, and an additional 4d6 Electric damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Blurry",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Blurry : Equipping this item causes you to become slightly blurry. Attacks from enemies have a 20% chance to miss you due to concealment.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Doublestrike",
+      "value": 11,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 11% : Passive: 11% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Air Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Air Guard : This Weapon stores the incredible, dynamic power of the air deep within. When the user of this weapon is successfully attacked in melee, this power occasionally comes to the surface, knocking enemies over or speeding up the wearer with rushing winds.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "The Epic Desert's Writhing Storm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "The Epic Desert's Writhing Storm : 2 Pieces Equipped: +4% Artifact bonus to Electric Spellcrit Chance +20 Artifact bonus to Electric Spellpower +20 Artifact bonus to Magical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "An air spirit bound to this greatsword shrieks when the sword is swept through the air. Swirling gusts of wind can knock the sword's target to the ground.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Whirlwind"
+    ],
+    "raw": "Epic version of Whirlwind"
+  },
+  "extraction_errors": {}
+}

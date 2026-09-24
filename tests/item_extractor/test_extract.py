@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 
@@ -186,6 +187,32 @@ def test_page_without_infobox_outside_an_ingredient_category_fails(cfg, categori
         'account","Binds on acquire","Raw ingredients","Attack on Stormreach reward '
         'items","Blockade Buster loot"]',
         categories,
+    )
+    with pytest.raises(ExtractionError, match="no infobox table") as raised:
+        extract(html, "u", cfg)
+    assert not isinstance(raised.value, NotEquipmentError)
+
+
+@pytest.mark.parametrize(
+    "category",
+    [
+        "Consumables without a type",
+        "Minimum level 1 consumables",
+        "Three-Barrel Cove (heroic) consumables",
+    ],
+)
+def test_consumable_page_is_not_equipment(cfg, category):
+    # Consumables (potions, commendations, maps) have item articles with no infobox.
+    html = page("Item_Mark_of_Sheshka.html").replace(
+        '"Raw ingredients"', json.dumps(category)
+    )
+    with pytest.raises(NotEquipmentError, match=re.escape(repr(category))):
+        extract(html, "u", cfg)
+
+
+def test_a_category_merely_mentioning_consumables_is_not_a_skip(cfg):
+    html = page("Item_Mark_of_Sheshka.html").replace(
+        '"Raw ingredients"', '"Consumables using deprecated parameter/minlevel"'
     )
     with pytest.raises(ExtractionError, match="no infobox table") as raised:
         extract(html, "u", cfg)

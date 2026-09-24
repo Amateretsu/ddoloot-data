@@ -1,0 +1,140 @@
+{
+  "id": "b9befa4a-8a24-4c30-a8cd-9ad06f7a73a1",
+  "name": "Dreamspitter",
+  "wiki": {
+    "page_id": 7977,
+    "revision_id": 690590,
+    "title": "Item:Dreamspitter",
+    "url": "https://ddowiki.com/page/Item:Dreamspitter"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Crystal",
+  "hardness": 15,
+  "durability": 160,
+  "base_value_cp": 12800002,
+  "weight": 4.0,
+  "upgradeable": "Stormreaver Monument or Dreamforge",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 1.4,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic",
+      "Crystal"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Greater Evil Outsider Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Evil Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Evil Outsiders, this weapon's effective enhancement bonus is +4 better than its normal enhancement bonus. It deals an extra 3 to 18 points of damage against the foe.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Life Stealing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Life Stealing : This weapon has a chance to drain 1 to 3 levels from its target on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enchantment Focus",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Enchantment Focus II : +2 Equipment bonus to the DC of Enchantment spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Suppressed Power",
+      "name": "Suppressed Power",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Adds Holy",
+        "Becomes Bound to Character on Acquire"
+      ]
+    },
+    {
+      "kind": "unique_system",
+      "raw": "Upgradeable Item (Stormreaver)",
+      "name": "Upgradeable Item (Stormreaver)",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Adds Force Burst"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This is a truly ancient relic of the giant wars against Dal Quor. The dream-monsters were best fought with weapons that struck down the spirit, rather than the flesh.",
+  "notes": null,
+  "tips": "Pre U12 versions missing Upgradeable Item (Stormreaver) can have this added via the Stormreaver Monument with 5 Ancient Elven Relics. Existing upgrades (Holy, Force Damage Ritual, etc.) are maintained. Some old versions of the Dreamspitter do not have the Suppressed Power. This cannot be added, but you can add Upgradeable Item (Stormreaver) and then Force Burst. The negative levels inflicted by a critical hit from Dreamspitter reduce the victim's saving throws, and that effect stacks with itself. Dreamspitter becomes Bound to Character once the suppressed power is unlocked, but remains Bound to Account when the Stormreaver Seal upgrade is applied. With the application of the Seal of the Stormreaver and a Crystal Disk of Dreams , this weapon can be upgraded to: Upgraded & Unsuppressed Version",
+  "source": {
+    "quests": [
+      "The Reaver's Fate"
+    ],
+    "detail": "Raid Warded chest",
+    "crafted_from": [],
+    "raw": "The Reaver's Fate , Raid Warded chest"
+  },
+  "extraction_errors": {}
+}
