@@ -1,0 +1,34 @@
+# Scraper policy for the Page Store (ADR 0006: wiki acquisition policy).
+#
+# Loaded by page_store.load_scraper_config(); the ddoloot CLI takes a different file
+# with --scraper-config PATH. Unknown keys are rejected.
+
+# Identified user agent with a contact.
+user_agent: "DDOLoot-data (+https://github.com/Amateretsu/ddoloot-data)"
+
+# Seconds between requests, one page at a time. Values below 4 are rejected.
+# A larger Crawl-delay in robots.txt wins.
+crawl_delay_seconds: 4
+
+timeout_seconds: 30
+
+# Extra attempts after a connection error, timeout, HTTP 429 or 5xx.
+max_retries: 3
+
+respect_robots_txt: true
+# When robots.txt cannot be read: true = carry on, false = stop the run.
+robots_fail_open: true
+
+# Where fetched pages and index.json live. A relative path is resolved against the
+# directory holding this file. cache/pages is separate from the retired cache/html layout.
+cache_dir: ../cache/pages
+
+# Browser fallback (optional extra: pip install -e ".[browser]"; playwright install chromium).
+# A challenged plain fetch is retried in a real browser. After `consecutive_challenges`
+# challenged plain fetches in a row, or more than `challenge_ratio` of plain fetches
+# challenged, the rest of the run uses the browser. With enabled: false a challenge stops
+# the run.
+browser:
+  enabled: false
+  consecutive_challenges: 5
+  challenge_ratio: 0.2

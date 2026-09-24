@@ -1,15 +1,21 @@
 """DDOSyncer — orchestrates the full DDO item sync pipeline.
 
-Wires together WikiFetcher, WikiApiClient, UpdatePageParser, QueueRepository, the
-Scraped Item extractor (called in-process through ``extract()``) and a
-:class:`~ddo_sync.protocols.ScrapedItemWriterProtocol` adapter into one sync cycle.
+Wires together the Page Store (behind
+:class:`~ddo_sync.protocols.PageStoreProtocol`), WikiApiClient, UpdatePageParser,
+QueueRepository, the Scraped Item extractor (called in-process through ``extract()``)
+and a :class:`~ddo_sync.protocols.ScrapedItemWriterProtocol` adapter into one sync cycle.
+
+Every page read goes through the Page Store, so a page already held costs no request;
+``refresh=True`` refetches every page the run touches. When the Page Store says the run
+must stop (:class:`page_store.RunStoppedError`, e.g. a WAF challenge with the browser
+fallback disabled) the error propagates and the page is not recorded as failed.
 
 Example:
     >>> from ddo_sync import DDOSyncer, JsonItemWriter
-    >>> with WikiFetcher(config) as fetcher, \\
+    >>> with PageStore(load_scraper_config()) as store, \\
     ...      QueueRepository("queue.db") as queue_repo:
     ...     writer = JsonItemWriter(Path("cache/extracted"))
-    ...     syncer = DDOSyncer(fetcher, writer, queue_repo)
+    ...     syncer = DDOSyncer(store, writer, queue_repo)
     ...     syncer.register_update_page("Update_5_named_items")
     ...     syncer.sync_all()
     ...     print(syncer.get_status())
@@ -25,7 +31,7 @@ from loguru import logger
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.protocols import (
-    FetcherProtocol,
+    PageStoreProtocol,
     QueueRepositoryProtocol,
     ScrapedItemWriterProtocol,
     UpdatePageParserProtocol,
@@ -34,6 +40,7 @@ from ddo_sync.protocols import (
 from ddo_sync.update_page_parser import UpdatePageParser
 from ddo_sync.wiki_api import WikiApiClient
 from item_extractor import Config, extract, load_config
+from page_store import RunStoppedError
 
 _BASE_URL = "https://ddowiki.com"
 _PAGE_PREFIX = f"{_BASE_URL}/page/"
@@ -47,7 +54,7 @@ class DDOSyncer:
     ``parser`` default to the standard implementations when omitted.
 
     Args:
-        fetcher:     Object satisfying :class:`~ddo_sync.protocols.FetcherProtocol`.
+        page_store:  Object satisfying :class:`~ddo_sync.protocols.PageStoreProtocol`.
         writer:      Object satisfying
                      :class:`~ddo_sync.protocols.ScrapedItemWriterProtocol`.
         queue_repo:  Object satisfying :class:`~ddo_sync.protocols.QueueRepositoryProtocol`.
@@ -59,24 +66,28 @@ class DDOSyncer:
                      Defaults to :class:`~ddo_sync.update_page_parser.UpdatePageParser`.
         extractor_config: Extractor rules; defaults to ``load_config()``
                      (``catalog/extractor/``).
+        refresh:     Refetch every page this syncer reads instead of using the copy
+                     the Page Store holds (default: False).
 
     Example:
-        >>> syncer = DDOSyncer(fetcher, writer, queue_repo)
+        >>> syncer = DDOSyncer(page_store, writer, queue_repo)
         >>> syncer.register_update_page("Update_5_named_items")
         >>> syncer.sync_all()
     """
 
     def __init__(
         self,
-        fetcher: FetcherProtocol,
+        page_store: PageStoreProtocol,
         writer: ScrapedItemWriterProtocol,
         queue_repo: QueueRepositoryProtocol,
         max_retries: int = 3,
         api_client: Optional[WikiApiClientProtocol] = None,
         parser: Optional[UpdatePageParserProtocol] = None,
         extractor_config: Optional[Config] = None,
+        refresh: bool = False,
     ) -> None:
-        self._fetcher = fetcher
+        self._page_store = page_store
+        self._refresh = refresh
         self._writer = writer
         self._queue_repo = queue_repo
         self._extractor_config = extractor_config or load_config()
@@ -164,6 +175,7 @@ class DDOSyncer:
 
         Raises:
             UpdatePageError: If the page cannot be fetched or parsed.
+            page_store.RunStoppedError: The Page Store says stop the run.
 
         Example:
             >>> links = syncer.sync_update_page("Update_5_named_items")
@@ -176,7 +188,9 @@ class DDOSyncer:
         logger.info(f"Syncing update page: {normalized!r}")
 
         try:
-            html = self._fetcher.fetch_url(page_url)
+            html = self._page_store.get(page_url, refresh=self._refresh).html
+        except RunStoppedError:
+            raise
         except Exception as exc:
             raise UpdatePageError(
                 f"Failed to fetch update page {normalized!r}: {exc}",
@@ -196,14 +210,16 @@ class DDOSyncer:
         """Process pending items from the scrape queue.
 
         For each pending item:
-          1. Mark as ``in_progress``.
-          2. Fetch item page HTML via :meth:`WikiFetcher.fetch_url`.
+          1. Read the item page through the Page Store.
+          2. Mark as ``in_progress``.
           3. Extract a Scraped Item via ``item_extractor.extract``.
           4. Hand item and report to the writer.
           5. Mark as ``complete``.
 
         If any step raises, the item is marked as ``failed`` and the error
-        message is stored. Other items continue processing.
+        message is stored. Other items continue processing. A
+        :class:`page_store.RunStoppedError` is not a page failure: it propagates
+        and the item stays ``pending``.
 
         Args:
             limit: Maximum number of items to process. ``None`` means all
@@ -225,18 +241,22 @@ class DDOSyncer:
         failures = 0
 
         for queue_item in pending:
-            now = _utcnow()
-            self._queue_repo.mark_in_progress(queue_item.id, now)
             try:
-                html = self._fetcher.fetch_url(queue_item.wiki_url)
+                page = self._page_store.get(queue_item.wiki_url, refresh=self._refresh)
+            except RunStoppedError:
+                raise
+            except Exception as exc:
+                self._record_failure(queue_item.item_name, queue_item.id, exc)
+                failures += 1
+                continue
+            self._queue_repo.mark_in_progress(queue_item.id, _utcnow())
+            try:
                 item, report = extract(
-                    html, queue_item.wiki_url, self._extractor_config
+                    page.html, queue_item.wiki_url, self._extractor_config
                 )
                 self._writer.write(item, report)
             except Exception as exc:
-                error_msg = f"{type(exc).__name__}: {exc}"
-                self._queue_repo.mark_failed(queue_item.id, _utcnow(), error_msg)
-                logger.warning(f"Failed: {queue_item.item_name!r} — {error_msg}")
+                self._record_failure(queue_item.item_name, queue_item.id, exc)
                 failures += 1
                 continue
             try:
@@ -275,6 +295,11 @@ class DDOSyncer:
         return SyncStatus(queue_stats=stats, update_pages=pages)
 
     # ── Internal helpers ─────────────────────────────────────────────────────
+
+    def _record_failure(self, item_name: str, item_id: int, exc: Exception) -> None:
+        error_msg = f"{type(exc).__name__}: {exc}"
+        self._queue_repo.mark_failed(item_id, _utcnow(), error_msg)
+        logger.warning(f"Failed: {item_name!r} — {error_msg}")
 
     def _build_page_url(self, page_name: str) -> str:
         return f"{_PAGE_PREFIX}{page_name}"

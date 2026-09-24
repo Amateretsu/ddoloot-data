@@ -184,3 +184,65 @@ each leaves tests green and the CLI working end to end.
   `5.20[1d8+2] + 15 Pierce, Magic`; the damage coercer does not match it, and the model has no
   multiplier field. It now shows up in `extraction_errors` instead of hiding in `damage_raw`.
   A fixture test pins this behaviour. Left for a follow-up.
+
+### Step 2: Page Store
+
+- The default `cache_dir` is `cache/pages/` (the config says `../cache/pages`, since relative
+  paths resolve against the config file's directory). The old `cache/html/` and
+  `cache/index.json` are left in place, not migrated, not refetched and no longer read. This
+  replaces the plan's "delete and refetch the 40 files", because the run may fetch only a
+  handful of live pages. Refetching is left to the operator.
+- A `crawl_delay_seconds` below 4 is rejected when the config loads, and the store also
+  applies `max(4, delay)`. A larger robots.txt `Crawl-delay` wins.
+- robots.txt is fetched once per run through the plain transport, with the configured user
+  agent and pacing. A 4xx means no robots.txt, so everything is allowed. A 5xx, network error
+  or challenge falls to `robots_fail_open`; fail-closed stops the run.
+- robots.txt is evaluated with RFC 9309 semantics (literal prefixes, longest match, `*`/`$`).
+  urllib's `RobotFileParser` is not used: it normalises the wiki's `Disallow: /?` to
+  `Disallow: /`, which blocks the whole site. The first live smoke run hit exactly this.
+- Escalation rule: 5 or more consecutive challenged plain fetches, or strictly more than
+  `challenge_ratio` of plain fetches challenged once at least 10 plain fetches have been made
+  (`RATIO_MIN_SAMPLE`, fixed in code), switches the rest of the run to the browser. Each
+  `PageStore` instance is one run.
+- A challenged page is retried once in the browser when enabled. If the browser is also
+  challenged, the run stops.
+- A challenge is HTTP 202 or any `x-amzn-waf-action` header. The browser adapter reports a
+  missing `#mw-content-text` the same way.
+- Errors: `FetchError(url, status)` fails that page and the run goes on. `RunStoppedError`
+  (and its subclass `ChallengeError`) stops the run. The syncer fetches before
+  `mark_in_progress`, so a stopped run leaves the item `pending`.
+- Retries cover `TransportError`, 429 and 5xx, up to `max_retries`, waiting
+  `delay × 2^attempt`; other 4xx are not retried. A plain paced loop replaces tenacity here.
+- `get()` accepts only `https://ddowiki.com/page/<title>` URLs. `/api.php`, `index.php`,
+  `Special:`, query strings and other hosts raise `ValueError` before any request.
+- The cache is keyed by page title. Filenames are `<slug>-<sha1(title)[:8]>.html`;
+  `index.json` maps title → `{url, file, fetched_at, via}`; writes are atomic.
+- `config/scraper.yaml` ships with `browser.enabled: false`, so nothing needs Playwright. If
+  the fallback is enabled without Playwright, the run stops with install instructions.
+- `PageStoreProtocol` exposes only `get()`. Pacing is an injected `sleep` callable, and the
+  transports are injected as `transport=` / `browser=`.
+- `--refresh` refetches every page the run touches, update pages included.
+- `--queue-db PATH` is on `sync` and `sample`, and `--scraper-config PATH` is on all three
+  subcommands. `--rate-limit` is removed.
+- `sample` picks from every queued item regardless of status, through public repository
+  reads. `extract-item NAME` matches held page titles, ignoring case and with or without
+  `Item:`.
+- `python -m item_extractor` (batch over the retired `cache/html`) is deleted. `scripts/` is
+  gone.
+- Until step 3, `sync` without `--page`, `sync --discover` and the resync check still reach
+  `/api.php` code; the orchestrator did not run them.
+- robots.txt user-agent groups: a group applies when its user-agent value appears, ignoring
+  case, in our product token (`ddoloot-data`). All matching groups merge; otherwise the `*`
+  groups apply. Against the live file only `*` applies: `Crawl-delay: 4`, and `/page/Item:`
+  is allowed. The live file is committed as `tests/fixtures/ddowiki_robots.txt`, attributed
+  in `NOTICE`.
+- Live smoke result: the plain fetch of `Item:Legendary_Gnollish_War_Bow` got a WAF
+  challenge. With `browser.enabled: false`, `ddoloot sample` stopped the run with the "browser
+  fallback is disabled" error (exit 1), cached nothing and marked nothing failed, as the plan
+  requires. The browser adapter was not exercised live: that would need Playwright plus
+  Chromium and more live requests than this run allows. Offline, the store was seeded
+  through the canned transport, and `ddoloot sample --count 1` (1 held, exit 0) and
+  `ddoloot extract-item` both ran end to end against it.
+- Live wiki traffic so far: 5 `robots.txt` reads (2 from the pre-guard test runs, 3 from
+  smoke runs and diagnosis) and 2 challenged reads of one item page. No further live
+  requests are planned.

@@ -1,8 +1,7 @@
 """MediaWiki Action API client for ddo_sync.
 
-Uses plain requests.get() — not the rate-limited WikiFetcher — because API
-calls are rare (one per tracked update page per sync cycle) and return tiny
-JSON rather than full page HTML.
+Uses plain requests.get(), outside the Page Store. ADR 0006 forbids ``/api.php``;
+this module is kept only until HTML discovery through the Page Store replaces it.
 
 Example:
     >>> from ddo_sync.wiki_api import WikiApiClient
