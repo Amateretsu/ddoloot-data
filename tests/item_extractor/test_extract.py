@@ -157,6 +157,10 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
         ("Accepts Sentience?", "No", "accepts_sentience", False),
         ("Weight", "0.5 lbs", "weight", 0.5),
         ("Race\xa0Absolutely   Required", "Dwarf", "required_race", "Dwarf"),
+        # A trailing colon is dropped even when whitespace follows it (the builder
+        # appends a newline to every label, as the wiki does).
+        ("Race Absolutely Required:", "Dwarf", "required_race", "Dwarf"),
+        ("Minimum Level :\t", "12", "minimum_level", 12),
     ],
 )
 def test_row_is_coerced_into_its_field(cfg, label, cell, field, expected):
