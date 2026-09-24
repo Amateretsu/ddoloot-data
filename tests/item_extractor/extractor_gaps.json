@@ -1,203 +1,92 @@
 {
   "Item:+1 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+1 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+11 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+11 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+3 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+3 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+5 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+5 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+7 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+7 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+9 Eternal Wand of Disrupt Undead": {
-    "unclassified_effects": [
-      "Disrupt Undead — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:+9 Eternal Wand of Nimbus of Light": {
-    "unclassified_effects": [
-      "Nimbus of Light — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
-  "Item:Battered Phiarlan Shield (angular)": {
-    "unclassified_effects": [
-      "Absorb Enchantment Spells - 5 Charges (Recharged/Day: 5)"
-    ]
-  },
-  "Item:Battered Phiarlan Shield (round)": {
-    "unclassified_effects": [
-      "Absorb Enchantment Spells - 5 Charges (Recharged/Day: 5)"
-    ]
-  },
-  "Item:Brawn's Spirits": {
-    "unclassified_effects": [
-      "Rage — 3 Charges"
-    ]
-  },
   "Item:Brimstone Verge": {
-    "unclassified_effects": [
-      "Burning Hands — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:Cacophonic Verge": {
-    "unclassified_effects": [
-      "Sonic Blast — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:Dampened Cacophonic Verge": {
-    "unclassified_effects": [
-      "Sonic Blast — 50 Charges (Recharged/Day:50)"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
-  "Item:Darkstorm Helm": {
-    "unclassified_effects": [
-      "Call Lightning Storm — 1 Charges"
-    ]
-  },
-  "Item:Diabolist's Docent": {
-    "unclassified_effects": [
-      "Summon Monster III — 1 Charges"
-    ]
-  },
-  "Item:Diabolist's Robe": {
-    "unclassified_effects": [
-      "Summon Monster III — 1 Charges"
-    ]
-  },
   "Item:Epic Brimstone Verge": {
-    "unclassified_effects": [
-      "Delayed Blast Fireball (Instant) — 15 Charges"
-    ],
     "unmapped_rows": [
       "no umd check for"
     ]
   },
   "Item:Epic Cacophonic Verge": {
-    "unclassified_effects": [
-      "Greater Shout — 15 Charges (Recharged/Day:15)"
-    ],
     "unmapped_rows": [
       "no umd check for"
-    ]
-  },
-  "Item:Epic Darkstorm Helm": {
-    "unclassified_effects": [
-      "Call Lightning Storm — 3 Charges"
-    ]
-  },
-  "Item:Epic Diabolist's Docent": {
-    "unclassified_effects": [
-      "Summon Monster IX — 3 Charges"
-    ]
-  },
-  "Item:Epic Diabolist's Robe": {
-    "unclassified_effects": [
-      "Summon Monster IX — 3 Charges"
-    ]
-  },
-  "Item:Epic Goggles of Time-Sensing": {
-    "unclassified_effects": [
-      "Haste — 3 Charges"
     ]
   },
   "Item:Epic Golden Guile": {
     "unclassified_effects": [
       "Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)"
-    ]
-  },
-  "Item:Epic Hellfire Crossbow": {
-    "unclassified_effects": [
-      "Scorching Ray — 3 Charges"
-    ]
-  },
-  "Item:Epic Helm of Frost": {
-    "unclassified_effects": [
-      "Polar Ray — 5 Charges"
     ]
   },
   "Item:Epic Infested Armor": {
@@ -206,21 +95,8 @@
     ]
   },
   "Item:Epic Roderic's Wand": {
-    "unclassified_effects": [
-      "Summon Unknown Monster II — 6 Charges (Recharged/Day:6)"
-    ],
     "unmapped_rows": [
       "no umd check for"
-    ]
-  },
-  "Item:Epic Sacred Helm": {
-    "unclassified_effects": [
-      "Negative Energy Absorption - 10 Charges (Recharged/Day: 5)"
-    ]
-  },
-  "Item:Epic Scorched Bracers": {
-    "unclassified_effects": [
-      "Fire Storm — 5 Charges"
     ]
   },
   "Item:Epic Templar's Bastion": {
@@ -233,34 +109,9 @@
       "DR 15/Evil"
     ]
   },
-  "Item:Epic Twisted Talisman": {
-    "unclassified_effects": [
-      "Blood Sacrifice — 5 Charges (Recharged/Day:1)"
-    ]
-  },
   "Item:Glorious Obscenity": {
     "extraction_errors": [
       "binding"
-    ]
-  },
-  "Item:Goggles of Time-Sensing": {
-    "unclassified_effects": [
-      "Haste — 3 Charges"
-    ]
-  },
-  "Item:Hellfire Crossbow": {
-    "unclassified_effects": [
-      "Scorching Ray — 3 Charges"
-    ]
-  },
-  "Item:Helm of Frost": {
-    "unclassified_effects": [
-      "Frost Lance — 3 Charges"
-    ]
-  },
-  "Item:Illusionist's Garb": {
-    "unclassified_effects": [
-      "Hypnotic Pattern — 5 Charges"
     ]
   },
   "Item:Infested Armor": {
@@ -278,16 +129,6 @@
       "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
-  "Item:Legendary Scepter of the Ogre Magi": {
-    "unclassified_effects": [
-      "Cone of Cold — 3 Charges (Recharged/Day:3)"
-    ]
-  },
-  "Item:Legendary Wind Howler Bracers": {
-    "unclassified_effects": [
-      "Cyclonic Blast — 3 Charges"
-    ]
-  },
   "Item:Mark of Rhesh Turakbar": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
@@ -296,16 +137,6 @@
   "Item:Mark of Sheshka": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
-    ]
-  },
-  "Item:Mask of Comedy": {
-    "unclassified_effects": [
-      "Good Hope — 1 Charges"
-    ]
-  },
-  "Item:Mask of Tragedy": {
-    "unclassified_effects": [
-      "Crushing Despair — 3 Charges"
     ]
   },
   "Item:Phiarlan Veil Shield (angular)": {
@@ -319,36 +150,8 @@
     ]
   },
   "Item:Roderic's Wand": {
-    "unclassified_effects": [
-      "Summon Unknown Monster — 12 Charges (Recharged/Day:12)"
-    ],
     "unmapped_rows": [
       "no umd check for"
-    ]
-  },
-  "Item:Sacred Helm": {
-    "unclassified_effects": [
-      "Negative Energy Absorption - 5 Charges (Recharged/Day: 5)"
-    ]
-  },
-  "Item:Scepter of the Fleshweaver": {
-    "unclassified_effects": [
-      "Stone to Flesh — 3 Charges"
-    ]
-  },
-  "Item:Scepter of the Ogre Magi": {
-    "unclassified_effects": [
-      "Cone of Cold — 3 Charges"
-    ]
-  },
-  "Item:Scorched Bracers": {
-    "unclassified_effects": [
-      "Fireball — 3 Charges"
-    ]
-  },
-  "Item:Shard of Xoriat": {
-    "unclassified_effects": [
-      "Summon Xoriat Horror — 3 Charges"
     ]
   },
   "Item:Stormreach Marketplace Shield (angular)": {
@@ -376,37 +179,14 @@
       "DR 5/Evil"
     ]
   },
-  "Item:The Big Top": {
-    "unclassified_effects": [
-      "Otto's Resistible Dance — 1 Charges"
-    ]
-  },
   "Item:Token of the Twelve": {
     "skipped": [
       "not an equippable named item: wiki category 'Ingredients'"
     ]
   },
-  "Item:Twisted Talisman": {
-    "unclassified_effects": [
-      "Blood Sacrifice — 3 Charges (Recharged/Day:1)"
-    ]
-  },
   "Item:Wand of Blasting": {
-    "unclassified_effects": [
-      "Elemental Surge — 10 Charges (Recharged/Day:10)"
-    ],
     "unmapped_rows": [
       "no umd check for"
-    ]
-  },
-  "Item:Wind Howler Bracers": {
-    "unclassified_effects": [
-      "Cyclonic Blast — 3 Charges"
-    ]
-  },
-  "Item:Wolfinson's Monocular Enhancer": {
-    "unclassified_effects": [
-      "Reconstruct — 1 Charges"
     ]
   }
 }

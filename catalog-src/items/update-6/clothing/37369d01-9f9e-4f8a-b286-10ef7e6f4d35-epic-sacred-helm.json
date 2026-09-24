@@ -34,46 +34,58 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Negative Energy Absorption - 10 Charges (Recharged/Day: 5)",
+      "name": "Negative Energy Absorption",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects."
+      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects.",
+      "charges": 10,
+      "recharge_per_day": 5
     },
     {
       "name": "Lifesealed",
       "value": 27,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Lifesealed +27 : You are immune to magical effects that cause instant death. In addition, you have a +27% enhancement bonus to Negative Energy Absorption ."
+      "tooltip": "Lifesealed +27 : You are immune to magical effects that cause instant death. In addition, you have a +27% enhancement bonus to Negative Energy Absorption .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Hallowed",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Hallowed : An item with this quality assists only wearers who have the ability to turn undead . Hallowed items provide an +9 Enhancement bonus to the maximum Hit Dice of undead turned."
+      "tooltip": "Hallowed : An item with this quality assists only wearers who have the ability to turn undead . Hallowed items provide an +9 Enhancement bonus to the maximum Hit Dice of undead turned.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sacred",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Sacred +9 : An item with this quality assists only wearers who have the ability to turn undead . Sacred items provide an +9 Enhancement bonus to your effective level for Turning Undead ."
+      "tooltip": "Sacred +9 : An item with this quality assists only wearers who have the ability to turn undead . Sacred items provide an +9 Enhancement bonus to your effective level for Turning Undead .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Radiance Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded."
+      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Divine Blessing",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower"
+      "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

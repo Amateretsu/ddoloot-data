@@ -38,35 +38,45 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "insight",
-      "tooltip": "Insightful Constitution +4 : This item gives the wearer improved health, granting a +4 Insight bonus to Constitution."
+      "tooltip": "Insightful Constitution +4 : This item gives the wearer improved health, granting a +4 Insight bonus to Constitution.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fortification",
       "value": 111,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+      "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Parrying",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "insight",
-      "tooltip": "Parrying +4 : +4 Insight bonus to Armor Class , +4 Insight bonus to Saves."
+      "tooltip": "Parrying +4 : +4 Insight bonus to Armor Class , +4 Insight bonus to Saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "False Life",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "False Life +36 : +36 Enhancement bonus to hit points."
+      "tooltip": "False Life +36 : +36 Enhancement bonus to hit points.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Vulkoor's Might",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage"
+      "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

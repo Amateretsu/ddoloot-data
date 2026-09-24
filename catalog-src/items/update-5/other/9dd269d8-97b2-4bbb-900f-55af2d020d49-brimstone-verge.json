@@ -32,25 +32,31 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Burning Hands — 50 Charges (Recharged/Day:50)",
+      "name": "Burning Hands",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Burning Hands Caster level: 3 Charges: 50 (50/day)"
+      "tooltip": "Burning Hands Caster level: 3 Charges: 50 (50/day)",
+      "charges": 50,
+      "recharge_per_day": 50
     },
     {
       "name": "Combustion",
       "value": 55,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power ."
+      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fire Lore",
       "value": 8,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Fire Lore +8 : Passive: Your Fire spells gain a 8% Equipment bonus to their chance to critical hit."
+      "tooltip": "Fire Lore +8 : Passive: Your Fire spells gain a 8% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

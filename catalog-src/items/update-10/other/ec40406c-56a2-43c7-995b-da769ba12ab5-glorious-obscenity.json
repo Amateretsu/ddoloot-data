@@ -36,56 +36,72 @@
       "value": 5,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": null
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Shot",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": null
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhanced Spot",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Enhanced Spot +5 : Passive: +5 Enhancement bonus to the Spot skill."
+      "tooltip": "Enhanced Spot +5 : Passive: +5 Enhancement bonus to the Spot skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Seeker",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Seeker +6 : Provides a +6 Enhancement bonus to confirm critical hits, and a +6 Enhancement bonus to critical hit damage (before multipliers are applied)."
+      "tooltip": "Seeker +6 : Provides a +6 Enhancement bonus to confirm critical hits, and a +6 Enhancement bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Mind Turbulence",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty."
+      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Taint of Chaos",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Taint of Chaos : Lawful aligned characters equipping this item suffer a temporary negative level until the item is removed."
+      "tooltip": "Taint of Chaos : Lawful aligned characters equipping this item suffer a temporary negative level until the item is removed.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Rune Arm Imbue : Acid",
       "value": 4,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Rune Arm Imbue : Acid IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of acid damage per hit."
+      "tooltip": "Rune Arm Imbue : Acid IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of acid damage per hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Craftable Rune Arm",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

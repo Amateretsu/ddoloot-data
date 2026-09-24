@@ -32,46 +32,58 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Greater Shout — 15 Charges (Recharged/Day:15)",
+      "name": "Greater Shout",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Greater Shout Caster level: 20 Charges: 15 (15/day)"
+      "tooltip": "Greater Shout Caster level: 20 Charges: 15 (15/day)",
+      "charges": 15,
+      "recharge_per_day": 15
     },
     {
       "name": "Sonic Lore",
       "value": 16,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit."
+      "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Resonance",
       "value": 111,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power ."
+      "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Evocation Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Absorption",
       "value": 27,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Sonic Absorption +27% : Passive: 27% Enhancement Bonus to Sonic Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+      "tooltip": "Sonic Absorption +27% : Passive: 27% Enhancement Bonus to Sonic Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Wand Maximizing",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Wand Maximizing : Spells cast from this wand are treated as though they were Maximized, dealing 100% more damage than they normally would. This damage increase does not stack with bonuses granted by enhancements."
+      "tooltip": "Wand Maximizing : Spells cast from this wand are treated as though they were Maximized, dealing 100% more damage than they normally would. This damage increase does not stack with bonuses granted by enhancements.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

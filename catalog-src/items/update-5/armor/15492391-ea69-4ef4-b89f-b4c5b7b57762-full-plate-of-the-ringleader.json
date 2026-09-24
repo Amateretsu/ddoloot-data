@@ -45,28 +45,36 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Command",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Command : Passive: +2 competence bonus on Charisma based skill checks . Command armor and command shields make their owners very noticeable, imposing a -6 penalty on Hide checks."
+      "tooltip": "Command : Passive: +2 competence bonus on Charisma based skill checks . Command armor and command shields make their owners very noticeable, imposing a -6 penalty on Hide checks.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Physical Sheltering",
       "value": 8,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Physical Sheltering +8 : +8 Enhancement bonus to Physical Resistance Rating"
+      "tooltip": "Physical Sheltering +8 : +8 Enhancement bonus to Physical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

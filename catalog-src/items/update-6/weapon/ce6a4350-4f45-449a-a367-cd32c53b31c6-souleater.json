@@ -54,28 +54,36 @@
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Mortal Strike",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Mortal Strike : On an attack roll of 20 which is confirmed as a critical hit this weapon triggers the Slay Living spell and attempts to instantly snuff out the life force of the enemy (DC 17)."
+      "tooltip": "Mortal Strike : On an attack roll of 20 which is confirmed as a critical hit this weapon triggers the Slay Living spell and attempts to instantly snuff out the life force of the enemy (DC 17).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Feeding",
       "value": 10,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Feeding 10 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +10 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)"
+      "tooltip": "Feeding 10 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +10 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Vampirism",
       "value": 1,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Vampirism 1 : This weapon thirsts for the blood of your enemies, healing you for +1d2 hit points with each hit. Note: internal cooldown of 1 second."
+      "tooltip": "Vampirism 1 : This weapon thirsts for the blood of your enemies, healing you for +1d2 hit points with each hit. Note: internal cooldown of 1 second.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

@@ -38,35 +38,45 @@
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Constitution +9 : This item gives the wearer improved health, granting a +9 Enhancement bonus to Constitution."
+      "tooltip": "Constitution +9 : This item gives the wearer improved health, granting a +9 Enhancement bonus to Constitution.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Sonic Resistance +36 : Passive: +36 Enhancement bonus to your Sonic Resistance."
+      "tooltip": "Sonic Resistance +36 : Passive: +36 Enhancement bonus to your Sonic Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Lore",
       "value": 16,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit."
+      "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Resonance",
       "value": 111,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power ."
+      "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Siren's Ward",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Siren's Ward : 2 Pieces Equipped: +10% Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws +3 Artifact bonus to Shield Armor Class"
+      "tooltip": "Epic Siren's Ward : 2 Pieces Equipped: +10% Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws +3 Artifact bonus to Shield Armor Class",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

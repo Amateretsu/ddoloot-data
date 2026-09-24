@@ -45,35 +45,45 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Resistance",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Sonic Resistance +3 : Passive: +3 Enhancement bonus to your Sonic Resistance."
+      "tooltip": "Sonic Resistance +3 : Passive: +3 Enhancement bonus to your Sonic Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Sonic Guard : This item blasts those that attack the wearer, causing 1d6 sonic damage on a successful melee attack."
+      "tooltip": "Sonic Guard : This item blasts those that attack the wearer, causing 1d6 sonic damage on a successful melee attack.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Resonance",
       "value": 48,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Resonance +48 : Passive: +48 Equipment bonus to Sonic Spell Power ."
+      "tooltip": "Resonance +48 : Passive: +48 Equipment bonus to Sonic Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Impulse",
       "value": 48,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Impulse +48 : Passive: +48 Equipment bonus to Force, Untyped, Slashing, Piercing, and Bludgeoning Spell Power ."
+      "tooltip": "Impulse +48 : Passive: +48 Equipment bonus to Force, Untyped, Slashing, Piercing, and Bludgeoning Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

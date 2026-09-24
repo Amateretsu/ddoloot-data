@@ -38,28 +38,36 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Poison Guard : This item carries a potent venom that may be contracted by enemies that hit you, dealing 1d6 Strength damage. A successful Fortitude Save (DC 20) will negate this effect."
+      "tooltip": "Poison Guard : This item carries a potent venom that may be contracted by enemies that hit you, dealing 1d6 Strength damage. A successful Fortitude Save (DC 20) will negate this effect.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Constitution",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Constitution +4 : This item gives the wearer improved health, granting a +4 Enhancement bonus to Constitution."
+      "tooltip": "Constitution +4 : This item gives the wearer improved health, granting a +4 Enhancement bonus to Constitution.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Proof Against Poison",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Proof Against Poison +3 : This item grants its wearer immunity to natural poisons. This item also grants a +3 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 4 + their Fortitude save)."
+      "tooltip": "Proof Against Poison +3 : This item grants its wearer immunity to natural poisons. This item also grants a +3 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 4 + their Fortitude save).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -38,35 +38,45 @@
       "value": 10,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Spearblock X : Passive: Reduces physical damage taken by 20, except from Bludgeoning or Slashing weapons. (Damage Reduction: 20/Slash, Bludgeon)"
+      "tooltip": "Spearblock X : Passive: Reduces physical damage taken by 20, except from Bludgeoning or Slashing weapons. (Damage Reduction: 20/Slash, Bludgeon)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Resistance",
       "value": 8,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+      "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Feather Falling",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather."
+      "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Earthen Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Earthen Guard : When you are successfully attacked, there is a 15% chance that a Stone Skin will be cast on you."
+      "tooltip": "Improved Earthen Guard : When you are successfully attacked, there is a 15% chance that a Stone Skin will be cast on you.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Marshwalker",
       "value": null,
       "value_kind": null,
       "bonus_type": "enhancement",
-      "tooltip": "Epic Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to all Saving Throws +5 Artifact bonus to Jump and Tumble"
+      "tooltip": "Epic Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to all Saving Throws +5 Artifact bonus to Jump and Tumble",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

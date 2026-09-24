@@ -58,35 +58,45 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to Armor Class ."
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "DR 5/Evil",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Damage Reduction 5/Evil : Reduces physical damage by 5, except from Evil attacks."
+      "tooltip": "Damage Reduction 5/Evil : Reduces physical damage by 5, except from Evil attacks.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Resistance",
       "value": 23,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Spell Resistance +23: +23 Enhancement bonus to Spell Resistance ."
+      "tooltip": "Spell Resistance +23: +23 Enhancement bonus to Spell Resistance .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Magical Sheltering",
       "value": 20,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Magical Sheltering +20 : +20 Enhancement bonus to Magical Resistance Rating"
+      "tooltip": "Magical Sheltering +20 : +20 Enhancement bonus to Magical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Light Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Light Guard : This armor blasts those that attack the wearer, causing 1d6 light damage on a successful melee attack."
+      "tooltip": "Light Guard : This armor blasts those that attack the wearer, causing 1d6 light damage on a successful melee attack.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

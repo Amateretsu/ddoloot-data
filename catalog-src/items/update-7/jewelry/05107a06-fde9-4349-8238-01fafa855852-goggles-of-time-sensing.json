@@ -34,32 +34,40 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Haste — 3 Charges",
+      "name": "Haste",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)"
+      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null
     },
     {
       "name": "Wisdom",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Enhancement bonus to Wisdom."
+      "tooltip": "Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Enhancement bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spot",
       "value": 7,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Spot +7 : Passive: +7 Competence bonus to the Spot skill."
+      "tooltip": "Spot +7 : Passive: +7 Competence bonus to the Spot skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Search",
       "value": 7,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Search +7 : Passive: +7 Competence bonus to the Search skill."
+      "tooltip": "Search +7 : Passive: +7 Competence bonus to the Search skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

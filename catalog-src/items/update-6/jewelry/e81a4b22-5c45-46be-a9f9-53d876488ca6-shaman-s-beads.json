@@ -38,21 +38,27 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Shaman's Fury : 2 Pieces Equipped: +2% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +10 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+      "tooltip": "Shaman's Fury : 2 Pieces Equipped: +2% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +10 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Charisma",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Charisma +5 : This item makes the wearer have more flair, granting a +5 Enhancement bonus to Charisma."
+      "tooltip": "Charisma +5 : This item makes the wearer have more flair, granting a +5 Enhancement bonus to Charisma.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Evocation Focus",
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Evocation Focus +2 : +2 Equipment bonus to the DC of Evocation spells."
+      "tooltip": "Evocation Focus +2 : +2 Equipment bonus to the DC of Evocation spells.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

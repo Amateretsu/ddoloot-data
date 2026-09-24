@@ -34,46 +34,58 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Blood Sacrifice — 5 Charges (Recharged/Day:1)",
+      "name": "Blood Sacrifice",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blood Sacrifice Caster level: 1 Charges: 5 (1/day)"
+      "tooltip": "Blood Sacrifice Caster level: 1 Charges: 5 (1/day)",
+      "charges": 5,
+      "recharge_per_day": 1
     },
     {
       "name": "Blood Sacrifice",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Blood Sacrifice : Exchanges 25 hit points for 50 spell points. (This enchantment has no effect.)"
+      "tooltip": "Blood Sacrifice : Exchanges 25 hit points for 50 spell points. (This enchantment has no effect.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Void Lore",
       "value": 16,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Void Lore +16 : Passive: Your Negative Energy and Poison spells gain a +16% Equipment bonus to their chance to critical hit."
+      "tooltip": "Void Lore +16 : Passive: Your Negative Energy and Poison spells gain a +16% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nullification",
       "value": 111,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Necromancy Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Necromancy Focus +6 : +6 Equipment bonus to the DC of Necromancy spells."
+      "tooltip": "Necromancy Focus +6 : +6 Equipment bonus to the DC of Necromancy spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Profane Lifeforce",
       "value": 32,
       "value_kind": "flat",
       "bonus_type": "profane",
-      "tooltip": "Profane Lifeforce +32 : +32 Profane bonus to Hit Points."
+      "tooltip": "Profane Lifeforce +32 : +32 Profane bonus to Hit Points.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

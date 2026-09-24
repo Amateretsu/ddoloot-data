@@ -38,28 +38,36 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Resistance +5 : Passive: +5 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+      "tooltip": "Resistance +5 : Passive: +5 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Perform",
       "value": 14,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Perform +14 : Passive: +14 Competence bonus to the Perform skill."
+      "tooltip": "Perform +14 : Passive: +14 Competence bonus to the Perform skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Sonic Guard : This item blasts those that attack the wearer, causing 1d6 sonic damage on a successful melee attack."
+      "tooltip": "Sonic Guard : This item blasts those that attack the wearer, causing 1d6 sonic damage on a successful melee attack.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Anthem",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Anthem : When equipped by a character with Bard levels, this item begins to hum an inspiring tune. Your bard songs regenerate slowly over time."
+      "tooltip": "Anthem : When equipped by a character with Bard levels, this item begins to hum an inspiring tune. Your bard songs regenerate slowly over time.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

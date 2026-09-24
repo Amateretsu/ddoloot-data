@@ -373,6 +373,61 @@ def test_fallback_entry_with_digits_is_kept_and_flagged(cfg):
     assert report["unclassified_effects"] == ["Weird 3x thing"]
 
 
+@pytest.mark.parametrize(
+    ("entry", "name", "charges", "recharge"),
+    [
+        ('<a href="/page/Rage_(spell)">Rage</a> — 3 Charges', "Rage", 3, None),
+        (
+            (
+                '<a href="/page/Disrupt_Undead">Disrupt Undead</a> — 50 Charges '
+                "(Recharged/Day:50)"
+            ),
+            "Disrupt Undead",
+            50,
+            50,
+        ),
+        (
+            (
+                '<a href="/page/Negative_Energy_Absorption">Negative Energy Absorption'
+                "</a> - 10 Charges (Recharged/Day:&nbsp; 5)"
+                '<span class="tooltip">Absorbs negative energy.</span>'
+            ),
+            "Negative Energy Absorption",
+            10,
+            5,
+        ),
+        (
+            "Delayed Blast Fireball (Instant) — 15 Charges",
+            "Delayed Blast Fireball (Instant)",
+            15,
+            None,
+        ),
+    ],
+)
+def test_clicky_is_its_spell_with_charges_and_recharge(
+    cfg, entry, name, charges, recharge
+):
+    item, report = extract_effects(cfg, entry)
+    [effect] = item.effects
+    assert (effect.name, effect.charges, effect.recharge_per_day) == (
+        name,
+        charges,
+        recharge,
+    )
+    assert (effect.value, effect.value_kind, effect.bonus_type) == (None, None, None)
+    assert report["unclassified_effects"] == []
+    assert report["rule_hits"] == {"clicky": 1}
+
+
+@pytest.mark.parametrize(
+    "text", ["Anti-Magic - 3 Charged Bolts", "Charges - 3", "Spell Charges 3"]
+)
+def test_entry_that_only_mentions_charges_is_not_a_clicky(cfg, text):
+    item, report = extract_effects(cfg, text)
+    assert [(e.charges, e.recharge_per_day) for e in item.effects] == [(None, None)]
+    assert "clicky" not in report["rule_hits"]
+
+
 def test_entry_no_rule_matches_is_unclassified_and_does_not_raise(tmp_path):
     config_dir = tmp_path / "extractor"
     shutil.copytree(DEFAULT_CONFIG_DIR, config_dir)

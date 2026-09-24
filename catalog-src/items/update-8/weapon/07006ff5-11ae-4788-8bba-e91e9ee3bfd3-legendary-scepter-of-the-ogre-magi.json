@@ -50,53 +50,67 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Cone of Cold — 3 Charges (Recharged/Day:3)",
+      "name": "Cone of Cold",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Cone of Cold Caster level: 9 Charges: 3 (3/day)"
+      "tooltip": "Cone of Cold Caster level: 9 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": 3
     },
     {
       "name": "Spellcasting Implement",
       "value": 31,
       "value_kind": "flat",
       "bonus_type": "implement",
-      "tooltip": "Spellcasting Implement +31 : Passive: +31 Implement bonus to Universal Spell Power ."
+      "tooltip": "Spellcasting Implement +31 : Passive: +31 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhancement Bonus",
       "value": 15,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Potency",
       "value": 103,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Potency +103 : Passive: +103 Equipment bonus to each Spell Power ."
+      "tooltip": "Potency +103 : Passive: +103 Equipment bonus to each Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Concentration",
       "value": 21,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Concentration +21 : Passive: +21 Competence bonus to the Concentration skill."
+      "tooltip": "Concentration +21 : Passive: +21 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Healing Lore",
       "value": 22,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Healing Lore +22 : Passive: Your Positive Energy spells gain a 22% Equipment bonus to their chance to critical hit."
+      "tooltip": "Healing Lore +22 : Passive: Your Positive Energy spells gain a 22% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fragmented",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory."
+      "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

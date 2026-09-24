@@ -56,42 +56,54 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Anarchic Burst",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Anarchic Burst : An anarchic weapon is chaotically aligned and infused with the power of chaos. It makes the weapon chaos-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of lawful alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier."
+      "tooltip": "Anarchic Burst : An anarchic weapon is chaotically aligned and infused with the power of chaos. It makes the weapon chaos-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of lawful alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Axiomatic Burst",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Axiomatic Burst : An axiomatic weapon is lawfully aligned and infused with the power of law. It makes the weapon law-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of chaotic alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier."
+      "tooltip": "Axiomatic Burst : An axiomatic weapon is lawfully aligned and infused with the power of law. It makes the weapon law-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of chaotic alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Lawful Outsider Bane",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Lawful Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Lawful Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+      "tooltip": "Lawful Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Lawful Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Chaotic Outsider Bane",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Chaotic Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Chaotic Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+      "tooltip": "Chaotic Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Chaotic Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Mind Turbulence",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty."
+      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

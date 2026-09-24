@@ -38,21 +38,27 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Seeker +4 : Provides a +4 Enhancement bonus to confirm critical hits, and a +4 Enhancement bonus to critical hit damage (before multipliers are applied)."
+      "tooltip": "Seeker +4 : Provides a +4 Enhancement bonus to confirm critical hits, and a +4 Enhancement bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sneak Attack Bonus",
       "value": 3,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Sneak Attack Bonus +3 : Provides a +3 Enhancement modifier to your attack bonus and a +5 Enhancement bonus to damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue."
+      "tooltip": "Sneak Attack Bonus +3 : Provides a +3 Enhancement modifier to your attack bonus and a +5 Enhancement bonus to damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Overfocus",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Overfocus : This item helps you focus your attention, but it makes you somewhat oblivious to your surroundings, causing a -10 penalty to Search and Spot ."
+      "tooltip": "Overfocus : This item helps you focus your attention, but it makes you somewhat oblivious to your surroundings, causing a -10 penalty to Search and Spot .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

@@ -34,25 +34,31 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Otto's Resistible Dance — 1 Charges",
+      "name": "Otto's Resistible Dance",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Otto's Resistible Dance Caster level: 3 Charges: 1 (1/day)"
+      "tooltip": "Otto's Resistible Dance Caster level: 3 Charges: 1 (1/day)",
+      "charges": 1,
+      "recharge_per_day": null
     },
     {
       "name": "Use Magic Device",
       "value": 1,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Use Magic Device +1 : Passive: +1 Competence bonus to the Use Magic Device skill."
+      "tooltip": "Use Magic Device +1 : Passive: +1 Competence bonus to the Use Magic Device skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Perform",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Perform +6 : Passive: +6 Competence bonus to the Perform skill."
+      "tooltip": "Perform +6 : Passive: +6 Competence bonus to the Perform skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

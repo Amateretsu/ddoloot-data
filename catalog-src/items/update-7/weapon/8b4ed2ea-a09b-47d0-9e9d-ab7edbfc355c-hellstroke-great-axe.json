@@ -55,35 +55,45 @@
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Doublestrike",
       "value": 4,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Keen",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification ."
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Iron",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics."
+      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Maiming",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +2d8 damage."
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +2d8 damage.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

@@ -32,11 +32,13 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Disrupt Undead — 50 Charges (Recharged/Day:50)",
+      "name": "Disrupt Undead",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Disrupt Undead Caster level: 9 Charges: 50 (50/day)"
+      "tooltip": "Disrupt Undead Caster level: 9 Charges: 50 (50/day)",
+      "charges": 50,
+      "recharge_per_day": 50
     }
   ],
   "customisation_hints": [],

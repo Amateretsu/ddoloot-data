@@ -45,35 +45,45 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to Armor Class ."
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Physical Sheltering",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Physical Sheltering +10 : +10 Enhancement bonus to Physical Resistance Rating"
+      "tooltip": "Physical Sheltering +10 : +10 Enhancement bonus to Physical Resistance Rating",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Absorption",
       "value": 17,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Cold Absorption +17% : Passive: 17% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+      "tooltip": "Cold Absorption +17% : Passive: 17% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Cold Resistance",
       "value": 15,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Cold Resistance +15 : Passive: +15 Enhancement bonus to your Cold Resistance."
+      "tooltip": "Cold Resistance +15 : Passive: +15 Enhancement bonus to your Cold Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Ice Guard",
       "value": 2,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Ice Guard II: When Hit in Melee: Deals 2 to 8 Cold damage to your attacker."
+      "tooltip": "Ice Guard II: When Hit in Melee: Deals 2 to 8 Cold damage to your attacker.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

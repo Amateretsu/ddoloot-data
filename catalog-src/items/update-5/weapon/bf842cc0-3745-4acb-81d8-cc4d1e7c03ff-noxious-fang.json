@@ -54,35 +54,45 @@
       "value": 2,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Poisonous",
       "value": 2,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Poisonous 2 : This effect causes the edges of this weapon to drip with a vile venom, dealing 2d6 poison damage on each hit."
+      "tooltip": "Poisonous 2 : This effect causes the edges of this weapon to drip with a vile venom, dealing 2d6 poison damage on each hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Critical Befouling",
       "value": 1,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Critical Befouling 1 : This deadly weapon saps the charm from your enemies, dealing 1 Charisma damage on each critical hit."
+      "tooltip": "Critical Befouling 1 : This deadly weapon saps the charm from your enemies, dealing 1 Charisma damage on each critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fortitude Save",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Fortitude Save +4 : This item gives a +4 Resistance bonus to your Fortitude saves."
+      "tooltip": "Fortitude Save +4 : This item gives a +4 Resistance bonus to your Fortitude saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Returning",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Returning : This missile will return to you."
+      "tooltip": "Returning : This missile will return to you.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

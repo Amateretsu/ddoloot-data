@@ -38,28 +38,36 @@
       "value": 1,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Efficient Metamagic - Extend I : The additional spell point cost for using the Extend Metamagic feat is reduced by 1 SP ."
+      "tooltip": "Efficient Metamagic - Extend I : The additional spell point cost for using the Extend Metamagic feat is reduced by 1 SP .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spellcraft",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Spellcraft +10 : Passive: +10 Competence bonus to the Spellcraft skill."
+      "tooltip": "Spellcraft +10 : Passive: +10 Competence bonus to the Spellcraft skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Wizardry",
       "value": 60,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Wizardry +60 : +60 Enhancement bonus to spell points ."
+      "tooltip": "Wizardry +60 : +60 Enhancement bonus to spell points .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Elder's Knowledge",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Elder's Knowledge : +2% Artifact bonus to spell critical chance. 5% Legendary bonus to spell crit damage."
+      "tooltip": "Elder's Knowledge : +2% Artifact bonus to spell critical chance. 5% Legendary bonus to spell crit damage.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

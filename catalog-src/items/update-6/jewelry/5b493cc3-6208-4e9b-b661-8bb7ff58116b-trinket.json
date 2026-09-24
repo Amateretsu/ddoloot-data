@@ -38,7 +38,9 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Craftable : This item can be enhanced via Essence Crafting ."
+      "tooltip": "Craftable : This item can be enhanced via Essence Crafting .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

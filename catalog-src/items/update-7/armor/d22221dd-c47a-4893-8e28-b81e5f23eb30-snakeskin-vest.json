@@ -45,35 +45,45 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Search",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Search +10 : Passive: +10 Competence bonus to the Search skill."
+      "tooltip": "Search +10 : Passive: +10 Competence bonus to the Search skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spot",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Spot +10 : Passive: +10 Competence bonus to the Spot skill."
+      "tooltip": "Spot +10 : Passive: +10 Competence bonus to the Spot skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Proof Against Poison",
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Proof Against Poison +4 : This item grants its wearer immunity to natural poisons. This item also grants a +4 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 5 + their Fortitude save)."
+      "tooltip": "Proof Against Poison +4 : This item grants its wearer immunity to natural poisons. This item also grants a +4 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 5 + their Fortitude save).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Greater Nimbleness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Greater Nimbleness : This suit of armor looks much less restrictive than others of its type. A suit of armor that has this property has a maximum Dexterity bonus 2 higher than normal, and its armor check penalty is reduced by 4."
+      "tooltip": "Greater Nimbleness : This suit of armor looks much less restrictive than others of its type. A suit of armor that has this property has a maximum Dexterity bonus 2 higher than normal, and its armor check penalty is reduced by 4.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

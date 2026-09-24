@@ -38,21 +38,27 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "enhancement",
-      "tooltip": "Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to Jump and Tumble"
+      "tooltip": "Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to Jump and Tumble",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Underwater Action",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Underwater Action : This item grants the wearer the ability to breathe water as if it were air."
+      "tooltip": "Underwater Action : This item grants the wearer the ability to breathe water as if it were air.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Balance",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Balance +10 : Passive: +10 Competence bonus to the Balance skill."
+      "tooltip": "Balance +10 : Passive: +10 Competence bonus to the Balance skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

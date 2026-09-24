@@ -38,35 +38,45 @@
       "value": 4,
       "value_kind": "flat",
       "bonus_type": "insight",
-      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom."
+      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Will Save",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Will Save +9 : This item gives a +9 Resistance bonus to your Will saves."
+      "tooltip": "Will Save +9 : This item gives a +9 Resistance bonus to your Will saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Accuracy",
       "value": 15,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls"
+      "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "True Seeing",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing ."
+      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Raven's Eye",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot"
+      "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

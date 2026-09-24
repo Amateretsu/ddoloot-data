@@ -38,21 +38,27 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage"
+      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Constitution",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Constitution +5 : This item gives the wearer improved health, granting a +5 Enhancement bonus to Constitution."
+      "tooltip": "Constitution +5 : This item gives the wearer improved health, granting a +5 Enhancement bonus to Constitution.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fortification",
       "value": 70,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Fortification +70% : +70% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+      "tooltip": "Fortification +70% : +70% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

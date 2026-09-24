@@ -38,35 +38,45 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Greater Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a powerful bolt of lightning (20 to 120 electric damage)."
+      "tooltip": "Greater Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a powerful bolt of lightning (20 to 120 electric damage).",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Strength",
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Strength +9 : This item gives the wearer the power of Ogre Strength, granting a +9 Enhancement bonus to Strength."
+      "tooltip": "Strength +9 : This item gives the wearer the power of Ogre Strength, granting a +9 Enhancement bonus to Strength.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Speed",
       "value": 30,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed ."
+      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Electric Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance."
+      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

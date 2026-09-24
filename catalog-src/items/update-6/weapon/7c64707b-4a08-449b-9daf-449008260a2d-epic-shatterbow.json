@@ -55,49 +55,63 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Destruction",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Destruction : On Hit: Your target gains a stack of Armor Destruction. (-1 penalty to Armor Class , -1% of its Fortification . 20 Second Duration. Stacks up to 15 times.) This effect may trigger once every second."
+      "tooltip": "Improved Destruction : On Hit: Your target gains a stack of Armor Destruction. (-1 penalty to Armor Class , -1% of its Fortification . 20 Second Duration. Stacks up to 15 times.) This effect may trigger once every second.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Sonic Blast",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Sonic Blast 4 : This weapon rings with the power of sound, dealing 4d6 Sonic damage on a successful hit, and an additional 4d6 Sonic damage on a critical hit."
+      "tooltip": "Sonic Blast 4 : This weapon rings with the power of sound, dealing 4d6 Sonic damage on a successful hit, and an additional 4d6 Sonic damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Construct Bane",
       "value": 4,
       "value_kind": "number",
       "bonus_type": null,
-      "tooltip": "Construct Bane 4 : This weapon is attuned specifically to disrupt creations, dealing an additional 4d10 bane damage vs. Constructs."
+      "tooltip": "Construct Bane 4 : This weapon is attuned specifically to disrupt creations, dealing an additional 4d10 bane damage vs. Constructs.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Armor-Piercing",
       "value": 15,
       "value_kind": "percent",
       "bonus_type": "enhancement",
-      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)"
+      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Adamantine",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters."
+      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Move Silently",
       "value": -10,
       "value_kind": "flat",
       "bonus_type": null,
-      "tooltip": "Move Silently -10 : Passive: -10 penalty to the Move Silently skill."
+      "tooltip": "Move Silently -10 : Passive: -10 penalty to the Move Silently skill.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

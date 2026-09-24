@@ -38,35 +38,45 @@
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Intelligence +6 : This item focuses the power of the wearer's mind, granting a +6 Enhancement bonus to Intelligence."
+      "tooltip": "Intelligence +6 : This item focuses the power of the wearer's mind, granting a +6 Enhancement bonus to Intelligence.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Penetration",
       "value": 3,
       "value_kind": "tier",
       "bonus_type": "equipment",
-      "tooltip": "Spell Penetration III : Passive: +3 Equipment bonus to Spell Penetration checks."
+      "tooltip": "Spell Penetration III : Passive: +3 Equipment bonus to Spell Penetration checks.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Concentration",
       "value": 10,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Concentration +10 : Passive: +10 Competence bonus to the Concentration skill."
+      "tooltip": "Concentration +10 : Passive: +10 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enhanced Concentration",
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Enhanced Concentration +5 : Passive: +5 Enhancement bonus to the Concentration skill."
+      "tooltip": "Enhanced Concentration +5 : Passive: +5 Enhancement bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nearly Finished - Magewright's Expertise",
       "value": null,
       "value_kind": null,
       "bonus_type": "alchemical",
-      "tooltip": "Magewright's Expertise : Spell Focus I: +1 to DCs for all spells. Magewright's Quick Wits : Chance to gain a 10 second buff of +12 Alchemical bonus to Universal Spell Power each time the wearer is hit by a physical attack."
+      "tooltip": "Magewright's Expertise : Spell Focus I: +1 to DCs for all spells. Magewright's Quick Wits : Chance to gain a 10 second buff of +12 Alchemical bonus to Universal Spell Power each time the wearer is hit by a physical attack.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

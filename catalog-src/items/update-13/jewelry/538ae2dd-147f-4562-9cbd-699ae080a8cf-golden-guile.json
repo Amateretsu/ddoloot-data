@@ -38,28 +38,36 @@
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Dusk : Equipping this item engulfs you in twilight shadows. Attacks from enemies have a 10% chance to miss you due to concealment."
+      "tooltip": "Dusk : Equipping this item engulfs you in twilight shadows. Attacks from enemies have a 10% chance to miss you due to concealment.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Diplomacy",
       "value": 16,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Diplomacy +16 : Passive: +16 Competence bonus to the Diplomacy skill."
+      "tooltip": "Diplomacy +16 : Passive: +16 Competence bonus to the Diplomacy skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Bluff",
       "value": 16,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Bluff +16 : Passive: +16 Competence bonus to the Bluff skill."
+      "tooltip": "Bluff +16 : Passive: +16 Competence bonus to the Bluff skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Deception",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Deception : This item makes your weapons hard to focus upon and thus provides a +5 enhancement bonus to Bluff checks. In addition, while using this item your weapons have a chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time."
+      "tooltip": "Improved Deception : This item makes your weapons hard to focus upon and thus provides a +5 enhancement bonus to Bluff checks. In addition, while using this item your weapons have a chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

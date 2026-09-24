@@ -38,35 +38,45 @@
       "value": 9,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence."
+      "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Enchantment Focus",
       "value": 6,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Enchantment Focus +6 : +6 Equipment bonus to the DC of Enchantment spells."
+      "tooltip": "Enchantment Focus +6 : +6 Equipment bonus to the DC of Enchantment spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Concentration",
       "value": 17,
       "value_kind": "flat",
       "bonus_type": "competence",
-      "tooltip": "Concentration +17 : Passive: +17 Competence bonus to the Concentration skill."
+      "tooltip": "Concentration +17 : Passive: +17 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Spell Save",
       "value": 8,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Spell Save +8 : This item gives a +8 Resistance bonus to your saves versus spells."
+      "tooltip": "Spell Save +8 : This item gives a +8 Resistance bonus to your saves versus spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Elder's Knowledge",
       "value": null,
       "value_kind": null,
       "bonus_type": "artifact",
-      "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage"
+      "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

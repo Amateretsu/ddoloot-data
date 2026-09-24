@@ -32,25 +32,31 @@
   "shield_stats": null,
   "effects": [
     {
-      "name": "Sonic Blast — 50 Charges (Recharged/Day:50)",
+      "name": "Sonic Blast",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Sonic Blast Caster level: 8 Charges: 50 (50/day)"
+      "tooltip": "Sonic Blast Caster level: 8 Charges: 50 (50/day)",
+      "charges": 50,
+      "recharge_per_day": 50
     },
     {
       "name": "Sonic Lore",
       "value": 9,
       "value_kind": "percent",
       "bonus_type": "equipment",
-      "tooltip": "Sonic Lore +9 : Passive: Your Sonic spells gain a 9% Equipment bonus to their chance to critical hit."
+      "tooltip": "Sonic Lore +9 : Passive: Your Sonic spells gain a 9% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Resonance",
       "value": 59,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Resonance +59 : Passive: +59 Equipment bonus to Sonic Spell Power ."
+      "tooltip": "Resonance +59 : Passive: +59 Equipment bonus to Sonic Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

@@ -45,42 +45,54 @@
       "value": 15,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class ."
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Strength",
       "value": 14,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Strength +14 : This item gives the wearer the power of Ogre Strength, granting a +14 Enhancement bonus to Strength."
+      "tooltip": "Strength +14 : This item gives the wearer the power of Ogre Strength, granting a +14 Enhancement bonus to Strength.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Fortitude Save",
       "value": 12,
       "value_kind": "flat",
       "bonus_type": "resistance",
-      "tooltip": "Fortitude Save +12 : This item gives a +12 Resistance bonus to your Fortitude saves."
+      "tooltip": "Fortitude Save +12 : This item gives a +12 Resistance bonus to your Fortitude saves.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Unstoppable Staggering Blow",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Unstoppable Staggering Blow : On a Vorpal strike with a Melee weapon, this weapon will trip your opponent, forcing them to fall prone for 2 seconds. There is no save against this effect."
+      "tooltip": "Unstoppable Staggering Blow : On a Vorpal strike with a Melee weapon, this weapon will trip your opponent, forcing them to fall prone for 2 seconds. There is no save against this effect.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Insightful Doublestrike",
       "value": 7,
       "value_kind": "percent",
       "bonus_type": "insight",
-      "tooltip": "Insightful Doublestrike 7% : Passive: 7% Insight bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+      "tooltip": "Insightful Doublestrike 7% : Passive: 7% Insight bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Adamantine",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters."
+      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters.",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

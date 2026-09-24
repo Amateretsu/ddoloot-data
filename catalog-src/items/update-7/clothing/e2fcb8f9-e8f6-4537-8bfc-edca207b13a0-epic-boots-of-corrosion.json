@@ -38,35 +38,45 @@
       "value": 111,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Corrosion +111 : Passive: +111 Equipment bonus to Acid Spell Power ."
+      "tooltip": "Corrosion +111 : Passive: +111 Equipment bonus to Acid Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Nullification",
       "value": 111,
       "value_kind": "flat",
       "bonus_type": "equipment",
-      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Disintegration Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Disintegration Guard : This item has a store of dark, insidious power deep within. When the wearer of this item is successfully attacked in melee, this power occasionally lashes out violently at enemies and attempts to disintegrate them."
+      "tooltip": "Disintegration Guard : This item has a store of dark, insidious power deep within. When the wearer of this item is successfully attacked in melee, this power occasionally lashes out violently at enemies and attempts to disintegrate them.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Acid Resistance",
       "value": 36,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance."
+      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Epic Might of the Abishai",
       "value": null,
       "value_kind": null,
       "bonus_type": "profane",
-      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

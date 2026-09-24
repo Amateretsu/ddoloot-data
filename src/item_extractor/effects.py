@@ -257,4 +257,6 @@ def _effect(
         value_kind=value_kind if value is not None else None,
         bonus_type=_bonus_type(rules, entry, rule, groups),
         tooltip=entry.tooltip,
+        charges=int(groups["charges"]) if "charges" in groups else None,
+        recharge_per_day=int(groups["recharge"]) if "recharge" in groups else None,
     )

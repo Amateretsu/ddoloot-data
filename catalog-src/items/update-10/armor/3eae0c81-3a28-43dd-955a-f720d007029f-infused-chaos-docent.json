@@ -58,28 +58,36 @@
       "value": null,
       "value_kind": null,
       "bonus_type": "alchemical",
-      "tooltip": "Spell Turmoil : When casting any damaging Fire, Cold, Acid or Electric spells, there is a chance that you will gain a +20 Alchemical bonus to Spell Power to one of those energy types for 30 seconds."
+      "tooltip": "Spell Turmoil : When casting any damaging Fire, Cold, Acid or Electric spells, there is a chance that you will gain a +20 Alchemical bonus to Spell Power to one of those energy types for 30 seconds.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Lesser Evocation Augmentation",
       "value": 9,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Lesser Evocation Augmentation IX : Increases the wearer's caster level when casting ninth level or lower Evocation spells by one."
+      "tooltip": "Lesser Evocation Augmentation IX : Increases the wearer's caster level when casting ninth level or lower Evocation spells by one.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Trace of Madness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Power Drain",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul )."
+      "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul ).",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

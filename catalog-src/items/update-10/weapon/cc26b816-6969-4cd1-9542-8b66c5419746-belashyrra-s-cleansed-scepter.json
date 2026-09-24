@@ -54,21 +54,27 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Single-Mindedness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Single-Mindedness : This item drives your magic towards chaos, and you cannot focus as well on the nuances of subtler spells. -2 DCs on your enchantment spells."
+      "tooltip": "Single-Mindedness : This item drives your magic towards chaos, and you cannot focus as well on the nuances of subtler spells. -2 DCs on your enchantment spells.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Efficient Metamagic - Empower",
       "value": 2,
       "value_kind": "tier",
       "bonus_type": null,
-      "tooltip": "Efficient Metamagic - Empower II : The additional spell point cost for using the Empower Metamagic feat is reduced by 2 SP ."
+      "tooltip": "Efficient Metamagic - Empower II : The additional spell point cost for using the Empower Metamagic feat is reduced by 2 SP .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [

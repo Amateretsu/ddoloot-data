@@ -54,35 +54,45 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Heightened Awareness",
       "value": 4,
       "value_kind": "number",
       "bonus_type": "insight",
-      "tooltip": "Heightened Awareness 4 : This item helps you to quickly read situations with sharpness and clarity, allowing you to predict actions before they occur. You gain a +4 Insight bonus to AC."
+      "tooltip": "Heightened Awareness 4 : This item helps you to quickly read situations with sharpness and clarity, allowing you to predict actions before they occur. You gain a +4 Insight bonus to AC.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Improved Cursespewing",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Improved Cursespewing : On Vorpal Hit : Your enemy is cursed with a -4 morale penalty on attack rolls , saving throws , and skill checks . This painful curse also causes the victim to take 2d6 damage every two seconds for a duration of twelve seconds. Additional vorpal strikes while the curse is active will extend the duration by another twelve seconds."
+      "tooltip": "Improved Cursespewing : On Vorpal Hit : Your enemy is cursed with a -4 morale penalty on attack rolls , saving throws , and skill checks . This painful curse also causes the victim to take 2d6 damage every two seconds for a duration of twelve seconds. Additional vorpal strikes while the curse is active will extend the duration by another twelve seconds.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Exceptional Wisdom",
       "value": 1,
       "value_kind": "flat",
       "bonus_type": "exceptional",
-      "tooltip": "Exceptional Wisdom +1 : This item makes the wearer more in tune with her surroundings, granting a +1 Exceptional bonus to Wisdom."
+      "tooltip": "Exceptional Wisdom +1 : This item makes the wearer more in tune with her surroundings, granting a +1 Exceptional bonus to Wisdom.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Hidden Effect: On critical hits, this weapon saps the target.",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": null
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],

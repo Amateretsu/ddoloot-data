@@ -45,35 +45,45 @@
       "value": 5,
       "value_kind": "flat",
       "bonus_type": "enhancement",
-      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Antimagic Spike",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Antimagic Spike : This item was made from powerful antimagic materials. When scoring a critical hit on an enemy with your ranged or melee weapons, the target must make a DC 28 Fortitude save or be unable to cast spells for a brief duration."
+      "tooltip": "Antimagic Spike : This item was made from powerful antimagic materials. When scoring a critical hit on an enemy with your ranged or melee weapons, the target must make a DC 28 Fortitude save or be unable to cast spells for a brief duration.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Telekinesis Guard",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Telekinesis Guard : When enemies hit you, they may be assaulted by these psychic forces, falling to the ground unless they make a DC 35 Reflex save ."
+      "tooltip": "Telekinesis Guard : When enemies hit you, they may be assaulted by these psychic forces, falling to the ground unless they make a DC 35 Reflex save .",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Trace of Madness",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst.",
+      "charges": null,
+      "recharge_per_day": null
     },
     {
       "name": "Metal Fatigue",
       "value": null,
       "value_kind": null,
       "bonus_type": null,
-      "tooltip": "Metal Fatigue : The metal plates of this armor sometimes tire you out. When you are damaged there is a small chance that you will become Exhausted ."
+      "tooltip": "Metal Fatigue : The metal plates of this armor sometimes tire you out. When you are damaged there is a small chance that you will become Exhausted .",
+      "charges": null,
+      "recharge_per_day": null
     }
   ],
   "customisation_hints": [],
