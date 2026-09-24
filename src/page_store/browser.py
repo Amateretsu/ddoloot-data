@@ -10,9 +10,12 @@ The browser may request only ``/page/`` documents from the wiki, and at most
 once the WAF challenge clears, its reload. Every other wiki request the page would make
 (``load.php`` scripts and styles, images, ``api.php``) and any further reload is aborted
 before it is sent, so a challenge that keeps reloading can never loop against the wiki.
-Requests to other hosts (the AWS WAF challenge script and token service) go through.
-Every wiki request is logged at DEBUG, so a ``--verbose`` run shows exactly what the wiki
-was sent. So is each request let through to another host (without its query), and each
+Of other hosts, only the AWS WAF challenge host (``*.token.awswaf.com``: the challenge
+script and token service) is let through. Everything else the page would load (analytics,
+tag managers, ads, fonts, the licence badge) is aborted before it is sent (ADR 0006: the
+browser is a bounded fallback for the challenge, nothing more). Every wiki request is
+logged at DEBUG, so a ``--verbose`` run shows exactly what the wiki was sent. So is each
+request to another host, let through or blocked (without its query), and each
 main-frame document's status and ``x-amzn-waf-action``. When a challenged load never shows
 the article, one WARNING sums it up: documents seen, wiki requests used, the last
 document's status and WAF action, and the browser's age. The HTML returned is the article
@@ -53,6 +56,9 @@ MAX_WIKI_REQUESTS = 2
 _WIKI_HOST = "ddowiki.com"
 _PAGE_PREFIX = "/page/"
 _WAF_HEADER = "x-amzn-waf-action"
+#: The only non-wiki hosts the browser may reach: the AWS WAF challenge script and token
+#: service, ``<id>.<region>.token.awswaf.com``.
+_WAF_CHALLENGE_HOST_SUFFIX = ".token.awswaf.com"
 
 
 class BrowserTransport:
@@ -144,15 +150,18 @@ class BrowserTransport:
             logger.debug(f"document {response.url} -> {_describe(response)} (browser)")
 
     def _route(self, route: Any) -> None:
-        """Let through non-wiki requests and up to two wiki ``/page/`` documents."""
+        """Let through the WAF challenge host and up to two wiki ``/page/`` documents."""
         request = route.request
         parts = urlsplit(request.url)
         host = parts.hostname or ""
         if host != _WIKI_HOST and not host.endswith("." + _WIKI_HOST):
-            logger.debug(
-                f"pass {request.resource_type} {parts.scheme}://{host}{parts.path} (browser)"
-            )
-            route.continue_()
+            where = f"{request.resource_type} {parts.scheme}://{host}{parts.path}"
+            if host.endswith(_WAF_CHALLENGE_HOST_SUFFIX):
+                logger.debug(f"pass {where} (browser)")
+                route.continue_()
+            else:
+                logger.debug(f"blocked {where} (browser)")
+                route.abort()
             return
         is_page = request.resource_type == "document" and parts.path.startswith(
             _PAGE_PREFIX

@@ -1280,6 +1280,42 @@ with ADR 0006.
 - Tests after this fix: 479 passed, 2 skipped. The skips are the whole-Page-Store test, with
   no cache in this worktree, and the no-Playwright test (Playwright is installed).
 
+### Fix: browser third-party allowlist
+
+- **Found in the same live run:** `_route` let through every request to a host other
+  than the wiki. The browser sent google-analytics 94, google.com/g/collect 87,
+  googletagmanager 83, creativecommons 80, doubleclick 2 and googlesyndication 2. The
+  challenge needed only `*.token.awswaf.com` (3).
+- **Change (`src/page_store/browser.py`):** a request to a host other than the wiki now
+  goes through only if its host ends in `.token.awswaf.com` (`_WAF_CHALLENGE_HOST_SUFFIX`).
+  Every other request is aborted before it is sent and logged at DEBUG as
+  `blocked <type> <scheme://host/path> (browser)`, with the query dropped like the `pass`
+  lines. No such line starts with `GET `, so guarded_sync's request tally is unchanged.
+  Wiki handling is unchanged: 2 `/page/` documents per fetch, and every other wiki
+  request is blocked.
+- **Decision: `.token.awswaf.com`, not `.awswaf.com`.** The run's log shows only
+  `<id>.<region>.token.awswaf.com` hosts in use: the challenge script, its inputs and the
+  verify call. The broader `.awswaf.com` would also admit `*.captcha.awswaf.com`, the
+  CAPTCHA puzzle. ADR 0006 allows a real browser as a bounded fallback for the challenge
+  only, with no CAPTCHA solving, so the CAPTCHA host is blocked. A CAPTCHA then shows up as
+  its `405` document, which the adapter now returns as it is (previous fix). The match is
+  a suffix match on the hostname, so a lookalike such as `token.awswaf.com.evil.example`
+  is blocked (tested).
+- **Why (ADR 0006):** the browser fallback is "same identity and pace as plain fetching",
+  a bounded means of getting past the challenge. Analytics beacons, tag managers, ads and
+  fonts are not needed to read a `/page/` article. Blocking them sends Google nothing on
+  the maintainer's behalf, and it also cuts out the extra load and timing noise.
+- **Tests (`tests/page_store/test_browser.py`):**
+  - google-analytics, google.com/g/collect, googletagmanager, creativecommons,
+    googlesyndication, doubleclick, Google Fonts, bare `awswaf.com` and a lookalike host
+    are all aborted and logged as `blocked …` without the query, and no such line starts
+    with `GET `;
+  - the `*.token.awswaf.com` challenge script and inputs pass;
+  - wiki documents still pass up to the cap, and `load.php` and wiki images are still
+    blocked.
+  9 of these fail on the previous commit.
+- Tests after this fix: 490 passed, 2 skipped.
+
 ## Session summary
 
 ### Outcomes
