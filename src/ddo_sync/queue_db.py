@@ -1,6 +1,6 @@
 """SQLite-backed scrape queue and update page sync state.
 
-Follows the same connection lifecycle pattern as item_db.ItemRepository:
+Connection lifecycle:
 lazy open, context manager, explicit transactions, row_factory = sqlite3.Row.
 
 Example:

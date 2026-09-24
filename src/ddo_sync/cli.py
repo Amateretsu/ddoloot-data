@@ -1,68 +1,91 @@
-"""DDOLoot command-line interface.
+"""DDOLoot command-line interface: the ``ddoloot`` console script.
 
-Discovers every named-item update page on DDO Wiki, scrapes each item,
-normalizes the data, and writes it to two local SQLite databases:
+Subcommands:
 
-    data/loot.db   — structured item data (queried by the front end)
-    data/queue.db  — scrape queue and sync-state tracking (internal)
+    ddoloot sync                                   # discover update pages, scrape, extract
+    ddoloot sync --status                          # queue stats, no sync
+    ddoloot sync --discover                        # list pages, no sync
+    ddoloot sync --page Update_5_named_items [...] # specific pages only
+    ddoloot sync --limit 50                        # cap queue items
+    ddoloot sync --reset-failed                    # retry failures, exit
+    ddoloot extract-item "Breaker of Bodies"       # extract one page from the local cache
+    ddoloot extract-item NAME --html PATH          # extract one saved HTML page
 
-Usage:
-    python main.py                                          # full sync
-    python main.py --status                                 # DB stats, no sync
-    python main.py --discover                               # list pages, no sync
-    python main.py --page Update_5_named_items [Update_6…] # specific pages only
-    python main.py --limit 50                               # cap queue items
-    python main.py --reset-failed                           # retry failures, exit
-    python main.py --verbose                                # DEBUG logging
+``sync`` tracks progress in ``data/queue.db`` (SQLite crawl queue) and writes each
+Scraped Item to ``cache/extracted/<page-slug>.json`` plus ``cache/extracted/report.jsonl``.
+``extract-item`` never touches the network. Add ``--verbose`` to any subcommand for DEBUG
+logging.
 
 Exit codes:
     0  complete, no failures
     1  startup or fatal error
-    2  completed with failed items remaining
+    2  completed with failed items remaining (sync)
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import signal
 import sys
 from pathlib import Path
 from typing import List, Optional
+from urllib.parse import quote
 
 from loguru import logger
 
-from ddo_sync.debug_commands import normalize_item
 from ddo_sync.exceptions import UpdatePageError
+from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import SyncStatus
 from ddo_sync.page_discovery import UpdatePageDiscoverer
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.syncer import DDOSyncer
 from ddowiki_scraper import WikiFetcher, WikiFetcherConfig
-from item_db import ItemRepository
-from item_normalizer import ItemNormalizer
+from item_extractor import ExtractionError, extract, load_config
 
-# ── Default database paths ────────────────────────────────────────────────────
+# ── Default paths ─────────────────────────────────────────────────────────────
 _ROOT = Path(__file__).resolve().parent.parent.parent  # …/src/ddo_sync → root
 DATA_DIR = _ROOT / "data"
-LOOT_DB = DATA_DIR / "loot.db"
 QUEUE_DB = DATA_DIR / "queue.db"
+CACHE_DIR = _ROOT / "cache"
+EXTRACTED_DIR = CACHE_DIR / "extracted"
+
+#: ADR 0006: never fetch faster than one page per 4 seconds.
+MIN_CRAWL_DELAY = 4.0
+_ITEM_URL_PREFIX = "https://ddowiki.com/page/Item:"
 
 
 # ── CLI ──────────────────────────────────────────────────────────────────────
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(
-        prog="ddoloot",
-        description="Scrape DDO Wiki named-item pages and populate a local loot database.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Enable DEBUG-level log output.",
     )
 
-    mode = p.add_mutually_exclusive_group()
+    p = argparse.ArgumentParser(
+        prog="ddoloot",
+        description="Scrape DDO Wiki named-item pages and extract Scraped Items.",
+    )
+    sub = p.add_subparsers(dest="command", required=True, metavar="COMMAND")
+
+    sync = sub.add_parser(
+        "sync",
+        parents=[common],
+        help="Discover update pages, scrape item pages and extract Scraped Items.",
+        description=(
+            "Discover named-item update pages, scrape each queued item page and write "
+            f"its Scraped Item JSON under {EXTRACTED_DIR}."
+        ),
+    )
+    mode = sync.add_mutually_exclusive_group()
     mode.add_argument(
         "--status",
         action="store_true",
-        help="Print database and queue statistics then exit.",
+        help="Print queue statistics then exit.",
     )
     mode.add_argument(
         "--discover",
@@ -75,8 +98,7 @@ def _build_parser() -> argparse.ArgumentParser:
         dest="reset_failed",
         help="Reset all failed queue items to pending then exit.",
     )
-
-    p.add_argument(
+    sync.add_argument(
         "--page",
         metavar="PAGE_NAME",
         nargs="+",
@@ -86,33 +108,24 @@ def _build_parser() -> argparse.ArgumentParser:
             "Accepts underscores or spaces, e.g. Update_5_named_items."
         ),
     )
-    p.add_argument(
+    sync.add_argument(
         "--limit",
         type=int,
         default=None,
         metavar="N",
         help="Maximum number of queue items to process per run.",
     )
-    p.add_argument(
+    sync.add_argument(
         "--rate-limit",
         type=float,
-        default=2.5,
+        default=MIN_CRAWL_DELAY,
         metavar="SECONDS",
         dest="rate_limit",
-        help="Seconds between HTTP requests (default: 2.5, minimum: 1.0).",
+        help=(
+            f"Seconds between HTTP requests (default and minimum: {MIN_CRAWL_DELAY:g})."
+        ),
     )
-    p.add_argument(
-        "--item",
-        type=str,
-        default=None,
-        help="Sync an individual item, e.g. Lenses of Opportunity.",
-    )
-    p.add_argument(
-        "--item-override",
-        action="store_true",
-        help="Overwrite existing data in the db file during an item sync.",
-    )
-    p.add_argument(
+    sync.add_argument(
         "--max-retries",
         type=int,
         default=3,
@@ -120,10 +133,22 @@ def _build_parser() -> argparse.ArgumentParser:
         dest="max_retries",
         help="Maximum retry attempts before an item is permanently failed (default: 3).",
     )
-    p.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable DEBUG-level log output.",
+
+    extract_item = sub.add_parser(
+        "extract-item",
+        parents=[common],
+        help="Print one item's Scraped Item JSON and report, without network access.",
+        description=(
+            f"Extract one item page from the local page cache ({CACHE_DIR}) or from a "
+            "saved HTML file, and print the Scraped Item and its report as JSON."
+        ),
+    )
+    extract_item.add_argument("name", help='Item name, e.g. "Breaker of Bodies".')
+    extract_item.add_argument(
+        "--html",
+        type=Path,
+        metavar="PATH",
+        help="Read the page from this HTML file instead of the local page cache.",
     )
     return p
 
@@ -150,7 +175,7 @@ def _configure_logging(verbose: bool) -> None:
 
 def _cmd_status() -> int:
     if not QUEUE_DB.exists():
-        logger.warning("No queue database found. Run without --status to start a sync.")
+        logger.warning("No queue database found. Run `ddoloot sync` to start a sync.")
         return 0
 
     with QueueRepository(str(QUEUE_DB)) as qr:
@@ -158,8 +183,8 @@ def _cmd_status() -> int:
         pages = qr.list_update_pages()
 
     logger.info("─" * 56)
-    logger.info(f"Loot DB  : {LOOT_DB}")
     logger.info(f"Queue DB : {QUEUE_DB}")
+    logger.info(f"Items    : {EXTRACTED_DIR}")
     logger.info("─" * 56)
     logger.info(f"  Total     : {stats.total}")
     logger.info(f"  Complete  : {stats.complete}")
@@ -228,7 +253,7 @@ def _cmd_sync(
 
     # ── Wire up components ───────────────────────────────────────────────────
     fetcher_config = WikiFetcherConfig(
-        rate_limit_delay=max(1.0, rate_limit),
+        rate_limit_delay=max(MIN_CRAWL_DELAY, rate_limit),
         max_retries=3,
         timeout=30,
     )
@@ -238,13 +263,11 @@ def _cmd_sync(
     try:
         with (
             WikiFetcher(fetcher_config) as fetcher,
-            ItemRepository(str(LOOT_DB)) as item_repo,
             QueueRepository(str(QUEUE_DB)) as queue_repo,
         ):
             syncer = DDOSyncer(
                 fetcher=fetcher,
-                normalizer=ItemNormalizer(),
-                item_repo=item_repo,
+                writer=JsonItemWriter(EXTRACTED_DIR),
                 queue_repo=queue_repo,
                 max_retries=max_retries,
             )
@@ -302,8 +325,8 @@ def _print_summary(status: SyncStatus) -> None:
     else:
         logger.info("  All update pages are up to date.")
 
-    logger.info(f"  Loot DB  : {LOOT_DB}")
     logger.info(f"  Queue DB : {QUEUE_DB}")
+    logger.info(f"  Items    : {EXTRACTED_DIR}")
 
 
 def _install_sigint_handler() -> None:
@@ -313,23 +336,58 @@ def _install_sigint_handler() -> None:
     signal.signal(signal.SIGINT, _handler)
 
 
+def _cmd_extract_item(name: str, html_path: Optional[Path]) -> int:
+    cached = _find_cached_page(name)
+    if html_path is not None:
+        html = html_path.read_text(encoding="utf-8")
+    elif cached is not None:
+        html = (CACHE_DIR / "html" / cached[0]).read_text(encoding="utf-8")
+    else:
+        logger.error(
+            f"{name!r} is not in the local page cache ({CACHE_DIR / 'index.json'}); "
+            "pass --html PATH to read a saved page."
+        )
+        return 1
+    url = cached[1] if cached else _ITEM_URL_PREFIX + quote(name.replace(" ", "_"))
+
+    try:
+        item, report = extract(html, url, load_config())
+    except ExtractionError as exc:
+        logger.error(f"Could not extract {name!r}: {exc}")
+        return 1
+    out = {"item": item.model_dump(mode="json"), "report": report}
+    sys.stdout.write(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
+    return 0
+
+
+def _find_cached_page(name: str) -> Optional[tuple[str, str]]:
+    """(html filename, url) of *name* in the cache index, matched ignoring case."""
+    index_path = CACHE_DIR / "index.json"
+    if not index_path.exists():
+        return None
+    index = json.loads(index_path.read_text(encoding="utf-8"))
+    wanted = name.replace("_", " ").casefold()
+    for filename, meta in index.items():
+        if meta.get("name", "").casefold() == wanted:
+            return filename, meta["url"]
+    return None
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 
-def main() -> int:
-    args = _build_parser().parse_args()
+def main(argv: Optional[List[str]] = None) -> int:
+    args = _build_parser().parse_args(argv)
     _configure_logging(args.verbose)
 
+    if args.command == "extract-item":
+        return _cmd_extract_item(args.name, args.html)
     if args.status:
         return _cmd_status()
     if args.discover:
         return _cmd_discover()
     if args.reset_failed:
         return _cmd_reset_failed()
-    if args.item:
-        normalize_item(args.item, upsert=args.item_override, loot_db=LOOT_DB)
-        return 0
-
     return _cmd_sync(
         page_names=args.pages,
         limit=args.limit,

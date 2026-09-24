@@ -17,7 +17,7 @@ def main() -> int:
     )
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--report", type=Path)
-    parser.add_argument("--config", type=Path, help="override catalog/normalizer")
+    parser.add_argument("--config", type=Path, help="override catalog/extractor")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -33,7 +33,13 @@ def main() -> int:
             continue
         reports[meta["name"]] = report
         (args.out / fname.replace(".html", ".json")).write_text(
-            json.dumps(item, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+            json.dumps(
+                item.model_dump(mode="json"),
+                indent=2,
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+            + "\n",
             encoding="utf-8",
         )
     summary = aggregate(reports) | {"failures": failures}

@@ -1,904 +1,260 @@
-"""Tests for ddo_sync.cli."""
+"""The ``ddoloot`` console script, through ``main(argv)``.
+
+The wiki is never contacted: the fetcher and the MediaWiki API client are replaced with
+fakes, and every path the CLI writes to points into a temporary directory.
+"""
 
 from __future__ import annotations
 
-import signal
-import sys
+import json
+import shutil
 from datetime import datetime, timezone
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ddo_sync.cli import (
-    _build_parser,
-    _cmd_discover,
-    _cmd_reset_failed,
-    _cmd_status,
-    _cmd_sync,
-    _configure_logging,
-    _install_sigint_handler,
-    _print_summary,
-    _run_sync,
-    main,
-)
-from ddo_sync.exceptions import UpdatePageError
-from ddo_sync.models import QueueStats, SyncStatus, UpdatePageStatus
+from ddo_sync.cli import main
+from ddo_sync.models import ItemLink
+from ddo_sync.queue_db import QueueRepository
+from tests.ddo_sync.conftest import ITEM_PAGE_HTML, PAGES, UPDATE_PAGE_HTML
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+PAGE = "Update_5_named_items"
 
 
-def utc(year: int, month: int, day: int, hour: int = 0) -> datetime:
-    return datetime(year, month, day, hour, tzinfo=timezone.utc)
+class FakeFetcher:
+    """Stands in for WikiFetcher: serves canned pages and records requested URLs."""
+
+    def __init__(self, item_html: str = ITEM_PAGE_HTML) -> None:
+        self.item_html = item_html
+        self.config = None
+        self.urls: list[str] = []
+
+    def __call__(self, config):
+        self.config = config
+        return self
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_exc):
+        return None
+
+    def fetch_url(self, url: str) -> str:
+        self.urls.append(url)
+        return self.item_html if "/page/Item:" in url else UPDATE_PAGE_HTML
 
 
-def _make_queue_stats(
-    pending: int = 0,
-    in_progress: int = 0,
-    complete: int = 5,
-    failed: int = 0,
-    skipped: int = 0,
-) -> QueueStats:
-    return QueueStats(
-        pending=pending,
-        in_progress=in_progress,
-        complete=complete,
-        failed=failed,
-        skipped=skipped,
+@pytest.fixture(autouse=True)
+def paths(tmp_path, monkeypatch):
+    """Point the CLI's data, queue, cache and output paths at tmp_path."""
+    data = tmp_path / "data"
+    cache = tmp_path / "cache"
+    monkeypatch.setattr("ddo_sync.cli.DATA_DIR", data)
+    monkeypatch.setattr("ddo_sync.cli.QUEUE_DB", data / "queue.db")
+    monkeypatch.setattr("ddo_sync.cli.CACHE_DIR", cache)
+    monkeypatch.setattr("ddo_sync.cli.EXTRACTED_DIR", cache / "extracted")
+    monkeypatch.setattr("ddo_sync.cli._install_sigint_handler", lambda: None)
+    return {"queue_db": data / "queue.db", "cache": cache, "out": cache / "extracted"}
+
+
+@pytest.fixture(autouse=True)
+def no_wiki_api():
+    """The syncer's default MediaWiki client, replaced so no request is made."""
+    client = MagicMock()
+    client.get_last_modified.return_value = None
+    with patch("ddo_sync.syncer.WikiApiClient", return_value=client):
+        yield client
+
+
+def run_sync(*args: str, fetcher: FakeFetcher | None = None) -> int:
+    with patch("ddo_sync.cli.WikiFetcher", fetcher or FakeFetcher()):
+        return main(["sync", *args])
+
+
+# ── Top level ─────────────────────────────────────────────────────────────────
+
+
+def test_help_lists_subcommands(capsys):
+    with pytest.raises(SystemExit) as exc:
+        main(["--help"])
+    assert exc.value.code == 0
+    out = capsys.readouterr().out
+    assert "sync" in out
+    assert "extract-item" in out
+
+
+def test_a_subcommand_is_required():
+    with pytest.raises(SystemExit) as exc:
+        main([])
+    assert exc.value.code == 2
+
+
+def test_sync_modes_are_mutually_exclusive():
+    with pytest.raises(SystemExit):
+        main(["sync", "--status", "--discover"])
+
+
+# ── sync ──────────────────────────────────────────────────────────────────────
+
+
+def test_sync_pages_writes_scraped_items(paths):
+    fetcher = FakeFetcher()
+    assert run_sync("--page", "Update 5 named items", fetcher=fetcher) == 0
+
+    assert fetcher.urls[0] == f"https://ddowiki.com/page/{PAGE}"
+    written = sorted(p.name for p in paths["out"].glob("*.json"))
+    assert written == [
+        "Item_Ring_of_Fire.json",
+        "Item_Shield_of_Light.json",
+        "Item_Sword_of_Shadow.json",
+    ]
+    item = json.loads((paths["out"] / "Item_Sword_of_Shadow.json").read_text())
+    assert item["wiki"]["url"] == "https://ddowiki.com/page/Item:Sword_of_Shadow"
+    assert len((paths["out"] / "report.jsonl").read_text().splitlines()) == 3
+
+
+def test_sync_crawl_delay_is_never_below_four_seconds():
+    fetcher = FakeFetcher()
+    run_sync("--page", PAGE, "--rate-limit", "1", fetcher=fetcher)
+    assert fetcher.config.rate_limit_delay == 4.0
+
+
+def test_sync_limit_caps_processed_items(paths):
+    assert run_sync("--page", PAGE, "--limit", "1") == 0
+    assert len(list(paths["out"].glob("*.json"))) == 1
+
+
+def test_sync_with_failed_items_exits_two(paths):
+    fetcher = FakeFetcher(item_html="<html><body>no infobox</body></html>")
+    assert run_sync("--page", PAGE, fetcher=fetcher) == 2
+    with QueueRepository(str(paths["queue_db"])) as qr:
+        assert qr.get_queue_stats().failed == 3
+
+
+def test_sync_discovers_pages_when_none_given(paths):
+    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
+        discoverer.return_value.discover.return_value = [PAGE]
+        assert run_sync() == 0
+    assert len(list(paths["out"].glob("*.json"))) == 3
+
+
+def test_sync_discovery_failure_exits_one():
+    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
+        discoverer.return_value.discover.side_effect = RuntimeError("down")
+        assert run_sync() == 1
+
+
+def test_sync_with_nothing_discovered_exits_zero():
+    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
+        discoverer.return_value.discover.return_value = []
+        assert run_sync() == 0
+
+
+def test_sync_interrupted_exits_one():
+    fetcher = FakeFetcher()
+    fetcher.fetch_url = MagicMock(side_effect=KeyboardInterrupt)
+    assert run_sync("--page", PAGE, fetcher=fetcher) == 1
+
+
+def test_sync_status_without_queue_db():
+    assert main(["sync", "--status"]) == 0
+
+
+def test_sync_status_with_queue_db(paths):
+    paths["queue_db"].parent.mkdir(parents=True)
+    with QueueRepository(str(paths["queue_db"])) as qr:
+        qr.register_update_page(PAGE, f"https://ddowiki.com/page/{PAGE}")
+        qr.mark_page_synced(PAGE, datetime(2025, 11, 1, tzinfo=timezone.utc))
+    assert main(["sync", "--status", "--verbose"]) == 0
+
+
+def test_sync_reset_failed_returns_failed_items_to_pending(paths):
+    paths["queue_db"].parent.mkdir(parents=True)
+    link = ItemLink(
+        item_name="Sword",
+        wiki_url="https://ddowiki.com/page/Item:Sword",
+        update_page=PAGE,
+    )
+    with QueueRepository(str(paths["queue_db"])) as qr:
+        qr.register_update_page(PAGE, f"https://ddowiki.com/page/{PAGE}")
+        qr.enqueue_items([link])
+        item = qr.get_pending_items()[0]
+        qr.mark_failed(item.id, datetime.now(timezone.utc), "boom")
+
+    assert main(["sync", "--reset-failed"]) == 0
+
+    with QueueRepository(str(paths["queue_db"])) as qr:
+        assert qr.get_queue_stats().pending == 1
+
+
+def test_sync_reset_failed_without_queue_db():
+    assert main(["sync", "--reset-failed"]) == 0
+
+
+def test_sync_discover_lists_pages():
+    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
+        discoverer.return_value.discover.return_value = [PAGE]
+        assert main(["sync", "--discover"]) == 0
+        discoverer.return_value.discover.side_effect = RuntimeError("down")
+        assert main(["sync", "--discover"]) == 1
+
+
+# ── extract-item ──────────────────────────────────────────────────────────────
+
+
+def _cache_with(paths, filename: str, name: str, url: str) -> None:
+    (paths["cache"] / "html").mkdir(parents=True)
+    shutil.copy(PAGES / filename, paths["cache"] / "html" / filename)
+    index = {
+        filename: {"name": name, "url": url, "update_page": "Update_32_named_items"}
+    }
+    (paths["cache"] / "index.json").write_text(json.dumps(index))
+
+
+def test_extract_item_reads_the_local_cache_by_name(paths, capsys):
+    url = "https://ddowiki.com/page/Item:Breaker_of_Bodies"
+    _cache_with(paths, "Item_Breaker_of_Bodies.html", "Breaker of Bodies", url)
+
+    assert main(["extract-item", "breaker of bodies"]) == 0
+
+    out = json.loads(capsys.readouterr().out)
+    assert out["item"]["name"] == "Breaker of Bodies"
+    assert out["item"]["wiki"]["url"] == url
+    assert out["item"]["extraction_errors"] == {}
+    assert out["report"]["template"] == "shield"
+
+
+def test_extract_item_reads_a_saved_html_file(capsys):
+    html = PAGES / "Item_Dark_Ressurectionist_s_Frock_Vest.html"
+    assert (
+        main(["extract-item", "Dark Ressurectionist's Frock Vest", "--html", str(html)])
+        == 0
+    )
+
+    item = json.loads(capsys.readouterr().out)["item"]
+    assert item["effects"] == []
+    assert item["wiki"]["url"] == (
+        "https://ddowiki.com/page/Item:Dark_Ressurectionist%27s_Frock_Vest"
     )
 
 
-def _make_update_page_status(
-    page_name: str = "Update_5_named_items",
-    needs_resync_val: bool = False,
-) -> UpdatePageStatus:
-    # needs_resync is a computed property; control it via timestamps
-    if needs_resync_val:
-        # wiki newer → needs resync
-        last_synced_at = utc(2025, 11, 1)
-        wiki_modified_at = utc(2025, 11, 2)
-    else:
-        last_synced_at = utc(2025, 11, 2)
-        wiki_modified_at = utc(2025, 11, 1)
-    return UpdatePageStatus(
-        page_name=page_name,
-        page_url=f"https://ddowiki.com/page/{page_name}",
-        last_synced_at=last_synced_at,
-        wiki_modified_at=wiki_modified_at,
-    )
-
-
-def _make_sync_status(failed: int = 0, stale_pages: bool = False) -> SyncStatus:
-    stats = _make_queue_stats(failed=failed)
-    page = _make_update_page_status(needs_resync_val=stale_pages)
-    return SyncStatus(
-        queue_stats=stats,
-        update_pages={"Update_5_named_items": page},
-    )
-
-
-# ── Argument parsing (_build_parser) ─────────────────────────────────────────
-
-
-class TestBuildParser:
-    def test_defaults(self):
-
-        args = _build_parser().parse_args([])
-        assert args.status is False
-        assert args.discover is False
-        assert args.reset_failed is False
-        assert args.pages is None
-        assert args.limit is None
-        assert args.rate_limit == 2.5
-        assert args.item is None
-        assert args.item_override is False
-        assert args.max_retries == 3
-        assert args.verbose is False
-
-    def test_status_flag(self):
-
-        args = _build_parser().parse_args(["--status"])
-        assert args.status is True
-
-    def test_discover_flag(self):
-
-        args = _build_parser().parse_args(["--discover"])
-        assert args.discover is True
-
-    def test_reset_failed_flag(self):
-
-        args = _build_parser().parse_args(["--reset-failed"])
-        assert args.reset_failed is True
-
-    def test_page_single(self):
-
-        args = _build_parser().parse_args(["--page", "Update_5_named_items"])
-        assert args.pages == ["Update_5_named_items"]
-
-    def test_page_multiple(self):
-
-        args = _build_parser().parse_args(
-            ["--page", "Update_5_named_items", "Update_6_named_items"]
-        )
-        assert args.pages == ["Update_5_named_items", "Update_6_named_items"]
-
-    def test_limit(self):
-
-        args = _build_parser().parse_args(["--limit", "42"])
-        assert args.limit == 42
-
-    def test_rate_limit(self):
-
-        args = _build_parser().parse_args(["--rate-limit", "5.0"])
-        assert args.rate_limit == 5.0
-
-    def test_item(self):
-
-        args = _build_parser().parse_args(["--item", "Lenses of Opportunity"])
-        assert args.item == "Lenses of Opportunity"
-
-    def test_item_override(self):
-
-        args = _build_parser().parse_args(["--item", "Sword", "--item-override"])
-        assert args.item_override is True
-
-    def test_max_retries(self):
-
-        args = _build_parser().parse_args(["--max-retries", "5"])
-        assert args.max_retries == 5
-
-    def test_verbose(self):
-
-        args = _build_parser().parse_args(["--verbose"])
-        assert args.verbose is True
-
-    def test_mutually_exclusive_status_discover(self):
-
-        with pytest.raises(SystemExit):
-            _build_parser().parse_args(["--status", "--discover"])
-
-    def test_mutually_exclusive_status_reset(self):
-
-        with pytest.raises(SystemExit):
-            _build_parser().parse_args(["--status", "--reset-failed"])
-
-
-# ── _configure_logging ────────────────────────────────────────────────────────
-
-
-class TestConfigureLogging:
-    def test_verbose_true(self):
-
-        # Should not raise
-        _configure_logging(verbose=True)
-
-    def test_verbose_false(self):
-
-        _configure_logging(verbose=False)
-
-
-# ── _print_summary ────────────────────────────────────────────────────────────
-
-
-class TestPrintSummary:
-    def test_no_stale_pages(self):
-
-        status = _make_sync_status(failed=0, stale_pages=False)
-        # Should not raise
-        _print_summary(status)
-
-    def test_with_stale_pages(self):
-
-        status = _make_sync_status(failed=2, stale_pages=True)
-        _print_summary(status)
-
-    def test_with_failed_items(self):
-
-        status = _make_sync_status(failed=3, stale_pages=False)
-        _print_summary(status)
-
-    def test_empty_update_pages(self):
-
-        stats = _make_queue_stats(complete=0)
-        status = SyncStatus(queue_stats=stats, update_pages={})
-        _print_summary(status)
-
-
-# ── _install_sigint_handler ───────────────────────────────────────────────────
-
-
-class TestInstallSigintHandler:
-    def test_installs_handler(self):
-
-        _install_sigint_handler()
-        handler = signal.getsignal(signal.SIGINT)
-        # The handler should now be a custom callable (not SIG_DFL or default)
-        assert callable(handler)
-        assert handler is not signal.SIG_DFL
-
-    def test_handler_raises_keyboard_interrupt(self):
-
-        _install_sigint_handler()
-        handler = signal.getsignal(signal.SIGINT)
-        with pytest.raises(KeyboardInterrupt):
-            handler(signal.SIGINT, None)
-
-
-# ── _cmd_status ───────────────────────────────────────────────────────────────
-
-
-class TestCmdStatus:
-    def test_no_db_returns_zero(self):
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = False
-
-        with patch("ddo_sync.cli.QUEUE_DB", fake_path):
-            result = _cmd_status()
-
-        assert result == 0
-
-    def test_with_db_returns_zero(self):
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = True
-        fake_path.__str__ = lambda _: "/fake/queue.db"
-
-        stats = _make_queue_stats(pending=2, complete=10, failed=1)
-        page_no_resync = _make_update_page_status(needs_resync_val=False)
-        page_with_resync = _make_update_page_status(
-            page_name="Update_6_named_items", needs_resync_val=True
-        )
-
-        mock_qr = MagicMock()
-        mock_qr.__enter__ = MagicMock(return_value=mock_qr)
-        mock_qr.__exit__ = MagicMock(return_value=None)
-        mock_qr.get_queue_stats.return_value = stats
-        mock_qr.list_update_pages.return_value = [page_no_resync, page_with_resync]
-
-        with (
-            patch("ddo_sync.cli.QUEUE_DB", fake_path),
-            patch("ddo_sync.cli.QueueRepository", return_value=mock_qr),
-        ):
-            result = _cmd_status()
-
-        assert result == 0
-        mock_qr.get_queue_stats.assert_called_once()
-        mock_qr.list_update_pages.assert_called_once()
-
-    def test_with_db_page_never_synced(self):
-        """UpdatePageStatus with last_synced_at=None shows 'never'."""
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = True
-        fake_path.__str__ = lambda _: "/fake/queue.db"
-
-        stats = _make_queue_stats()
-        never_synced_page = UpdatePageStatus(
-            page_name="Update_7_named_items",
-            page_url="https://ddowiki.com/page/Update_7_named_items",
-            last_synced_at=None,
-            wiki_modified_at=None,
-        )
-
-        mock_qr = MagicMock()
-        mock_qr.__enter__ = MagicMock(return_value=mock_qr)
-        mock_qr.__exit__ = MagicMock(return_value=None)
-        mock_qr.get_queue_stats.return_value = stats
-        mock_qr.list_update_pages.return_value = [never_synced_page]
-
-        with (
-            patch("ddo_sync.cli.QUEUE_DB", fake_path),
-            patch("ddo_sync.cli.QueueRepository", return_value=mock_qr),
-        ):
-            result = _cmd_status()
-
-        assert result == 0
-
-
-# ── _cmd_discover ─────────────────────────────────────────────────────────────
-
-
-class TestCmdDiscover:
-    def test_success_returns_zero(self):
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.return_value = [
-            "Update_5_named_items",
-            "Update_6_named_items",
-        ]
-        mock_cls = MagicMock(return_value=mock_discoverer)
-
-        with patch("ddo_sync.cli.UpdatePageDiscoverer", mock_cls):
-            result = _cmd_discover()
-
-        assert result == 0
-        mock_discoverer.discover.assert_called_once()
-
-    def test_empty_pages_returns_zero(self):
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.return_value = []
-        mock_cls = MagicMock(return_value=mock_discoverer)
-
-        with patch("ddo_sync.cli.UpdatePageDiscoverer", mock_cls):
-            result = _cmd_discover()
-
-        assert result == 0
-
-    def test_failure_returns_one(self):
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.side_effect = RuntimeError("network error")
-        mock_cls = MagicMock(return_value=mock_discoverer)
-
-        with patch("ddo_sync.cli.UpdatePageDiscoverer", mock_cls):
-            result = _cmd_discover()
-
-        assert result == 1
-
-
-# ── _cmd_reset_failed ─────────────────────────────────────────────────────────
-
-
-class TestCmdResetFailed:
-    def test_no_db_returns_zero(self):
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = False
-
-        with patch("ddo_sync.cli.QUEUE_DB", fake_path):
-            result = _cmd_reset_failed()
-
-        assert result == 0
-
-    def test_with_db_resets_and_returns_zero(self):
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = True
-        fake_path.__str__ = lambda _: "/fake/queue.db"
-
-        mock_qr = MagicMock()
-        mock_qr.__enter__ = MagicMock(return_value=mock_qr)
-        mock_qr.__exit__ = MagicMock(return_value=None)
-        mock_qr.reset_failed_to_pending.return_value = 3
-
-        with (
-            patch("ddo_sync.cli.QUEUE_DB", fake_path),
-            patch("ddo_sync.cli.QueueRepository", return_value=mock_qr),
-        ):
-            result = _cmd_reset_failed()
-
-        assert result == 0
-        mock_qr.reset_failed_to_pending.assert_called_once_with(max_retries=9999)
-
-    def test_with_db_zero_resets(self):
-
-        fake_path = MagicMock(spec=Path)
-        fake_path.exists.return_value = True
-        fake_path.__str__ = lambda _: "/fake/queue.db"
-
-        mock_qr = MagicMock()
-        mock_qr.__enter__ = MagicMock(return_value=mock_qr)
-        mock_qr.__exit__ = MagicMock(return_value=None)
-        mock_qr.reset_failed_to_pending.return_value = 0
-
-        with (
-            patch("ddo_sync.cli.QUEUE_DB", fake_path),
-            patch("ddo_sync.cli.QueueRepository", return_value=mock_qr),
-        ):
-            result = _cmd_reset_failed()
-
-        assert result == 0
-
-
-# ── _cmd_sync ─────────────────────────────────────────────────────────────────
-
-
-class TestCmdSync:
-    def _make_mocks(self):
-        """Create a full set of mocks for _cmd_sync."""
-        mock_fetcher_instance = MagicMock()
-        mock_fetcher_instance.__enter__ = MagicMock(return_value=mock_fetcher_instance)
-        mock_fetcher_instance.__exit__ = MagicMock(return_value=None)
-
-        mock_item_repo_instance = MagicMock()
-        mock_item_repo_instance.__enter__ = MagicMock(
-            return_value=mock_item_repo_instance
-        )
-        mock_item_repo_instance.__exit__ = MagicMock(return_value=None)
-
-        mock_queue_repo_instance = MagicMock()
-        mock_queue_repo_instance.__enter__ = MagicMock(
-            return_value=mock_queue_repo_instance
-        )
-        mock_queue_repo_instance.__exit__ = MagicMock(return_value=None)
-        # _run_sync accesses _queue_repo directly on syncer
-        mock_queue_repo_instance.reset_failed_to_pending.return_value = 0
-        mock_queue_repo_instance.list_update_pages.return_value = []
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo_instance
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status(failed=0)
-
-        return (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        )
-
-    def test_with_page_names_returns_zero(self):
-
-        (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        ) = self._make_mocks()
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli.ItemRepository", return_value=mock_item_repo_instance),
-            patch(
-                "ddo_sync.cli.QueueRepository", return_value=mock_queue_repo_instance
-            ),
-            patch("ddo_sync.cli.DDOSyncer", return_value=mock_syncer),
-            patch("ddo_sync.cli.ItemNormalizer"),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=["Update_5_named_items"],
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 0
-        mock_syncer.register_update_page.assert_called_once_with("Update_5_named_items")
-
-    def test_page_names_with_spaces_normalized(self):
-
-        (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        ) = self._make_mocks()
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli.ItemRepository", return_value=mock_item_repo_instance),
-            patch(
-                "ddo_sync.cli.QueueRepository", return_value=mock_queue_repo_instance
-            ),
-            patch("ddo_sync.cli.DDOSyncer", return_value=mock_syncer),
-            patch("ddo_sync.cli.ItemNormalizer"),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=["Update 5 named items"],
-                limit=10,
-                rate_limit=1.0,
-                max_retries=3,
-            )
-
-        assert result == 0
-        mock_syncer.register_update_page.assert_called_once_with("Update_5_named_items")
-
-    def test_auto_discover_success(self):
-
-        (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        ) = self._make_mocks()
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.return_value = ["Update_5_named_items"]
-        mock_discoverer_cls = MagicMock(return_value=mock_discoverer)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.UpdatePageDiscoverer", mock_discoverer_cls),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli.ItemRepository", return_value=mock_item_repo_instance),
-            patch(
-                "ddo_sync.cli.QueueRepository", return_value=mock_queue_repo_instance
-            ),
-            patch("ddo_sync.cli.DDOSyncer", return_value=mock_syncer),
-            patch("ddo_sync.cli.ItemNormalizer"),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=None,
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 0
-
-    def test_auto_discover_failure_returns_one(self):
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.side_effect = RuntimeError("timeout")
-        mock_discoverer_cls = MagicMock(return_value=mock_discoverer)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.UpdatePageDiscoverer", mock_discoverer_cls),
-        ):
-            result = _cmd_sync(
-                page_names=None,
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 1
-
-    def test_auto_discover_empty_returns_zero(self):
-
-        mock_discoverer = MagicMock()
-        mock_discoverer.discover.return_value = []
-        mock_discoverer_cls = MagicMock(return_value=mock_discoverer)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.UpdatePageDiscoverer", mock_discoverer_cls),
-        ):
-            result = _cmd_sync(
-                page_names=None,
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 0
-
-    def test_keyboard_interrupt_returns_one(self):
-
-        mock_fetcher_instance = MagicMock()
-        mock_fetcher_instance.__enter__ = MagicMock(side_effect=KeyboardInterrupt)
-        mock_fetcher_instance.__exit__ = MagicMock(return_value=None)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=["Update_5_named_items"],
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 1
-
-    def test_fatal_exception_returns_one(self):
-
-        mock_fetcher_instance = MagicMock()
-        mock_fetcher_instance.__enter__ = MagicMock(
-            side_effect=RuntimeError("db locked")
-        )
-        mock_fetcher_instance.__exit__ = MagicMock(return_value=None)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=["Update_5_named_items"],
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 1
-
-    def test_failed_items_returns_two(self):
-
-        (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        ) = self._make_mocks()
-        # Override syncer to report failures
-        mock_syncer.get_status.return_value = _make_sync_status(failed=2)
-
-        fake_data_dir = MagicMock(spec=Path)
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", return_value=mock_fetcher_instance),
-            patch("ddo_sync.cli.ItemRepository", return_value=mock_item_repo_instance),
-            patch(
-                "ddo_sync.cli.QueueRepository", return_value=mock_queue_repo_instance
-            ),
-            patch("ddo_sync.cli.DDOSyncer", return_value=mock_syncer),
-            patch("ddo_sync.cli.ItemNormalizer"),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            result = _cmd_sync(
-                page_names=["Update_5_named_items"],
-                limit=None,
-                rate_limit=2.5,
-                max_retries=3,
-            )
-
-        assert result == 2
-
-    def test_rate_limit_minimum_enforced(self):
-        """Rate limit below 1.0 is clamped to 1.0."""
-
-        (
-            mock_fetcher_instance,
-            mock_item_repo_instance,
-            mock_queue_repo_instance,
-            mock_syncer,
-        ) = self._make_mocks()
-
-        fake_data_dir = MagicMock(spec=Path)
-        captured_configs = []
-
-        def capture_config(cfg):
-            captured_configs.append(cfg)
-            return mock_fetcher_instance
-
-        with (
-            patch("ddo_sync.cli.DATA_DIR", fake_data_dir),
-            patch("ddo_sync.cli.WikiFetcher", side_effect=capture_config),
-            patch("ddo_sync.cli.ItemRepository", return_value=mock_item_repo_instance),
-            patch(
-                "ddo_sync.cli.QueueRepository", return_value=mock_queue_repo_instance
-            ),
-            patch("ddo_sync.cli.DDOSyncer", return_value=mock_syncer),
-            patch("ddo_sync.cli.ItemNormalizer"),
-            patch("ddo_sync.cli._install_sigint_handler"),
-        ):
-            _cmd_sync(
-                page_names=["Update_5_named_items"],
-                limit=None,
-                rate_limit=0.1,  # below minimum
-                max_retries=3,
-            )
-
-        assert len(captured_configs) == 1
-        assert captured_configs[0].rate_limit_delay == 1.0
-
-
-# ── _run_sync ─────────────────────────────────────────────────────────────────
-
-
-class TestRunSync:
-    def test_resets_and_processes_queue(self):
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 0
-        mock_queue_repo.list_update_pages.return_value = []
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        result = _run_sync(mock_syncer, limit=None)
-
-        assert isinstance(result, SyncStatus)
-        mock_queue_repo.reset_failed_to_pending.assert_called_once_with(3)
-        mock_syncer.process_queue.assert_called_once_with(limit=None)
-
-    def test_logs_reset_count_when_nonzero(self):
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 5
-        mock_queue_repo.list_update_pages.return_value = []
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        _run_sync(mock_syncer, limit=10)
-        mock_syncer.process_queue.assert_called_once_with(limit=10)
-
-    def test_refreshes_timestamps_for_each_page(self):
-
-        page_status = _make_update_page_status(needs_resync_val=False)
-        updated_status = _make_update_page_status(needs_resync_val=False)
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 0
-        mock_queue_repo.list_update_pages.return_value = [page_status]
-        mock_queue_repo.get_update_page_status.return_value = updated_status
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        _run_sync(mock_syncer, limit=None)
-
-        mock_syncer._refresh_wiki_timestamp.assert_called_once_with(
-            page_status.page_name
-        )
-
-    def test_syncs_stale_pages(self):
-
-        page_status = _make_update_page_status(needs_resync_val=True)
-        updated_status = _make_update_page_status(needs_resync_val=True)
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 0
-        mock_queue_repo.list_update_pages.return_value = [page_status]
-        mock_queue_repo.get_update_page_status.return_value = updated_status
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        _run_sync(mock_syncer, limit=None)
-
-        mock_syncer.sync_update_page.assert_called_once_with(page_status.page_name)
-
-    def test_handles_update_page_error(self):
-
-        page_status = _make_update_page_status(needs_resync_val=True)
-        updated_status = _make_update_page_status(needs_resync_val=True)
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 0
-        mock_queue_repo.list_update_pages.return_value = [page_status]
-        mock_queue_repo.get_update_page_status.return_value = updated_status
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.sync_update_page.side_effect = UpdatePageError("fetch failed")
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        # Should not raise
-        result = _run_sync(mock_syncer, limit=None)
-        assert isinstance(result, SyncStatus)
-
-    def test_skips_sync_when_get_update_page_status_returns_none(self):
-
-        page_status = _make_update_page_status(needs_resync_val=True)
-
-        mock_queue_repo = MagicMock()
-        mock_queue_repo.reset_failed_to_pending.return_value = 0
-        mock_queue_repo.list_update_pages.return_value = [page_status]
-        mock_queue_repo.get_update_page_status.return_value = None
-
-        mock_syncer = MagicMock()
-        mock_syncer._queue_repo = mock_queue_repo
-        mock_syncer._max_retries = 3
-        mock_syncer.get_status.return_value = _make_sync_status()
-
-        _run_sync(mock_syncer, limit=None)
-
-        # sync_update_page should NOT be called when status is None
-        mock_syncer.sync_update_page.assert_not_called()
-
-
-# ── main() dispatch ───────────────────────────────────────────────────────────
-
-
-class TestMain:
-    def test_main_status_mode(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot", "--status"])
-
-        with patch("ddo_sync.cli._cmd_status", return_value=0) as mock_cmd:
-            result = main()
-
-        assert result == 0
-        mock_cmd.assert_called_once()
-
-    def test_main_discover_mode(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot", "--discover"])
-
-        with patch("ddo_sync.cli._cmd_discover", return_value=0) as mock_cmd:
-            result = main()
-
-        assert result == 0
-        mock_cmd.assert_called_once()
-
-    def test_main_reset_failed_mode(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot", "--reset-failed"])
-
-        with patch("ddo_sync.cli._cmd_reset_failed", return_value=0) as mock_cmd:
-            result = main()
-
-        assert result == 0
-        mock_cmd.assert_called_once()
-
-    def test_main_item_mode(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot", "--item", "Lenses of Opportunity"])
-
-        with patch("ddo_sync.cli.normalize_item") as mock_normalize:
-            result = main()
-
-        assert result == 0
-        mock_normalize.assert_called_once()
-        call_kwargs = mock_normalize.call_args
-        assert call_kwargs[0][0] == "Lenses of Opportunity"
-
-    def test_main_item_mode_with_override(self, monkeypatch):
-
-        monkeypatch.setattr(
-            sys, "argv", ["ddoloot", "--item", "Sword", "--item-override"]
-        )
-
-        with patch("ddo_sync.cli.normalize_item") as mock_normalize:
-            result = main()
-
-        assert result == 0
-        call_kwargs = mock_normalize.call_args
-        assert call_kwargs[1].get("upsert") is True or call_kwargs[0][1] is True
-
-    def test_main_default_sync(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot"])
-
-        with patch("ddo_sync.cli._cmd_sync", return_value=0) as mock_cmd:
-            result = main()
-
-        assert result == 0
-        mock_cmd.assert_called_once()
-
-    def test_main_sync_with_pages(self, monkeypatch):
-
-        monkeypatch.setattr(
-            sys,
-            "argv",
-            ["ddoloot", "--page", "Update_5_named_items", "--limit", "10"],
-        )
-
-        with patch("ddo_sync.cli._cmd_sync", return_value=0) as mock_cmd:
-            result = main()
-
-        assert result == 0
-        mock_cmd.assert_called_once_with(
-            page_names=["Update_5_named_items"],
-            limit=10,
-            rate_limit=2.5,
-            max_retries=3,
-        )
-
-    def test_main_verbose_mode(self, monkeypatch):
-
-        monkeypatch.setattr(sys, "argv", ["ddoloot", "--verbose", "--status"])
-
-        with patch("ddo_sync.cli._cmd_status", return_value=0):
-            with patch("ddo_sync.cli._configure_logging") as mock_log:
-                result = main()
-
-        mock_log.assert_called_once_with(True)
-        assert result == 0
+def test_extract_item_not_in_cache_exits_one(capsys):
+    assert main(["extract-item", "No Such Item"]) == 1
+    assert capsys.readouterr().out == ""
+
+
+def test_extract_item_page_without_infobox_exits_one(tmp_path):
+    html = tmp_path / "page.html"
+    html.write_text("<html><body><p>not an item</p></body></html>")
+    assert main(["extract-item", "Whatever", "--html", str(html)]) == 1
+
+
+def test_extract_item_makes_no_network_request():
+    html = PAGES / "Item_Epic_Whirling_Words.html"
+    with (
+        patch("ddo_sync.cli.WikiFetcher") as fetcher,
+        patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer,
+    ):
+        assert main(["extract-item", "Epic Whirling Words", "--html", str(html)]) == 0
+    fetcher.assert_not_called()
+    discoverer.assert_not_called()

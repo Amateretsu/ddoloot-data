@@ -1,14 +1,15 @@
 """DDOSyncer — orchestrates the full DDO item sync pipeline.
 
-Wires together WikiFetcher, WikiApiClient, UpdatePageParser, QueueRepository,
-ItemNormalizer, and ItemRepository into a single cohesive sync cycle.
+Wires together WikiFetcher, WikiApiClient, UpdatePageParser, QueueRepository, the
+Scraped Item extractor (called in-process through ``extract()``) and a
+:class:`~ddo_sync.protocols.ScrapedItemWriterProtocol` adapter into one sync cycle.
 
 Example:
-    >>> from ddo_sync import DDOSyncer
+    >>> from ddo_sync import DDOSyncer, JsonItemWriter
     >>> with WikiFetcher(config) as fetcher, \\
-    ...      ItemRepository("loot.db") as item_repo, \\
     ...      QueueRepository("queue.db") as queue_repo:
-    ...     syncer = DDOSyncer(fetcher, ItemNormalizer(), item_repo, queue_repo)
+    ...     writer = JsonItemWriter(Path("cache/extracted"))
+    ...     syncer = DDOSyncer(fetcher, writer, queue_repo)
     ...     syncer.register_update_page("Update_5_named_items")
     ...     syncer.sync_all()
     ...     print(syncer.get_status())
@@ -25,14 +26,14 @@ from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.protocols import (
     FetcherProtocol,
-    ItemRepositoryProtocol,
-    NormalizerProtocol,
     QueueRepositoryProtocol,
+    ScrapedItemWriterProtocol,
     UpdatePageParserProtocol,
     WikiApiClientProtocol,
 )
 from ddo_sync.update_page_parser import UpdatePageParser
 from ddo_sync.wiki_api import WikiApiClient
+from item_extractor import Config, extract, load_config
 
 _BASE_URL = "https://ddowiki.com"
 _PAGE_PREFIX = f"{_BASE_URL}/page/"
@@ -47,8 +48,8 @@ class DDOSyncer:
 
     Args:
         fetcher:     Object satisfying :class:`~ddo_sync.protocols.FetcherProtocol`.
-        normalizer:  Object satisfying :class:`~ddo_sync.protocols.NormalizerProtocol`.
-        item_repo:   Object satisfying :class:`~ddo_sync.protocols.ItemRepositoryProtocol`.
+        writer:      Object satisfying
+                     :class:`~ddo_sync.protocols.ScrapedItemWriterProtocol`.
         queue_repo:  Object satisfying :class:`~ddo_sync.protocols.QueueRepositoryProtocol`.
         max_retries: Items that have failed this many times are not reset to
                      pending on the next cycle (default: 3).
@@ -56,9 +57,11 @@ class DDOSyncer:
                      Defaults to :class:`~ddo_sync.wiki_api.WikiApiClient`.
         parser:      Optional :class:`~ddo_sync.protocols.UpdatePageParserProtocol`.
                      Defaults to :class:`~ddo_sync.update_page_parser.UpdatePageParser`.
+        extractor_config: Extractor rules; defaults to ``load_config()``
+                     (``catalog/extractor/``).
 
     Example:
-        >>> syncer = DDOSyncer(fetcher, normalizer, item_repo, queue_repo)
+        >>> syncer = DDOSyncer(fetcher, writer, queue_repo)
         >>> syncer.register_update_page("Update_5_named_items")
         >>> syncer.sync_all()
     """
@@ -66,17 +69,17 @@ class DDOSyncer:
     def __init__(
         self,
         fetcher: FetcherProtocol,
-        normalizer: NormalizerProtocol,
-        item_repo: ItemRepositoryProtocol,
+        writer: ScrapedItemWriterProtocol,
         queue_repo: QueueRepositoryProtocol,
         max_retries: int = 3,
         api_client: Optional[WikiApiClientProtocol] = None,
         parser: Optional[UpdatePageParserProtocol] = None,
+        extractor_config: Optional[Config] = None,
     ) -> None:
         self._fetcher = fetcher
-        self._normalizer = normalizer
-        self._item_repo = item_repo
+        self._writer = writer
         self._queue_repo = queue_repo
+        self._extractor_config = extractor_config or load_config()
         self._max_retries = max_retries
         self._api_client: WikiApiClientProtocol = api_client or WikiApiClient()
         self._parser: UpdatePageParserProtocol = parser or UpdatePageParser(
@@ -195,8 +198,8 @@ class DDOSyncer:
         For each pending item:
           1. Mark as ``in_progress``.
           2. Fetch item page HTML via :meth:`WikiFetcher.fetch_url`.
-          3. Normalize HTML via :meth:`ItemNormalizer.normalize`.
-          4. Upsert into :attr:`item_repo`.
+          3. Extract a Scraped Item via ``item_extractor.extract``.
+          4. Hand item and report to the writer.
           5. Mark as ``complete``.
 
         If any step raises, the item is marked as ``failed`` and the error
@@ -226,8 +229,10 @@ class DDOSyncer:
             self._queue_repo.mark_in_progress(queue_item.id, now)
             try:
                 html = self._fetcher.fetch_url(queue_item.wiki_url)
-                ddo_item = self._normalizer.normalize(html, queue_item.wiki_url)
-                self._item_repo.upsert(ddo_item)
+                item, report = extract(
+                    html, queue_item.wiki_url, self._extractor_config
+                )
+                self._writer.write(item, report)
             except Exception as exc:
                 error_msg = f"{type(exc).__name__}: {exc}"
                 self._queue_repo.mark_failed(queue_item.id, _utcnow(), error_msg)

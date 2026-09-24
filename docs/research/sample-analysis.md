@@ -1,6 +1,6 @@
-# Sample page analysis vs the current normalizer
+# Sample page analysis vs the original normalizer
 
-Sample: 40 item pages, one per update (Update 5 to 79), cached at `cache/html/` (gitignored, fetched via the ADR 0006 browser fallback). Compared against `src/item_normalizer` (parser + normalizer) as copied from the app repo.
+Sample: 40 item pages, one per update (Update 5 to 79), cached at `cache/html/` (gitignored, fetched via the ADR 0006 browser fallback). Compared against the original normalizer package (parser + normalizer) as copied from the app repo. That package has since been deleted; `src/item_extractor` is now the only HTML → Scraped Item module.
 
 ## Page templates found
 
@@ -31,7 +31,7 @@ Consequences: `slot` and `item_type` exist on only the accessory template. For a
 - Other rows with no field today: Feat Requirement, Required Trait, Attack Mod, Damage Mod, Use Magical Device DC, Accepts Sentience?, Upgradeable?, Notes, Tips, Shield Type, Shield Bonus, Damage Reduction, Rarity, Augment Type, Maximum Stack Size. Kinetic Sphere and one Rune-Arm style page also carry spell-like rows (Target, School, Spell Resistance, Charge Tier I-V).
 - Armor Bonus can have per-variant sub-rows ("Adamantine Body: +26 / Mithral Body: +15 / Composite Plating: +6").
 
-## Where the current normalizer fails
+## Where the original normalizer failed
 
 Measured on the 40 pages (fields populated / 40):
 
@@ -52,14 +52,14 @@ Measured on the 40 pages (fields populated / 40):
 - **Cosmetic and "None" values:** the Frock Vest has `None` strings for level, material and value, and zero durability. `None` must mean null.
 - **Multi-line cells:** rows like `Material` have a trailing empty cell; `Weight` and `Handedness` are often empty.
 
-## Proposed design: config-driven normalizer
+## Proposed design: config-driven extractor
 
 Two stages, so scraping never depends on the effects registry (ADR 0008):
 
 1. **Extract** (config-driven): HTML to a *scraped item* JSON, committed under `catalog-src/items/` (ADR 0006). Effects carry the raw name, parsed value, bonus type and tooltip. No registry lookups.
 2. **Compile** (later slice): scraped items plus the registry and rules to the spec's bundle `items.json`.
 
-Config lives in the data repo as YAML (`catalog/normalizer/`), validated by JSON Schema:
+Config lives in the data repo as YAML (`catalog/extractor/`), validated by JSON Schema:
 
 - `fields.yaml`: canonical field, alias group (all label variants), coercer (`int`, `float`, `copper`, `percent`, `text`, `null_if_none`, `list`), and which templates it applies to.
 - `templates.yaml`: template detection (first row label or row-set signature) and per-template category and slot derivation.
@@ -70,8 +70,10 @@ Anything unmatched is reported (not dropped): unknown row labels, unclassified l
 
 ## Result of the first build
 
-`src/item_extractor` implements stage 1 with config in `catalog/normalizer/`. Run it against the sample cache:
+`src/item_extractor` implements stage 1 with config in `catalog/extractor/`. Run it against the sample cache:
 
-    PYTHONPATH=src python -m item_extractor cache --out cache/extracted --report cache/report.json
+    python -m item_extractor cache --out cache/extracted --report cache/report.json
 
-On the 40 pages: all five templates detected (18 accessory, 10 armor, 8 weapon, 2 shield, 2 untyped), no extraction failures, no unmapped rows, no unclassified effects. Weapon damage, crit, damage types, slots, item types, page id and revision id are all populated; bonus types are captured for 139 of 186 effects (of the other 47, only two mention a bonus in their tooltip: the set-marker and one "Legendary Elemental Energy" case below). Things still needing a decision downstream (stage 2 / the effects registry): bonus-type strings such as `insightful` (redirect of Insight) and `dodge`, and set-marker effects like "Against the Slave Lords Set Bonus" that are not tied to a tooltip list. The old `item_normalizer` package is untouched and unused by the new path.
+or inspect one page with `ddoloot extract-item "<item name>"`.
+
+On the 40 pages: all five templates detected (18 accessory, 10 armor, 8 weapon, 2 shield, 2 untyped), no extraction failures, no unmapped rows, no unclassified effects. Crit, slots, item types, page id and revision id are populated. **Weapon damage is not:** the wiki writes it with a weapon-dice multiplier (`5.20[1d8+2] + 15 Pierce, Magic`), which the `damage` coercer does not read. On the 7 cached weapon pages whose damage cell is written this way, `damage_dice`, `damage_bonus` and `damage_types` are null, and the raw cell text is recorded in the Scraped Item's `extraction_errors` under `weapon_stats.damage_dice`. Parsing it needs a field for the multiplier (follow-up). Other results: bonus types are captured for 139 of 186 effects (of the other 47, only two mention a bonus in their tooltip: the set-marker and one "Legendary Elemental Energy" case below). Things still needing a decision downstream (stage 2 / the effects registry): bonus-type strings such as `insightful` (redirect of Insight) and `dodge`, and set-marker effects like "Against the Slave Lords Set Bonus" that are not tied to a tooltip list. The original normalizer package has been deleted.

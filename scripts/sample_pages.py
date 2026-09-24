@@ -10,7 +10,7 @@ identity, no proxies, no CAPTCHA services). If the browser page still shows a ch
 the run stops. Pages already cached are skipped.
 
 Usage:
-    python scripts/sample_pages.py --queue-db PATH [--count 40] [--seed 1] [--pause 0.5]
+    python scripts/sample_pages.py --queue-db PATH [--count 40] [--seed 1] [--pause 4]
 """
 
 from __future__ import annotations
@@ -69,7 +69,9 @@ def main() -> int:
     parser.add_argument("--queue-db", required=True, type=Path)
     parser.add_argument("--count", type=int, default=40)
     parser.add_argument("--seed", type=int, default=1)
-    parser.add_argument("--pause", type=float, default=0.5, help="seconds between requests")
+    parser.add_argument(
+        "--pause", type=float, default=4.0, help="seconds between requests (minimum 4, ADR 0006)"
+    )
     args = parser.parse_args()
 
     with sqlite3.connect(args.queue_db) as conn:
@@ -114,7 +116,7 @@ def main() -> int:
             index[fname] = {"name": name, "url": url, "update_page": update, "bytes": len(html), "via": via}
             index_path.write_text(json.dumps(index, indent=2, sort_keys=True))
             print(f"[{n}/{len(sample)}] saved   {name}  ({update}, {via})")
-            time.sleep(args.pause)
+            time.sleep(max(4.0, args.pause))
     finally:
         if browser:
             browser.close()
