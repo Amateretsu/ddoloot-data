@@ -433,6 +433,19 @@ def test_a_challenged_page_is_retried_in_the_browser(tmp_path, plain, browser, s
     assert len(sleeps) == 1  # the browser request is paced like any other
 
 
+@pytest.mark.parametrize("status", [202, 403, 503])
+def test_a_challenge_is_never_retried(tmp_path, plain, browser, sleeps, status):
+    challenge = Response(status=status, headers={"x-amzn-waf-action": "challenge"})
+    plain.reply(BOW, challenge)
+    browser.reply(BOW, challenge)
+    store = browser_store(tmp_path, plain, browser, sleeps)
+
+    with pytest.raises(ChallengeError):
+        store.get(BOW)
+    assert plain.requests == [BOW]
+    assert browser.requests == [BOW]
+
+
 def test_one_challenge_does_not_switch_the_run(tmp_path, plain, browser, sleeps):
     plain.reply(item_url(1), CHALLENGE)
     store = browser_store(tmp_path, plain, browser, sleeps)
@@ -529,6 +542,7 @@ def test_the_committed_config_loads():
     config = load_scraper_config()
     assert config.crawl_delay_seconds >= 4
     assert config.cache_dir.is_absolute()
+    assert config.browser.enabled  # every plain fetch is challenged today
 
 
 def test_relative_cache_dir_is_resolved_against_the_config_file(tmp_path):

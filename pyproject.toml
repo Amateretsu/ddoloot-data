@@ -49,8 +49,9 @@ ddoloot = "ddo_sync.cli:main"
 
 [project.optional-dependencies]
 # ADR 0006 browser fallback for the Page Store; then run `playwright install chromium`.
+# Capped below 1.62: later releases ship no Chromium for macOS 13.
 browser = [
-    "playwright",
+    "playwright>=1.40,<1.62",
 ]
 
 lint = [

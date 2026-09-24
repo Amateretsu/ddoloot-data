@@ -152,4 +152,42 @@ PR, and leaves ruff, black, isort and pytest green and the CLI working.
 
 Test baseline before step 1: 245 passed, 1 skipped.
 
-Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): 0 used.
+Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the orchestrator smoke re-runs were served from the Page Store, 0 requests). Running total: 8 of 40.
+
+### Step 1: browser fetch
+
+- Test baseline for step 1 in the venv with Playwright installed: 244 passed, 2 skipped. The
+  second skip is the "no Playwright" test. After step 1: 251 passed, 1 skipped.
+- Playwright 1.62 and later ship no Chromium for macOS 13, the maintainer's OS; 1.63 failed
+  with "does not support chromium on mac13". The `browser` extra is capped at
+  `playwright>=1.40,<1.62`, and Playwright 1.60.0 (Chromium revision 1223) is installed in
+  `.venv`.
+- **Headless works.** Unmodified headless Chromium with the identified user agent cleared
+  the WAF challenge on both pages. No headed attempt was needed, so there is no
+  `browser.headless` key.
+- The browser adapter lets through only wiki `/page/` documents, at most 2 per fetch: the
+  challenged document and one reload after the challenge clears. Every other wiki request
+  (`load.php`, images, `api.php`) and any further reload is aborted before it is sent. Each
+  browser fetch therefore costs 1 or 2 wiki requests, and a challenge cannot loop. The
+  stored HTML is the server-rendered article. Extraction of Boots of Corrosion matched the
+  retired browser copy exactly, apart from the `wiki` metadata.
+- The reload comes about a second after the challenged document, inside one `fetch()`. It
+  is the WAF's own step, so our crawl delay does not pace it. Our paced requests stay at
+  least 4 s apart.
+- Both adapters log every wiki request at DEBUG (`GET … (plain)` / `GET … (browser)`), so
+  `--verbose` gives an exact request count.
+- A challenge is never retried. Challenge detection runs before the retry rules, even on a
+  403 or 5xx, and a test covers this.
+- robots.txt is read once per run, and only when the run has to fetch something. A run
+  served entirely from the Page Store sends 0 requests.
+- **Discovery index: seed-list path taken.** `https://ddowiki.com/page/Named_items`
+  renders `Category:Items` and links to no `Update_<N>_named_items` page. Its content links
+  to `Category:Named_items_by_update` (82 subcategories), which is probably the real index.
+  That link was not followed because it would have exceeded the step 1 budget. Discovery
+  now falls back to the committed `config/update_pages.yaml`, which holds the 40 titles
+  from `cache/index.json` and is not a complete list.
+- The step 1 live runs used a scratch scraper config with `max_retries: 0`, which capped
+  the worst case at 4 requests per run. The committed config keeps `max_retries: 3`.
+- Step 1 live requests (8): `robots.txt`, then `Item:Boots_of_Corrosion` as plain 202,
+  browser challenged, browser reload (stored; `page_id` 12387); `robots.txt`, then
+  `Named_items` as plain 202, browser challenged, browser reload (stored).

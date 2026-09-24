@@ -18,11 +18,10 @@ import pytest
 from ddo_sync.cli import main
 from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
-from page_store import ChallengeError, PageStore
+from page_store import ChallengeError, FetchError, PageStore
 from tests.canned import CHALLENGE, CannedTransport, ok
 from tests.ddo_sync.conftest import (
     INDEX_URL,
-    ITEM_PAGE_HTML,
     NAMED_ITEMS_INDEX_HTML,
     PAGES,
     InMemoryPageStore,
@@ -240,7 +239,7 @@ def test_sync_discovers_update_pages_from_the_index_page(paths):
 def test_sync_discovery_failure_exits_one(paths):
     def serve(url: str) -> str:
         if url == INDEX_URL:
-            return ITEM_PAGE_HTML  # a page that links to no update page
+            raise FetchError("gone", url=url, status=404)
         return serve_wiki(url)
 
     assert run_sync(paths, store=FakePageStore(serve)) == 1
@@ -302,7 +301,11 @@ def test_sync_discover_lists_pages_reading_only_the_index(paths):
 
 def test_sync_discover_failure_exits_one(paths):
     args = ["sync", "--discover", "--scraper-config", str(paths["config"])]
-    with patch("ddo_sync.cli.PageStore", FakePageStore(lambda _url: ITEM_PAGE_HTML)):
+
+    def gone(url: str) -> str:
+        raise FetchError("gone", url=url, status=404)
+
+    with patch("ddo_sync.cli.PageStore", FakePageStore(gone)):
         assert main(args) == 1
     with patch(
         "ddo_sync.cli.PageStore",

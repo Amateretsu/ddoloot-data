@@ -8,13 +8,13 @@ Orchestration layer that discovers DDO Wiki update pages, keeps a persistent cra
 
 The sync pipeline works in three stages:
 
-1. **Discover**: the discovery module reads the named-items index page (`https://ddowiki.com/page/Named_items`) and collects every `Update_<N>_named_items` page it links to.
+1. **Discover**: the discovery module reads the named-items index page (`https://ddowiki.com/page/Named_items`) and collects every `Update_<N>_named_items` page it links to. When it links to none, discovery uses the committed seed list `config/update_pages.yaml` instead.
 2. **Queue**: discovery reads each update page and lists its `Item:` links and its revision id. The queue module (`QueueRepository`) stores them in the SQLite crawl queue (`data/queue.db`).
 3. **Process**: `DDOSyncer` works through the queue. For each item it reads the page through the Page Store (`docs/page_store.md`), calls `item_extractor.extract()` in-process to get a Scraped Item and its report, and hands both to a `ScrapedItemWriterProtocol` adapter. In production this adapter is `JsonItemWriter`, which writes under `cache/extracted/<update>/`.
 
 Discovery reads rendered `/page/` HTML only. It never uses the MediaWiki API (`/api.php`), which ADR 0006 forbids; the Page Store refuses such URLs anyway.
 
-> The index page title `Named_items` has not been checked against the live wiki, because no live fetch was allowed when it was chosen. If `ddoloot sync --discover` fails with "links to no Update_<N>_named_items page", check that title first (`NAMED_ITEMS_INDEX_URL` in `src/ddo_sync/discovery.py`). Meanwhile `sync --page NAME …` works without the index.
+> Checked live on 2026-09-24: `Named_items` renders `Category:Items` and links to no update page, so discovery falls back to the seed list `config/update_pages.yaml` (the 40 update pages the retired `cache/index.json` recorded; not exhaustive) and logs a warning. The page links to `Category:Named_items_by_update`, which is the likely real index; it has not been fetched yet. `sync --page NAME …` works without either.
 
 Every page, whether the index, an update page or an item page, is read through the Page Store. A page the store already holds costs no request, and `--refresh` is the only way to refetch one. When the Page Store stops the run (`page_store.RunStoppedError`, for example a WAF challenge with the browser fallback disabled), the sync ends with exit code 1. Nothing is marked failed and the current item stays pending, so a rerun resumes from the queue.
 
@@ -230,7 +230,7 @@ update_slug(page.page_name)                   # "update-5"
 
 | Function | Description |
 |---|---|
-| `discover_update_pages(store, refresh=False) -> list[str]` | Reads `NAMED_ITEMS_INDEX_URL` and returns the `Update_<N>_named_items` pages it links to, deduplicated and sorted by update number. Category pages, `…_revamped_named_items` pages and red links do not count. Raises `UpdatePageError` if the index cannot be read or links to no update page. |
+| `discover_update_pages(store, refresh=False, seed_pages=None) -> list[str]` | Reads `NAMED_ITEMS_INDEX_URL` and returns the `Update_<N>_named_items` pages it links to, deduplicated and sorted by update number. Category pages, `…_revamped_named_items` pages and red links do not count. When the index links to no update page, returns the update pages of `seed_pages` instead (`None` reads the committed `config/update_pages.yaml`). Raises `UpdatePageError` if the index cannot be read, or neither it nor the seed list names an update page. |
 | `read_update_page(store, page_name, refresh=False) -> UpdatePage` | Reads one update page. It returns its `Item:` links in document order, deduplicated by URL (the URL is kept as the wiki encoded it, and the name is decoded), plus the `wgCurRevisionId` from the HTML, or `None` if that is missing. Raises `UpdatePageError` on a fetch error or empty HTML. |
 | `update_page_url(page_name) -> str` | `https://ddowiki.com/page/<page_name>`, with spaces turned into underscores |
 | `update_slug(page_name) -> str` | `Update_8_named_items` → `update-8`, anything else → `unknown` |
@@ -286,7 +286,7 @@ All exceptions inherit from `DDOSyncError`.
 | Exception | When raised |
 |---|---|
 | `DDOSyncError` | Base class |
-| `UpdatePageError` | The named-items index or an update page could not be read, or the index links to no update page |
+| `UpdatePageError` | The named-items index or an update page could not be read, or neither the index nor the seed list names an update page |
 | `QueueDbError` | Queue database operation failed |
 | `QueueSchemaError` | Queue schema could not be applied, or the file is from an older schema |
 
