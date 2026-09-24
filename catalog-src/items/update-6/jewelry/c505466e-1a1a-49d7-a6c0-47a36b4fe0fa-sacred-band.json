@@ -47,8 +47,8 @@
     },
     {
       "name": "Lesser Turning",
-      "value": null,
-      "value_kind": null,
+      "value": 2,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Lesser Turning : Increases total number of Turn Undead uses by 2, once wielder rests. If you unequip the item you will lose these turns.",
       "charges": null,

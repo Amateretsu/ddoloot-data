@@ -130,6 +130,16 @@ def test_set_rule_without_item_pattern_is_rejected(config_dir):
         load_config(config_dir)
 
 
+def test_tooltip_value_pattern_without_a_value_group_is_rejected(config_dir):
+    edit(
+        config_dir,
+        "enchantments",
+        lambda d: d["tooltip_value"].update(value_pattern=r"[+-]\d+"),
+    )
+    with pytest.raises(ConfigError, match="value_pattern needs a 'value' group"):
+        load_config(config_dir)
+
+
 def test_last_template_must_be_the_default(config_dir):
     edit(config_dir, "templates", lambda d: d["templates"].reverse())
     with pytest.raises(ConfigError, match="the last template must be the default"):

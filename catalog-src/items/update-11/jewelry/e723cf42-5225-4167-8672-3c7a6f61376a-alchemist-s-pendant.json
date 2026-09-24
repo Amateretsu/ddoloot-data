@@ -57,8 +57,8 @@
     },
     {
       "name": "Greater Elemental Energy",
-      "value": null,
-      "value_kind": null,
+      "value": 20,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Greater Elemental Energy : Harnessing a small amount of power and potential of the raw elements, this item gives you a +20 bonus to your maximum hit points. This stacks with all bonuses except for Greater Elemental Energy.",
       "charges": null,

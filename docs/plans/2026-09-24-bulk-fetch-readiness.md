@@ -1118,6 +1118,111 @@ with ADR 0006.
 
 - Tests after decision 4g: 425 passed, 1 skipped.
 
+### Decision tiered effects: values from the tooltip
+
+- **Background:** an Effect with a `Lesser`, `Greater` or `Superior` prefix is its own
+  Effect name (`Greater False Life`, not `False Life`). Before this change, 17 of the 19
+  held tiered Effects (18 names) had value, `value_kind` and `bonus_type` all null. Their
+  entry is only the name, and the numbers are in the tooltip. `Greater Marksmanship`
+  already had Bonus Type `competence` from the tooltip. `Lesser Evocation Augmentation IX`
+  already had tier 9.
+- **Maintainer decision (2026-09-24):** "Option 2: keep tiers as separate Effects, but
+  read the value and bonus type from the tooltip. Use the tooltip to determine the bonus
+  type when it is not clear from the entry." Tier-family stacking (a tier qualifier or
+  a ddoloot-app change) is not in scope.
+- **Implementation:** one new optional block, `tooltip_value`, in
+  `catalog/extractor/enchantments.yaml`. It is typed in `config.py` as `TooltipValue`,
+  defaults to None, and is checked at load: `value_pattern` needs a `value` group. It has
+  three patterns:
+  - `name_pattern`, `^(?:Lesser|Greater|Superior)\s`, says which Effects are tiered.
+  - `number_pattern`, `\d+(?:\.\d+)?`, finds every number in the tooltip.
+  - `value_pattern` reads the one number as a bonus: signed (`+30`, `-2`), or after `by`
+    (`by 2`), with an optional `%` for `percent`.
+
+  In `effects.py`, a tiered Effect whose entry gives no value takes it from its tooltip,
+  but only when the tooltip holds exactly one number and `value_pattern` finds it. The
+  `value_kind` is `flat`, or `percent` for `N%`. Two or more numbers (attack and damage,
+  max Dex and ACP, AC and saves, bane +4 with a 3-18 range, dice with a DC, caster level
+  with charges) leave the value null. So does a lone unsigned number such as a DC. An
+  Effect whose entry already gives a value, and every Effect without a tier prefix, is
+  unchanged.
+- **Bonus Type:** the precedence is unchanged: the entry's own capture or link first, then
+  the tooltip's `tooltip_pattern` (`+N Type bonus`). Before, most tiered Effects got no
+  type because their tooltips name none (`+30 maximum health`, `a +20 bonus`, procs).
+  The only tooltip that does in the held pages, `Greater Marksmanship` (`+3 Competence
+  Bonus … +2 Competence Bonus`), was already read as `competence`. `Greater Stability`
+  writes `deflection bonus` and `resistance bonus` in lower case, which `tooltip_pattern`
+  does not match. Added: for a tiered Effect, the tooltip's Bonus Type counts only when
+  every type the tooltip names is the same, so two different types give null. That check
+  is applied to tiered Effects only. A first version applied it to all Effects, and the
+  offline rerun then changed 7 non-tier set Effects (Elder's Knowledge, Marshwalker,
+  which name an Artifact or Enhancement bonus beside a lower-case one). That version was
+  dropped. No type is inferred from game knowledge.
+- **Judgment call:** `Lesser Turning` ("Increases total number of Turn Undead uses by 2")
+  is read as 2 `flat`. It is the tooltip's only number and an unambiguous increase. The
+  `by N` form is in `value_pattern` for this case. No other held tiered tooltip has a
+  lone `by N`.
+- **All held tiered Effects after the change:**
+
+  | Effect | Item | value | value_kind | bonus_type | Why |
+  |---|---|---|---|---|---|
+  | Greater False Life | Sustaining Symbiont | 30 | flat | null | single `+30` in tooltip; no type named |
+  | Greater Elemental Energy | Alchemist's Pendant | 20 | flat | null | single `+20 bonus`; no type named |
+  | Lesser Turning | Sacred Band | 2 | flat | null | single `by 2`; no type named |
+  | Lesser Evocation Augmentation | Infused Chaos Docent | 9 | tier | null | tier IX from the entry, unchanged |
+  | Greater Marksmanship | Legendary Wind Howler Bracers | null | null | competence | two values (+3, +2), left null; type unchanged |
+  | Greater Stability | Nature's Vengeance | null | null | null | two values and two types, left null |
+  | Greater Nimbleness | Rakshasa Hide | null | null | null | two values (Dex 2, ACP 4), left null |
+  | Greater Nimbleness | Snakeskin Vest | null | null | null | two values (Dex 2, ACP 4), left null |
+  | Superior Nimbleness | Epic Rakshasa Hide | null | null | null | two values (Dex 4, ACP 4), left null |
+  | Greater Aberration Bane | Nature's Vengeance | null | null | null | bane +4 and 3-18 damage, left null |
+  | Greater Disease Guard | Epic Infested Armor | null | null | null | proc (2d6, DC 28), left null |
+  | Greater Poison Guard | Epic Envenomed Cloak | null | null | null | proc (2d6, DC 28), left null |
+  | Greater Shocking Blow | Epic Charged Gauntlets | null | null | null | proc (20, 20-120 damage), left null |
+  | Greater Shrieking Bolt | Legendary Wind Howler Bracers | null | null | null | proc (20, 20-120 damage), left null |
+  | Greater Stone Prison | Earthshatter Warhammer | null | null | null | proc (roll 20, DC 33), left null |
+  | Greater Sirocco | Epic Sirocco | null | null | null | proc, lone unsigned DC 35, left null |
+  | Greater Incineration | Epic Luminous Truth | null | null | null | proc, no number, left null |
+  | Greater Shout | Epic Cacophonic Verge | null | null | null | caster level 20 and charges 15, left null |
+  | Greater Regeneration | Epic Greatclub of the Scrag | null | null | null | no number, left null |
+
+- **Not over-broad:** the offline rerun applies the new logic to every held Effect (1041
+  entries on the 202 held `Item:` pages). The `catalog-src` diff changes only the 3
+  tiered Effects above, so no non-tier Effect and no Effect with an entry value changed.
+- **Tests (through `extract()`):**
+  - `test_tiered_effect_takes_its_single_value_from_the_tooltip`: False Life +30, Elemental
+    Energy +20 bonus, Turning by 2, and a `+5%` percent case.
+  - `test_tiered_effect_with_no_single_bonus_in_its_tooltip_keeps_a_null_value`:
+    Nimbleness, Stability, Bane, Poison Guard, Sirocco, Shout and Regeneration.
+  - `test_tiered_effect_takes_its_bonus_type_from_the_tooltip_only_when_it_names_one`:
+    Marksmanship keeps `competence` with a null value; a capitalised two-type Stability
+    gives null; an entry `Insight_bonus` link wins over a tooltip `Competence bonus`.
+  - `test_an_effect_that_is_not_tiered_or_has_an_entry_value_ignores_the_tooltip_value`:
+    `False Life` stays null, `False Life +36` and `Greater False Life +36` stay 36.
+  - In `test_config.py`, a `value_pattern` with no `value` group is rejected at load.
+
+  The 4 single-value cases and the bonus-type test failed before the change.
+- **Files:** `catalog/extractor/enchantments.yaml`, `src/item_extractor/config.py`,
+  `src/item_extractor/effects.py`, `tests/item_extractor/test_extract.py`,
+  `tests/item_extractor/test_config.py`, this plan, and 3 item files under
+  `catalog-src/items`. `extractor_gaps.json` is unchanged after regeneration (a null
+  value was never a gap).
+- **`catalog-src` diff:** 3 item files, one Effect each, `value` and `value_kind` only:
+  Sustaining Symbiont (`Greater False Life` 30 flat), Alchemist's Pendant (`Greater
+  Elemental Energy` 20 flat) and Sacred Band (`Lesser Turning` 2 flat). Bonus Types and
+  tooltips are unchanged. No registry change and no other file.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, the inner sync
+  exit code is 2, and 42 unheld pages are skipped. A second run left `git status` and the
+  diff unchanged, and `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 211 | 0 | 0 | 0 | 0 | 5 |
+  | After | 211 | 0 | 0 | 0 | 0 | 5 |
+
+- Tests after this decision: 441 passed, 1 skipped.
+
 ## Session summary
 
 ### Outcomes

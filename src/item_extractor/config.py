@@ -205,6 +205,23 @@ class BonusTypePatterns(_Strict):
     tooltip_pattern: Regex
 
 
+class TooltipValue(_Strict):
+    """Where a tiered Effect with no value in its entry takes one from its tooltip."""
+
+    #: Effect names this applies to, e.g. ``Greater False Life``.
+    name_pattern: Regex
+    #: Every number in the tooltip; the value is taken only when there is exactly one.
+    number_pattern: Regex
+    #: That one number as a bonus: a ``value`` capture, optional ``sign`` and ``pct``.
+    value_pattern: Regex
+
+    @model_validator(mode="after")
+    def _value_group(self) -> TooltipValue:
+        if "value" not in self.value_pattern.groupindex:
+            raise ValueError("tooltip_value.value_pattern needs a 'value' group")
+        return self
+
+
 class When(_Strict):
     has_children: bool | None = None
     tooltip_items_match: Regex | None = None
@@ -248,12 +265,14 @@ class EntryRule(_Strict):
 class EnchantmentsConfig(_Strict):
     """``enchantments.yaml``: everything Effect classification reads.
 
-    Bonus Type patterns, the Roman numeral map for tier values, and the ordered entry
-    rules. It is the whole rules argument of ``classify_effects()``.
+    Bonus Type patterns, the Roman numeral map for tier values, the tooltip value rule
+    for tiered Effects, and the ordered entry rules. It is the whole rules argument of
+    ``classify_effects()``.
     """
 
     bonus_type: BonusTypePatterns
     roman: dict[str, int]
+    tooltip_value: TooltipValue | None = None
     rules: list[EntryRule] = Field(min_length=1)
 
 

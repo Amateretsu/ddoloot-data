@@ -38,8 +38,19 @@ bonus_type:
   link_pattern: '/page/([A-Za-z]+)_bonus$'
   # Text such as "+15% Artifact bonus to Doublestrike".
   text_pattern: '\b([A-Z][a-z]+) [Bb]onus\b'
-  # Last resort, on the tooltip: "+3 Quality bonus to ...".
+  # Last resort, on the tooltip: "+3 Quality bonus to ...". For a tiered Effect (see
+  # tooltip_value) only when every match names the same Bonus Type.
   tooltip_pattern: '[+-]?\d+%?\s+([A-Z][a-z]+) [Bb]onus\b'
+
+# A tiered Effect ("Greater False Life") whose entry gives no value takes it from its
+# tooltip ("+30 maximum health" -> 30 flat; "+N%" -> percent), but only when the tooltip
+# holds exactly one number and that number reads as a bonus: signed, or "by N". Two
+# numbers (Greater Marksmanship's +3 attack and +2 damage), dice, DCs, damage ranges,
+# caster levels and charges leave the value null (maintainer decision, tiered effects).
+tooltip_value:
+  name_pattern: '^(?:Lesser|Greater|Superior)\s'
+  number_pattern: '\d+(?:\.\d+)?'
+  value_pattern: '(?:(?P<sign>[+-])|\bby\s+)(?P<value>\d+(?:\.\d+)?)(?P<pct>%)?'
 
 # Roman numerals -> tier values (a `tier` capture is looked up here).
 roman:

@@ -37,8 +37,8 @@
   "effects": [
     {
       "name": "Greater False Life",
-      "value": null,
-      "value_kind": null,
+      "value": 30,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Greater False Life : This item grants the wearer +30 maximum health .",
       "charges": null,
