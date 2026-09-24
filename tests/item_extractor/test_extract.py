@@ -157,6 +157,10 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
         ("Accepts Sentience?", "No", "accepts_sentience", False),
         ("Weight", "0.5 lbs", "weight", 0.5),
         ("Race\xa0Absolutely   Required", "Dwarf", "required_race", "Dwarf"),
+        # A trailing colon is dropped even when whitespace follows it (the builder
+        # appends a newline to every label, as the wiki does).
+        ("Race Absolutely Required:", "Dwarf", "required_race", "Dwarf"),
+        ("Minimum Level :\t", "12", "minimum_level", 12),
     ],
 )
 def test_row_is_coerced_into_its_field(cfg, label, cell, field, expected):
@@ -187,11 +191,12 @@ def test_weapon_damage_without_bonus_and_crit(cfg):
         cfg,
     )
     stats = item.weapon_stats
-    assert (stats.damage_dice, stats.damage_bonus, stats.damage_types) == (
+    assert (stats.damage_multiplier, stats.damage_dice, stats.damage_bonus) == (
+        1.0,
         "1d8",
-        None,
-        ["Piercing"],
+        0,
     )
+    assert (stats.enhancement_bonus, stats.damage_types) == (0, ["Piercing"])
     assert (stats.critical_range, stats.critical_multiplier) == ("19-20", 3)
 
 
@@ -452,12 +457,16 @@ def test_real_weapon_page(cfg):
     assert item.effects[0].value == 15
     assert [h.colour for h in item.customisation_hints] == ["Red", "Purple"]
     assert item.source.quests == ["Attack on Stormreach"]
-    # The wiki writes weapon dice as "5.20[1d8+2] + 15 ...", which the damage coercer
-    # does not read yet: the field is null and the raw text is kept for review.
-    assert item.weapon_stats.damage_dice is None
-    assert item.extraction_errors == {
-        "weapon_stats.damage_dice": "5.20[1d8+2] + 15 Pierce, Magic"
-    }
+    # "5.20[1d8+2] + 15 Pierce, Magic": multiplier, base dice and bonus, enhancement bonus.
+    stats = item.weapon_stats
+    assert (stats.damage_multiplier, stats.damage_dice, stats.damage_bonus) == (
+        5.2,
+        "1d8",
+        2,
+    )
+    assert stats.enhancement_bonus == 15, "the same +15 the Effects list shows"
+    assert stats.damage_types == ["Piercing", "Magic"]
+    assert item.extraction_errors == {}
     assert report["unmapped_rows"] == {}
     assert report["unclassified_effects"] == []
 
@@ -491,8 +500,15 @@ def test_real_shield_page(cfg):
     assert item.equip_slots == ["off_hand"]
     assert item.shield_stats.shield_bonus == 9
     assert item.shield_stats.damage_reduction == 9
-    assert item.weapon_stats.damage_dice == "1d8"
-    assert item.weapon_stats.damage_bonus == 5
+    # "[1d8] + 5 Bludgeon, Magic": no multiplier means 1.0, and the +5 is the enhancement
+    # bonus, not a damage bonus.
+    stats = item.weapon_stats
+    assert (stats.damage_multiplier, stats.damage_dice, stats.damage_bonus) == (
+        1.0,
+        "1d8",
+        0,
+    )
+    assert stats.enhancement_bonus == 5
     assert item.extraction_errors == {}
 
 

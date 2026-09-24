@@ -31,8 +31,10 @@ class WeaponStats(_Strict):
     proficiency: str | None = None
     weapon_type: str | None = None
     handedness: str | None = None
+    damage_multiplier: float | None = None
     damage_dice: str | None = None
     damage_bonus: int | None = None
+    enhancement_bonus: int | None = None
     damage_types: list[str] | None = None
     critical_range: str | None = None
     critical_multiplier: int | None = None

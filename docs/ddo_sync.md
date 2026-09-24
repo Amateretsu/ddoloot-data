@@ -62,7 +62,7 @@ ddoloot sync [--status | --discover | --reset-failed]
 
 Output:
 
-- `cache/extracted/<update>/<page-slug>.json`: one Scraped Item per item page, for example `update-5/Item_Breaker_of_Bodies.json`. `<update>` comes from the update page the item was queued from (`Update_5_named_items` → `update-5`); anything else is `unknown`. An item listed on two update pages is written to both folders. Every field is written: null means the wiki row was absent or said "None", and a field that could not be parsed is null with its raw text in `extraction_errors`.
+- `cache/extracted/<update>/<page-slug>.json`: one Scraped Item per item page, for example `update-5/Item_Breaker_of_Bodies-1a2b3c4d.json`: a readable slug of the page title plus the first 8 hex digits of the title's SHA-1, so titles that differ only in punctuation or case never share a file. `<update>` comes from the update page the item was queued from (`Update_5_named_items` → `update-5`); anything else is `unknown`. An item listed on two update pages is written to both folders. Every field is written: null means the wiki row was absent or said "None", and a field that could not be parsed is null with its raw text in `extraction_errors`.
 - `cache/extracted/<update>/report.jsonl`: one line per page (`name`, `url`, `update_page`, `template`, `unmapped_rows`, `ignored_rows`, `rule_hits`, `unclassified_effects`, `extraction_errors`, `warnings`). `unclassified_effects` lists Effects entries that no `enchantments.yaml` rule matched (they are left out of the item and never stop the run) or that reached the fallback rule while containing a digit. `warnings` holds notes such as a named set that has bonuses but no name (the set is kept with `name: null`). Writing a page again replaces its line, so the file always has exactly one line per JSON file beside it, across runs and `--limit` batches.
 - `data/queue.db` (or `--queue-db`): crawl queue and update-page sync state.
 - The Page Store's `cache_dir` (default `cache/pages/`): every page fetched.
@@ -196,7 +196,7 @@ writer = JsonItemWriter(Path("cache/extracted"))
 writer.write(item, report)   # item: item_extractor.ScrapedItem, report: dict
 ```
 
-`write()` files the item under `<out_dir>/<update>/`, where `<update>` is `update_slug(report["update_page"])` (`update-8`, or `unknown` when the key is missing or is not an `Update_<N>_named_items` title). It writes `<page-slug>.json`, where the slug is the page title from `item.wiki.url` with every run of non-alphanumeric characters replaced by `_`. In that folder's `report.jsonl` it replaces the page's line (matched by URL) with `{"name", "url", "update_page", **report, "extraction_errors", "warnings"}`. Both files are written atomically.
+`write()` files the item under `<out_dir>/<update>/`, where `<update>` is `update_slug(report["update_page"])` (`update-8`, or `unknown` when the key is missing or is not an `Update_<N>_named_items` title). It writes `<page-slug>.json`, where the slug is the page title from `item.wiki.url` with every run of non-alphanumeric characters replaced by `_`, plus `-` and the first 8 hex digits of the title's SHA-1. In that folder's `report.jsonl` it replaces the page's line (matched by page slug, so `%27` and `'` spellings of one URL are one page) with `{"name", "url", "update_page", **report, "extraction_errors", "warnings"}`. Both files are written atomically.
 
 ---
 

@@ -8,16 +8,19 @@ Results layout, one folder per update (a local, gitignored working copy; the com
 
 ``<update>`` is ``update-8`` style, derived from the report's ``update_page``
 (``Update_8_named_items`` -> ``update-8``) and ``unknown`` when absent. ``<page-slug>`` is
-the URL title with every run of non-alphanumerics replaced by ``_``, e.g.
-``Item_Breaker_of_Bodies``.
+the page title with every run of non-alphanumerics replaced by ``_``, plus the first 8 hex
+digits of the title's SHA-1, e.g. ``Item_Breaker_of_Bodies-1a2b3c4d``: readable, and
+distinct for titles that differ only in punctuation or case (the Page Store's scheme).
 
-``report.jsonl`` keeps exactly one line per page URL: writing a page again replaces its
-line (in place of appending a duplicate), so the report always describes the JSON files
-beside it, however many runs or ``--limit`` batches produced them.
+``report.jsonl`` keeps exactly one line per page: writing a page again replaces its line
+(in place of appending a duplicate), so the report always describes the JSON files beside
+it, however many runs or ``--limit`` batches produced them. Two spellings of one page URL
+(``%27`` or ``'``) are the same page.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -28,11 +31,14 @@ from urllib.parse import unquote
 from ddo_sync.discovery import update_slug
 from item_extractor import ScrapedItem
 
+_SLUG_MAX = 80
+
 
 def _page_slug(url: str) -> str:
-    """Readable filename stem for a wiki page URL, e.g. ``Item_Breaker_of_Bodies``."""
-    title = unquote(url.rsplit("/page/", maxsplit=1)[-1])
-    return re.sub(r"[^A-Za-z0-9]+", "_", title).strip("_") or "page"
+    """Filename stem for a wiki page URL, e.g. ``Item_Breaker_of_Bodies-1a2b3c4d``."""
+    title = unquote(url.rsplit("/page/", maxsplit=1)[-1]).replace("_", " ").strip()
+    slug = re.sub(r"[^A-Za-z0-9]+", "_", title).strip("_")[:_SLUG_MAX] or "page"
+    return f"{slug}-{hashlib.sha1(title.encode('utf-8')).hexdigest()[:8]}"
 
 
 class JsonItemWriter:
@@ -56,8 +62,9 @@ class JsonItemWriter:
         folder = self.out_dir / update_slug(report.get("update_page"))
         folder.mkdir(parents=True, exist_ok=True)
         url = item.wiki.url
+        slug = _page_slug(url)
         _write_atomic(
-            folder / f"{_page_slug(url)}.json",
+            folder / f"{slug}.json",
             json.dumps(item.model_dump(mode="json"), indent=2, ensure_ascii=False)
             + "\n",
         )
@@ -73,7 +80,7 @@ class JsonItemWriter:
         kept = []
         if report_path.exists():
             for raw in report_path.read_text(encoding="utf-8").splitlines():
-                if raw.strip() and json.loads(raw).get("url") != url:
+                if raw.strip() and _page_slug(json.loads(raw).get("url", "")) != slug:
                     kept.append(raw)
         kept.append(json.dumps(line, ensure_ascii=False))
         _write_atomic(report_path, "\n".join(kept) + "\n")

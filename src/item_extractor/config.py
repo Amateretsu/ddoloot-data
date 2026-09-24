@@ -37,9 +37,9 @@ class ConfigError(ValueError):
 
 
 def normalize_label(text: str) -> str:
-    """Lowercase, drop colons, and collapse whitespace (including NBSP)."""
-    text = text.replace("\xa0", " ").rstrip(": ").strip().lower()
-    return re.sub(r"\s+", " ", text)
+    """Lowercase, collapse whitespace (including NBSP), and drop a trailing colon."""
+    text = re.sub(r"\s+", " ", text.replace("\xa0", " ")).strip()
+    return text.rstrip(":").rstrip().lower()
 
 
 def _compiler(flags: int = 0):

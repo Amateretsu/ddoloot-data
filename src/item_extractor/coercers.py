@@ -25,7 +25,19 @@ class Unparseable(ValueError):
     """The cell text does not have the shape this coercer reads."""
 
 
-_DAMAGE_RE = re.compile(r"^\[?(\d+d\d+)\]?\s*(?:([+-])\s*(\d+))?\s*(.*)$", re.I)
+# "5.20[1d8+2] + 15 Pierce, Magic": weapon-dice multiplier, base dice and bonus inside the
+# brackets, then the enhancement bonus and the damage types. The multiplier and the
+# brackets are optional ("[1d8] + 5 Bludgeon", "1d8 Piercing").
+_DAMAGE_RE = re.compile(
+    r"""^(?:
+        (?:(?P<mult>\d+(?:\.\d+)?)\s*)?
+        \[\s*(?P<dice>\d+d\d+)\s*(?:(?P<bsign>[+-])\s*(?P<bonus>\d+))?\s*\]
+        | (?P<bare>\d+d\d+)
+    )
+    \s*(?:(?P<esign>[+-])\s*(?P<enh>\d+))?
+    \s*(?P<rest>.*)$""",
+    re.I | re.X,
+)
 _CRIT_RE = re.compile(r"(\d+(?:-\d+)?)\s*/\s*[xX×]?(\d+)")  # noqa: RUF001
 _INT_RE = re.compile(r"-?\d+")
 _FLOAT_RE = re.compile(r"-?\d+(?:\.\d+)?")
@@ -85,19 +97,23 @@ def _damage(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
     m = _DAMAGE_RE.match(text)
     if not m:
         raise Unparseable(text)
-    dice, sign, bonus, rest = m.groups()
     types = [
         cfg.mappings.damage_types.get(t.strip().lower(), t.strip())
-        for t in re.split(r"[,/]", rest)
+        for t in re.split(r"[,/]", m["rest"])
         if t.strip()
     ]
+    # An omitted part has its neutral value: "[1d8]" is 1.0 x [1d8+0] + 0.
     return {
-        "weapon_stats.damage_dice": dice,
-        "weapon_stats.damage_bonus": (
-            int(bonus) * (-1 if sign == "-" else 1) if bonus else None
-        ),
+        "weapon_stats.damage_multiplier": float(m["mult"]) if m["mult"] else 1.0,
+        "weapon_stats.damage_dice": m["dice"] or m["bare"],
+        "weapon_stats.damage_bonus": _signed(m["bsign"], m["bonus"]),
+        "weapon_stats.enhancement_bonus": _signed(m["esign"], m["enh"]),
         "weapon_stats.damage_types": types,
     }
+
+
+def _signed(sign: str | None, digits: str | None) -> int:
+    return int(digits) * (-1 if sign == "-" else 1) if digits else 0
 
 
 def _crit(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
