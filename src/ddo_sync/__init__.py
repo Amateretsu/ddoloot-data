@@ -7,6 +7,7 @@ Public API:
     QueueRepository   — SQLite scrape queue (update pages + items)
     WikiApiClient     — MediaWiki Action API thin client
     UpdatePageParser  — HTML parser for item links on update pages
+    sample_pages      — stratified sample of queued item pages into the Page Store
 
 Models:
 
@@ -19,13 +20,13 @@ Exceptions:
 Example:
 
     >>> from ddo_sync import DDOSyncer, JsonItemWriter, QueueRepository
-    >>> from ddowiki_scraper import WikiFetcher
+    >>> from page_store import PageStore, load_scraper_config
     >>> with (
-    ...     WikiFetcher(config) as fetcher,
+    ...     PageStore(load_scraper_config()) as store,
     ...     QueueRepository("queue.db") as queue_repo,
     ... ):
     ...     writer = JsonItemWriter(Path("cache/extracted"))
-    ...     syncer = DDOSyncer(fetcher, writer, queue_repo)
+    ...     syncer = DDOSyncer(store, writer, queue_repo)
     ...     syncer.register_update_page("Update_5_named_items")
     ...     status = syncer.sync_all()
 """
@@ -47,13 +48,14 @@ from ddo_sync.models import (
 )
 from ddo_sync.page_discovery import UpdatePageDiscoverer
 from ddo_sync.protocols import (
-    FetcherProtocol,
+    PageStoreProtocol,
     QueueRepositoryProtocol,
     ScrapedItemWriterProtocol,
     UpdatePageParserProtocol,
     WikiApiClientProtocol,
 )
 from ddo_sync.queue_db import QueueRepository
+from ddo_sync.sampler import SampledPage, sample_pages
 from ddo_sync.scrape_queue_db import ScrapeQueueRepository
 from ddo_sync.syncer import DDOSyncer
 from ddo_sync.update_page_db import UpdatePageRepository
@@ -63,15 +65,16 @@ from ddo_sync.wiki_api import WikiApiClient
 __all__ = [
     "DDOSyncError",
     "DDOSyncer",
-    "FetcherProtocol",
     "ItemLink",
     "JsonItemWriter",
+    "PageStoreProtocol",
     "QueueDbError",
     "QueueItem",
     "QueueRepository",
     "QueueRepositoryProtocol",
     "QueueSchemaError",
     "QueueStats",
+    "SampledPage",
     "ScrapeQueueRepository",
     "ScrapedItemWriterProtocol",
     "SyncStatus",
@@ -84,4 +87,5 @@ __all__ = [
     "WikiApiClient",
     "WikiApiClientProtocol",
     "WikiApiError",
+    "sample_pages",
 ]

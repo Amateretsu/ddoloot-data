@@ -11,19 +11,28 @@ from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.syncer import DDOSyncer
+from page_store import ChallengeError, FetchError
 from tests.ddo_sync.conftest import (
     ITEM_PAGE_HTML,
     MODIFIED_AFTER,
     MODIFIED_BEFORE,
     SYNCED_AT,
-    UPDATE_PAGE_HTML,
     InMemoryItemWriter,
+    InMemoryPageStore,
+    serve_wiki,
     utc,
 )
 
 UTC = timezone.utc
 PAGE_NAME = "Update_5_named_items"
 PAGE_URL = "https://ddowiki.com/page/Update_5_named_items"
+
+
+def _raise(exc: Exception):
+    def serve(_url: str) -> str:
+        raise exc
+
+    return serve
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
@@ -37,16 +46,9 @@ def queue_repo() -> QueueRepository:
     repo.close()
 
 
-def _serve(url: str) -> str:
-    """Update pages get the update-page HTML, item pages a real item page."""
-    return ITEM_PAGE_HTML if "/page/Item:" in url else UPDATE_PAGE_HTML
-
-
 @pytest.fixture
-def mock_fetcher() -> MagicMock:
-    fetcher = MagicMock()
-    fetcher.fetch_url.side_effect = _serve
-    return fetcher
+def store() -> InMemoryPageStore:
+    return InMemoryPageStore(serve_wiki)
 
 
 @pytest.fixture
@@ -62,9 +64,9 @@ def mock_api_client() -> MagicMock:
 
 
 @pytest.fixture
-def syncer(mock_fetcher, writer, queue_repo, mock_api_client) -> DDOSyncer:
+def syncer(store, writer, queue_repo, mock_api_client) -> DDOSyncer:
     # The mock api client means no real HTTP is made.
-    return DDOSyncer(mock_fetcher, writer, queue_repo, api_client=mock_api_client)
+    return DDOSyncer(store, writer, queue_repo, api_client=mock_api_client)
 
 
 # ── Registration ──────────────────────────────────────────────────────────────
@@ -96,10 +98,10 @@ class TestRegisterUpdatePage:
 
 
 class TestSyncUpdatePage:
-    def test_fetches_correct_url(self, syncer, mock_fetcher):
+    def test_fetches_correct_url(self, syncer, store):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
-        mock_fetcher.fetch_url.assert_called_once_with(PAGE_URL)
+        assert store.requests == [PAGE_URL]
 
     def test_returns_item_links(self, syncer):
         syncer.register_update_page(PAGE_NAME)
@@ -119,16 +121,39 @@ class TestSyncUpdatePage:
         status = queue_repo.get_update_page_status(PAGE_NAME)
         assert status.last_synced_at is not None
 
-    def test_fetch_error_raises_update_page_error(self, syncer, mock_fetcher):
+    def test_fetch_error_raises_update_page_error(self, syncer, store):
         syncer.register_update_page(PAGE_NAME)
-        mock_fetcher.fetch_url.side_effect = Exception("network down")
+        store.serve = _raise(FetchError("network down", url=PAGE_URL))
         with pytest.raises(UpdatePageError):
             syncer.sync_update_page(PAGE_NAME)
 
-    def test_spaces_in_page_name_handled(self, syncer, mock_fetcher):
+    def test_challenge_stops_the_run_instead_of_failing_the_page(self, syncer, store):
+        syncer.register_update_page(PAGE_NAME)
+        store.serve = _raise(ChallengeError("challenged", url=PAGE_URL))
+        with pytest.raises(ChallengeError):
+            syncer.sync_update_page(PAGE_NAME)
+
+    def test_spaces_in_page_name_handled(self, syncer, store):
         syncer.register_update_page("Update 5 named items")
         syncer.sync_update_page("Update 5 named items")
-        mock_fetcher.fetch_url.assert_called_once_with(PAGE_URL)
+        assert store.requests == [PAGE_URL]
+
+    def test_held_update_page_is_not_refetched(self, syncer, store):
+        syncer.register_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        assert store.requests == [PAGE_URL]
+
+    def test_refresh_refetches_held_pages(
+        self, store, writer, queue_repo, mock_api_client
+    ):
+        syncer = DDOSyncer(
+            store, writer, queue_repo, api_client=mock_api_client, refresh=True
+        )
+        syncer.register_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        assert store.requests == [PAGE_URL, PAGE_URL]
 
 
 # ── process_queue ─────────────────────────────────────────────────────────────
@@ -155,11 +180,11 @@ class TestProcessQueue:
         assert stats.complete > 0
         assert stats.pending == 0
 
-    def test_marks_items_failed_on_error(self, syncer, queue_repo, mock_fetcher):
+    def test_marks_items_failed_on_error(self, syncer, queue_repo, store):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         # Make fetch fail for processing
-        mock_fetcher.fetch_url.side_effect = Exception("scrape failed")
+        store.serve = _raise(FetchError("scrape failed", url="x", status=404))
         success, failures = syncer.process_queue()
         assert failures > 0
         assert success == 0
@@ -185,14 +210,39 @@ class TestProcessQueue:
         assert item.wiki.url.startswith("https://ddowiki.com/page/Item:")
         assert report["template"] == "shield"
 
+    def test_challenge_stops_processing_and_leaves_items_pending(
+        self, syncer, writer, queue_repo, store
+    ):
+        syncer.register_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        total = queue_repo.get_queue_stats().pending
+        store.serve = _raise(ChallengeError("challenged", url="x"))
+        with pytest.raises(ChallengeError):
+            syncer.process_queue()
+        stats = queue_repo.get_queue_stats()
+        assert stats.failed == 0
+        assert stats.in_progress == 0
+        assert stats.pending == total
+        assert writer.written == []
+
+    def test_items_already_held_are_not_refetched(self, syncer, queue_repo, store):
+        syncer.register_update_page(PAGE_NAME)
+        syncer.sync_update_page(PAGE_NAME)
+        item = queue_repo.get_pending_items()[0]
+        store.get(item.wiki_url)
+        store.requests.clear()
+        syncer.process_queue()
+        assert item.wiki_url not in store.requests
+        assert len(store.requests) == queue_repo.get_queue_stats().complete - 1
+
     def test_page_that_cannot_be_extracted_is_marked_failed(
-        self, syncer, writer, queue_repo, mock_fetcher
+        self, syncer, writer, queue_repo, store
     ):
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         total = queue_repo.get_queue_stats().pending
         pages = iter(["<html><body>no infobox</body></html>"])
-        mock_fetcher.fetch_url.side_effect = lambda _url: next(pages, ITEM_PAGE_HTML)
+        store.serve = lambda _url: next(pages, ITEM_PAGE_HTML)
         success, failures = syncer.process_queue()
         assert failures == 1
         assert success == total - 1
@@ -229,25 +279,24 @@ class TestSyncAll:
         result = syncer.sync_all()
         assert isinstance(result, SyncStatus)
 
-    def test_syncs_stale_page(self, syncer, mock_api_client, mock_fetcher):
+    def test_syncs_stale_page(self, syncer, mock_api_client, store):
         """Page needs resync when wiki is newer than last sync."""
         syncer.register_update_page(PAGE_NAME)
         # Simulate: we synced before, wiki has been updated since
         syncer._queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
         mock_api_client.get_last_modified.return_value = MODIFIED_AFTER
         syncer.sync_all()
-        # fetch_url should have been called for the update page + queue items
-        assert mock_fetcher.fetch_url.called
+        # the update page + queue items were read through the store
+        assert PAGE_URL in store.requests
 
-    def test_skips_up_to_date_page(self, syncer, mock_api_client, mock_fetcher):
+    def test_skips_up_to_date_page(self, syncer, mock_api_client, store):
         """Page does NOT need resync when wiki is older than last sync."""
         syncer.register_update_page(PAGE_NAME)
         syncer._queue_repo.mark_page_synced(PAGE_NAME, SYNCED_AT)
         mock_api_client.get_last_modified.return_value = MODIFIED_BEFORE
         syncer.sync_all()
-        # fetch_url should NOT have been called for the update page
-        # (no pending items either, so call_count == 0)
-        mock_fetcher.fetch_url.assert_not_called()
+        # the update page is not read (no pending items either)
+        assert store.requests == []
 
     def test_resets_failed_items_first(self, syncer, queue_repo, mock_api_client):
         syncer.register_update_page(PAGE_NAME)
@@ -263,7 +312,7 @@ class TestSyncAll:
         assert queue_repo.get_queue_stats().failed == 0
 
     def test_update_page_error_does_not_abort_cycle(
-        self, syncer, mock_fetcher, mock_api_client
+        self, syncer, store, mock_api_client
     ):
         """If one update page fails to sync, others still process."""
         syncer.register_update_page("Page_A")
@@ -272,10 +321,10 @@ class TestSyncAll:
 
         def fetch_side_effect(url):
             if "Page_A" in url:
-                raise Exception("Page A broken")
-            return _serve(url)
+                raise FetchError("Page A broken", url=url)
+            return serve_wiki(url)
 
-        mock_fetcher.fetch_url.side_effect = fetch_side_effect
+        store.serve = fetch_side_effect
         # Should not raise even though Page_A fails
         result = syncer.sync_all()
         assert isinstance(result, SyncStatus)

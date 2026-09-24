@@ -70,10 +70,6 @@ Anything unmatched is reported (not dropped): unknown row labels, unclassified l
 
 ## Result of the first build
 
-`src/item_extractor` implements stage 1 with config in `catalog/extractor/`. Run it against the sample cache:
-
-    python -m item_extractor cache --out cache/extracted --report cache/report.json
-
-or inspect one page with `ddoloot extract-item "<item name>"`.
+`src/item_extractor` implements stage 1 with config in `catalog/extractor/`. The figures below came from a one-off run over the 40-page sample in the old `cache/html/` layout. That layout and its `python -m item_extractor` runner have since been retired: pages now live in the Page Store (`docs/page_store.md`), the whole-store smoke test in `tests/item_extractor/test_extract.py` checks every held page, and `ddoloot extract-item "<item name>"` inspects one.
 
 On the 40 pages: all five templates detected (18 accessory, 10 armor, 8 weapon, 2 shield, 2 untyped), no extraction failures, no unmapped rows, no unclassified effects. Crit, slots, item types, page id and revision id are populated. **Weapon damage is not:** the wiki writes it with a weapon-dice multiplier (`5.20[1d8+2] + 15 Pierce, Magic`), which the `damage` coercer does not read. On the 7 cached weapon pages whose damage cell is written this way, `damage_dice`, `damage_bonus` and `damage_types` are null, and the raw cell text is recorded in the Scraped Item's `extraction_errors` under `weapon_stats.damage_dice`. Parsing it needs a field for the multiplier (follow-up). Other results: bonus types are captured for 139 of 186 effects (of the other 47, only two mention a bonus in their tooltip: the set-marker and one "Legendary Elemental Energy" case below). Things still needing a decision downstream (stage 2 / the effects registry): bonus-type strings such as `insightful` (redirect of Insight) and `dodge`, and set-marker effects like "Against the Slave Lords Set Bonus" that are not tied to a tooltip list. The original normalizer package has been deleted.

@@ -1,14 +1,13 @@
 """extract() on inline pages and on committed real wiki pages (tests/fixtures/pages/)."""
 
-import json
 from pathlib import Path
 
 import pytest
 
 from item_extractor import ExtractionError, ScrapedItem, aggregate, extract
+from page_store import PageStore, load_scraper_config
 
 PAGES = Path(__file__).resolve().parents[1] / "fixtures" / "pages"
-CACHE = Path(__file__).resolve().parents[2] / "cache"
 
 WEAPON = """
 <html><head><script>RLCONF={"wgArticleId":40486,"wgRevisionId":649113};</script></head><body>
@@ -252,17 +251,19 @@ def test_real_page_with_none_values_and_no_effects(cfg):
     assert report["unmapped_rows"] == {}
 
 
-# ── Whole local cache (skipped when absent) ───────────────────────────────────
+# ── Whole Page Store (skipped when empty) ─────────────────────────────────────
 
 
-@pytest.mark.skipif(not (CACHE / "index.json").exists(), reason="no local page cache")
-def test_whole_local_cache_extracts_with_no_unmapped_rows_or_unclassified_effects(cfg):
-    index = json.loads((CACHE / "index.json").read_text())
+def test_whole_page_store_extracts_with_no_unmapped_rows_or_unclassified_effects(cfg):
+    pages = list(PageStore(load_scraper_config()).iter_cached())
+    if not pages:
+        pytest.skip("the Page Store (config/scraper.yaml cache_dir) holds no pages")
     reports = {}
-    for fname, meta in index.items():
-        html = (CACHE / "html" / fname).read_text(encoding="utf-8")
-        item, reports[meta["name"]] = extract(html, meta["url"], cfg)
-        assert item.name, meta["name"]
+    for page in pages:
+        if not page.title.startswith("Item:"):
+            continue
+        item, reports[page.title] = extract(page.html, page.url, cfg)
+        assert item.name, page.title
     summary = aggregate(reports)
     assert summary["unmapped_rows"] == {}
     assert summary["unclassified_effects"] == {}

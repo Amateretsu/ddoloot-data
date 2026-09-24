@@ -6,9 +6,9 @@ specific implementations and makes unit testing easier — any object with the
 right methods will type-check correctly.
 
 Example:
-    >>> from ddo_sync.protocols import FetcherProtocol
-    >>> def process(fetcher: FetcherProtocol) -> str:
-    ...     return fetcher.fetch_url("https://ddowiki.com/page/Item:Sword")
+    >>> from ddo_sync.protocols import PageStoreProtocol
+    >>> def process(store: PageStoreProtocol) -> str:
+    ...     return store.get("https://ddowiki.com/page/Item:Sword").html
 """
 
 from __future__ import annotations
@@ -18,20 +18,23 @@ from typing import Any, List, Optional, Protocol, runtime_checkable
 
 from ddo_sync.models import ItemLink, QueueItem, QueueStats, UpdatePageStatus
 from item_extractor import ScrapedItem
+from page_store import CachedPage
 
 
 @runtime_checkable
-class FetcherProtocol(Protocol):
-    """Fetches raw HTML from a URL."""
+class PageStoreProtocol(Protocol):
+    """Seam where the syncer reads wiki pages.
 
-    def fetch_url(self, url: str) -> str:
-        """Return the HTML body of *url*.
+    Adapters: :class:`page_store.PageStore` in production (fetches only pages it does
+    not hold, under the ADR 0006 policy), an in-memory fake in tests.
+    """
 
-        Args:
-            url: Absolute URL to fetch.
+    def get(self, url: str, refresh: bool = False) -> CachedPage:
+        """Return the page at *url*; refetch it only when *refresh* is true.
 
-        Returns:
-            Raw HTML as a string.
+        Raises:
+            page_store.FetchError: This page could not be fetched.
+            page_store.RunStoppedError: The acquisition policy says stop the run.
         """
         ...
 
@@ -88,6 +91,8 @@ class QueueRepositoryProtocol(Protocol):
     def get_pending_items(self, limit: Optional[int] = None) -> List[QueueItem]: ...
 
     def get_queue_stats(self) -> QueueStats: ...
+
+    def get_items_for_update_page(self, page_name: str) -> List[QueueItem]: ...
 
 
 @runtime_checkable

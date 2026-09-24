@@ -4,13 +4,14 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, List
+from typing import Any, Callable, Dict, List
 
 import pytest
 
 from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
 from item_extractor import ScrapedItem
+from page_store import CachedPage
 
 PAGES = Path(__file__).resolve().parents[1] / "fixtures" / "pages"
 ITEM_PAGE_HTML = (PAGES / "Item_Breaker_of_Bodies.html").read_text(encoding="utf-8")
@@ -24,6 +25,40 @@ class InMemoryItemWriter:
 
     def write(self, item: ScrapedItem, report: dict[str, Any]) -> None:
         self.written.append((item, report))
+
+
+class InMemoryPageStore:
+    """In-memory adapter for PageStoreProtocol.
+
+    *serve* plays the wiki: it returns the HTML for a URL, or raises. Pages it served are
+    held, so a second ``get`` of the same URL makes no request unless ``refresh=True``.
+    ``requests`` lists every URL that reached the "wiki".
+    """
+
+    def __init__(self, serve: Callable[[str], str]) -> None:
+        self.serve = serve
+        self.held: Dict[str, CachedPage] = {}
+        self.requests: List[str] = []
+
+    def get(self, url: str, refresh: bool = False) -> CachedPage:
+        if url in self.held and not refresh:
+            return self.held[url]
+        self.requests.append(url)
+        html = self.serve(url)
+        page = CachedPage(
+            html=html,
+            url=url,
+            title=url.rsplit("/page/", 1)[-1].replace("_", " "),
+            fetched_at=datetime.now(timezone.utc),
+            via="plain",
+        )
+        self.held[url] = page
+        return page
+
+
+def serve_wiki(url: str) -> str:
+    """Update pages get the update-page HTML, item pages a real item page."""
+    return ITEM_PAGE_HTML if "/page/Item:" in url else UPDATE_PAGE_HTML
 
 
 # ── Datetime helpers ──────────────────────────────────────────────────────────

@@ -31,3 +31,7 @@ Authors are the contributors listed in each page's history on ddowiki.com.
     https://ddowiki.com/page/Item:Epic_Whirling_Words (revision 630591)
   Item_Dark_Ressurectionist_s_Frock_Vest.html
     https://ddowiki.com/page/Item:Dark_Ressurectionist%27s_Frock_Vest (revision 656101)
+
+tests/fixtures/ddowiki_robots.txt is an unmodified copy of https://ddowiki.com/robots.txt
+(saved 2026-09-24), kept so the Page Store's robots.txt handling is tested against the
+real file.
