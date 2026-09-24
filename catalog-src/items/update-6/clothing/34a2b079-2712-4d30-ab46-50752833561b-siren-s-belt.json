@@ -42,7 +42,8 @@
       "bonus_type": "artifact",
       "tooltip": "Siren's Ward : 2 Pieces Equipped: +3 Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Proof Against Disease",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Proof Against Disease +6 : This item grants its wearer immunity to natural diseases. This item also grants a +6 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 7 + their Fortitude save).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Armor Bonus",
@@ -60,7 +62,8 @@
       "bonus_type": null,
       "tooltip": "Armor Bonus +5 : This item surrounds the wearer with an invisible but tangible field of force, granting +5 armor bonus to AC, just as though he were wearing armor.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

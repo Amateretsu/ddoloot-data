@@ -42,7 +42,8 @@
       "bonus_type": "exceptional",
       "tooltip": "Exceptional Charisma +1 : This item makes the wearer have more flair, granting a +1 Exceptional bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Summon Xoriat Horror",
@@ -51,7 +52,8 @@
       "bonus_type": null,
       "tooltip": "Summon Xoriat Horror Caster level: 20 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enchantment Focus",
@@ -60,7 +62,8 @@
       "bonus_type": "equipment",
       "tooltip": "Enchantment Focus +2 : +2 Equipment bonus to the DC of Enchantment spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

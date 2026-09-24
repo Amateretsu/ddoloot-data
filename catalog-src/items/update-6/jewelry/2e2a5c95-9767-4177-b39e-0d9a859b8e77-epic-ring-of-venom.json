@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Dexterity +9 : This item makes the wearer more nimble and dexterous, granting a +9 Enhancement bonus to Dexterity.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Deception",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Deception +7 : +7 Enhancement bonus to hit and +11 to damage for any hit that would qualify as a sneak attack.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Vitality",
@@ -60,7 +62,8 @@
       "bonus_type": "vitality",
       "tooltip": "Vitality +32 : Passive: +32 Vitality bonus to Hit Points.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Poison Resistance",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Poison Resistance +36 : Passive: +36 Enhancement bonus to your Poison Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Vulkoor's Cunning",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +10 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

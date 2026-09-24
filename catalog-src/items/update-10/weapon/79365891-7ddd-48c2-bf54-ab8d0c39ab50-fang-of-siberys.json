@@ -59,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Peals of Thunder",
@@ -68,7 +69,8 @@
       "bonus_type": null,
       "tooltip": "Peals of Thunder : This weapon is filled with the power of a storm cloud. Occasionally, this thunderous power is unleashed, applying a lasting effect that deals 2 to 8 sonic damage every two seconds for six seconds. If the effect is reapplied before it wears off, the effect will stack and the duration will reset. The effect can be stacked up to 3 times.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cloudburst",
@@ -77,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Cloudburst : On Vorpal , this weapon triggers a Cloudburst, striking its target with lightning and dealing sonic damage to surrounding enemies through a powerful thunderclap.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Pure Good",
@@ -86,7 +89,8 @@
       "bonus_type": null,
       "tooltip": "Pure Good : This weapon is infused with the power of Pure Good. It does an additional 1 to 6 damage to non-good targets and can only be wielded by Good-aligned characters.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

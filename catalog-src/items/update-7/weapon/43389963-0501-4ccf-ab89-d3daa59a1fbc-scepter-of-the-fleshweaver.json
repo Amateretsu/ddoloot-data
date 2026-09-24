@@ -58,7 +58,8 @@
       "bonus_type": "implement",
       "tooltip": "Spellcasting Implement +10 : Passive: +10 Implement bonus to Universal Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhancement Bonus",
@@ -67,7 +68,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Intelligence",
@@ -76,7 +78,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Intelligence +6 : This item focuses the power of the wearer's mind, granting a +6 Enhancement bonus to Intelligence.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Transmutation Focus",
@@ -85,7 +88,8 @@
       "bonus_type": "equipment",
       "tooltip": "Transmutation Focus +4 : +4 Equipment bonus to the DC of Transmutation spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Devotion",
@@ -94,7 +98,8 @@
       "bonus_type": "equipment",
       "tooltip": "Devotion +77 : Passive: +77 Equipment bonus to Positive (Healing) Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fragmented",
@@ -103,7 +108,8 @@
       "bonus_type": null,
       "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Stone to Flesh",
@@ -112,7 +118,8 @@
       "bonus_type": null,
       "tooltip": "Stone to Flesh Caster level: 5 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

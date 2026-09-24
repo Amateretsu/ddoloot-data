@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Strength +9 : This item gives the wearer the power of Ogre Strength, granting a +9 Enhancement bonus to Strength.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Intimidate",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Intimidate +17 : Passive: +17 Competence bonus to the Intimidate skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Competence Healing Amplification",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Healing Amplification : This effect amplifies all incoming positive energy healing by +38 ( Competence bonus ). Includes spells, potions, and other effects.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Natural Armor",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Natural Armor +9 : Passive: +9 Natural Armor Bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Vulkoor's Might",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

@@ -59,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Axiomatic Burst",
@@ -68,7 +69,8 @@
       "bonus_type": null,
       "tooltip": "Axiomatic Burst 4 : This weapon is an implement of law, dealing 4d6 Law damage on a successful hit to Chaotic enemies, and 10d6 Law damage on a critical hit to Chaotic enemies. This effect makes the weapon lawfully aligned. Chaotic characters wielding this weapon will suffer one negative level.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evil Blast",
@@ -77,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Evil Blast 4 : This weapon is a sinister implement of evil deeds, dealing 4d6 Evil damage on a successful hit, and an additional 4d6 Evil damage on a critical hit. This effect makes the weapon evil aligned. Good characters wielding this weapon will suffer one negative level.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Bleeding",
@@ -86,7 +89,8 @@
       "bonus_type": null,
       "tooltip": "Bleeding 4 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 4d8 bleeding damage to those that are vulnerable to it.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Disintegration",
@@ -95,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Disintegration : This weapon has a dark, insidious power deep within. Occasionally, this power lashes out violently at enemies and attempts to disintegrate them.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

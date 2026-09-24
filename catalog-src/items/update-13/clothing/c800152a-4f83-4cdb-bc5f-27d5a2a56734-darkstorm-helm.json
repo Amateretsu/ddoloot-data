@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Call Lightning Storm Caster level: 16 Charges: 1 (1/day)",
       "charges": 1,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Lightning Lore",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Lightning Lore +14 : Passive: Your Electricity spells gain a 14% Equipment bonus to their chance to critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Void Lore",
@@ -60,7 +62,8 @@
       "bonus_type": "equipment",
       "tooltip": "Void Lore +14 : Passive: Your Negative Energy and Poison spells gain a 14% Equipment bonus to their chance to critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Magnetism",
@@ -69,7 +72,8 @@
       "bonus_type": "equipment",
       "tooltip": "Magnetism +97 : Passive: +97 Equipment bonus to Electricity Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nullification",
@@ -78,7 +82,8 @@
       "bonus_type": "equipment",
       "tooltip": "Nullification +97 : Passive: +97 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

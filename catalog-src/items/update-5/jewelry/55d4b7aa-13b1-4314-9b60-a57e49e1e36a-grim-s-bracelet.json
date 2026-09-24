@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Strength +3 : This item gives the wearer the power of Ogre Strength, granting a +3 Enhancement bonus to Strength.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Natural Armor",
@@ -51,7 +52,8 @@
       "bonus_type": null,
       "tooltip": "Natural Armor +3 : Passive: +3 Natural Armor Bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Doublestrike",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

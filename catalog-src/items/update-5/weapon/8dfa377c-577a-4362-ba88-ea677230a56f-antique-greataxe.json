@@ -59,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Impactful",
@@ -68,7 +69,8 @@
       "bonus_type": null,
       "tooltip": "Impactful 2 : This effect causes the edges of this weapon to ripple with force, dealing 2 to 12 force on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evil Outsider Bane",
@@ -77,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Evil Outsider Bane 2 : This weapon is attuned specifically to hunt monsters that bring ill intent from other planes, dealing an additional 2d10 bane damage vs. Evil Outsiders.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Melee Alacrity",
@@ -86,7 +89,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Melee Alacrity 5% : Gain 5% Enhancement bonus to Melee attack speed. Does not stack with the Haste spell.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Adamantine",
@@ -95,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

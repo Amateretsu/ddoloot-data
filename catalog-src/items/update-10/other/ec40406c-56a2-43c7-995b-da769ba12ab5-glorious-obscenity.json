@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Acid Shot",
@@ -49,7 +50,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhanced Spot",
@@ -58,7 +60,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Enhanced Spot +5 : Passive: +5 Enhancement bonus to the Spot skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Seeker",
@@ -67,7 +70,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Seeker +6 : Provides a +6 Enhancement bonus to confirm critical hits, and a +6 Enhancement bonus to critical hit damage (before multipliers are applied).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Mind Turbulence",
@@ -76,7 +80,8 @@
       "bonus_type": null,
       "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Taint of Chaos",
@@ -85,7 +90,8 @@
       "bonus_type": null,
       "tooltip": "Taint of Chaos : Lawful aligned characters equipping this item suffer a temporary negative level until the item is removed.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Rune Arm Imbue : Acid",
@@ -94,7 +100,8 @@
       "bonus_type": null,
       "tooltip": "Rune Arm Imbue : Acid IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of acid damage per hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Craftable Rune Arm",
@@ -103,7 +110,8 @@
       "bonus_type": null,
       "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

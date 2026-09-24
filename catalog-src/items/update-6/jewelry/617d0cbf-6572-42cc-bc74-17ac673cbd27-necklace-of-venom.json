@@ -42,7 +42,8 @@
       "bonus_type": "artifact",
       "tooltip": "Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +5 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Proof Against Poison",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Proof Against Poison +6 : This item grants its wearer immunity to natural poisons. This item also grants a +6 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 7 + their Fortitude save).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "False Life",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "False Life +17 : +17 Enhancement bonus to hit points.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

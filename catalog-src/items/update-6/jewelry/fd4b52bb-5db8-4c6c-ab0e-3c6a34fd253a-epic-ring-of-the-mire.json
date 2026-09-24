@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Spearblock X : Passive: Reduces physical damage taken by 20, except from Bludgeoning or Slashing weapons. (Damage Reduction: 20/Slash, Bludgeon)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Resistance",
@@ -51,7 +52,8 @@
       "bonus_type": "resistance",
       "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Feather Falling",
@@ -60,7 +62,8 @@
       "bonus_type": null,
       "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Improved Earthen Guard",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Improved Earthen Guard : When you are successfully attacked, there is a 15% chance that a Stone Skin will be cast on you.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Marshwalker",
@@ -78,7 +82,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Epic Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to all Saving Throws +5 Artifact bonus to Jump and Tumble",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

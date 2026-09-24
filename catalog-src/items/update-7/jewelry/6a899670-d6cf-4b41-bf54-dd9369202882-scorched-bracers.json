@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Fireball Caster level: 5 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Combustion",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Combustion +59 : Passive: +59 Equipment bonus to Fire Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Armor Bonus",
@@ -60,7 +62,8 @@
       "bonus_type": null,
       "tooltip": "Armor Bonus +4 : This item surrounds the wearer with an invisible but tangible field of force, granting +4 armor bonus to AC, just as though he were wearing armor.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Physical Sheltering",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Physical Sheltering +9 : +9 Enhancement bonus to Physical Resistance Rating",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fire Resistance",
@@ -78,7 +82,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fire Resistance +14 : Passive: +14 Enhancement bonus to your Fire Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Might of the Abishai",
@@ -87,7 +92,8 @@
       "bonus_type": "profane",
       "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

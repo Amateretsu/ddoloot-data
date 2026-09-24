@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Electrifying",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Electrifying 2 : This effect causes the edges of this weapon to arc with electricity, dealing 2d6 Lightning damage on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Maiming",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +2d8 damage.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Bleeding",
@@ -85,7 +88,8 @@
       "bonus_type": null,
       "tooltip": "Bleeding 2 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 2d8 bleeding damage to those that are vulnerable to it.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

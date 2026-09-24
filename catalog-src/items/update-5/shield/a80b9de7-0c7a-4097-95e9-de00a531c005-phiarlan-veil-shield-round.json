@@ -69,7 +69,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class , attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

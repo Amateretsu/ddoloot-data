@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": "Summon Unknown Monster Caster level: 7 Charges: 12 (12/day)",
       "charges": 12,
-      "recharge_per_day": 12
+      "recharge_per_day": 12,
+      "note": null
     }
   ],
   "customisation_hints": [],

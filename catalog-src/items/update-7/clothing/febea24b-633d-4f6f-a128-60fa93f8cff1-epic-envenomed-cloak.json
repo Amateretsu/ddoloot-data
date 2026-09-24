@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Greater Poison Guard : This item carries a potent venom that may be contracted by enemies that hit you, dealing 2d6 Strength damage. A successful Fortitude Save (DC 28) will negate this effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Constitution",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Constitution +9 : This item gives the wearer improved health, granting a +9 Enhancement bonus to Constitution.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Resistance",
@@ -60,7 +62,8 @@
       "bonus_type": "resistance",
       "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Proof Against Poison",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Proof Against Poison +8 : This item grants its wearer immunity to natural poisons. This item also grants a +8 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 9 + their Fortitude save).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Might of the Abishai",
@@ -78,7 +82,8 @@
       "bonus_type": "profane",
       "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

@@ -68,6 +68,10 @@ class Effect(_Strict):
     A clicky (a spell the item casts, such as ``Haste — 3 Charges``) is an Effect named
     after its spell, with no value, its ``charges`` and, when the wiki gives one, its
     ``recharge_per_day``. Both are None on every other Effect.
+
+    ``note`` holds a wiki editor's bug note written after the entry, such as
+    ``Bug: Provides +5 to bluff, not +17``. It is kept apart so that the name and value
+    parse as written; it is None when the entry has none.
     """
 
     name: str
@@ -77,6 +81,7 @@ class Effect(_Strict):
     tooltip: str | None = None
     charges: int | None = None
     recharge_per_day: int | None = None
+    note: str | None = None
 
 
 class CustomisationHint(_Strict):

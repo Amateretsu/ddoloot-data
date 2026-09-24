@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Poison Blast",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Crippling",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Crippling : A crippling weapon is infused with binding power so that when a target is critically hit their movement is slowed by half. Note: Real slowdown is only 25%",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Armor-Piercing",
@@ -85,7 +88,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Armor-Piercing 12% : Passive: +12% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nightshade Venom",
@@ -94,7 +98,8 @@
       "bonus_type": null,
       "tooltip": "Nightshade Venom : Any creature struck by this weapon must succeed on a Difficulty Check 22 Fortitude save or fall unconscious. The target may attempt a new save to end the effect every several seconds; otherwise the sleep lasts for 20 seconds.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

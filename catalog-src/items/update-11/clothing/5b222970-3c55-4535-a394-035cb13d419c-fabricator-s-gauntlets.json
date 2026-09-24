@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Strength +6 : This item gives the wearer the power of Ogre Strength, granting a +6 Enhancement bonus to Strength.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Resistance",
@@ -51,7 +52,8 @@
       "bonus_type": "resistance",
       "tooltip": "Resistance +5 : Passive: +5 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Melee Alacrity",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Melee Alacrity 10% : Gain 10% Enhancement bonus to Melee attack speed. Does not stack with the Haste spell.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nearly Finished - Fabricator's Ingenuity",
@@ -69,7 +72,8 @@
       "bonus_type": "artifact",
       "tooltip": "Fabricator's Ingenuity : +25% stacking fortification and +2 artifact bonus to your attack and damage rolls.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

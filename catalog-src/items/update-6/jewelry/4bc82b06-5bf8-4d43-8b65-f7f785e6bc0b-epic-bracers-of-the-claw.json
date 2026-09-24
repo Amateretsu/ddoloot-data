@@ -42,7 +42,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Constitution +4 : This item gives the wearer improved health, granting a +4 Insight bonus to Constitution.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fortification",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Parrying",
@@ -60,7 +62,8 @@
       "bonus_type": "insight",
       "tooltip": "Parrying +4 : +4 Insight bonus to Armor Class , +4 Insight bonus to Saves.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "False Life",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "False Life +36 : +36 Enhancement bonus to hit points.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Vulkoor's Might",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

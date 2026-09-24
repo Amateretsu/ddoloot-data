@@ -477,6 +477,50 @@ def test_entry_that_only_mentions_charges_is_not_a_clicky(cfg, text):
     assert "clicky" not in report["rule_hits"]
 
 
+@pytest.mark.parametrize(
+    ("entry", "name", "value", "note"),
+    [
+        (
+            (
+                '<span class="popup"><a href="/page/Deception">Improved Deception +17'
+                '</a><span class="tooltip">Improved Deception: +17 to Bluff.</span>'
+                "</span> (<b>Bug: </b> Provides +5 to bluff, not +17)"
+            ),
+            "Improved Deception",
+            17,
+            "Bug: Provides +5 to bluff, not +17",
+        ),
+        ("Antipodal (Bug:&nbsp;does nothing)", "Antipodal", None, "Bug: does nothing"),
+    ],
+)
+def test_bug_note_is_kept_apart_from_the_effect(cfg, entry, name, value, note):
+    item, report = extract_effects(cfg, entry)
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.note) == (name, value, note)
+    assert report["unclassified_effects"] == []
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Strength +5 (Bug: fixed in U14) extra",
+        "Strength +5 (bug: lower case)",
+        "Strength +5 (Note: not a bug)",
+    ],
+)
+def test_entry_without_a_trailing_bug_note_keeps_its_text(cfg, text):
+    item, _ = extract_effects(cfg, text)
+    assert [(e.name, e.note) for e in item.effects] == [(text, None)]
+
+
+def test_bug_note_on_a_hint_is_reported_not_dropped(cfg):
+    item, report = extract_effects(cfg, "Blue Augment Slot (Bug: cannot be slotted)")
+    assert [h.kind for h in item.customisation_hints] == ["augment_slot"]
+    assert report["warnings"] == [
+        "bug note on a hint entry is not kept in the item: Bug: cannot be slotted"
+    ]
+
+
 def test_entry_no_rule_matches_is_unclassified_and_does_not_raise(tmp_path):
     config_dir = tmp_path / "extractor"
     shutil.copytree(DEFAULT_CONFIG_DIR, config_dir)

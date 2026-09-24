@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Charisma",
@@ -67,7 +68,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evocation Focus",
@@ -76,7 +78,8 @@
       "bonus_type": "equipment",
       "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Use Magic Device",
@@ -85,7 +88,8 @@
       "bonus_type": "competence",
       "tooltip": "Use Magic Device +3 : Passive: +3 Competence bonus to the Use Magic Device skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fire Absorption",
@@ -94,7 +98,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fire Absorption +27% : Passive: 27% Enhancement Bonus to Fire Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fire Resistance",
@@ -103,7 +108,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Exceptional Charisma",
@@ -112,7 +118,8 @@
       "bonus_type": "exceptional",
       "tooltip": "Exceptional Charisma +1 : This item makes the wearer have more flair, granting a +1 Exceptional bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": "Greater Shout Caster level: 20 Charges: 15 (15/day)",
       "charges": 15,
-      "recharge_per_day": 15
+      "recharge_per_day": 15,
+      "note": null
     },
     {
       "name": "Sonic Lore",
@@ -49,7 +50,8 @@
       "bonus_type": "equipment",
       "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Resonance",
@@ -58,7 +60,8 @@
       "bonus_type": "equipment",
       "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evocation Focus",
@@ -67,7 +70,8 @@
       "bonus_type": "equipment",
       "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Sonic Absorption",
@@ -76,7 +80,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Sonic Absorption +27% : Passive: 27% Enhancement Bonus to Sonic Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Wand Maximizing",
@@ -85,7 +90,8 @@
       "bonus_type": null,
       "tooltip": "Wand Maximizing : Spells cast from this wand are treated as though they were Maximized, dealing 100% more damage than they normally would. This damage increase does not stack with bonuses granted by enhancements.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

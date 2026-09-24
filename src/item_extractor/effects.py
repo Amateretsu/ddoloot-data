@@ -10,6 +10,8 @@ Behind the interface, as implementation:
 * **Reading before stripping.** Each ``<li>`` is read from a private copy of the cell, so
   tooltips (which carry Bonus Types and set bonus lists) are seen whatever the caller
   later does to the page.
+* **Bug notes.** A wiki bug note at the end of an entry, ``(Bug: …)``, is taken off
+  before the rules run and kept in the Effect's ``note``.
 * **Routing.** The first matching rule decides whether an entry is an Effect, a
   customisation hint, a named set, or a bare set bonus.
 * **Set merge.** A named set row and bare ``N Pieces Equipped`` rows merge into one named
@@ -19,7 +21,8 @@ Behind the interface, as implementation:
   raises. An entry that reaches a ``fallback`` rule and contains a digit becomes an Effect
   and is also recorded as unclassified, for review.
 * **Warnings.** A named set that has bonuses but no name (only bare set bonus rows) is kept
-  with ``name: null`` and a warning.
+  with ``name: null`` and a warning. A bug note on an entry that is not an Effect has no
+  field to go in, so it is reported as a warning.
 """
 
 from __future__ import annotations
@@ -71,6 +74,7 @@ def classify_effects(td: Tag, rules: EnchantmentsConfig) -> EffectsBlock:
     set_own_bonuses: list[SetBonus] = []
     bare_bonuses: list[SetBonus] = []
     has_set = False
+    warnings: list[str] = []
 
     cell = copy.copy(td)
     for li in (cell.find("ul") or cell).find_all("li", recursive=False):
@@ -83,6 +87,10 @@ def classify_effects(td: Tag, rules: EnchantmentsConfig) -> EffectsBlock:
             continue
         rule, groups = match
         rule_hits[rule.id] = rule_hits.get(rule.id, 0) + 1
+        if entry.note and rule.kind != "effect":
+            warnings.append(
+                f"bug note on a {rule.kind} entry is not kept in the item: {entry.note}"
+            )
         if rule.kind == "set":
             has_set = True
             set_name = groups["name"]
@@ -98,7 +106,6 @@ def classify_effects(td: Tag, rules: EnchantmentsConfig) -> EffectsBlock:
                 unclassified.append(entry.text)
 
     named_set = None
-    warnings: list[str] = []
     if has_set:
         named_set = NamedSet(name=set_name, bonuses=set_own_bonuses + bare_bonuses)
         if set_name is None:
@@ -121,6 +128,12 @@ class _Entry:
     children: list[str]
     #: <li> texts inside the tooltip (set bonus lists live here)
     tooltip_items: list[str]
+    #: a trailing "(Bug: …)" note, taken off ``text``
+    note: str | None = None
+
+
+#: A wiki editor's bug note ending an entry: "Improved Deception +17 ( Bug: … )".
+_BUG_NOTE = re.compile(r"\s+\(\s*(?P<note>Bug:[^()]*?)\s*\)$")
 
 
 def _clean(text: str) -> str:
@@ -145,12 +158,15 @@ def _read_entry(li: Tag) -> _Entry:
     children = [_clean(c.get_text(" ", strip=True)) for c in li.find_all("li")]
     for nested in li.find_all("ul"):
         nested.decompose()
+    text = _clean(li.get_text(" ", strip=True))
+    bug = _BUG_NOTE.search(text)
     return _Entry(
-        text=_clean(li.get_text(" ", strip=True)),
+        text=text[: bug.start()] if bug else text,
         tooltip=tooltip,
         hrefs=hrefs,
         children=children,
         tooltip_items=tooltip_items,
+        note=bug.group("note") if bug else None,
     )
 
 
@@ -259,4 +275,5 @@ def _effect(
         tooltip=entry.tooltip,
         charges=int(groups["charges"]) if "charges" in groups else None,
         recharge_per_day=int(groups["recharge"]) if "recharge" in groups else None,
+        note=entry.note,
     )

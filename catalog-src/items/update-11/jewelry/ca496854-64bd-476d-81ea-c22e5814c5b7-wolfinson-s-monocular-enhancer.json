@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Reconstruct Caster level: 10 Charges: 1 (1/day)",
       "charges": 1,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Reconstruction",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Reconstruction +72 : Passive: +72 Equipment bonus to Repair and Rust Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Search",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Search +10 : Passive: +10 Competence bonus to the Search skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhanced Search",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Enhanced Search +5 : Passive: +5 Enhancement bonus to the Search skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Roar",
@@ -58,7 +59,8 @@
       "bonus_type": null,
       "tooltip": "Roar : This item emits a frightening roar when melee attackers score a critical hit on the wearer, causing them to resist or be shaken with fear.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Heightened Awareness",
@@ -67,7 +69,8 @@
       "bonus_type": "insight",
       "tooltip": "Heightened Awareness 4 : This item helps you to quickly read situations with sharpness and clarity, allowing you to predict actions before they occur. You gain a +4 Insight bonus to AC.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Superior Nimbleness",
@@ -76,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Superior Nimbleness : This suit of armor looks much less restrictive than others of its type. A suit of armor that has this property has a maximum Dexterity bonus 4 higher than normal, and its armor check penalty is reduced by 4.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Accuracy",
@@ -85,7 +89,8 @@
       "bonus_type": "competence",
       "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Rough Hide",
@@ -94,7 +99,8 @@
       "bonus_type": "primal",
       "tooltip": "Rough Hide +3 : This item fuses with your body and toughens your skin, providing a +3 Primal bonus to your natural armor.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evocation Focus",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Shield",
@@ -60,7 +62,8 @@
       "bonus_type": "shield",
       "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Efficient Metamagic - Maximize",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Efficient Metamagic - Maximize II : The additional spell point cost for using the Maximize Metamagic feat is reduced by 4 SP .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Shaman's Fury",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

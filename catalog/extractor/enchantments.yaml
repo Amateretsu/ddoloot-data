@@ -1,10 +1,12 @@
 # Classification of entries in the Enchantments/Enhancements list.
 #
 # Each list entry is matched against `rules` in order; the first match wins. Patterns run
-# on the entry's visible text (tooltip and nested lists removed, whitespace collapsed).
+# on the entry's visible text (tooltip and nested lists removed, whitespace collapsed, and
+# a trailing wiki bug note such as "( Bug: Provides +5 to bluff, not +17)" taken off and
+# kept in the Effect's `note`).
 #
 # kind: effect     -> item.effects   (name, value, value_kind, bonus_type, tooltip,
-#                     charges, recharge_per_day)
+#                     charges, recharge_per_day, note)
 # kind: set        -> item.named_set: an entry (the set's name) whose tooltip lists
 #                     "N Pieces Equipped: ..." items
 # kind: set_bonus  -> a bare "N Pieces Equipped: ..." entry, merged into item.named_set.

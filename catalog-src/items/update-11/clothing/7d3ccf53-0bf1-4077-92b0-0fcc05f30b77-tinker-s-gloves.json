@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Insightful Seeker",
@@ -51,7 +52,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Seeker +2 : Provides a +2 Insight bonus to confirm critical hits, and a +2 Insight bonus to critical hit damage (before multipliers are applied).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Open Lock",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Open Lock +10 : Passive: +10 Competence bonus to the Open Lock skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhanced Open Lock",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Enhanced Open Lock +5 : Passive: +5 Enhancement bonus to the Open Lock skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nearly Finished - Tinker's Finesse",
@@ -78,7 +82,8 @@
       "bonus_type": null,
       "tooltip": "Tinker's Finesse : True Seeing , and equivalent to Sneak Attack Bonus +5 : Provides a +5 to attack rolls and +8 damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

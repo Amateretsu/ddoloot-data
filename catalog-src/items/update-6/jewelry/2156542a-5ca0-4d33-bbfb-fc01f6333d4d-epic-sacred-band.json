@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Wisdom +9 : This item makes the wearer more in tune with her surroundings, granting a +9 Enhancement bonus to Wisdom.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Heal",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Heal +17 : Passive: +17 Competence bonus to the Heal skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Devotion",
@@ -60,7 +62,8 @@
       "bonus_type": "equipment",
       "tooltip": "Devotion +111 : Passive: +111 Equipment bonus to Positive (Healing) Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Turning",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Turning : This will increase the total number of Turn Undead attempts you can use by 3. However, these additional Turn Undead attempts will only take effect after the wielder rests.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Divine Blessing",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

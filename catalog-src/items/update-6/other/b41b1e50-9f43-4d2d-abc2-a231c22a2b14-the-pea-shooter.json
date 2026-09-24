@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Acid Shot",
@@ -49,7 +50,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Potency",
@@ -58,7 +60,8 @@
       "bonus_type": "equipment",
       "tooltip": "Potency +28 : Passive: +28 Equipment bonus to each Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Inherent Acid Resistance -",
@@ -67,7 +70,8 @@
       "bonus_type": "insight",
       "tooltip": "Inherent Acid Resistance - 5 : This item provides a +5 Insight bonus to your Acid resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Rune Arm Imbue : Acid",
@@ -76,7 +80,8 @@
       "bonus_type": null,
       "tooltip": "Rune Arm Imbue : Acid II: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d4 points of acid damage per hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Craftable Rune Arm",
@@ -85,7 +90,8 @@
       "bonus_type": null,
       "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

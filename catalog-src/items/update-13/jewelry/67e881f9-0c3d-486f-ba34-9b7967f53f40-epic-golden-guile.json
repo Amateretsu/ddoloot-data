@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Ghostly : Equipping this item causes you to become partially incorporeal. Your melee attacks do not roll a miss chance for Incorporeal targets. Enemy attacks have a 10% chance to miss you due to incorporeality . You receive a +5 enhancement bonus to your Hide and Move Silently skills.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Bluff",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Bluff +17 : Passive: +17 Competence bonus to the Bluff skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Diplomacy",
@@ -60,16 +62,18 @@
       "bonus_type": "competence",
       "tooltip": "Diplomacy +17 : Passive: +17 Competence bonus to the Diplomacy skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
-      "name": "Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)",
-      "value": null,
-      "value_kind": null,
+      "name": "Improved Deception",
+      "value": 17,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Improved Deception : This item makes your weapons hard to focus upon and thus provides a +17 enhancement bonus to Bluff checks. In addition, while using this item your weapons have a chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": "Bug: Provides +5 to bluff, not +17"
     },
     {
       "name": "Exceptional Alluring Skills Bonus",
@@ -78,7 +82,8 @@
       "bonus_type": "exceptional",
       "tooltip": "Exceptional Alluring Skills Bonus : +8 Exceptional bonus to Bluff , Diplomacy , Haggle , Intimidate , and Perform .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

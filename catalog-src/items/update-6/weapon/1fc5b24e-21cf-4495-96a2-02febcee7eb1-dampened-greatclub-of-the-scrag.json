@@ -59,7 +59,8 @@
       "bonus_type": null,
       "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhancement Bonus",
@@ -68,7 +69,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "True Chaos",
@@ -77,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "True Chaos : This weapon is infused with the power of True Chaos. It does an additional 1 to 6 damage to non-chaotic targets and can only be wielded by Chaotic-aligned characters.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cold Touch",
@@ -86,7 +89,8 @@
       "bonus_type": null,
       "tooltip": "Cold Touch : The temperature around this weapon is colder than normal. A cold touch weapon deals an additional +1 cold damage on a successful hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Regeneration",
@@ -95,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

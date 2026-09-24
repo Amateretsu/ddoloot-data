@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Acidic",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Acidic 2 : This effect causes the edges of this weapon to drip with acid, dealing 2d6 Acid damage on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Critical Weakening",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Critical Weakening 1 : This deadly weapon saps the power and might from your enemies, dealing 1 Strength damage on each critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Deception",
@@ -85,7 +88,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [
