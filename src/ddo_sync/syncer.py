@@ -12,14 +12,16 @@ must stop (:class:`page_store.RunStoppedError`, e.g. a WAF challenge with the br
 fallback disabled) the error propagates and the page is not recorded as failed.
 
 Example:
-    >>> from ddo_sync import DDOSyncer, JsonItemWriter
+    >>> from ddo_sync import CatalogWriter, DDOSyncer
+    >>> registry = Registry.load("catalog-src/registry.jsonl")
     >>> with PageStore(load_scraper_config()) as store, \\
     ...      QueueRepository("queue.db") as queue_repo:
-    ...     writer = JsonItemWriter(Path("cache/extracted"))
+    ...     writer = CatalogWriter(registry)  # catalog-src/items, cache/extracted
     ...     syncer = DDOSyncer(store, writer, queue_repo)
     ...     syncer.register_update_page("Update_5_named_items")
     ...     syncer.sync_all()
     ...     print(syncer.get_status())
+    >>> registry.save()
 """
 
 from __future__ import annotations

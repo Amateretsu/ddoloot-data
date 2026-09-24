@@ -1,8 +1,8 @@
 """Seams (PEP 544 protocols) of the ddo_sync module.
 
 A protocol exists only where two adapters do: the Page Store (real + in-memory fake) and
-the Scraped Item writer (JSON + in-memory fake). The queue, discovery and the extractor
-have one implementation each and are used directly.
+the Scraped Item writer (the committed catalog layout + in-memory fake). The queue,
+discovery and the extractor have one implementation each and are used directly.
 
 Example:
     >>> from ddo_sync.protocols import PageStoreProtocol
@@ -40,7 +40,7 @@ class PageStoreProtocol(Protocol):
 class ScrapedItemWriterProtocol(Protocol):
     """Seam where the syncer hands off each Scraped Item and its extraction report.
 
-    Adapters: :class:`~ddo_sync.item_writer.JsonItemWriter` in production, an in-memory
+    Adapters: :class:`~ddo_sync.catalog_writer.CatalogWriter` in production, an in-memory
     fake in tests.
     """
 

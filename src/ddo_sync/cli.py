@@ -18,8 +18,11 @@ and cache directory come from ``--scraper-config PATH`` (default ``config/scrape
 ``sync`` and ``sample`` track the crawl in the SQLite queue at ``--queue-db PATH``
 (default ``data/queue.db``). Discovery reads the named-items index page and the update
 pages through the Page Store too (never the MediaWiki API). ``sync`` writes each Scraped
-Item to ``cache/extracted/<update>/<page-slug>.json`` plus one
-``cache/extracted/<update>/report.jsonl`` per update (``<update>`` is e.g. ``update-8``).
+Item to the committed file ``catalog-src/items/<update>/<category>/<uuid>-<slug>.json``
+(ADR 0006; ``<update>`` is the introduced-in update, e.g. ``update-8``), and one
+gitignored review report per update page to ``cache/extracted/<update>/report.jsonl``.
+The UUIDs come from the registry ``catalog-src/registry.jsonl``, which ``sync`` loads at
+the start and saves at the end of every run, a stopped or failed run included.
 ``extract-item`` never touches the network. Add ``--verbose`` to any subcommand for DEBUG
 logging.
 
@@ -41,9 +44,10 @@ from urllib.parse import quote
 
 from loguru import logger
 
+from catalog_registry import Registry
+from ddo_sync.catalog_writer import CatalogWriter
 from ddo_sync.discovery import discover_update_pages
 from ddo_sync.exceptions import QueueDbError, UpdatePageError
-from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import SyncStatus
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.sampler import sample_pages
@@ -64,7 +68,9 @@ _ROOT = Path(__file__).resolve().parent.parent.parent  # …/src/ddo_sync → ro
 DATA_DIR = _ROOT / "data"
 QUEUE_DB = DATA_DIR / "queue.db"
 CACHE_DIR = _ROOT / "cache"
-EXTRACTED_DIR = CACHE_DIR / "extracted"
+EXTRACTED_DIR = CACHE_DIR / "extracted"  # gitignored report.jsonl per update
+ITEMS_DIR = _ROOT / "catalog-src" / "items"  # committed item files (ADR 0006)
+REGISTRY_PATH = _ROOT / "catalog-src" / "registry.jsonl"  # committed UUID registry
 
 _ITEM_URL_PREFIX = "https://ddowiki.com/page/Item:"
 
@@ -110,7 +116,10 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Discover update pages, scrape item pages and extract Scraped Items.",
         description=(
             "Discover named-item update pages, read each queued item page through the "
-            f"Page Store and write its Scraped Item JSON under {EXTRACTED_DIR}/<update>/."
+            "Page Store and write its Scraped Item to "
+            f"{ITEMS_DIR}/<update>/<category>/<uuid>-<slug>.json, with a review report "
+            f"per update page under {EXTRACTED_DIR}/<update>/report.jsonl. UUIDs come "
+            f"from {REGISTRY_PATH}, saved at the end of every run."
         ),
     )
     mode = sync.add_mutually_exclusive_group()
@@ -251,7 +260,8 @@ def _cmd_status(queue_db: Path) -> int:
 
     logger.info("─" * 56)
     logger.info(f"Queue DB : {queue_db}")
-    logger.info(f"Items    : {EXTRACTED_DIR}")
+    logger.info(f"Items    : {ITEMS_DIR}")
+    logger.info(f"Reports  : {EXTRACTED_DIR}")
     logger.info("─" * 56)
     logger.info(f"  Total     : {stats.total}")
     logger.info(f"  Complete  : {stats.complete}")
@@ -312,9 +322,31 @@ def _cmd_sync(
     config = _load_store_config(scraper_config)
     if config is None:
         return 1
+    try:
+        registry = Registry.load(REGISTRY_PATH)
+    except (OSError, ValueError) as exc:
+        logger.error(f"Could not load the UUID registry: {exc}")
+        return 1
     queue_db.parent.mkdir(parents=True, exist_ok=True)
     _install_sigint_handler()
+    try:
+        return _run_sync(
+            page_names, limit, queue_db, config, registry, refresh, max_retries
+        )
+    finally:
+        registry.save()
+        logger.info(f"  Registry : {REGISTRY_PATH}")
 
+
+def _run_sync(
+    page_names: Optional[List[str]],
+    limit: Optional[int],
+    queue_db: Path,
+    config: ScraperConfig,
+    registry: Registry,
+    refresh: bool,
+    max_retries: int,
+) -> int:
     try:
         with (
             PageStore(config) as store,
@@ -333,7 +365,7 @@ def _cmd_sync(
 
             syncer = DDOSyncer(
                 page_store=store,
-                writer=JsonItemWriter(EXTRACTED_DIR),
+                writer=CatalogWriter(registry, ITEMS_DIR, EXTRACTED_DIR),
                 queue_repo=queue_repo,
                 max_retries=max_retries,
                 refresh=refresh,
@@ -376,7 +408,8 @@ def _print_summary(status: SyncStatus, queue_db: Path) -> None:
             logger.warning(f"    {p.page_name}")
 
     logger.info(f"  Queue DB : {queue_db}")
-    logger.info(f"  Items    : {EXTRACTED_DIR}")
+    logger.info(f"  Items    : {ITEMS_DIR}")
+    logger.info(f"  Reports  : {EXTRACTED_DIR}")
 
 
 def _install_sigint_handler() -> None:

@@ -3,7 +3,9 @@
 Public API:
 
     DDOSyncer             — top-level sync orchestrator
-    JsonItemWriter        — writes each Scraped Item under cache/extracted/<update>/
+    CatalogWriter         — writes each Scraped Item to catalog-src/items/<update>/
+                            <category>/<uuid>-<slug>.json, reports to cache/extracted/
+    check_catalog         — integrity check of a catalog-src directory (list of problems)
     QueueRepository       — the queue module: SQLite update pages + scrape queue
     discover_update_pages — named-items index page -> update page names
     read_update_page      — update page -> item links and revision id
@@ -20,19 +22,23 @@ Exceptions:
 
 Example:
 
-    >>> from ddo_sync import DDOSyncer, JsonItemWriter, QueueRepository
+    >>> from catalog_registry import Registry
+    >>> from ddo_sync import CatalogWriter, DDOSyncer, QueueRepository
     >>> from ddo_sync import discover_update_pages
     >>> from page_store import PageStore, load_scraper_config
+    >>> registry = Registry.load("catalog-src/registry.jsonl")
     >>> with (
     ...     PageStore(load_scraper_config()) as store,
     ...     QueueRepository("queue.db") as queue_repo,
     ... ):
-    ...     syncer = DDOSyncer(store, JsonItemWriter(Path("cache/extracted")), queue_repo)
+    ...     syncer = DDOSyncer(store, CatalogWriter(registry), queue_repo)
     ...     for name in discover_update_pages(store):
     ...         syncer.register_update_page(name)
     ...     status = syncer.sync_all()
+    >>> registry.save()
 """
 
+from ddo_sync.catalog_writer import CatalogWriter, check_catalog
 from ddo_sync.discovery import (
     NAMED_ITEMS_INDEX_URL,
     UpdatePage,
@@ -47,7 +53,6 @@ from ddo_sync.exceptions import (
     QueueSchemaError,
     UpdatePageError,
 )
-from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import (
     ItemLink,
     QueueItem,
@@ -62,10 +67,10 @@ from ddo_sync.syncer import DDOSyncer
 
 __all__ = [
     "NAMED_ITEMS_INDEX_URL",
+    "CatalogWriter",
     "DDOSyncError",
     "DDOSyncer",
     "ItemLink",
-    "JsonItemWriter",
     "PageStoreProtocol",
     "QueueDbError",
     "QueueItem",
@@ -78,6 +83,7 @@ __all__ = [
     "UpdatePage",
     "UpdatePageError",
     "UpdatePageStatus",
+    "check_catalog",
     "discover_update_pages",
     "read_update_page",
     "sample_pages",

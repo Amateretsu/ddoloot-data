@@ -10,7 +10,7 @@ The sync pipeline works in three stages:
 
 1. **Discover**: the discovery module reads the named-items index page (`https://ddowiki.com/page/Named_items`) and collects every `Update_<N>_named_items` page it links to. When it links to none, discovery uses the committed seed list `config/update_pages.yaml` instead.
 2. **Queue**: discovery reads each update page and lists its `Item:` links and its revision id. The queue module (`QueueRepository`) stores them in the SQLite crawl queue (`data/queue.db`).
-3. **Process**: `DDOSyncer` works through the queue. For each item it reads the page through the Page Store (`docs/page_store.md`), calls `item_extractor.extract()` in-process to get a Scraped Item and its report, and hands both to a `ScrapedItemWriterProtocol` adapter. In production this adapter is `JsonItemWriter`, which writes under `cache/extracted/<update>/`.
+3. **Process**: `DDOSyncer` works through the queue. For each item it reads the page through the Page Store (`docs/page_store.md`), calls `item_extractor.extract()` in-process to get a Scraped Item and its report, and hands both to a `ScrapedItemWriterProtocol` adapter. In production this adapter is `CatalogWriter`, which writes the committed item file under `catalog-src/items/` (ADR 0006) and a review report line under `cache/extracted/<update>/`. The Named Item UUID comes from the registry `catalog-src/registry.jsonl` (`docs/catalog_registry.md`).
 
 Discovery reads rendered `/page/` HTML only. It never uses the MediaWiki API (`/api.php`), which ADR 0006 forbids; the Page Store refuses such URLs anyway.
 
@@ -62,12 +62,13 @@ ddoloot sync [--status | --discover | --reset-failed]
 
 Output:
 
-- `cache/extracted/<update>/<page-slug>.json`: one Scraped Item per item page, for example `update-5/Item_Breaker_of_Bodies-1a2b3c4d.json`: a readable slug of the page title plus the first 8 hex digits of the title's SHA-1, so titles that differ only in punctuation or case never share a file. `<update>` comes from the update page the item was queued from (`Update_5_named_items` → `update-5`); anything else is `unknown`. An item listed on two update pages is written to both folders. Every field is written: null means the wiki row was absent or said "None", and a field that could not be parsed is null with its raw text in `extraction_errors`.
-- `cache/extracted/<update>/report.jsonl`: one line per page (`name`, `url`, `update_page`, `template`, `unmapped_rows`, `ignored_rows`, `rule_hits`, `unclassified_effects`, `extraction_errors`, `warnings`). `unclassified_effects` lists Effects entries that no `enchantments.yaml` rule matched (they are left out of the item and never stop the run) or that reached the fallback rule while containing a digit. `warnings` holds notes such as a named set that has bonuses but no name (the set is kept with `name: null`). Writing a page again replaces its line, so the file always has exactly one line per JSON file beside it, across runs and `--limit` batches.
+- `catalog-src/items/<update>/<category>/<uuid>-<slug>.json` (committed): one file per Named Item, for example `update-5/shield/0b6f7a3e-2c1d-4e5f-8a9b-1c2d3e4f5a6b-breaker-of-bodies.json`. The layout rules are under [CatalogWriter](#catalogwriter). Every field is written: null means the wiki row was absent or said "None", and a field that could not be parsed is null with its raw text in `extraction_errors`.
+- `catalog-src/registry.jsonl` (committed): the UUID registry. `sync` loads it at the start and saves it at the end of every run, including a run that was stopped by a challenge, interrupted or ended by an error. A registry that does not load stops `sync` with exit code 1 before any request.
+- `cache/extracted/<update>/report.jsonl` (gitignored): one line per page (`name`, `url`, `update_page`, `template`, `unmapped_rows`, `ignored_rows`, `rule_hits`, `unclassified_effects`, `extraction_errors`, `warnings`), filed under the update page the item was queued from. `unclassified_effects` lists Effects entries that no `enchantments.yaml` rule matched (they are left out of the item and never stop the run) or that reached the fallback rule while containing a digit. `warnings` holds notes such as a named set that has bonuses but no name (the set is kept with `name: null`). An item with a null `wiki.page_id` gets no UUID and no item file; its line carries a `wiki.page_id` entry in `extraction_errors`. Writing a page again replaces its line, so each file has exactly one line per page, across runs and `--limit` batches. No per-item JSON is written under `cache/`.
 - `data/queue.db` (or `--queue-db`): crawl queue and update-page sync state.
 - The Page Store's `cache_dir` (default `cache/pages/`): every page fetched.
 
-`cache/` and `data/` are gitignored.
+`cache/` and `data/` are gitignored; `catalog-src/` is committed.
 
 Pacing, retries, robots.txt, challenge handling and the browser fallback are all set in the scraper config. The crawl delay is at least 4 s (ADR 0006), and a config below that is rejected.
 
@@ -142,7 +143,7 @@ The main orchestrator. Its collaborators are injected through seams, so tests us
 | Argument | Seam | Production adapter |
 |---|---|---|
 | `page_store` | `PageStoreProtocol.get(url, refresh=False) -> CachedPage` | `page_store.PageStore` |
-| `writer` | `ScrapedItemWriterProtocol.write(item, report)` | `JsonItemWriter` |
+| `writer` | `ScrapedItemWriterProtocol.write(item, report)` | `CatalogWriter` |
 | `queue_repo` | (none: one implementation) | `QueueRepository` |
 | `max_retries` | (default 3) | |
 | `extractor_config` | extractor rules (optional) | `item_extractor.load_config()` (`catalog/extractor/`) |
@@ -151,25 +152,28 @@ The main orchestrator. Its collaborators are injected through seams, so tests us
 The extractor, the discovery module and the queue are not seams: each has one implementation, used directly. Protocols exist only where two adapters do (Page Store and writer: real plus in-memory fake).
 
 ```python
-from pathlib import Path
-
-from ddo_sync import DDOSyncer, JsonItemWriter, QueueRepository, discover_update_pages
+from catalog_registry import Registry
+from ddo_sync import CatalogWriter, DDOSyncer, QueueRepository, discover_update_pages
 from page_store import PageStore, load_scraper_config
 
-with (
-    PageStore(load_scraper_config()) as store,
-    QueueRepository("data/queue.db") as queue_repo,
-):
-    syncer = DDOSyncer(
-        page_store=store,
-        writer=JsonItemWriter(Path("cache/extracted")),
-        queue_repo=queue_repo,
-        max_retries=3,
-    )
-    for name in discover_update_pages(store):
-        syncer.register_update_page(name)
-    status = syncer.sync_all()
-    print(status.queue_stats.complete, status.queue_stats.failed)
+registry = Registry.load("catalog-src/registry.jsonl")
+try:
+    with (
+        PageStore(load_scraper_config()) as store,
+        QueueRepository("data/queue.db") as queue_repo,
+    ):
+        syncer = DDOSyncer(
+            page_store=store,
+            writer=CatalogWriter(registry),   # catalog-src/items, cache/extracted
+            queue_repo=queue_repo,
+            max_retries=3,
+        )
+        for name in discover_update_pages(store):
+            syncer.register_update_page(name)
+        status = syncer.sync_all()
+        print(status.queue_stats.complete, status.queue_stats.failed)
+finally:
+    registry.save()
 ```
 
 ### Methods
@@ -184,19 +188,59 @@ with (
 
 ---
 
-## JsonItemWriter
+## CatalogWriter
 
-The production adapter behind `ScrapedItemWriterProtocol`.
+The production adapter behind `ScrapedItemWriterProtocol`. It writes the committed catalog source that ADR 0006 defines.
 
 ```python
 from pathlib import Path
-from ddo_sync import JsonItemWriter
+from catalog_registry import Registry
+from ddo_sync import CatalogWriter
 
-writer = JsonItemWriter(Path("cache/extracted"))
+registry = Registry.load("catalog-src/registry.jsonl")
+writer = CatalogWriter(
+    registry,
+    items_dir=Path("catalog-src/items"),     # the default
+    report_dir=Path("cache/extracted"),      # the default
+)
 writer.write(item, report)   # item: item_extractor.ScrapedItem, report: dict
+registry.save()              # the caller saves the registry; write() only mints IDs
 ```
 
-`write()` files the item under `<out_dir>/<update>/`, where `<update>` is `update_slug(report["update_page"])` (`update-8`, or `unknown` when the key is missing or is not an `Update_<N>_named_items` title). It writes `<page-slug>.json`, where the slug is the page title from `item.wiki.url` with every run of non-alphanumeric characters replaced by `_`, plus `-` and the first 8 hex digits of the title's SHA-1. In that folder's `report.jsonl` it replaces the page's line (matched by page slug, so `%27` and `'` spellings of one URL are one page) with `{"name", "url", "update_page", **report, "extraction_errors", "warnings"}`. Both files are written atomically.
+`write()` writes one item file, `<items_dir>/<update>/<category>/<uuid>-<slug>.json`:
+
+- **`<uuid>`**: `registry.id_for(item.wiki.page_id, item.wiki.title)`. An item whose `wiki.page_id` is null gets no UUID and no file. Its report line carries `extraction_errors["wiki.page_id"]`, `write()` returns normally and the run goes on.
+- **`<update>`**: the introduced-in update, spelled like the report folders: `update_slug(report["update_page"])`, so `Update_8_named_items` → `update-8`, and anything else (a missing key, or a title such as `Update_50_revamped_named_items`) → `unknown`. An item listed on several update pages is written once per listing, but keeps one file, under the lowest `N`; `unknown` loses to any number. An item never moves to a higher update.
+- **`<category>`**: the Scraped Item's `category` when it is `weapon`, `armor`, `shield`, `jewelry` or `clothing`, else `other`.
+- **`<slug>`**: the item name lowercased, every run of characters other than ASCII `a-z` and `0-9` turned into `-`, trimmed of `-`, cut to 60 characters (and trimmed again), and `item` when empty. Accented letters count as non-alphanumerics. The UUID keeps filenames unique.
+- **One file per UUID**: before writing, `write()` finds the UUID's existing files (`*/*/<uuid>-*.json`). When the update, category or slug changes, the new file is written and the old one removed (with any folder left empty), so git records a rename.
+- **Content**: `{"id": <uuid>, **ScrapedItem}`, `id` first, JSON with 2-space indent, `ensure_ascii=False` and a trailing newline. Nothing time-dependent is written, so rewriting an unchanged item changes no byte.
+
+It also replaces the page's line in `<report_dir>/<update>/report.jsonl`, where `<update>` is the update page this listing came from (not the item file's folder). The line is `{"name", "url", "update_page", **report, "extraction_errors", "warnings"}`, and a page is matched by its URL title, so `%27` and `'` spellings of one URL are one page. Both files are written atomically.
+
+## check_catalog
+
+The integrity check over a `catalog-src` directory. It never touches the network.
+
+```python
+from ddo_sync import check_catalog
+
+problems = check_catalog("catalog-src")   # list[str]; [] means sound
+```
+
+It reads `<catalog_src>/registry.jsonl` (strictly, through `Registry.load`) and every `*.json` under `<catalog_src>/items/`, and reports one line per problem, starting with the offending path, when an item file:
+
+- is not at `items/<update>/<category>/<uuid>-<slug>.json`, or its `<update>` is not `update-<N>` or `unknown`;
+- is not `{"id"} + ScrapedItem` that validates, with `id` first and equal to the filename's UUID, written exactly as `CatalogWriter` writes it;
+- has an `id` missing from the registry, or registered with a different `page_id` than its `wiki.page_id`;
+- shares its UUID with another file;
+- sits in the wrong `<category>` folder or has the wrong `<slug>` for its own `category` and `name`.
+
+The introduced-in update cannot be checked from a file alone, so only its spelling is. With no item files the check passes. `tests/test_catalog_integrity.py` runs it on the repo's `catalog-src/` in CI. To check another directory:
+
+```bash
+.venv/bin/python -c "import sys; from ddo_sync import check_catalog; p = check_catalog(sys.argv[1]); print(*p, sep='\n'); sys.exit(1 if p else 0)" /path/to/catalog-src
+```
 
 ---
 

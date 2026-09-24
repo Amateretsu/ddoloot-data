@@ -15,6 +15,7 @@ from unittest.mock import patch
 
 import pytest
 
+from ddo_sync import check_catalog
 from ddo_sync.cli import main
 from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
@@ -61,12 +62,19 @@ def paths(tmp_path, monkeypatch):
     monkeypatch.setattr("ddo_sync.cli.QUEUE_DB", data / "queue.db")
     monkeypatch.setattr("ddo_sync.cli.CACHE_DIR", cache)
     monkeypatch.setattr("ddo_sync.cli.EXTRACTED_DIR", cache / "extracted")
+    monkeypatch.setattr("ddo_sync.cli.ITEMS_DIR", tmp_path / "catalog-src" / "items")
+    monkeypatch.setattr(
+        "ddo_sync.cli.REGISTRY_PATH", tmp_path / "catalog-src" / "registry.jsonl"
+    )
     monkeypatch.setattr("ddo_sync.cli._install_sigint_handler", lambda: None)
     return {
         "queue_db": data / "queue.db",
         "cache": cache,
         "pages": cache / "pages",
         "out": cache / "extracted",
+        "src": tmp_path / "catalog-src",
+        "items": tmp_path / "catalog-src" / "items",
+        "registry": tmp_path / "catalog-src" / "registry.jsonl",
         "config": config,
     }
 
@@ -126,26 +134,38 @@ def test_sync_pages_writes_scraped_items(paths):
     assert store.requests[0] == f"https://ddowiki.com/page/{PAGE}"
     assert INDEX_URL not in store.requests
     assert store.config.cache_dir == (paths["config"].parent / "cache/pages").resolve()
-    assert sorted(p.name for p in paths["out"].iterdir()) == ["update-5"]
-    # File names are "<slug>-<8 hex of the title hash>.json".
-    written = sorted((paths["out"] / "update-5").glob("*.json"))
-    assert [p.stem[:-9] for p in written] == [
-        "Item_Ring_of_Fire",
-        "Item_Shield_of_Light",
-        "Item_Sword_of_Shadow",
+    # Item files: "<update>/<category>/<uuid>-<slug>.json", nothing else under cache.
+    written = sorted(paths["items"].glob("*/*/*.json"), key=lambda p: p.name[37:])
+    assert [p.relative_to(paths["items"]).parent.as_posix() for p in written] == [
+        "update-5/shield"
+    ] * 3
+    assert [p.name[37:] for p in written] == [
+        "ring-of-fire.json",
+        "shield-of-light.json",
+        "sword-of-shadow.json",
     ]
     item = json.loads(written[2].read_text())
+    assert next(iter(item)) == "id"
+    assert written[2].name.startswith(item["id"])
     assert item["wiki"]["url"] == "https://ddowiki.com/page/Item:Sword_of_Shadow"
+    assert sorted(p.name for p in paths["out"].iterdir()) == ["update-5"]
+    assert [p.name for p in (paths["out"] / "update-5").iterdir()] == ["report.jsonl"]
     report = (paths["out"] / "update-5" / "report.jsonl").read_text().splitlines()
     assert len(report) == 3
     assert {json.loads(line)["update_page"] for line in report} == {PAGE}
+    # The registry is saved with one entry per item, and the catalog is sound.
+    assert len(paths["registry"].read_text().splitlines()) == 3
+    assert check_catalog(paths["src"]) == []
+    before = {p: p.read_bytes() for p in paths["src"].rglob("*") if p.is_file()}
 
-    # A second run rewrites the report lines instead of appending duplicates.
+    # A second run rewrites the report lines instead of appending duplicates, and
+    # changes no committed file.
     assert run_sync(paths, "--page", PAGE, "--reset-failed", store=store) == 0
     assert run_sync(paths, "--page", PAGE, "--refresh", store=store) == 0
     assert (
         len((paths["out"] / "update-5" / "report.jsonl").read_text().splitlines()) == 3
     )
+    assert {p: p.read_bytes() for p in paths["src"].rglob("*") if p.is_file()} == before
 
 
 def test_sync_rate_limit_flag_is_gone(paths):
@@ -177,9 +197,13 @@ def test_sync_reads_held_pages_without_requests_unless_refresh(paths):
 
 
 def test_sync_challenge_stops_the_run_and_marks_nothing_failed(paths):
+    served = []
+
     def serve(url: str) -> str:
         if "/page/Item:" in url:
-            raise ChallengeError("WAF challenge", url=url)
+            served.append(url)
+            if len(served) > 1:
+                raise ChallengeError("WAF challenge", url=url)
         return serve_wiki(url)
 
     assert run_sync(paths, "--page", PAGE, store=FakePageStore(serve)) == 1
@@ -187,7 +211,34 @@ def test_sync_challenge_stops_the_run_and_marks_nothing_failed(paths):
         stats = qr.get_queue_stats()
     assert stats.failed == 0
     assert stats.in_progress == 0
-    assert stats.pending == 3
+    assert stats.pending == 2
+    # The stopped run still saved the registry entry for the item it wrote.
+    assert len(paths["registry"].read_text().splitlines()) == 1
+    assert check_catalog(paths["src"]) == []
+
+
+def test_sync_saves_the_registry_when_the_run_is_interrupted(paths):
+    served = []
+
+    def serve(url: str) -> str:
+        if "/page/Item:" in url:
+            served.append(url)
+            if len(served) > 1:
+                raise KeyboardInterrupt
+        return serve_wiki(url)
+
+    assert run_sync(paths, "--page", PAGE, store=FakePageStore(serve)) == 1
+    assert len(paths["registry"].read_text().splitlines()) == 1
+    assert len(list(paths["items"].glob("*/*/*.json"))) == 1
+
+
+def test_sync_refuses_a_malformed_registry(paths):
+    paths["registry"].parent.mkdir(parents=True)
+    paths["registry"].write_text("not json\n")
+    store = FakePageStore()
+    assert run_sync(paths, "--page", PAGE, store=store) == 1
+    assert store.requests == []
+    assert paths["registry"].read_text() == "not json\n"
 
 
 def test_sync_uses_the_queue_db_flag(paths, tmp_path):
@@ -199,7 +250,7 @@ def test_sync_uses_the_queue_db_flag(paths, tmp_path):
 
 def test_sync_limit_caps_processed_items(paths):
     assert run_sync(paths, "--page", PAGE, "--limit", "1") == 0
-    assert len(list(paths["out"].glob("*/*.json"))) == 1
+    assert len(list(paths["items"].glob("*/*/*.json"))) == 1
 
 
 def test_sync_with_failed_items_exits_two(paths):
@@ -227,13 +278,16 @@ def test_sync_discovers_update_pages_from_the_index_page(paths):
         "https://ddowiki.com/page/Update_10_named_items",
     }
     assert not any("api.php" in u for u in store.requests)
-    # Every update page lists the same three items; each is filed under its update.
+    # Every update page lists the same three items: one report line per update page,
+    # but one item file each, under the lowest update.
     assert sorted(p.name for p in paths["out"].iterdir()) == [
         "update-10",
         "update-5",
         "update-8",
     ]
-    assert len(list(paths["out"].glob("*/*.json"))) == 9
+    assert [p.name for p in paths["items"].iterdir()] == ["update-5"]
+    assert len(list(paths["items"].glob("*/*/*.json"))) == 3
+    assert check_catalog(paths["src"]) == []
 
 
 def test_sync_discovery_failure_exits_one(paths):
@@ -330,7 +384,7 @@ def test_sync_through_a_real_page_store_over_canned_responses(paths):
         )
     assert code == 0
     assert all("/page/" in u or u.endswith("robots.txt") for u in transport.requests)
-    assert len(list(paths["out"].glob("update-*/*.json"))) == 2
+    assert len(list(paths["items"].glob("update-*/*/*.json"))) == 2
 
 
 def test_sync_status_refuses_a_queue_db_from_an_older_schema(paths):

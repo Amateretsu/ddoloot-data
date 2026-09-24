@@ -7,7 +7,8 @@ from datetime import timezone
 
 import pytest
 
-from ddo_sync import JsonItemWriter
+from catalog_registry import Registry
+from ddo_sync import CatalogWriter
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.syncer import DDOSyncer
@@ -197,7 +198,7 @@ class TestProcessQueue:
         syncer.process_queue()
         assert len(writer.written) == item_count
         item, report = writer.written[0]
-        assert item.name == "Breaker of Bodies"
+        assert item.wiki.title == "Item:" + item.name
         assert item.wiki.url.startswith("https://ddowiki.com/page/Item:")
         assert report["template"] == "shield"
         assert report["update_page"] == PAGE_NAME
@@ -254,7 +255,9 @@ class TestProcessQueue:
         store.serve = lambda url: (
             nameless_set if "/page/Item:" in url else serve_wiki(url)
         )
-        syncer = DDOSyncer(store, JsonItemWriter(tmp_path), queue_repo)
+        registry = Registry.load(tmp_path / "registry.jsonl")
+        writer = CatalogWriter(registry, tmp_path / "items", tmp_path)
+        syncer = DDOSyncer(store, writer, queue_repo)
         syncer.register_update_page(PAGE_NAME)
         syncer.sync_update_page(PAGE_NAME)
         syncer.process_queue(limit=1)

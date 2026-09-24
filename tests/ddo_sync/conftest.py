@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import re
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Dict, List
+from urllib.parse import unquote
 
 import pytest
 
@@ -124,11 +126,28 @@ Missing Blade</a>, <a href="/page/Update_5_named_items">this page</a>.</p>
 )
 
 
+def item_page(title: str, page_id: int) -> str:
+    """The real Breaker of Bodies page renamed to *title* (``Item:`` prefix optional)
+    with wiki page ID *page_id*: a distinct Named Item with the same infobox."""
+    title = title.removeprefix("Item:")
+    html = ITEM_PAGE_HTML.replace("Breaker_of_Bodies", title).replace(
+        "Breaker of Bodies", title.replace("_", " ")
+    )
+    return html.replace('"wgArticleId":61183', f'"wgArticleId":{page_id}')
+
+
 def serve_wiki(url: str) -> str:
-    """The index, update pages (all with the same links) and a real item page."""
+    """The index, update pages (all with the same links) and item pages.
+
+    Every item page is the real Breaker of Bodies page, renamed to the URL's title and
+    given a page ID derived from it, so each URL is its own Named Item.
+    """
     if url == INDEX_URL:
         return NAMED_ITEMS_INDEX_HTML
-    return ITEM_PAGE_HTML if "/page/Item:" in url else UPDATE_PAGE_HTML
+    if "/page/Item:" not in url:
+        return UPDATE_PAGE_HTML
+    title = unquote(url.rsplit("/page/", 1)[-1])
+    return item_page(title, 100000 + zlib.crc32(title.encode("utf-8")) % 100000)
 
 
 # ── Datetime helpers ──────────────────────────────────────────────────────────
