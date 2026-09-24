@@ -12,8 +12,12 @@ once the WAF challenge clears, its reload. Every other wiki request the page wou
 before it is sent, so a challenge that keeps reloading can never loop against the wiki.
 Requests to other hosts (the AWS WAF challenge script and token service) go through.
 Every wiki request is logged at DEBUG, so a ``--verbose`` run shows exactly what the wiki
-was sent. The HTML returned is the article as the server rendered it, since the wiki's
-own scripts never run.
+was sent. So is each request let through to another host (without its query), and each
+main-frame document's status and ``x-amzn-waf-action``. When the article never appears, one
+WARNING sums up the load: documents seen, wiki requests used, the last document's status
+and WAF action, and the browser's age. That tells a challenge (202) from a CAPTCHA (405) or
+a block (403), which all come back as the same ``202`` below. The HTML returned is the
+article as the server rendered it, since the wiki's own scripts never run.
 
 The status returned is that of the final document: the reload's once a challenge clears,
 not the challenge's. So a missing page answers ``404`` here as it does on the plain path,
@@ -25,7 +29,8 @@ adapters.
 
 from __future__ import annotations
 
-from typing import Any
+import time
+from typing import Any, Optional
 from urllib.parse import urlsplit
 
 from loguru import logger
@@ -41,6 +46,7 @@ MAX_WIKI_REQUESTS = 2
 
 _WIKI_HOST = "ddowiki.com"
 _PAGE_PREFIX = "/page/"
+_WAF_HEADER = "x-amzn-waf-action"
 
 
 class BrowserTransport:
@@ -54,11 +60,14 @@ class BrowserTransport:
         self._page: Any = None
         self._wiki_requests = 0
         self._document: Any = None  # the main frame's latest navigation response
+        self._documents_seen = 0
+        self._started: Optional[float] = None  # when Chromium was launched
 
     def fetch(self, url: str) -> Response:
         page = self._ensure_page()
         self._wiki_requests = 0
         self._document = None
+        self._documents_seen = 0
         try:
             resp = page.goto(
                 url, wait_until="domcontentloaded", timeout=self._timeout_ms
@@ -70,6 +79,7 @@ class BrowserTransport:
         try:
             page.wait_for_selector(_CONTENT_SELECTOR, timeout=self._timeout_ms)
         except Exception:
+            self._log_no_article(url, self._document or resp)
             return Response(
                 status=202,
                 text=page.content(),
@@ -102,13 +112,26 @@ class BrowserTransport:
             self._page = self._browser.new_page(user_agent=self._user_agent)
             self._page.route("**/*", self._route)
             self._page.on("response", self._on_response)
+            self._started = time.monotonic()
         return self._page
+
+    def _log_no_article(self, url: str, last: Any) -> None:
+        age = time.monotonic() - self._started if self._started is not None else 0.0
+        document = _describe(last) if last is not None else "none"
+        logger.warning(
+            f"no article for {url} after {self._timeout_ms / 1000:g}s: "
+            f"{self._documents_seen} document(s) seen, {self._wiki_requests} of "
+            f"{MAX_WIKI_REQUESTS} wiki requests used, last document {document}; "
+            f"browser up {age:.0f}s (browser)"
+        )
 
     def _on_response(self, response: Any) -> None:
         """Remember the response of each main-frame navigation (the page, its reload)."""
         request = response.request
         if request.is_navigation_request() and request.frame == self._page.main_frame:
             self._document = response
+            self._documents_seen += 1
+            logger.debug(f"document {response.url} -> {_describe(response)} (browser)")
 
     def _route(self, route: Any) -> None:
         """Let through non-wiki requests and up to two wiki ``/page/`` documents."""
@@ -116,6 +139,9 @@ class BrowserTransport:
         parts = urlsplit(request.url)
         host = parts.hostname or ""
         if host != _WIKI_HOST and not host.endswith("." + _WIKI_HOST):
+            logger.debug(
+                f"pass {request.resource_type} {parts.scheme}://{host}{parts.path} (browser)"
+            )
             route.continue_()
             return
         is_page = request.resource_type == "document" and parts.path.startswith(
@@ -128,3 +154,13 @@ class BrowserTransport:
             return
         logger.debug(f"blocked {request.resource_type} {request.url} (browser)")
         route.abort()
+
+
+def _describe(response: Any) -> str:
+    """``<status>``, plus the WAF action header when the response carries one."""
+    action = (response.headers or {}).get(_WAF_HEADER)
+    return (
+        f"{response.status}, {_WAF_HEADER}: {action}"
+        if action
+        else str(response.status)
+    )

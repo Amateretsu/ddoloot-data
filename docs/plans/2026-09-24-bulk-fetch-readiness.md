@@ -806,3 +806,121 @@ with ADR 0006.
     SIGINT, a child that ignores SIGINT and is terminated after the grace period, and an
     unstopped child whose exit code and log are kept.
 - Tests after step 5: 395 passed, 1 skipped.
+
+### Step 6: the WAF stop
+
+- **Log found:** batch 1's `--verbose` log survived in the old session's scratchpad
+  (`/private/tmp/claude-501/…/de24ce61-…/scratchpad/batch1.log`, 2,394 lines, with the
+  scratch config and watchdog). No request was sent in this step.
+- **What the log shows:**
+  - Run start 09:27:59; robots.txt; `Update_10_named_items -> 202 (plain)` at 09:28:03,
+    which switched the run to the browser (k = 1).
+  - The browser session began at 09:28:08. The **only** challenge that cleared is the first
+    one: `GET …/Update_10_named_items (browser)` at 09:28:08 and again (the reload) at
+    09:28:09. There is no other repeated GET in the log, so **no challenge happened
+    between the first one and the failure**. The run held one WAF token for 197 pages.
+  - Pace: 199 browser GETs. The gap between the GETs of consecutive pages is 4 s in 195 of
+    197 cases (one 2 s and one 5 s, second-level rounding). That is exactly the configured
+    `crawl_delay_seconds: 4`. 15 requests a minute, flat from 09:28 to 09:41, with at most
+    17 in any 60 s and 76 in any 300 s. Nothing sped up before the failure.
+  - The failure, quoted in full, with nothing between the two lines:
+    ```
+    09:41:16 | DEBUG | GET https://ddowiki.com/page/Item:Crimson_Chain (browser)
+    09:41:47 | DEBUG | queue_db closed: …
+    09:41:47 | ERROR | Run stopped: WAF challenge on …/Item:Crimson_Chain not cleared in the browser
+    ```
+    One wiki document, no reload, and not one `blocked …` line (every earlier article load
+    logs its blocked `load.php` and images a second after its GET). So the document that
+    came back was not the article, and no second wiki document was ever requested. The
+    31 s is the `goto` plus the 30 s `wait_for_selector`. The previous page
+    (`Legendary_Mark_of_Sheshka`, 09:41:12) loaded normally.
+  - Token age at the failure: the token came from the challenge cleared at 09:28:08-09, so
+    it was 787 s (13 min 7 s) old; 783 s old on the last success.
+- **How the adapter handles this** (`src/page_store/browser.py`, config `timeout_seconds:
+  30`): `goto` waits for `domcontentloaded`. A 404 returns at once. Otherwise it waits up to
+  30 s for `#mw-content-text`; if it never appears, the adapter returns a `202` with
+  `x-amzn-waf-action: challenge`, and the Page Store stops the run. So **any** non-404
+  document without an article (a 202 challenge, a 405 CAPTCHA, a 403 block, a slow error
+  page) is reported as "challenge not cleared". The status of that document and its
+  `x-amzn-waf-action` were not logged, nor were requests to other hosts (the AWS WAF
+  challenge script and token service), so the log cannot say which it was. `_route` lets
+  2 wiki `/page/` documents through per fetch and already logs any further one as
+  `blocked document <url> (browser)` at DEBUG.
+- **Likely causes, ranked:**
+  1. **The WAF escalated after sustained volume** (a rate-based rule, or a Bot Control
+     style per-session volume rule) to an action the adapter cannot pass: a CAPTCHA, a
+     block, or a challenge whose token the service refused. Evidence for: one browser
+     session sent 199 requests at a steady 15 a minute before it failed, and the failed
+     load never reloaded, which a solvable challenge does within about 1 s (09:28:08 →
+     09:28:09). Against a plain IP rate rule: the rate was flat for 13 minutes, so a
+     limit over a 1-5 minute window would have tripped by about 09:33. Only a 10-minute
+     window (about 150 requests, reached at about 09:38, plus AWS's evaluation lag) or
+     a cumulative per-session or per-token count fits the timing.
+  2. **Token lifetime.** It is unlikely to be the default 300 s: that would have produced a
+     challenge (a reload in the log) at about 09:33, and none appears. An immunity time
+     between 783 s and 787 s is possible but is not a round value. And an expired token
+     normally gets an ordinary challenge, which this browser cleared in 1 s at the start;
+     here there was no reload at all. Expiry alone does not explain the failure. Expiry
+     plus a refused re-solve (cause 1) could.
+  3. **The 2-document cap.** Ruled out for this failure. The cap logs every document it
+     blocks, and none was logged; only 1 of the 2 allowed wiki documents was used. A
+     second challenge step on another host (for example a CAPTCHA frame) is not capped
+     at all.
+  - Also possible, and not distinguishable from the log: a one-off failure of the
+    challenge script or token service, or of the page itself.
+- **What would tell them apart next time:**
+  - The failing document's status and WAF action: 202 `challenge` (causes 1-2), 405
+    `captcha` or 403 (cause 1).
+  - Whether the challenge script and token calls ran.
+  - The browser's age at the failure: a failure at about the same age regardless of pace
+    points to the token (2), and one at about the same request count or rate points to
+    volume (1).
+  - Whether the step 7 probe (a fresh browser, hours later) clears at once: if it does, the
+    block was temporary, not a standing ban.
+- **Code change (diagnostics only, no behaviour change):** `BrowserTransport` now logs:
+  - each main-frame document at DEBUG, as `document <url> -> <status>[, x-amzn-waf-action:
+    <action>] (browser)`;
+  - each request let through to another host at DEBUG, as `pass <type>
+    <scheme://host/path> (browser)`, with the query dropped so no token is logged;
+  - one WARNING when the article never appears, as `no article for <url> after 30s:
+    N document(s) seen, M of 2 wiki requests used, last document <status>[, waf action];
+    browser up <s>s (browser)`.
+  None of these lines starts with `GET `, so `grep -c 'GET '` and
+  `scripts/guarded_sync.py`'s request tally are unchanged. The fake Playwright's responses
+  now carry `url` and `headers`, and a 202 document carries
+  `x-amzn-waf-action: challenge`. Tests: `test_a_load_with_no_article_logs_the_last_document`
+  (202, 405, 403), `test_a_cleared_challenge_logs_both_documents_and_no_summary`, and
+  `test_routing_logs_passed_hosts_and_the_blocked_extra_document`. All 5 fail on main.
+- **Mitigation (ADR 0006: same identity and pace, no proxy, stealth or CAPTCHA service;
+  back off on a challenge):**
+  - Keep the stop on an uncleared challenge as it is. That is the back-off.
+  - **Short sessions:** at most `--limit 100` items per `ddoloot sync` run, well below the
+    199 requests and 13 minutes at which batch 1 failed. At 4 s a run is about 103 wiki
+    requests (robots.txt, 1 challenged plain fetch, 1 reload, about 100 items) and about
+    7 minutes. Each run is a new process, so it gets a new Chromium, a fresh browser context
+    and a new challenge and token (the Page Store never carries escalation over, as ADR 0006
+    requires).
+  - **Pause 20 minutes between runs**, twice the longest AWS WAF rate window (10 minutes),
+    so no window ever holds two runs.
+  - **After an uncleared challenge:** stop for the day (at least several hours). Read the
+    new `no article …` line: a 405 or 403 means stop until the maintainer decides, and
+    consider asking the wiki admins (ADR 0006's admin override).
+  - **Crawl delay: recommended, not changed.** If a failure recurs at this cadence, the
+    maintainer should raise `crawl_delay_seconds` to 8 in `config/scraper.yaml`. That halves
+    the rate to 7.5 a minute, 75 per 10 minutes. This session's rules keep the committed 4.
+- **Run cadence (for the continuation commands):**
+  ```
+  # one run: at most 100 items, then 20 minutes' pause; stop on exit 1 or 3
+  .venv/bin/python scripts/guarded_sync.py --log $SCRATCH/run-N.log \
+    --scraper-config $SCRATCH/scraper.yaml --page <pages> --limit 100 --max-retries 0
+  sleep 1200
+  ```
+  - With the dry run first (`--dry … --limit 100`) as step 5 requires.
+  - Backlog duration: about 7,850 unheld item pages (8,040 from backlog step 1, less 189
+    fetched in batch 1), so about 79 runs. Each cycle is about 27 minutes (7 minutes of
+    fetching and 20 of pause), so about **36 hours** of wall-clock time and about 8,150
+    requests. At 8 runs a day that is about 10 days. With an 8 s delay, a run takes about
+    14 minutes and the total is about 45 hours.
+- **Files:** `src/page_store/browser.py`, `tests/canned.py`,
+  `tests/page_store/test_browser.py`, and this plan. No config change.
+- Tests after step 6: 400 passed, 1 skipped.
