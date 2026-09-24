@@ -8,7 +8,14 @@ from pathlib import Path
 import pytest
 import yaml
 
-from item_extractor import ExtractionError, ScrapedItem, aggregate, extract, load_config
+from item_extractor import (
+    ExtractionError,
+    NotEquipmentError,
+    ScrapedItem,
+    aggregate,
+    extract,
+    load_config,
+)
 from item_extractor.config import DEFAULT_CONFIG_DIR
 from page_store import PageStore, load_scraper_config
 
@@ -141,8 +148,47 @@ def test_every_field_is_written_even_when_unknown(cfg):
 
 
 def test_page_without_infobox_raises(cfg):
-    with pytest.raises(ExtractionError):
+    with pytest.raises(ExtractionError) as raised:
         extract("<html><body><p>hi</p></body></html>", "u", cfg)
+    assert not isinstance(raised.value, NotEquipmentError)
+
+
+def test_crafting_ingredient_page_is_not_equipment(cfg):
+    # The real Mark of Sheshka page: an item article with no infobox, in the wiki's
+    # "Raw ingredients" category.
+    with pytest.raises(NotEquipmentError, match="'Raw ingredients'"):
+        extract(page("Item_Mark_of_Sheshka.html"), "u", cfg)
+
+
+@pytest.mark.parametrize(
+    "categories",
+    [
+        '"wgCategories":["Binds to account","Named shields"]',
+        '"wgCategories":[]',
+        "",
+        '"wgCategories":["Raw ingredients"',
+    ],
+    ids=["equipment category", "no category", "no category list", "garbled list"],
+)
+def test_page_without_infobox_outside_an_ingredient_category_fails(cfg, categories):
+    html = page("Item_Mark_of_Sheshka.html").replace(
+        '"wgCategories":["Pages needing to replace dropsfrom parameter with numbered '
+        'dropsfrom","Pages needing to replace pic parameter with picdesc","Binds to '
+        'account","Binds on acquire","Raw ingredients","Attack on Stormreach reward '
+        'items","Blockade Buster loot"]',
+        categories,
+    )
+    with pytest.raises(ExtractionError, match="no infobox table") as raised:
+        extract(html, "u", cfg)
+    assert not isinstance(raised.value, NotEquipmentError)
+
+
+def test_ingredient_category_page_with_an_infobox_still_extracts(cfg):
+    html = page("Item_Breaker_of_Bodies.html").replace(
+        '"Named shields",', '"Named shields","Raw ingredients",'
+    )
+    item, _ = extract(html, "u", cfg)
+    assert item.name == "Breaker of Bodies"
 
 
 def test_aggregate_counts_templates_and_unmapped(cfg):
@@ -610,6 +656,8 @@ def page_gaps(cached, cfg):
     """The gaps extract() shows on one held page, as {kind: sorted values}."""
     try:
         item, report = extract(cached.html, cached.url, cfg)
+    except NotEquipmentError as exc:
+        return {"skipped": [str(exc)]}
     except ExtractionError as exc:
         return {"extraction_failed": [str(exc)]}
     gaps = {

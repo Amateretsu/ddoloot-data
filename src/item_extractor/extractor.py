@@ -11,6 +11,7 @@ of the two does not matter.
 
 from __future__ import annotations
 
+import json
 import re
 from typing import Any
 
@@ -24,6 +25,16 @@ from item_extractor.scraped_item import ScrapedItem
 
 class ExtractionError(ValueError):
     """The page has no recognisable item infobox."""
+
+
+class NotEquipmentError(ExtractionError):
+    """The page is a wiki item article with no infobox that is filed as a crafting
+    ingredient: a real item, but not an equippable Named Item. Not a failure."""
+
+
+# Wiki categories of item articles that are crafting ingredients, not equipment. Only a
+# page with no infobox is checked, so an equipment page in one of them still extracts.
+_NON_EQUIPMENT_CATEGORIES = ("Ingredients", "Raw ingredients")
 
 
 def _set_path(target: dict[str, Any], path: str, value: Any) -> None:
@@ -87,6 +98,16 @@ def _page_meta(html: str, soup: BeautifulSoup, url: str) -> dict[str, Any]:
     }
 
 
+def _wiki_categories(html: str) -> list[str]:
+    """The page's categories, from MediaWiki's ``wgCategories``; empty if unreadable."""
+    m = re.search(r'"wgCategories":(\[[^\]]*\])', html)
+    try:
+        categories = json.loads(m.group(1)) if m else []
+    except ValueError:
+        return []
+    return [c for c in categories if isinstance(c, str)]
+
+
 def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, Any]]:
     """Extract a Scraped Item and a report of everything the config did not cover.
 
@@ -98,6 +119,8 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
         raises.
 
     Raises:
+        NotEquipmentError: no infobox table, and the page is filed in a crafting
+            ingredient category (``Ingredients``, ``Raw ingredients``).
         ExtractionError: no infobox table could be found.
     """
     soup = BeautifulSoup(html, "html.parser")
@@ -106,6 +129,11 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
         raise ExtractionError("no mw-parser-output content")
     table = _main_table(content, cfg)
     if table is None:
+        for category in _wiki_categories(html):
+            if category in _NON_EQUIPMENT_CATEGORIES:
+                raise NotEquipmentError(
+                    f"not an equippable named item: wiki category {category!r}"
+                )
         raise ExtractionError("no infobox table")
     rows = _rows(table)
 
