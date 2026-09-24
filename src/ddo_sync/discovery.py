@@ -4,7 +4,9 @@ Discovery walks rendered ``/page/`` HTML through the Page Store seam
 (:class:`~ddo_sync.protocols.PageStoreProtocol`), never the MediaWiki API (ADR 0006):
 
 1. the named-items index page (:data:`NAMED_ITEMS_INDEX_URL`) links to every
-   ``Update_<N>_named_items`` page;
+   ``Update_<N>_named_items`` page; when it links to none, the committed seed list
+   (:data:`UPDATE_PAGES_PATH`, ``config/update_pages.yaml``) names the update pages
+   instead;
 2. each update page links to the ``Item:`` pages of the Named Items it introduced.
 
 A page the Page Store holds costs no request; ``refresh=True`` refetches it. The revision id
@@ -13,7 +15,7 @@ script), since the page HTML is the only source discovery may read.
 
 Interface:
 
-    discover_update_pages(page_store, refresh=False) -> list[str]
+    discover_update_pages(page_store, refresh=False, seed_pages=None) -> list[str]
     read_update_page(page_store, page_name, refresh=False) -> UpdatePage
     update_page_url(page_name) -> str
     update_slug(page_name) -> str
@@ -30,8 +32,10 @@ from __future__ import annotations
 import re
 import urllib.parse
 from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from pathlib import Path
+from typing import Iterable, List, Optional, Sequence, Tuple
 
+import yaml
 from bs4 import BeautifulSoup
 from loguru import logger
 
@@ -43,10 +47,14 @@ from page_store import RunStoppedError
 WIKI_BASE_URL = "https://ddowiki.com"
 _PAGE_PREFIX = f"{WIKI_BASE_URL}/page/"
 
-#: The wiki page that links to every ``Update_<N>_named_items`` page. Not verified against
-#: the live wiki (no live fetch was allowed when this was chosen); if discovery finds no
-#: update page, this title is the first thing to check.
+#: The wiki page meant to link to every ``Update_<N>_named_items`` page. Checked live on
+#: 2026-09-24: it renders ``Category:Items`` and links to no update page, so discovery
+#: falls back to :data:`UPDATE_PAGES_PATH`. Its content links to
+#: ``Category:Named_items_by_update``, which is the likely real index (not yet fetched).
 NAMED_ITEMS_INDEX_URL = f"{_PAGE_PREFIX}Named_items"
+
+#: Committed seed list of update page titles, used when the index links to none.
+UPDATE_PAGES_PATH = Path(__file__).resolve().parents[2] / "config" / "update_pages.yaml"
 
 # Main-namespace update pages only: not "Category:Update_5_named_items" and not the
 # "Update_50_revamped_named_items" pages.
@@ -86,34 +94,46 @@ def update_slug(page_name: Optional[str]) -> str:
 
 
 def discover_update_pages(
-    page_store: PageStoreProtocol, refresh: bool = False
+    page_store: PageStoreProtocol,
+    refresh: bool = False,
+    seed_pages: Optional[Sequence[str]] = None,
 ) -> List[str]:
     """Return every ``Update_<N>_named_items`` page the named-items index links to.
+
+    When the index links to no update page, the seed list is used instead.
 
     Args:
         page_store: Satisfies :class:`~ddo_sync.protocols.PageStoreProtocol`.
         refresh: Refetch the index page even if the Page Store holds it.
+        seed_pages: Update page titles to fall back on; ``None`` reads the committed
+            list at :data:`UPDATE_PAGES_PATH`.
 
     Returns:
         Page names with underscores, deduplicated, sorted by update number.
 
     Raises:
-        UpdatePageError: The index page could not be fetched, or links to no update page.
+        UpdatePageError: The index page could not be fetched, or neither the index nor
+            the seed list names an update page.
         page_store.RunStoppedError: The Page Store says stop the run.
     """
     html = _get(page_store, NAMED_ITEMS_INDEX_URL, refresh)
-    numbers: dict[str, int] = {}
-    for title, _url in _page_links(html):
-        match = _UPDATE_PAGE_RE.match(title)
-        if match:
-            numbers.setdefault(title, int(match.group(1)))
-    if not numbers:
+    pages = _update_pages(title for title, _url in _page_links(html))
+    if pages:
+        logger.info(f"Discovered {len(pages)} update page(s)")
+        return pages
+    if seed_pages is None:
+        seed_pages = _read_seed_list(UPDATE_PAGES_PATH)
+    pages = _update_pages(title.replace(" ", "_") for title in seed_pages)
+    if not pages:
         raise UpdatePageError(
-            "The named-items index links to no Update_<N>_named_items page",
+            "The named-items index links to no Update_<N>_named_items page and the "
+            "seed list names none",
             page_url=NAMED_ITEMS_INDEX_URL,
         )
-    pages = sorted(numbers, key=lambda name: numbers[name])
-    logger.info(f"Discovered {len(pages)} update page(s)")
+    logger.warning(
+        "The named-items index links to no update page; using the "
+        f"{len(pages)} update page(s) of the seed list."
+    )
     return pages
 
 
@@ -149,6 +169,32 @@ def read_update_page(
     return UpdatePage(
         page_name=name, url=url, revision_id=revision_id, links=list(links.values())
     )
+
+
+def _update_pages(titles: Iterable[str]) -> List[str]:
+    """The ``Update_<N>_named_items`` titles among *titles*, deduplicated, by update."""
+    numbers: dict[str, int] = {}
+    for title in titles:
+        match = _UPDATE_PAGE_RE.match(title)
+        if match:
+            numbers.setdefault(title, int(match.group(1)))
+    return sorted(numbers, key=lambda name: numbers[name])
+
+
+def _read_seed_list(path: Path) -> List[str]:
+    try:
+        titles = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+    except (OSError, yaml.YAMLError) as exc:
+        raise UpdatePageError(
+            f"Cannot read the update page seed list {path}: {exc}",
+            page_url=NAMED_ITEMS_INDEX_URL,
+        ) from exc
+    if not isinstance(titles, list):
+        raise UpdatePageError(
+            f"The update page seed list {path} must be a list of titles",
+            page_url=NAMED_ITEMS_INDEX_URL,
+        )
+    return [str(title) for title in titles]
 
 
 def _get(page_store: PageStoreProtocol, url: str, refresh: bool) -> str:

@@ -27,8 +27,9 @@ cache_dir: ../cache/pages
 # A challenged plain fetch is retried in a real browser. After `consecutive_challenges`
 # challenged plain fetches in a row, or more than `challenge_ratio` of plain fetches
 # challenged, the rest of the run uses the browser. With enabled: false a challenge stops
-# the run.
+# the run. Enabled because the wiki challenges every plain fetch today; a challenge the
+# browser cannot clear still stops the run.
 browser:
-  enabled: false
+  enabled: true
   consecutive_challenges: 5
   challenge_ratio: 0.2

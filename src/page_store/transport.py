@@ -15,6 +15,7 @@ from dataclasses import dataclass, field
 from typing import Mapping, Optional, Protocol, runtime_checkable
 
 import requests
+from loguru import logger
 
 
 class TransportError(Exception):
@@ -47,7 +48,10 @@ class Transport(Protocol):
 
 
 class HttpTransport:
-    """Plain HTTP adapter: one ``requests`` session with the configured identity."""
+    """Plain HTTP adapter: one ``requests`` session with the configured identity.
+
+    Every request it sends, redirects included, is logged at DEBUG.
+    """
 
     def __init__(self, user_agent: str, timeout_seconds: float) -> None:
         self._user_agent = user_agent
@@ -67,7 +71,11 @@ class HttpTransport:
         try:
             resp = self._session.get(url, timeout=self._timeout)
         except requests.RequestException as exc:
+            logger.debug(f"GET {url} -> no response (plain)")
             raise TransportError(f"{type(exc).__name__}: {exc}") from exc
+        for hop in resp.history:  # redirects are requests too
+            logger.debug(f"GET {hop.url} -> {hop.status_code} (plain)")
+        logger.debug(f"GET {resp.url} -> {resp.status_code} (plain)")
         return Response(
             status=resp.status_code, text=resp.text, headers=dict(resp.headers)
         )

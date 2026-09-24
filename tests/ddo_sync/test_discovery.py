@@ -66,10 +66,38 @@ def test_held_index_is_not_refetched_unless_refresh(store):
     assert store.requests == [INDEX_URL, INDEX_URL]
 
 
-def test_index_without_update_links_is_an_error():
+def test_index_without_update_links_falls_back_to_the_seed_list():
+    store = InMemoryPageStore(lambda _url: ITEM_PAGE_HTML)
+    seed = [
+        "Update 8 named items",
+        "Update_5_named_items",
+        "Update_8_named_items",
+        "Category:Update_9_named_items",
+    ]
+
+    assert discover_update_pages(store, seed_pages=seed) == [
+        "Update_5_named_items",
+        "Update_8_named_items",
+    ]
+    assert store.requests == [INDEX_URL]
+
+
+def test_the_seed_list_is_not_used_when_the_index_lists_update_pages(store):
+    pages = discover_update_pages(store, seed_pages=["Update_99_named_items"])
+    assert "Update_99_named_items" not in pages
+
+
+def test_the_committed_seed_list_is_the_default_fallback():
+    store = InMemoryPageStore(lambda _url: ITEM_PAGE_HTML)
+    pages = discover_update_pages(store)
+    assert {"Update_5_named_items", "Update_7_named_items"} <= set(pages)
+    assert all(update_slug(page) != "unknown" for page in pages)
+
+
+def test_index_and_seed_list_without_update_pages_is_an_error():
     store = InMemoryPageStore(lambda _url: ITEM_PAGE_HTML)
     with pytest.raises(UpdatePageError) as exc:
-        discover_update_pages(store)
+        discover_update_pages(store, seed_pages=[])
     assert exc.value.page_url == INDEX_URL
 
 

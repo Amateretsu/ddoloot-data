@@ -46,7 +46,7 @@ All three inherit from `PageStoreError`.
 ## Acquisition policy (what the module does behind `get()`)
 
 - **Pacing.** One request at a time, at least `crawl_delay_seconds` apart. Retries are paced too. robots.txt's `Crawl-delay` is used when it is larger. The floor is 4 s: a config below 4 is rejected when it is loaded, and the store clamps the delay to at least 4 as well.
-- **robots.txt.** It is read once per run through the plain transport, with the configured user agent, and evaluated per RFC 9309 by the module's own parser. Every group whose user-agent value appears in our product token (the leading word of `user_agent`, e.g. `ddoloot-data`, ignoring case) applies; if none does, the `*` groups apply. Rule paths are literal prefixes of the raw path and query, with `*` and a trailing `$`. The longest match wins, and on a tie `Allow` wins. `urllib.robotparser` is not used, because it rewrites ddowiki's `Disallow: /?` to `Disallow: /` and so blocks the whole site. A 4xx means there is no robots.txt, so every page is allowed. If robots.txt cannot be read (a network error, 5xx or a challenge), `robots_fail_open` decides: `true` continues with a warning, `false` raises `RunStoppedError`. A disallowed page raises `FetchError`.
+- **robots.txt.** It is read once per run (per `PageStore` instance), and only when the run has to fetch a page: a run served wholly from the store sends no request at all. It is read through the plain transport, with the configured user agent, and evaluated per RFC 9309 by the module's own parser. Every group whose user-agent value appears in our product token (the leading word of `user_agent`, e.g. `ddoloot-data`, ignoring case) applies; if none does, the `*` groups apply. Rule paths are literal prefixes of the raw path and query, with `*` and a trailing `$`. The longest match wins, and on a tie `Allow` wins. `urllib.robotparser` is not used, because it rewrites ddowiki's `Disallow: /?` to `Disallow: /` and so blocks the whole site. A 4xx means there is no robots.txt, so every page is allowed. If robots.txt cannot be read (a network error, 5xx or a challenge), `robots_fail_open` decides: `true` continues with a warning, `false` raises `RunStoppedError`. A disallowed page raises `FetchError`.
 - **Retries.** Connection errors, timeouts, HTTP 429 and 5xx are retried up to `max_retries` times. Each retry waits twice as long as the one before (8 s, 16 s, 32 s at the default delay). A 404 or any other 4xx is not retried.
 - **Challenge detection.** A response is a WAF challenge if it is HTTP 202 or carries an `x-amzn-waf-action` header. A challenge is never cached and never counted as a successful fetch.
 - **Browser fallback** (`browser.enabled: true`):
@@ -56,6 +56,7 @@ All three inherit from `PageStoreError`.
   - Each new `PageStore` instance (each run) starts with plain fetching again.
   - A page that is still challenged in the browser raises `ChallengeError`.
 - **Browser disabled** (`browser.enabled: false`): the first challenge raises `ChallengeError`.
+- **A challenge is never retried.** Challenge detection comes before the retry rules, so a challenge carrying a 403 or 5xx status is not retried either: it costs one plain request, then the browser.
 - **No TTL.** A held page is only refetched when the caller passes `refresh=True`.
 
 ---
@@ -71,7 +72,7 @@ respect_robots_txt: true
 robots_fail_open: true
 cache_dir: ../cache/pages     # relative to this file
 browser:
-  enabled: false
+  enabled: true               # the wiki challenges every plain fetch today
   consecutive_challenges: 5
   challenge_ratio: 0.2
 ```
@@ -82,14 +83,26 @@ The `ddoloot` CLI reads this file, or the one given with `--scraper-config PATH`
 
 ### Browser fallback setup
 
-The browser adapter is the optional extra `browser`:
+The committed config enables the browser fallback, because the wiki WAF-challenges every plain fetch (checked live on 2026-09-24). Headless Chromium clears the challenge, with the identified user agent. The browser adapter is the optional extra `browser`:
 
 ```bash
 pip install -e ".[browser]"
 playwright install chromium
 ```
 
-Playwright is imported only when the first page is sent to the browser, so everything else works without it. If `browser.enabled` is true but Playwright is not installed, the first challenge raises `RunStoppedError` with installation instructions.
+The extra caps Playwright below 1.62, because later releases ship no Chromium for macOS 13. Playwright is imported only when the first page is sent to the browser, so everything else (CI included) works without it. If `browser.enabled` is true but Playwright is not installed, the first challenge raises `RunStoppedError` with installation instructions.
+
+### What a fetch costs the wiki
+
+Run with `--verbose` to see every request sent to the wiki: each adapter logs one `GET <url> … (plain)` or `GET <url> (browser)` DEBUG line per request, redirects included.
+
+| Run | Requests |
+|---|---|
+| every page already held | 0 |
+| first fetch of a run | robots.txt 1 + plain 1 (challenged) + browser 2 (the challenged document, then its reload once the challenge clears) = 4 |
+| each later challenged page in the same run | plain 1 + browser 1 or 2 |
+
+Retries add requests only for connection errors, timeouts, 429 and 5xx, never for a challenge.
 
 ---
 
@@ -116,7 +129,7 @@ The transport is the seam. It has one method, `fetch(url) -> Response(status, te
 | Adapter | Use |
 |---|---|
 | `HttpTransport(user_agent, timeout_seconds)` | Plain `requests` fetch, the production default. |
-| `page_store.browser.BrowserTransport(user_agent, timeout_seconds)` | Real Chromium through Playwright, used for the fallback. Same user agent, no proxies and no CAPTCHA services. A page whose content (`#mw-content-text`) never appears comes back as a challenge response. |
+| `page_store.browser.BrowserTransport(user_agent, timeout_seconds)` | Real, unmodified headless Chromium through Playwright, used for the fallback. Same user agent and pace, no proxies, stealth plugins, fingerprint spoofing or CAPTCHA services. From the wiki it may request only `/page/` documents, at most `MAX_WIKI_REQUESTS` (2) per fetch: the challenged page and its reload. Every other wiki request (`load.php`, images, `api.php`, further reloads) is aborted before it is sent; requests to the AWS WAF challenge hosts go through. The HTML returned is the article as the server rendered it. A page whose content (`#mw-content-text`) never appears comes back as a challenge response. |
 | canned responses | Tests (`tests/canned.py`). |
 
 ```python
