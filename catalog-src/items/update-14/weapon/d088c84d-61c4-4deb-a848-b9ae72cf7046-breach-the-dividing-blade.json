@@ -1,0 +1,145 @@
+{
+  "id": "d088c84d-61c4-4deb-a848-b9ae72cf7046",
+  "name": "Breach, The Dividing Blade",
+  "wiki": {
+    "page_id": 25656,
+    "revision_id": 628766,
+    "title": "Item:Breach, The Dividing Blade",
+    "url": "https://ddowiki.com/page/Item:Breach,_The_Dividing_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Falchion",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 24,
+  "durability": 230,
+  "base_value_cp": 9207500,
+  "weight": 8.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Falchion",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "2d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Shrieking",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Shrieking : Shrieking weapons emit a piercing screech whenever they are used to make a successful attack. This screech deals an additional 2 to 12 sonic damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Disintegration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disintegration : This weapon has a dark, insidious power deep within. Occasionally, this power lashes out violently at enemies and attempts to disintegrate them.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Shatter",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Shatter +10 : This effect gives a +10 Enhancement bonus to the DC to resist the character's Sunder and Improved Sunder attempts.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Doublestrike",
+      "value": 6,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 6% : Passive: 6% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Shrieking → Wailing",
+        "Shrieking → Wailing",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This massive falchion has emerged in most of the Realm' notable conflicts in the past century. How it finds its way into the hands of so many different bearers is unknown, but when brought into battle, few can stand against its power.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

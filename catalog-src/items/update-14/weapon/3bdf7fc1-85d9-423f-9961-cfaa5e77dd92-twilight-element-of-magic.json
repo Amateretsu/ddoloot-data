@@ -1,0 +1,182 @@
+{
+  "id": "3bdf7fc1-85d9-423f-9961-cfaa5e77dd92",
+  "name": "Twilight, Element of Magic",
+  "wiki": {
+    "page_id": 25639,
+    "revision_id": 635634,
+    "title": "Item:Twilight, Element of Magic",
+    "url": "https://ddowiki.com/page/Item:Twilight,_Element_of_Magic"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 33,
+  "durability": 310,
+  "base_value_cp": 9200002,
+  "weight": 4.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 21,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +21 : Passive: +21 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Potency",
+      "value": 80,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +80 : Passive: +80 Equipment bonus to each Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Impulse",
+      "value": 120,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Impulse +120 : Passive: +120 Equipment bonus to Force, Untyped, Slashing, Piercing, and Bludgeoning Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus III : +3 Equipment bonus to the DC of Evocation spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enchantment Focus",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Enchantment Focus III : +3 Equipment bonus to the DC of Enchantment spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Arcane Augmentation",
+      "value": 9,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Arcane Augmentation IX : Increases the wearer's caster level when casting ninth level or lower sorcerer or wizard spells by two.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spell Lore",
+      "value": 6,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Lore VI : Passive: All of your spells gain a 6% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds a choice of one of the following: Combustion +120 Glaciation +120 Corrosion +120 Magnetism +120 Nullification +120 Devotion +120 Radiance +120",
+        "Adds a choice of one of the following: Combustion +120 Glaciation +120 Corrosion +120 Magnetism +120 Nullification +120 Devotion +120 Radiance +120",
+        "Combustion +120",
+        "Glaciation +120",
+        "Corrosion +120",
+        "Magnetism +120",
+        "Nullification +120",
+        "Devotion +120",
+        "Radiance +120",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A spark of magic for a studious mind.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "Any end chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , Any end chest"
+  },
+  "extraction_errors": {}
+}

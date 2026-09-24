@@ -1,0 +1,144 @@
+{
+  "id": "0235c0be-e97b-40ec-a478-52d78633b562",
+  "name": "Celestia, Brightest Star of Day",
+  "wiki": {
+    "page_id": 24834,
+    "revision_id": 695375,
+    "title": "Item:Celestia, Brightest Star of Day",
+    "url": "https://ddowiki.com/page/Item:Celestia,_Brightest_Star_of_Day"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Short Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Good",
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Light",
+  "hardness": 33,
+  "durability": 285,
+  "base_value_cp": 9201000,
+  "weight": 0.1,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "32",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Short Sword",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Light"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Supreme Good",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Supreme Good : This weapon is infused with the supreme Power of Good. It does an additional 3 to 18 damage to non-good targets and can only be wielded by Good-aligned characters.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Radiance",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Radiance : This weapon is imbued with a brilliant, radiant power that deals an additional 4 to 24 points of light damage and blinds the target on a successful critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Greater Sunburst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Sunburst : This item blazes with the eternal fury at the heart of a sun. Occasionally, this power comes to the surface, unleashing a nova of light which will blind the struck enemy, dealing severe light damage to it and any other nearby foes.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Fiery Detonation",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fiery Detonation : This weapon is imbued with a fiery wrath. On an attack roll of 20 which is confirmed as a critical hit this burning power will be released, dealing damage to the target and all enemies near it for 15d6 fire damage.A successful Fortitude save (DC 39) reduces this by half.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds Banishing",
+        "Adds Banishing",
+        "Attuned by Heroism: Tier 4 Adds Green Augment Slot",
+        "Adds Green Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This magnificent bastard sword appears to somehow have been made from a ray of solidified light. It is nearly weightless, and despite its size, is able to be wielded effectively by anyone who is proficient in the use of short swords. Rumor and hushed whispers tell of three sunblades among the Stars of Day that stand out from their brethren, feared by all that hide in shadow and darkness. This blade is Celestia, the Brightest Star of Day.",
+  "notes": null,
+  "tips": "This weapon has no physical damage component listed; instead, it is a weapon of pure light. This means the weapon ignores all damage reduction as this only applies to physical damage. Like the Sun Blade , Celestia is typed as a Short Sword therefore will benefit from the Improved Critical - Piercing Feat. Its damage is increased against mobs that have been rendered vulnerable to light (such as Angel of Vengeance Shield of Condemnation), or are inherently vulnerable to light damage ( Shadow Marked Monster Champions and many Undead ). It should not, however, be used against Will-o'-Wisps or Golems which are resistant to light. When wielded alone (or with a shield or Rune Arm), Celestia may cause Strikethrough if you are proficient with Bastard Swords or meet certain other requirements such as taking the Two-Handed Fighting feat.",
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

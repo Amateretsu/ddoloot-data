@@ -1,0 +1,112 @@
+{
+  "id": "337fc1ad-f3b9-4e90-9b02-757d224e082d",
+  "name": "War Wizard's Robes",
+  "wiki": {
+    "page_id": 24237,
+    "revision_id": 708669,
+    "title": "Item:War Wizard's Robes",
+    "url": "https://ddowiki.com/page/Item:War_Wizard%27s_Robes"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Clothing",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Cloth",
+  "hardness": 22,
+  "durability": 210,
+  "base_value_cp": 8005500,
+  "weight": null,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Clothing",
+    "armor_bonus": 0,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Resistance",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +6 : Passive: +6 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Archmagi",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Archmagi : This item grants the wearer +200 maximum spell points . Sorcerers and Favored Souls gain up to double spell points from items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Elemental Absorption",
+      "value": 5,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Elemental Absorption +5% : Passive: 5% Enhancement Bonus to Acid, Cold, Fire, and Electrical Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Concentration",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +15 : Passive: +15 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Battle Arcanist",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "enhancement",
+      "tooltip": "Battle Arcanist : When all three items from the set are equipped, you will gain a 10% Enhancement discount to the Spell Point cost of all your spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Layered with protective enhancements, these are the robes that the War Wizards of Cormyr wear into battle.",
+  "notes": "Unlike most enchanted clothing, this does not provide any Armor Bonus. It is intended to be worn alongside the War Wizard's Bracers which offers Armor Bonus +9 .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Eveningstar"
+    ],
+    "detail": "Turn in 10",
+    "crafted_from": [
+      "Commendations: War Wizards"
+    ],
+    "raw": "Eveningstar , Turn in 10 Commendations: War Wizards"
+  },
+  "extraction_errors": {}
+}

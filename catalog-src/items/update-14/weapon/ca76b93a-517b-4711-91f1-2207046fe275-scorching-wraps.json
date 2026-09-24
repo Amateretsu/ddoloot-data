@@ -1,0 +1,110 @@
+{
+  "id": "ca76b93a-517b-4711-91f1-2207046fe275",
+  "name": "Scorching Wraps",
+  "wiki": {
+    "page_id": 24537,
+    "revision_id": 672405,
+    "title": "Item:Scorching Wraps",
+    "url": "https://ddowiki.com/page/Item:Scorching_Wraps"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Handwrap",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Cloth",
+  "hardness": 16,
+  "durability": 150,
+  "base_value_cp": 1803000,
+  "weight": 0.5,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Handwrap",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Flaming Burst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Flaming Burst : This weapon is sheathed in fire, and deals 1 to 6 fire damage each hit. Critical hits deal an additional 1 to 10 fire damage for weapons with a x2 critical multiplier, 2 to 20 for a x3 multiplier and 3 to 30 for a x4 multiplier.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spiked",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Spiked : This weapon is studded with vicious spikes, causing it to deal piercing damage in addition to its normal damage types.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Bleed",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Bleed : This weapon is cruelly sharp and will do an additional 1 to 8 damage to targets that are vulnerable to bleeding.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "These cloth handwraps, favored by the minotaur brawler Scorchtusk, were enchanted so that his blows will strike with the power of the flame. They're also 'enchanted' with nails. Pointy-ends out.",
+  "notes": null,
+  "tips": "These handwraps deal Piercing and Bludgeoning damage.",
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Scorchtusk 's Chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Scorchtusk 's Chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

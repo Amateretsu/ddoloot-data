@@ -1,0 +1,149 @@
+{
+  "id": "c72f75a8-f8b6-4f5a-b957-f3241e732896",
+  "name": "Antipode, Fist of the Horizon",
+  "wiki": {
+    "page_id": 26555,
+    "revision_id": 672325,
+    "title": "Item:Antipode, Fist of the Horizon",
+    "url": "https://ddowiki.com/page/Item:Antipode,_Fist_of_the_Horizon"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Handwrap",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Gold",
+  "hardness": 43,
+  "durability": 290,
+  "base_value_cp": 9203000,
+  "weight": 0.5,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Handwrap",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Bludgeoning",
+      "Good",
+      "Evil",
+      "Lawful",
+      "Chaotic",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Antipodal",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Antipodal : This weapon is a carefully balanced confluence of diametrically opposed planar energies. This weapon deals an extra 1d6 points of Good damage to non-Good enemies, an extra 1d6 points of Evil damage to non-Evil enemies, an extra 1d6 points of Law damage to non-Lawful enemies, and an extra 1d6 points of Chaotic damage to non-Chaotic enemies.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Doublestrike",
+      "value": 6,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 6% : Passive: 6% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Reinforced Fists",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Reinforced Fists : This item surrounds your fists with kinetic energy. Your unarmed damage is boosted by one half die.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Stunning",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Stunning +10 : +10 Enhancement bonus to the DC of character's Stunning Blow and Stunning Fist attempts.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds +0.5 weapon dice multiplier",
+        "Adds +0.5 weapon dice multiplier",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Spun from enchanted golden thread, this cloth was created to harness and contain planer energies. When wrapped around ones hands, their unarmed attacks can unleash those energies to devastating effect.",
+  "notes": null,
+  "tips": "This weapon is the best way to determine a monster's alignment . For instance, if the target takes Chaotic and Good damage, it must be Lawful Evil; but if it takes Evil, Good, and Lawful damage, it's Chaotic Neutral.",
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

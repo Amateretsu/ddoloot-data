@@ -1,0 +1,135 @@
+{
+  "id": "84482788-13ac-4cdc-9d4d-a3f93dab656f",
+  "name": "Pinion, Cloud-piercer",
+  "wiki": {
+    "page_id": 24840,
+    "revision_id": 633966,
+    "title": "Item:Pinion, Cloud-piercer",
+    "url": "https://ddowiki.com/page/Item:Pinion,_Cloud-piercer"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 310,
+  "base_value_cp": 9207500,
+  "weight": 3.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "2d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Ranged Alacrity",
+      "value": 20,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Ranged Alacrity 20% : Gain 20% Enhancement bonus to Ranged attack speed. Does not stack with the Haste spell.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Shrieking",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Shrieking : Shrieking weapons emit a piercing screech whenever they are used to make a successful attack. This screech deals an additional 2 to 12 sonic damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Seeker",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +10 : Provides a +10 Enhancement bonus to confirm critical hits, and a +10 Enhancement bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Shrieking → Wailing",
+        "Shrieking → Wailing",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This compound longbow is of ingenious design, able to draw and fire arrows with incredible force and speed.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End chest"
+  },
+  "extraction_errors": {}
+}

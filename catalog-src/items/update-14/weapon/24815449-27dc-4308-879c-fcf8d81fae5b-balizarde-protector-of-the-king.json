@@ -1,0 +1,155 @@
+{
+  "id": "24815449-27dc-4308-879c-fcf8d81fae5b",
+  "name": "Balizarde, Protector of the King",
+  "wiki": {
+    "page_id": 25804,
+    "revision_id": 677986,
+    "title": "Item:Balizarde, Protector of the King",
+    "url": "https://ddowiki.com/page/Item:Balizarde,_Protector_of_the_King"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Rapier",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 300,
+  "base_value_cp": 9201500,
+  "weight": 4.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Rapier",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "15-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Hemorrhaging",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Hemorrhaging : This weapon is viciously sharp and will do an additional 2 to 16 damage to targets that are vulnerable to bleeding.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Parrying",
+      "value": 8,
+      "value_kind": "tier",
+      "bonus_type": "insight",
+      "tooltip": "Parrying VIII : Passive: +4 Insight bonus to Armor Class , +4 Insight bonus to Fortitude , Reflex , and Will Saving throws .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dodge",
+      "value": 8,
+      "value_kind": "percent",
+      "bonus_type": "dodge",
+      "tooltip": "Dodge +8% : +8% Enhancement bonus to Dodge.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Good Luck",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "luck",
+      "tooltip": "Good Luck +2 : This item gives a +2 Luck bonus to all saves and skill checks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Hemorrhaging → Phlebotomizing",
+        "Hemorrhaging → Phlebotomizing",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "When hope is lost, only courage remains.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,136 @@
+{
+  "id": "bcedc1c2-14f2-4422-ae1f-f32cc7b693e6",
+  "name": "Legendary Gnollish War Bow",
+  "wiki": {
+    "page_id": 101361,
+    "revision_id": 632346,
+    "title": "Item:Legendary Gnollish War Bow",
+    "url": "https://ddowiki.com/page/Item:Legendary_Gnollish_War_Bow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 36,
+  "durability": 390,
+  "base_value_cp": 12407500,
+  "weight": 3.0,
+  "upgradeable": "Malleable to Legendary Bloody War Bow Legendary Destructive War Bow Legendary Infectious War Bow Legendary Petrifying War Bow",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 5.2,
+    "damage_dice": "1d8",
+    "damage_bonus": 2,
+    "enhancement_bonus": 15,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Crippling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Crippling : A crippling weapon is infused with binding power so that when a target is critically hit their movement is slowed by half. Note: Real slowdown is only 25%",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Bonesplitter",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Bonesplitter : This weapon is powerful enough to shatter the bones of those it strikes. On an attack roll of 20 which is confirmed as a critical hit, the weapon breaks multiple bones in the target's body, causing significant impairment. Creatures with skeletons take 40d6 damage and will have their movement and attacks slowed by 25% and their attack damage reduced by 25% when their bones are shattered.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Monstrous Humanoid Bane",
+      "value": 6,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Monstrous Humanoid Bane 6 : This weapon is attuned specifically to hunt those who are descended from monsters dealing an additional 6d10 bane damage vs. Monstrous Humanoids.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Malleable",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Malleable : This item has a magical aura of malleability and can be combined with any item that has the Fusible property to create a new, more powerful fusion of the two items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Purple Augment Slot",
+      "name": null,
+      "colour": "Purple",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Gnoll archers are sought throughout Droaam for their skilled marksmanship. This powerful bow, which lets the user apply a greater amount of his or her strength to the launch of its arrows, is equally sought-after.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

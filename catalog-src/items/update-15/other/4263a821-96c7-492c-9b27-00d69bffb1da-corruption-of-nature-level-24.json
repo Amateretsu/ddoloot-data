@@ -1,0 +1,130 @@
+{
+  "id": "4263a821-96c7-492c-9b27-00d69bffb1da",
+  "name": "Corruption of Nature (level 24)",
+  "wiki": {
+    "page_id": 26437,
+    "revision_id": 629170,
+    "title": "Item:Corruption of Nature (level 24)",
+    "url": "https://ddowiki.com/page/Item:Corruption_of_Nature_(level_24)"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": "Rune Arm",
+  "equip_slots": [],
+  "minimum_level": 24,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 25,
+  "durability": 275,
+  "base_value_cp": 14850000,
+  "weight": 0.25,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Acid Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Corrosion",
+      "value": 114,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Corrosion +114 : Passive: +114 Equipment bonus to Acid Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Potency",
+      "value": 76,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +76 : Passive: +76 Equipment bonus to each Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Rough Hide",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "primal",
+      "tooltip": "Rough Hide +6 : This item fuses with your body and toughens your skin, providing a +6 Primal bonus to your natural armor.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Insightful Intelligence",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Intelligence +3 : This item focuses the power of the wearer's mind, granting a +3 Insight bonus to Intelligence.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Rune Arm Imbue : Acid",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Acid V: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d10 points of acid damage per hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This magical device, found in Eveningstar's hospital, seems to somehow have been altered by the magical plague afflicting the villagers. When worn by an Artificer capable of channeling energy through it, it infects them with a benign version of the disease, temporarily toughening their skin for as long as the rune arm is worn.",
+  "notes": "This is one of the few rune arms in game that does not Bind on Acquire, and may be found in the Auction House and other vendors. Others are Archaic Device , The Turmoil Within , Strinati's Hand Cannon , and Hand of the Tombs .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Outbreak"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Outbreak , End chest"
+  },
+  "extraction_errors": {}
+}

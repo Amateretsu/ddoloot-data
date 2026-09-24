@@ -1,0 +1,119 @@
+{
+  "id": "9fb830e3-3492-4953-b239-841ff07672dd",
+  "name": "Insanity",
+  "wiki": {
+    "page_id": 33920,
+    "revision_id": 693595,
+    "title": "Item:Insanity",
+    "url": "https://ddowiki.com/page/Item:Insanity"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 18,
+  "durability": 180,
+  "base_value_cp": 12805000,
+  "weight": 8.0,
+  "upgradeable": "Catalyst Crafting to Madness of the Demon Lords Legendary Madness of the Demon Lords",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Sword",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Wild Frenzy",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Wild Frenzy : This weapon has a tendency to drive those it strikes insane. On an attack roll of 20 which is confirmed as a critical hit the target will go wild and attack its own allies for 15 seconds if it fails a DC 25 Will save. Enemies driven wild in this way, however, have a chance of coming to their senses if damaged.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Bewildering",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Bewildering : Targets of this weapon can feel their willpower slipping away. They lose -1 Wisdom on a successful attack.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Unbalancing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Unbalancing : Anything that melee attacks a character with an Unbalancing item has a chance to be pulled off balance giving them a -2 penalty to their AC.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Unwieldy",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Unwieldy : This weapon is very large and makes you clumsier as you wield it, causing a -2 Dexterity penalty.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This mighty blade has become an embodiment of the madness of Xoriat. Enemies struck by its cleaving edge feel their minds weakening, and have a chance to go wild and attack their own allies.",
+  "notes": null,
+  "tips": "Note that the Insanity has lower base damage but higher [W] compared to most other greatswords (2[1d10] instead of 1[2d6]). You can remove the Unwieldy penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "Missing"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Missing , End chest"
+  },
+  "extraction_errors": {}
+}

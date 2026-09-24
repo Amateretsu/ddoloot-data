@@ -1,0 +1,139 @@
+{
+  "id": "92c10683-e0ed-4f11-abe2-22c3aa42d1cd",
+  "name": "Staff of Fleshshaping",
+  "wiki": {
+    "page_id": 14555,
+    "revision_id": 635010,
+    "title": "Item:Staff of Fleshshaping",
+    "url": "https://ddowiki.com/page/Item:Staff_of_Fleshshaping"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 18,
+  "durability": 160,
+  "base_value_cp": 12800002,
+  "weight": 4.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +15 : Passive: +15 Implement bonus to Universal Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Devotion",
+      "value": 72,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +72 : Passive: +72 Equipment bonus to Positive (Healing) Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Healing Lore",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Healing Lore V : Passive: Your Positive Energy spells gain a 15% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Nullification",
+      "value": 72,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +72 : Passive: +72 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Void Lore",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Void Lore V : Passive: Your Negative Energy and Poison spells gain a 15% Equipment bonus to their chance to critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Efficient Metamagic - Empower Healing",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Empower Healing II : The additional spell point cost for using the Empower Healing Metamagic feat is reduced by 2 SP .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A staff apparently carved and whittled down from an unknown creature's bone. You get the sense it was used for fell purposes, but turned towards better ends it might aid you in the arts of healing.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Sinister Storage"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Sinister Storage , End chest"
+  },
+  "extraction_errors": {}
+}

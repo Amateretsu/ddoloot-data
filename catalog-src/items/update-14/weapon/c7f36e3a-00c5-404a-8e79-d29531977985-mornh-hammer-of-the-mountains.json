@@ -1,0 +1,156 @@
+{
+  "id": "c7f36e3a-00c5-404a-8e79-d29531977985",
+  "name": "Mornh, Hammer of the Mountains",
+  "wiki": {
+    "page_id": 24838,
+    "revision_id": 633539,
+    "title": "Item:Mornh, Hammer of the Mountains",
+    "url": "https://ddowiki.com/page/Item:Mornh,_Hammer_of_the_Mountains"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "War Hammer",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Adamantine",
+  "hardness": 43,
+  "durability": 295,
+  "base_value_cp": 9501200,
+  "weight": 5.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "War Hammer",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Bludgeoning",
+      "Adamantine",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Fracturing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fracturing : This weapon is ideal for breaking bones and deals 2 to 12 damage to targets that have skeletons or are made of bone.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Magma Surge",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Magma Surge : This weapon stores the immeasurable heat of the planet's molten mantle. When this weapon is used, superheated magma occasionally surges to the surface, slowing an enemy down and inflicting massive fire damage over time.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Stunning",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Stunning +10 : +10 Enhancement bonus to the DC of character's Stunning Blow and Stunning Fist attempts.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Seeker",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +10 : Provides a +10 Enhancement bonus to confirm critical hits, and a +10 Enhancement bonus to critical hit damage (before multipliers are applied).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Adamantine",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds +0.5 weapon dice multiplier",
+        "Adds +0.5 weapon dice multiplier",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Said to have been carried by a legendary dwarven paladin, the blows of this weighty hammer carry the very weight of the mountains themselves.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}

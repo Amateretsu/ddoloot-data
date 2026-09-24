@@ -1,0 +1,155 @@
+{
+  "id": "d591d092-64a7-4813-9fee-917e5f27ff82",
+  "name": "Nightmare, the Fallen Moon",
+  "wiki": {
+    "page_id": 24836,
+    "revision_id": 633732,
+    "title": "Item:Nightmare, the Fallen Moon",
+    "url": "https://ddowiki.com/page/Item:Nightmare,_the_Fallen_Moon"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Bastard Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 23,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 285,
+  "base_value_cp": 9201000,
+  "weight": 2.0,
+  "upgradeable": "Attuned to Heroism",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Bastard Sword",
+    "handedness": null,
+    "damage_multiplier": 3.6,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 7,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "17-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+7 Enhancement Bonus : +7 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Entropic",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Entropic : An entropic weapon crackles with a sinister energy that seeks to unmake anything it contacts. When it strikes a target, they take an extra 2 to 12 points of untyped damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Life Stealing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Life Stealing : This weapon has a chance to drain 1 to 3 levels from its target on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Vampirism",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Vampirism : This weapon drains a tiny portion of the target's life force whenever it does damage. Note: provides 1d3 hp of healing per hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Nightmares",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Nightmares : This weapon terrorizes your foes, applying a Mind Thrust effect on successful hits (dealing 5 to 40 force damage, Will vs. Enchantments negates) and exposing your foes to their greatest fears on vorpal hits , acting as a Phantasmal Killer spell.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "Attuned to Heroism",
+      "name": "Attuned to Heroism",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Attuned by Heroism: Tier 1 Adds Planar Conflux",
+        "Adds Planar Conflux",
+        "Attuned by Heroism: Tier 2 +7 Enhancement Bonus → +8 Enhancement Bonus",
+        "+7 Enhancement Bonus → +8 Enhancement Bonus",
+        "Attuned by Heroism: Tier 3 Adds +0.5 weapon dice multiplier",
+        "Adds +0.5 weapon dice multiplier",
+        "Attuned by Heroism: Tier 4 Adds Red Augment Slot",
+        "Adds Red Augment Slot"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A moonblade is an elven artifact, passed down a family lineage from parent to child. Only a worthy heir to their house is able to wield a moonblade. This blade, however, has fallen far from its origin. Having been corrupted by dark magic, Nightmare will serve anyone strong enough to claim it... for a time.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Caught in the Web"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Caught in the Web , End Chest"
+  },
+  "extraction_errors": {}
+}
