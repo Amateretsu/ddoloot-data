@@ -126,3 +126,27 @@ with ADR 0006.
 - **Offline rerun, Updates 5-13:** 0 fetch attempts, no `catalog-src` changes,
   `check_catalog('catalog-src')` returns [].
 - Tests after step 1: 323 passed, 1 skipped.
+
+### Step 2: browser adapter status
+
+- **Change:** `BrowserTransport` listens for `response` events and keeps the latest
+  main-frame navigation response (the challenged document, then its reload). Once the
+  article content appears, `fetch` returns that response's status instead of a fixed 200.
+  The early 404 on the first `goto` response and the 202 "challenge not cleared" reply are
+  unchanged.
+- **Decision:** the adapter reports the status and the Page Store decides, as on the plain
+  path, so no store or syncer code changed. A reload answering 404 raises
+  `FetchError("page not found (404): <url>")`, is not retried or stored, and the syncer
+  marks the queue item failed with `FetchError: page not found (404): <url>`, the same
+  reason as a plain 404. Other statuses follow the plain rules too (429/5xx retried, other
+  4xx fail). The `goto` response is used only when no navigation response was seen.
+- **Tests:** a fake Playwright in `tests/canned.py` (`FakeBrowserPage`, installed as
+  `playwright.sync_api`), so nothing launches and nothing reaches the wiki. Through the
+  Page Store: challenge-then-404 is not stored and fails with status 404; challenge-then-200
+  is stored via the browser. Directly on the adapter: the status is the final document's,
+  including after a non-navigation response. Through the syncer: the item is failed with
+  the 404 reason and nothing is written. Four of these fail on main.
+- **Page Store:** `Update_4_named_items` (the "no article" page from backlog step 1) is
+  still held in `cache/pages` as a stored success. Left in place, as instructed.
+- **Offline rerun, Updates 5-13:** 0 fetch attempts, no `catalog-src` changes.
+- Tests after step 2: 332 passed, 1 skipped.
