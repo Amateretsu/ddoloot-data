@@ -208,6 +208,61 @@ with ADR 0006.
     Type, and which Bonus Type (`exceptional` as named, or `insight` as the tooltip says
     it stacks).
 
+## Proposal: item_type for accessory_untyped
+
+- **Gap:** 24 held items use the `accessory_untyped` template (the `default: true`
+  fallback in `templates.yaml`, reached when no weapon, armor or shield first label and no
+  `Item Type` row matches). All 24 are written under category `other`, with `item_type`
+  null and `equip_slots` []. They are two kinds, and the wiki categories split them exactly:
+  - 20 wands, all in `Category:Named wands` (and `Eternal wands`): the 12 +N Eternal Wands
+    of Disrupt Undead and Nimbus of Light, Roderic's Wand and its Epic version, Brimstone
+    Verge and its Epic version, Cacophonic Verge, its Epic and Dampened versions, and Wand
+    of Blasting. Each infobox starts with `UMD Difficulty`.
+  - 4 rune arms, all in `Category:Rune Arms` (and `Craftable rune arms`): Animus,
+    Chulchannad's Claw, The Pea Shooter and Glorious Obscenity. Each infobox starts with
+    `Minimum Level` and has `Required Trait: Artificer Rune Arm Use`. The wiki also puts
+    them in `Minimum level N weapons`.
+- **No page states a type or slot.** None of the 24 infoboxes has an `Item Type`,
+  `Weapon Type`, `Slot` or other type or equip row. Every held `item_type` value today
+  (`Ring`, `Long Sword`, `Heavy Armor` and others) is text read from such a row, and every
+  `equip_slots` value is mapped from a `Slot` row or fixed by a typed template. The only
+  signals for these 24 are the wiki categories, and, for wands, the first row label.
+- **What the docs say:** `spec/v1/item.schema.json` (app-owned) types `item_type` as a
+  nullable free string with no enum. So null is allowed, and here it means "the page names
+  no type". `category` is an enum, and `other` is valid for both kinds. CONTEXT.md and the
+  ADRs do not define `item_type` or its vocabulary. No mapping or template rule reads a wiki
+  category into a field. Step 3 reads categories only to skip ingredient pages, as an
+  extractor constant.
+- **Options:**
+  - A) Two templates before the default. `wand` (`first_label: [umd difficulty]`) with a
+    fixed `item_type: Wand`, and `rune_arm` (`has_label: [required trait]`, or a category
+    check) with `item_type: Rune Arm`. Both keep `category: other` and `equip_slots: []`.
+    This needs a new `item_type` key for a fixed value in the template config. `Wand` and
+    `Rune Arm` are new values, chosen here rather than read from a row. The wand signal is
+    a layout convention, and `Required Trait` is not unique to rune arms in general.
+  - B) The same values, derived from the wiki categories (`Named wands` → `Wand`,
+    `Rune Arms` → `Rune Arm`) by a new `item_type_from_category` map in `templates.yaml`.
+    This is deterministic on every held page, but it is a new signal source for fields.
+    The singular names are still chosen, and a future wand page missing from
+    `Named wands` would stay null.
+  - C) As A or B, and also set `equip_slots` (for example `off_hand` for rune arms). No page
+    states a slot, so this is game knowledge. Not recommended here.
+  - D) Keep the status quo: `other` with null `item_type`. The rows are correct as written,
+    and the app can show "Other" with no subtype.
+  - A separate question is whether rune arms belong under `weapon` rather than `other`,
+    since the wiki lists them as `Minimum level N weapons`. Changing that moves 4 files in
+    `catalog-src`, so it is not done here.
+- **Recommendation:** B, once the maintainer accepts `Wand` and `Rune Arm` as `item_type`
+  values. The wiki's own categories are the most direct statement of what each item is,
+  the split is exact on all 24 held pages, and it keeps `category` (`other`) and every
+  file path unchanged. No schema change is needed, because `item_type` is a free string.
+  Until then, D stands.
+- **Decision needed:** the maintainer decides:
+  - whether `Wand` and `Rune Arm` become `item_type` values (B, or A);
+  - whether wiki categories may feed Scraped Item fields;
+  - whether rune arms stay `other` or become `weapon`.
+  Equip slots for either kind (C) would need a game-knowledge source and are not proposed.
+
 ## Decisions made during execution
 
 ### Step 1: queue order
@@ -613,3 +668,31 @@ with ADR 0006.
 
   The 7 left are step 4e's alignment DR entries and `Exceptional Fortification (+10%)`.
 - Tests after step 4f: 362 passed, 1 skipped.
+
+### Step 4g: accessory_untyped item_type
+
+- **Outcome: proposed**, not fixed. See "Proposal: item_type for accessory_untyped" above.
+- **Affected:** 24 held items, all under `catalog-src/items/*/other/`: 20 wands
+  (`Category:Named wands`) and 4 rune arms (`Category:Rune Arms`). The two categories
+  split the 24 exactly and hold no other held page.
+- **What the docs say:** `spec/v1/item.schema.json` types `item_type` as a nullable free
+  string with no enum, so null is valid. CONTEXT.md and the ADRs do not define it.
+  `templates.yaml` fills it only from a type row (`item_type_from` or
+  `item_type_from_split`), and `mappings.yaml` has no item-type or category mapping.
+- **Decision:** none of the 24 infoboxes has a type or slot row, so no existing rule or
+  mapping gives a value. `Wand` and `Rune Arm` would be new values, taken from wiki
+  categories or a layout convention, which no field reads today. That is a vocabulary
+  decision for the maintainer, so it is proposed. The current record stays: category
+  `other` (correct and unchanged, so no file moves), `item_type` null, `equip_slots` [].
+  Null `item_type` is not a report gap (not an error or unmapped row), so the baseline
+  does not list it.
+- **Files:** this plan only. No extractor, mapping, schema or writer change, so no
+  offline re-run and no baseline regeneration. `catalog-src` diff: none.
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 0 | 7 | 5 | 0 | 5 |
+  | After | 210 | 0 | 7 | 5 | 0 | 5 |
+
+- Tests after step 4g: 362 passed, 1 skipped (unchanged).
