@@ -53,9 +53,9 @@
       "note": null
     },
     {
-      "name": "DR 15/Evil",
-      "value": null,
-      "value_kind": null,
+      "name": "DR/Evil",
+      "value": 15,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Damage Reduction 15/Evil : Reduces physical damage by 15, except from Evil attacks.",
       "charges": null,

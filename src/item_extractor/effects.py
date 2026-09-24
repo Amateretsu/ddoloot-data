@@ -268,7 +268,7 @@ def _effect(
         if groups.get("pct"):
             value_kind = "percent"
     return Effect(
-        name=_clean(groups["name"]),
+        name=_clean(rule.name.format(**groups) if rule.name else groups["name"]),
         value=value,
         value_kind=value_kind if value is not None else None,
         bonus_type=_bonus_type(rules, entry, rule, groups),

@@ -1,24 +1,4 @@
 {
-  "Item:Epic Infested Armor": {
-    "unclassified_effects": [
-      "DR 15/Good"
-    ]
-  },
-  "Item:Epic Templar's Bastion": {
-    "unclassified_effects": [
-      "DR 15/Evil"
-    ]
-  },
-  "Item:Epic Templar's Docent": {
-    "unclassified_effects": [
-      "DR 15/Evil"
-    ]
-  },
-  "Item:Infested Armor": {
-    "unclassified_effects": [
-      "DR 5/Good"
-    ]
-  },
   "Item:Legendary Mark of Rhesh Turakbar": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
@@ -37,21 +17,6 @@
   "Item:Mark of Sheshka": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
-    ]
-  },
-  "Item:Sustaining Symbiont": {
-    "unclassified_effects": [
-      "Exceptional Fortification (+10%)"
-    ]
-  },
-  "Item:Templar's Bastion": {
-    "unclassified_effects": [
-      "DR 5/Evil"
-    ]
-  },
-  "Item:Templar's Docent": {
-    "unclassified_effects": [
-      "DR 5/Evil"
     ]
   },
   "Item:Token of the Twelve": {

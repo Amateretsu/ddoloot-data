@@ -83,9 +83,9 @@
       "note": null
     },
     {
-      "name": "DR 5/Good",
-      "value": null,
-      "value_kind": null,
+      "name": "DR/Good",
+      "value": 5,
+      "value_kind": "flat",
       "bonus_type": null,
       "tooltip": "Damage Reduction 5/Good : Reduces physical damage by 5, except from Good attacks.",
       "charges": null,
