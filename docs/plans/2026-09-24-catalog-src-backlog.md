@@ -284,3 +284,149 @@ Live request tally (SESSION_BUDGET 1200): step 1 used 8; step 2 used 0; batch 1 
   09:41:47, about 13.5 minutes and 199 browser requests into the run. Why the challenge
   did not clear is not known. One possibility, not verified, is that the WAF token expired
   or a rate threshold was reached.
+
+## Session summary
+
+### What shipped
+
+| Step | PR | What shipped |
+|---|---|---|
+| 0 | #14 | This plan. |
+| 1 | #15 | `config/update_pages.yaml` regenerated from `Category:Named_items_by_update`: 76 update pages, N = 5-81 except 66. |
+| 2 | #16 | The whole-Page-Store extractor test checks against the committed baseline `tests/item_extractor/extractor_gaps.json`. |
+| Batch 1 | #17 | 185 item files from Updates 5-13, one binding mapping fix, and `scripts/offline_rerun.py`. The run stopped on an uncleared WAF challenge. |
+
+### Update pages
+
+- **Completed:** 5, 6, 7, 10, 11, 12 and 13. Update 12 lists no items.
+- **Partly done:** 8 and 9. 48 rows are pending in `data/queue.db` (24 each), starting with
+  `Item:Crimson_Chain`. 5 of them are held and cost 0.
+- **Pending:** 14-81 except 66, 66 pages in all. Update 0-4 and `Unknown_release` have no
+  update page and are outside discovery (step 1).
+
+### Item files committed
+
+197 in all: the 12 from the pilot plus 185 from batch 1. `catalog-src/registry.jsonl` holds
+197 lines.
+
+| Update | Files | | Category | Files |
+|---|---|---|---|---|
+| update-5 | 28 | | armor | 30 |
+| update-6 | 53 | | clothing | 33 |
+| update-7 | 49 | | jewelry | 46 |
+| update-8 | 9 | | other | 24 |
+| update-9 | 2 | | shield | 10 |
+| update-10 | 13 | | weapon | 54 |
+| update-11 | 10 | | | |
+| update-13 | 33 | | | |
+
+### Requests
+
+- **209 of SESSION_BUDGET 1200:** step 1 used 8, step 2 used 0, batch 1 used 201. Every
+  re-run was offline, with 0 fetch attempts.
+- **Still needed to finish,** using step 1's estimate:
+  - about 43 item pages for Updates 8 and 9;
+  - 66 update pages;
+  - about 7,850 item pages for Updates 14-81.
+  - That is about **7,960 requests expected** (1 per page plus about 3 per run), and about
+    **15,800 pessimistic** by `1 + 2F + min(F, 1)` per run.
+
+### Report totals, all batches
+
+Pilot plus batch 1, 213 item report lines:
+
+| Unmapped rows | Unclassified effects | Extraction errors | Warnings |
+|---|---|---|---|
+| 20 | 60 | 5 | 0 |
+
+The 5 extraction errors are the 5 failed items. Batch 1 fixed 15 others with the
+character + Exclusive binding mapping.
+
+### Gaps by kind
+
+Each needs a schema or classification decision, not a one-line mapping, so none was fixed:
+
+- **Clicky charges and recharge:**
+  - the em-dash form, `<Spell> — N Charges (Recharged/Day:N)`: 48 in all, most of them
+    Eternal Wands;
+  - the hyphen form, `<Spell> - N Charges (Recharged/Day: N)`: 4.
+- **Unmapped row `no umd check for`:** 20 wands. There is no ScrapedItem field for it.
+- **Binding with no timing:** `Bound to Character` (4) and `Bound to Account` (1). It is
+  unknown whether they bind on acquire or on equip.
+- **Effects:**
+  - alignment DR such as `DR 5/Evil`: 6;
+  - `Exceptional Fortification (+10%)`: 1;
+  - a wiki bug note inside an effect: 1.
+- **No infobox table (the items failed):**
+  - `Item:Token_of_the_Twelve`;
+  - `Item:Mark_of_Rhesh_Turakbar`;
+  - `Item:Legendary_Mark_of_Rhesh_Turakbar`;
+  - `Item:Mark_of_Sheshka`;
+  - `Item:Legendary_Mark_of_Sheshka`.
+  These are crafting ingredients, not equipment. They were not reset: the failure is
+  deterministic, and the pages are held.
+- **Carried over from the pilot:**
+  - there is no Exclusive field;
+  - `item_type` is null for `accessory_untyped`.
+
+### Pipeline issues found
+
+Recorded, not fixed:
+
+- **The browser adapter stores a missing page as a 200 after a challenge,** because it
+  checks only the first response's status (step 1).
+- **The queue orders update pages by `page_name` as a string** (10, 11, …, 5, 6, …), not
+  by ascending N. Lowest-update-wins keeps the final layout correct, but items move while
+  a multi-page batch is still running.
+  - Workarounds: one `--page` per invocation, in ascending N, at about 3 more requests per
+    run; or a numeric ordering fix in the queue.
+
+### Tests
+
+- Before: 321 passed, 1 skipped.
+- After: 322 passed, 1 skipped.
+- The skip is the "no Playwright" test. The whole-Page-Store test runs locally against 211
+  held item pages.
+
+### Why the session stopped
+
+A stop condition. After about 13.5 minutes and 199 browser requests, the browser did not
+clear the WAF challenge on `Item:Crimson_Chain`. The brief stops all fetching on an
+uncleared challenge. That left 991 requests of the budget unused.
+
+### To continue (next session)
+
+1. Recreate the scratch live config: `config/scraper.yaml` with `max_retries: 0`,
+   `browser.consecutive_challenges: 1` and `cache_dir` set to the absolute path of the
+   repo's `cache/pages`. Keep `data/queue.db` and `cache/pages`. If they are lost, a fresh
+   queue re-processes held pages at 0 cost, but unheld pages must be fetched again.
+2. Probe once to see whether the challenge clears now. Worst case 1 + 2 + 1 = 4.
+   ```
+   .venv/bin/ddoloot sync --verbose --scraper-config $SCRATCH/scraper.yaml \
+     --page Update_8_named_items Update_9_named_items --limit 1 --max-retries 0 \
+     > $SCRATCH/probe.log 2>&1; echo $? > $SCRATCH/probe.exit
+   ```
+   If it is challenged and not cleared again, stop and decide on backing off (ADR 0006)
+   before going further.
+3. Finish Updates 8 and 9. F ≈ 43, so the worst case is about 88.
+   ```
+   .venv/bin/ddoloot sync --verbose --scraper-config $SCRATCH/scraper.yaml \
+     --page Update_8_named_items Update_9_named_items --limit 60 --max-retries 0 \
+     > $SCRATCH/batch2.log 2>&1; echo $? > $SCRATCH/batch2.exit
+   ```
+   Then verify offline:
+   ```
+   .venv/bin/python scripts/offline_rerun.py Update_5_named_items Update_6_named_items \
+     Update_7_named_items Update_8_named_items Update_9_named_items Update_10_named_items \
+     Update_11_named_items Update_12_named_items Update_13_named_items
+   UPDATE_GAPS_BASELINE=1 .venv/bin/pytest -q tests/item_extractor -k whole_page_store
+   ```
+   Then run the four checks and `check_catalog('catalog-src')`, and confirm `git status`
+   is unchanged after a second `offline_rerun.py`.
+4. Continue in ascending N, with batches of about 200 item pages:
+   - Updates 14-16 (about 110);
+   - Update 17 (349, in two `--limit` runs);
+   - Updates 18-25 (about 220);
+   - and so on, using the category counts recorded in step 1.
+   Prefer one page per invocation, or keep each batch's pages in string-sorted order that
+   matches numeric order (for example 14, 15, 16), so that no files move.
