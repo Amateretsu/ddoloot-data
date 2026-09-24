@@ -1219,3 +1219,19 @@ runs, a `--dry` before each run, and stop for the day on an uncleared challenge 
      the maintainer. This session did not change it.
 5. **Maintainer decisions pending:** the proposals for 4c, 4e and 4g in this plan. Until
    they are decided, those gaps stay in the gaps baseline and `report.jsonl`.
+
+### Maintainer decisions (after the summary)
+
+The maintainer decided the three proposals and the run cadence on 2026-09-24:
+
+| Proposal | Decision | PR |
+|---|---|---|
+| 4c binding with no timing | Untimed means on acquire: `Bound to Character` → `character`, `Bound to Account` → `account`. | #33 |
+| 4e alignment DR | The bypass is part of the Effect: `DR 5/Evil` → `DR/Evil`, value 5, flat, no Bonus Type. | #34 |
+| 4e Exceptional Fortification | `Fortification`, 10 percent, Bonus Type `exceptional`. The rule only accepts Bonus Types already in the catalog. | #34 |
+| 4g `accessory_untyped` item_type | From the wiki category: `Named wands` → `Wand`, `Rune Arms` → `Rune Arm`. Rune arms stay in category `other`. | #35 |
+| Run cadence | At most `--limit 100` per run and a 20-minute pause, as in "To continue". The crawl delay stays at 4 s, and 8 s is considered only if a challenge fails again. | — |
+
+Report totals now: 211 lines, 0 unmapped rows, 0 unclassified effects, 0 extraction errors,
+0 warnings, 5 skipped. Tests: 425 passed, 1 skipped. So step 5 of "To continue" has
+nothing left to decide.
