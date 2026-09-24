@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "unbound",
   "binding_raw": "Unbound",
+  "exclusive": false,
   "material": "Wood",
   "hardness": 9,
   "durability": 120,

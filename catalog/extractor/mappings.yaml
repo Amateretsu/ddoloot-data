@@ -2,11 +2,10 @@
 # The three maps below are the whole file; an unknown key is rejected at load.
 
 # Wiki binding text -> spec binding enum. `on_equip` means "undecided until equipped".
+# A trailing ", Exclusive" is read into `exclusive` and removed before the lookup.
 binding:
   "bound to account on acquire": account
-  "bound to account on acquire , exclusive": account
   "bound to character on acquire": character
-  "bound to character on acquire , exclusive": character
   "bound to account on equip": on_equip
   "bound to character on equip": on_equip
   "unbound": unbound

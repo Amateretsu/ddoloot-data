@@ -189,8 +189,11 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
             continue
         try:
             value = COERCERS[rule.coerce](text, td, cfg)
-        except Unparseable:
+        except Unparseable as e:
             errors[rule.error_key] = text
+            if rule.spread:
+                for path, v in e.partial.items():
+                    _set_path(item, path, v)
             continue
         if rule.spread:
             for path, v in value.items():

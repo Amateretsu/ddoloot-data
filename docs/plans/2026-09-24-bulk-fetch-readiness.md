@@ -392,3 +392,58 @@ with ADR 0006.
   | After | 210 | 0 | 8 | 5 | 0 | 5 |
 
 - Tests after step 4c: 348 passed, 1 skipped (unchanged).
+
+### Step 4d: Exclusive
+
+- **Outcome: fixed**, with one backward-compatible schema addition.
+- **What the source holds:** 49 of the 197 held equipment pages end their Binding row in
+  `, Exclusive` (`Bound to Account on Acquire , Exclusive` 34,
+  `Bound to Character on Acquire , Exclusive` 15). The wiki links it to its `Exclusive`
+  page, and the same 49 pages, and no others, are in `Category:Exclusive`. No other row
+  expresses it. The only other mention is a Tips note on Shard of Xoriat ("Early version
+  of this item was not exclusive … you cannot loot a new one"), which is prose and stays
+  in `tips`. Every held equipment page has a Binding row, so none is null today.
+- **What the docs say:** CONTEXT.md, the ADRs and `spec/v1` do not mention Exclusive
+  (`spec/v1`'s only match is the unrelated `mutually_exclusive` constraint). The pilot and
+  backlog plans recorded "there is no Exclusive field" as a gap needing a schema decision,
+  with the flag kept only in `binding_raw`. No ADR reserves Scraped Item fields, and
+  Exclusive is neither an Effect nor a Bonus Type, so ADR 0008 does not apply. Steps 4a
+  and 4b set the precedent of an optional Scraped Item field defaulting to null. The
+  Scraped Item is not in the app-owned bundle spec, so ddoloot-app needs no change.
+- **Decision:**
+  - `ScrapedItem` gains `exclusive: bool | None = None`, next to `binding_raw`.
+  - It is read only from the Binding row, the field's own source: `true` when the row
+    ends in `, Exclusive` (any spacing and case), `false` when a Binding row exists
+    without it (including `Unbound`), and null when there is no Binding row or it says
+    `None`. `Category:Exclusive` agrees on every held page, so a second source was not
+    added.
+  - The binding coercer strips the suffix before the `mappings.yaml` lookup. The two
+    `, exclusive` mapping keys are removed, since they would never match again.
+    `binding_raw` still holds the full text, so it is unchanged.
+  - For an unmapped binding (step 4c's untimed forms), `exclusive` is still set from the
+    row. `Unparseable` gains an optional `partial` dict, which the extractor sets for a
+    spread row after recording the error. The binding stays null with its raw text in
+    `extraction_errors.binding`, as before. The 5 held untimed items have no suffix, so
+    they are `false`.
+- **Files:** `src/item_extractor/scraped_item.py`, `src/item_extractor/coercers.py`,
+  `src/item_extractor/extractor.py`, `catalog/extractor/mappings.yaml`,
+  `tests/item_extractor/test_extract.py`, and 197 item files under `catalog-src/items`.
+- **Tests (through `extract()`):** `test_exclusive_is_read_from_the_binding_row`, 8 cases:
+  account and character Exclusive, a plain binding under `Bind Status`, `Unbound`, an
+  untimed binding with and without Exclusive (the error is still recorded), no Binding
+  row, and a `None` row. All 8 fail on main.
+- **`catalog-src` diff:** 197 item files, 1 added line each, and no registry change. It
+  was checked programmatically: each file's only change is the new key, 49 `true` and
+  148 `false` (the 5 untimed items among them), each matching the binding text's suffix.
+  The gaps baseline was regenerated and did not change.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, 43 unheld
+  pages skipped, and the inner sync exit code is 2. A second run left `git status` and the
+  diff unchanged, and `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 0 | 8 | 5 | 0 | 5 |
+  | After | 210 | 0 | 8 | 5 | 0 | 5 |
+
+- Tests after step 4d: 356 passed, 1 skipped.

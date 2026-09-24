@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "character",
   "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
   "material": "Cloth",
   "hardness": 23,
   "durability": 220,

@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "on_equip",
   "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
   "material": "Wood",
   "hardness": 15,
   "durability": 150,

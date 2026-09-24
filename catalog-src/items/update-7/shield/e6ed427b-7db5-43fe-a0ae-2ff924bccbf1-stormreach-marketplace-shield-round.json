@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": null,
   "binding_raw": null,
+  "exclusive": false,
   "material": "Steel",
   "hardness": 19,
   "durability": 165,
