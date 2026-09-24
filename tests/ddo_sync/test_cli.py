@@ -510,3 +510,11 @@ def test_extract_item_makes_no_network_request(paths):
             ]
         )
     assert transport.requests == []
+
+
+def test_log_output_to_a_file_or_pipe_has_no_color_codes(tmp_path, capsys):
+    # A run logged to a file must stay plain text; colors are for a terminal only.
+    main(["sync", "--status", "--queue-db", str(tmp_path / "queue.db")])
+    err = capsys.readouterr().err
+    assert "No queue database found" in err
+    assert "\x1b[" not in err
