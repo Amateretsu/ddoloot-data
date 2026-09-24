@@ -83,19 +83,22 @@ class _FakeResponse:
 class FakeBrowserPage:
     """Plays the wiki in a "browser": each URL loads a script of documents in turn.
 
-    ``documents[url]`` is a list of ``(status, html)``: the document ``goto`` loads, then
-    each reload the page makes by itself (a WAF challenge clearing). Every document fires
+    ``documents[url]`` is a list of ``(status, html)`` or ``(status, html, headers)``: the
+    document ``goto`` loads, then each reload the page makes by itself (a WAF challenge
+    clearing). Every document fires
     a main-frame navigation response; after the last one, the challenge script's own
     response fires too (not a navigation), as a real challenge page's would. A 202
     document carries ``x-amzn-waf-action: challenge``, as the wiki's does. ``goto``
     returns the first response, as Playwright's does. The content is the last document.
+    ``waits`` counts the ``wait_for_selector`` calls (each one a timeout-long wait live).
     """
 
     main_frame = object()
 
     def __init__(self) -> None:
-        self.documents: Dict[str, List[tuple[int, str]]] = {}
+        self.documents: Dict[str, List[tuple]] = {}
         self.visited: List[str] = []
+        self.waits = 0
         self._listeners: List[Callable[[_FakeResponse], None]] = []
         self._html = ""
 
@@ -109,8 +112,9 @@ class FakeBrowserPage:
     def goto(self, url: str, **_options: object) -> _FakeResponse:
         self.visited.append(url)
         responses = []
-        for status, html in self.documents[url]:
+        for status, html, *extra in self.documents[url]:
             headers = {"x-amzn-waf-action": "challenge"} if status == 202 else {}
+            headers.update(*extra)
             request = _FakeRequest(self.main_frame, navigation=True)
             responses.append(_FakeResponse(status, request, url, headers))
             self._fire(responses[-1])
@@ -119,6 +123,7 @@ class FakeBrowserPage:
         return responses[0]
 
     def wait_for_selector(self, selector: str, **_options: object) -> None:
+        self.waits += 1
         if selector.lstrip("#") not in self._html:
             raise TimeoutError(f"{selector} never appeared")
 
