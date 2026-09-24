@@ -1,47 +1,91 @@
-# Seed list of Update_<N>_named_items page titles (ADR 0006: /page/ reads only).
+# Update_<N>_named_items page titles for discovery (ADR 0006: /page/ reads only).
 #
 # Discovery reads the named-items index page first (NAMED_ITEMS_INDEX_URL in
-# src/ddo_sync/discovery.py). When that page links to no Update_<N>_named_items page,
-# which is the case on the live wiki as of 2026-09-24 (Named_items renders Category:Items),
-# discovery uses these titles instead. They are the update pages the retired
-# cache/index.json recorded; the list is not exhaustive. Add titles as they are found.
+# src/ddo_sync/discovery.py). That page (Named_items) renders Category:Items and links to
+# no Update_<N>_named_items page, so discovery uses these titles instead.
+#
+# Derived on 2026-09-24 from the subcategory links of Category:Named_items_by_update
+# (82 subcategories: Category:Update_<N>_named_items for N = 0-81 except 66, plus
+# Category:Unknown_release_named_items), keeping each subcategory whose article
+# Update_<N>_named_items exists. Those are the 76 pages N = 5-81 except 66, as the
+# update-page navigation box on Update_5_named_items links to all of them. Left out:
+# - Update_0 to Update_4: no article (Update_4_named_items was fetched and is missing;
+#   0-3 are absent from the navigation box). Their categories hold 25 pages in all.
+# - Unknown_release_named_items: its category is empty and it has no article.
+# Sorted by update number.
 - Update_5_named_items
+- Update_6_named_items
 - Update_7_named_items
 - Update_8_named_items
+- Update_9_named_items
+- Update_10_named_items
+- Update_11_named_items
+- Update_12_named_items
 - Update_13_named_items
 - Update_14_named_items
 - Update_15_named_items
+- Update_16_named_items
 - Update_17_named_items
+- Update_18_named_items
 - Update_19_named_items
+- Update_20_named_items
 - Update_21_named_items
 - Update_22_named_items
 - Update_23_named_items
 - Update_24_named_items
+- Update_25_named_items
+- Update_26_named_items
+- Update_27_named_items
+- Update_28_named_items
 - Update_29_named_items
+- Update_30_named_items
 - Update_31_named_items
 - Update_32_named_items
+- Update_33_named_items
 - Update_34_named_items
 - Update_35_named_items
 - Update_36_named_items
+- Update_37_named_items
 - Update_38_named_items
 - Update_39_named_items
+- Update_40_named_items
+- Update_41_named_items
 - Update_42_named_items
 - Update_43_named_items
+- Update_44_named_items
+- Update_45_named_items
 - Update_46_named_items
 - Update_47_named_items
 - Update_48_named_items
 - Update_49_named_items
+- Update_50_named_items
+- Update_51_named_items
 - Update_52_named_items
 - Update_53_named_items
+- Update_54_named_items
 - Update_55_named_items
 - Update_56_named_items
+- Update_57_named_items
 - Update_58_named_items
+- Update_59_named_items
+- Update_60_named_items
+- Update_61_named_items
+- Update_62_named_items
 - Update_63_named_items
 - Update_64_named_items
+- Update_65_named_items
 - Update_67_named_items
 - Update_68_named_items
 - Update_69_named_items
+- Update_70_named_items
 - Update_71_named_items
+- Update_72_named_items
 - Update_73_named_items
 - Update_74_named_items
+- Update_75_named_items
+- Update_76_named_items
+- Update_77_named_items
+- Update_78_named_items
 - Update_79_named_items
+- Update_80_named_items
+- Update_81_named_items

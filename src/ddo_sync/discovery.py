@@ -49,8 +49,8 @@ _PAGE_PREFIX = f"{WIKI_BASE_URL}/page/"
 
 #: The wiki page meant to link to every ``Update_<N>_named_items`` page. Checked live on
 #: 2026-09-24: it renders ``Category:Items`` and links to no update page, so discovery
-#: falls back to :data:`UPDATE_PAGES_PATH`. Its content links to
-#: ``Category:Named_items_by_update``, which is the likely real index (not yet fetched).
+#: falls back to :data:`UPDATE_PAGES_PATH`, which was derived from the subcategories of
+#: ``Category:Named_items_by_update`` (see the header of that file).
 NAMED_ITEMS_INDEX_URL = f"{_PAGE_PREFIX}Named_items"
 
 #: Committed seed list of update page titles, used when the index links to none.
