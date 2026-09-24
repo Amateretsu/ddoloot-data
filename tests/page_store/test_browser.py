@@ -7,11 +7,13 @@ through :class:`BrowserTransport` directly for the status it reports.
 from __future__ import annotations
 
 import sys
+import types
 
 import pytest
+from loguru import logger
 
 from page_store import BrowserPolicy, FetchError, PageStore
-from page_store.browser import BrowserTransport
+from page_store.browser import MAX_WIKI_REQUESTS, BrowserTransport
 from tests.canned import (
     CHALLENGE,
     CannedTransport,
@@ -82,3 +84,78 @@ def test_the_status_is_the_final_documents(page, documents, status):
 
     assert resp.status == status
     assert resp.text == documents[-1][1]
+
+
+# ── Diagnostics: what a --verbose log shows when the article never appears ──────
+
+
+@pytest.fixture
+def log_lines():
+    lines: list[str] = []
+    sink = logger.add(lambda m: lines.append(m.record["message"]), level="DEBUG")
+    yield lines
+    logger.remove(sink)
+
+
+@pytest.mark.parametrize(
+    ("documents", "last"),
+    [
+        ([(202, CHALLENGE_PAGE)], "202, x-amzn-waf-action: challenge"),
+        ([(405, CHALLENGE_PAGE)], "405"),  # a CAPTCHA the browser cannot clear
+        ([(403, "<html>blocked</html>")], "403"),
+    ],
+)
+def test_a_load_with_no_article_logs_the_last_document(
+    page, log_lines, documents, last
+):
+    page.documents[BOW] = documents
+    transport = BrowserTransport("ddoloot-test", timeout_seconds=1)
+
+    assert transport.fetch(BOW).status == 202  # the store's one challenge check
+
+    assert f"document {BOW} -> {last} (browser)" in log_lines
+    (summary,) = [m for m in log_lines if m.startswith("no article for")]
+    assert f"no article for {BOW} after 1s: 1 document(s) seen" in summary
+    assert f"last document {last};" in summary
+    assert "browser up" in summary
+
+
+def test_a_cleared_challenge_logs_both_documents_and_no_summary(page, log_lines):
+    page.documents[BOW] = [(202, CHALLENGE_PAGE), (200, ARTICLE)]
+
+    BrowserTransport("ddoloot-test", timeout_seconds=1).fetch(BOW)
+
+    assert [m for m in log_lines if m.startswith("document ")] == [
+        f"document {BOW} -> 202, x-amzn-waf-action: challenge (browser)",
+        f"document {BOW} -> 200 (browser)",
+    ]
+    assert not [m for m in log_lines if m.startswith("no article")]
+
+
+class _Route:
+    def __init__(self, url: str, resource_type: str) -> None:
+        self.request = types.SimpleNamespace(url=url, resource_type=resource_type)
+        self.outcome = ""
+
+    def continue_(self) -> None:
+        self.outcome = "continued"
+
+    def abort(self) -> None:
+        self.outcome = "aborted"
+
+
+def test_routing_logs_passed_hosts_and_the_blocked_extra_document(log_lines):
+    transport = BrowserTransport("ddoloot-test", timeout_seconds=1)
+    token = _Route("https://abc.token.awswaf.com/abc/verify?secret=1", "fetch")
+    pages = [_Route(BOW, "document") for _ in range(MAX_WIKI_REQUESTS + 1)]
+
+    for route in [token, *pages]:
+        transport._route(route)
+
+    assert token.outcome == "continued"
+    assert [r.outcome for r in pages] == ["continued"] * MAX_WIKI_REQUESTS + ["aborted"]
+    assert log_lines == [
+        "pass fetch https://abc.token.awswaf.com/abc/verify (browser)",
+        *[f"GET {BOW} (browser)"] * MAX_WIKI_REQUESTS,
+        f"blocked document {BOW} (browser)",
+    ]

@@ -67,9 +67,17 @@ class _FakeRequest:
 
 
 class _FakeResponse:
-    def __init__(self, status: int, request: _FakeRequest) -> None:
+    def __init__(
+        self,
+        status: int,
+        request: _FakeRequest,
+        url: str = "",
+        headers: Dict[str, str] | None = None,
+    ) -> None:
         self.status = status
         self.request = request
+        self.url = url
+        self.headers = headers or {}
 
 
 class FakeBrowserPage:
@@ -78,7 +86,8 @@ class FakeBrowserPage:
     ``documents[url]`` is a list of ``(status, html)``: the document ``goto`` loads, then
     each reload the page makes by itself (a WAF challenge clearing). Every document fires
     a main-frame navigation response; after the last one, the challenge script's own
-    response fires too (not a navigation), as a real challenge page's would. ``goto``
+    response fires too (not a navigation), as a real challenge page's would. A 202
+    document carries ``x-amzn-waf-action: challenge``, as the wiki's does. ``goto``
     returns the first response, as Playwright's does. The content is the last document.
     """
 
@@ -101,9 +110,9 @@ class FakeBrowserPage:
         self.visited.append(url)
         responses = []
         for status, html in self.documents[url]:
-            responses.append(
-                _FakeResponse(status, _FakeRequest(self.main_frame, navigation=True))
-            )
+            headers = {"x-amzn-waf-action": "challenge"} if status == 202 else {}
+            request = _FakeRequest(self.main_frame, navigation=True)
+            responses.append(_FakeResponse(status, request, url, headers))
             self._fire(responses[-1])
             self._html = html
         self._fire(_FakeResponse(200, _FakeRequest(self.main_frame, navigation=False)))
