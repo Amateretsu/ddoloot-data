@@ -1,0 +1,44 @@
+# Item page templates. The first rule that matches wins; order matters.
+#
+# detect.first_label:  the label of the first infobox row.
+# detect.has_label:    a label that must be present.
+# category:            fixed category, or category_from to derive it from a field.
+# item_type_from:      output path holding the value to promote to item_type.
+# equip_slots:         fixed slots, or equip_slots_from to derive them from a field.
+templates:
+  - id: weapon
+    detect: {first_label: [proficiency class]}
+    category: weapon
+    item_type_from: weapon_stats.weapon_type
+    equip_slots: [main_hand]
+
+  - id: armor
+    detect: {first_label: [armor type]}
+    category: armor
+    item_type_from: armor_stats.armor_type
+    equip_slots: [body]
+
+  - id: shield
+    detect: {first_label: [shield type]}
+    category: shield
+    item_type_from: shield_stats.shield_type
+    equip_slots: [off_hand]
+
+  - id: accessory
+    detect: {has_label: [item type]}
+    category_from: {field: item_type, split: " / ", index: 0}
+    item_type_from_split: {field: item_type, split: " / ", index: 1}
+    equip_slots_from: {field: slot, split: [",", " or "]}
+
+  - id: accessory_untyped
+    detect: {default: true}
+    category: other
+    equip_slots: []
+
+# Maps the first segment of a wiki item type to a spec category.
+category_map:
+  jewelry: jewelry
+  clothing: clothing
+  weapon: weapon
+  armor: armor
+  shield: shield

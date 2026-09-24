@@ -1,0 +1,103 @@
+# Classification of entries in the Enchantments/Enhancements list.
+#
+# Each list entry is matched against `rules` in order; the first match wins. Patterns run
+# on the entry's visible text (tooltip and nested lists removed, whitespace collapsed).
+#
+# kind: effect     -> item.effects   (name, value, value_kind, bonus_type, tooltip)
+# kind: set        -> item.named_set: an entry (the set's name) whose tooltip lists
+#                     "N Pieces Equipped: ..." items
+# kind: set_bonus   -> a bare "N Pieces Equipped: ..." entry, appended to item.named_set
+# kind: hint       -> item.customisation_hints: augment slots, Mythic/Reaper hints and
+#                     item-unique systems. These are curated in catalog/rules (ADR 0007),
+#                     never stored as effects.
+#
+# value_kind: flat | percent | tier | number
+# `fallback: true` marks the catch-all; entries reaching it that contain digits or a
+# colon are reported as unclassified for review.
+bonus_type:
+  # Tooltip/entry anchors such as /page/Insight_bonus.
+  link_pattern: '/page/([A-Za-z]+)_bonus$'
+  # Text such as "+15% Artifact bonus to Doublestrike".
+  text_pattern: '\b([A-Z][a-z]+) [Bb]onus\b'
+  # Last resort, on the tooltip: "+3 Quality bonus to ...".
+  tooltip_pattern: '[+-]?\d+%?\s+([A-Z][a-z]+) [Bb]onus\b'
+
+rules:
+  - id: unique_system
+    kind: hint
+    hint_kind: unique_system
+    when: {has_children: true}
+    pattern: '^(?P<name>.+?)(?:\s+(?:One of the following|Tier \d).*)?$'
+
+  - id: set_membership
+    kind: set
+    when: {tooltip_items_match: '^\d+ Pieces? Equipped:'}
+    pattern: '^(?P<name>.+)$'
+    item_pattern: '^(?P<pieces>\d+) Pieces? Equipped:\s*(?P<text>.+)$'
+    bonus_type_from: text
+
+  - id: set_bonus
+    kind: set_bonus
+    pattern: '^(?P<pieces>\d+) Pieces? Equipped:\s*(?P<text>.+)$'
+    bonus_type_from: text
+
+  - id: augment_slot
+    kind: hint
+    hint_kind: augment_slot
+    pattern: '^(?P<colour>[A-Za-z]+) Augment Slot\b\s*(?P<text>.*)$'
+
+  - id: augment_upgrade
+    kind: hint
+    hint_kind: augment_upgrade
+    pattern: '^Upgradeable\s*-\s*(?P<name>.+)$'
+
+  - id: mythic_reaper
+    kind: hint
+    hint_kind: '{hint}'
+    pattern: '^(?P<hint>Mythic|Reaper)\b\s*(?P<text>.*)$'
+    lowercase: [hint]
+
+  - id: bonus_to
+    kind: effect
+    value_kind: flat
+    pattern: '^\+(?P<value>\d+(?:\.\d+)?)(?P<pct>%)?\s+(?P<btype>[A-Za-z]+) bonus to (?P<name>.+)$'
+
+  - id: tier_colon
+    kind: effect
+    value_kind: tier
+    pattern: '^(?P<name>.+?)\s*:\s*(?P<tier>[IVX]{1,5})$'
+
+  - id: value_first
+    kind: effect
+    value_kind: flat
+    pattern: '^\+(?P<value>\d+(?:\.\d+)?)(?P<pct>%)?\s+(?P<name>[A-Za-z].*)$'
+
+  - id: signed_suffix
+    kind: effect
+    value_kind: flat
+    pattern: '^(?P<name>.+?)\s*(?P<sign>[+-])(?P<value>\d+(?:\.\d+)?)(?P<pct>%)?$'
+
+  - id: adds_value
+    kind: effect
+    value_kind: flat
+    pattern: '^Adds\s+\+(?P<value>\d+(?:\.\d+)?)\s+(?P<name>.+)$'
+
+  - id: percent_suffix
+    kind: effect
+    value_kind: percent
+    pattern: '^(?P<name>.+?)\s+(?P<value>\d+)%$'
+
+  - id: roman_suffix
+    kind: effect
+    value_kind: tier
+    pattern: '^(?P<name>.+?)\s+(?P<tier>[IVX]{1,5})$'
+
+  - id: number_suffix
+    kind: effect
+    value_kind: number
+    pattern: '^(?P<name>.+?)\s+(?P<value>\d+)$'
+
+  - id: plain_effect
+    kind: effect
+    fallback: true
+    pattern: '^(?P<name>.+)$'

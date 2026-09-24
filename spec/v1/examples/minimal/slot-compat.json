@@ -1,0 +1,4 @@
+{"colour_compat": {"blue": ["blue", "colourless"], "colourless": ["colourless"]},
+ "kind_rules": [
+   {"kind": "mythic", "category_in": ["weapon", "armor", "shield"], "allow_options": ["mythic_2", "mythic_4"]},
+   {"kind": "mythic", "allow_options": ["mythic_1", "mythic_3"]}]}

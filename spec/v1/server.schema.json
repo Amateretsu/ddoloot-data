@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "server.schema.json",
+  "title": "Server (one entry of servers.json)",
+  "type": "object",
+  "required": ["key", "name"],
+  "properties": {
+    "key": {"$ref": "common.schema.json#/$defs/slug"},
+    "name": {"type": "string", "minLength": 1}
+  }
+}

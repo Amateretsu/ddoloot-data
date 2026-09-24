@@ -1,0 +1,86 @@
+[
+ {
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "name": "Example Ring",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "introduced_update": "Update 1",
+  "minimum_level": 5,
+  "binding": "on_equip",
+  "effects": [
+   {
+    "effect": "strength",
+    "bonus_type": "enhancement",
+    "value": 5
+   },
+   {
+    "effect": "cannith_combat_infusion"
+   }
+  ],
+  "wiki": {
+   "page_id": 1234,
+   "title": "Item:Example Ring",
+   "revision_id": 99,
+   "url": "https://ddowiki.com/page/Item:Example_Ring"
+  },
+  "slots_status": "known",
+  "customisation_slots": [
+   {
+    "id": "mythic",
+    "kind": "mythic",
+    "min": 0,
+    "max": 1,
+    "options": {
+     "shared": "mythic_bonus"
+    }
+   },
+   {
+    "id": "aug1",
+    "kind": "augment",
+    "colour": "blue",
+    "min": 0,
+    "max": 1
+   }
+  ],
+  "constraints": [
+   {
+    "type": "max_selected",
+    "slots": [
+     "mythic",
+     "aug1"
+    ],
+    "count": 2
+   },
+   {
+    "type": "requires",
+    "if_slot": "aug1",
+    "then_slot": "mythic"
+   }
+  ],
+  "equip_slots": [
+   "finger"
+  ]
+ },
+ {
+  "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+  "name": "Example Sword",
+  "category": "weapon",
+  "item_type": "Longsword",
+  "wiki": {
+   "page_id": 5678,
+   "title": "Item:Example Sword",
+   "url": "https://ddowiki.com/page/Item:Example_Sword"
+  },
+  "weapon_stats": {
+   "damage_dice": "1d8",
+   "critical_range": "19-20",
+   "critical_multiplier": 2,
+   "weapon_type": "Longsword"
+  },
+  "slots_status": "unknown",
+  "equip_slots": [
+   "main_hand",
+   "off_hand"
+  ]
+ }
+]

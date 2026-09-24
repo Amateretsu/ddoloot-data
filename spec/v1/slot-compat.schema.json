@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "slot-compat.schema.json",
+  "title": "Colour compatibility and per-kind rules (slot-compat.json)",
+  "type": "object",
+  "required": ["colour_compat", "kind_rules"],
+  "properties": {
+    "colour_compat": {
+      "description": "Slot colour -> augment colours it accepts.",
+      "type": "object",
+      "additionalProperties": {"type": "array", "items": {"type": "string"}}
+    },
+    "kind_rules": {
+      "description": "First rule whose category_in contains the item's category wins; a rule without category_in is the default for that kind.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "allow_options"],
+        "properties": {
+          "kind": {"$ref": "common.schema.json#/$defs/slug"},
+          "category_in": {"type": "array", "items": {"enum": ["weapon", "armor", "shield", "jewelry", "clothing", "other"]}},
+          "allow_options": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/slug"}}
+        }
+      }
+    }
+  }
+}

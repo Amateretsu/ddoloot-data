@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bonus-type.schema.json",
+  "title": "Bonus Type (one entry of bonus-types.json)",
+  "type": "object",
+  "required": ["key", "name"],
+  "properties": {
+    "key": {"$ref": "common.schema.json#/$defs/slug"},
+    "name": {"type": "string", "minLength": 1},
+    "stacks_with_self": {"type": ["boolean", "null"]},
+    "verified": {"type": "boolean", "default": true}
+  }
+}

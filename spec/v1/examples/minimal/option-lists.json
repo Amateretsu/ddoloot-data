@@ -1,0 +1,52 @@
+[
+ {
+  "id": "mythic_bonus",
+  "kind": "mythic",
+  "options": [
+   {
+    "key": "mythic_1",
+    "name": "Mythic +1",
+    "value": 1
+   },
+   {
+    "key": "mythic_2",
+    "name": "Mythic +2",
+    "value": 2
+   },
+   {
+    "key": "mythic_3",
+    "name": "Mythic +3",
+    "value": 3
+   },
+   {
+    "key": "mythic_4",
+    "name": "Mythic +4",
+    "value": 4
+   }
+  ]
+ },
+ {
+  "id": "augments",
+  "kind": "augment",
+  "options": [
+   {
+    "key": "blue_str_5",
+    "name": "Blue Strength +5",
+    "colour": "blue",
+    "level": 5
+   },
+   {
+    "key": "colourless_str_2",
+    "name": "Colourless Strength +2",
+    "colour": "colourless",
+    "level": 2
+   },
+   {
+    "key": "red_str_5",
+    "name": "Red Strength +5",
+    "colour": "red",
+    "level": 5
+   }
+  ]
+ }
+]

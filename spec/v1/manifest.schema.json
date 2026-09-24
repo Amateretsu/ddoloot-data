@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "manifest.schema.json",
+  "title": "Release manifest (manifest.json, signed as manifest.json.sig)",
+  "type": "object",
+  "required": ["catalog_version", "format_version", "min_app_version", "bundle", "signing_key_id"],
+  "properties": {
+    "catalog_version": {"$ref": "common.schema.json#/$defs/catalog_version"},
+    "format_version": {"type": "integer", "minimum": 1},
+    "min_app_version": {"$ref": "common.schema.json#/$defs/semver"},
+    "bundle": {
+      "type": "object",
+      "required": ["url", "sha256", "size"],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+        "size": {"type": "integer", "minimum": 0}
+      }
+    },
+    "signing_key_id": {"type": "string"}
+  }
+}

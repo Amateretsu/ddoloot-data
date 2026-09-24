@@ -1,0 +1,13 @@
+DDOLoot data
+
+Catalog data (catalog-src/, catalog/) is derived from the Dungeons & Dragons Online
+Wiki (https://ddowiki.com), whose text is available under the Creative Commons
+Attribution-ShareAlike 2.5 licence (https://creativecommons.org/licenses/by-sa/2.5/).
+Each item file records its source page, revision and URL. Data derived from it must
+stay under CC BY-SA 2.5 or a compatible licence.
+
+Source code in this repository is licensed under GPL-3.0 (see LICENSE).
+
+DDOLoot is a fan project and is not affiliated with or endorsed by Standing Stone
+Games or Daybreak. Dungeons & Dragons Online is a trademark of its owners. No game
+art is included.

@@ -1,0 +1,192 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0", "wheel>=0.37.1"]
+
+
+[project]
+name = "ddoloot-data"
+version = "0.1.0"
+description = "Catalog data, scraper and bundle build for DDOLoot (Dungeons & Dragons Online named items)"
+readme = "README.md"
+requires-python = ">=3.9,<4.0"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Justin Belter", email = "jstnbelter@gmail.com"},
+]
+keywords = ["ddo", "dungeons-and-dragons-online", "scraper", "wiki", "loot"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+dependencies = [
+    "aiohttp>=3.9.0",
+    "requests>=2.31.0",
+    "loguru>=0.7.0",
+    "tenacity>=8.2.0",
+    "pydantic>=2.0.0",
+    "beautifulsoup4>=4.12.0",
+    "jsonschema>=4.18.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+ddoloot = "ddo_sync.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/Amateretsu/ddoloot-data"
+"Issue Tracker" = "https://github.com/Amateretsu/ddoloot/issues"
+
+
+[project.optional-dependencies]
+lint = [
+    "codespell>=2.2.4",
+    "ruff",
+    "vulture",
+    "tomli",           # required for codespell to parse pyproject.toml on Python < 3.11
+    "validate-pyproject[all]",
+    "isort",
+    "black",
+]
+
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-asyncio",
+    "pytest-randomly",
+    "pytest-xdist[psutil]",
+    "pytest-json-report",
+    "requests-mock",
+    "deepdiff",
+    "xdoctest",
+    "Pygments",
+    "tomli",           # required for pytest-cov to parse pyproject.toml on Python < 3.11
+]
+
+exe = [
+    "setuptools",
+    "wheel",
+    "build",
+    "pyinstaller",
+    "staticx;platform_system=='Linux'",
+]
+
+dev = [
+    "ddoloot-data[lint,test,exe]",
+    "mypy",
+    "fire",
+    "better_exceptions",
+    "graphviz",
+    "pipdeptree",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests", "tests.*", "examples"]
+
+
+[tool.codespell]
+skip = "htmlcov,.doctrees,*.pyc,*.class,*.ico,*.out,*.PNG,*.inv,*.png,*.jpg,*.dot"
+
+
+[tool.black]
+line-length = 88
+
+
+[tool.isort]
+profile = "black"
+known_first_party = ["ddowiki_scraper", "item_normalizer", "item_db", "ddo_sync"]
+
+
+[tool.ruff]
+line-length = 99
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # Pyflakes
+    "W",    # pycodestyle warnings
+    "B",    # flake8-bugbear
+    "A",    # flake8-builtins
+    "C4",   # flake8-comprehensions
+    "T10",  # flake8-debugger
+    "EXE",  # flake8-executable
+    "ISC",  # flake8-implicit-str-concat
+    "G",    # flake8-logging-format
+    "PIE",  # flake8-pie
+    "T20",  # flake8-print
+    "PT",   # flake8-pytest-style
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "TID",  # flake8-tidy-imports
+    "ARG",  # flake8-unused-arguments
+    "PGH",  # pygrep-hooks
+    "PLC",  # Pylint Convention
+    "PLE",  # Pylint Errors
+    "PLW",  # Pylint Warnings
+    "RUF",  # Ruff-specific rules
+]
+ignore = [
+    "F403",    # star import — undefined names
+    "F405",    # star import — undefined locals
+    "W605",    # invalid escape sequence
+    "A003",    # shadowing Python builtins
+    "RET504",  # unnecessary assignment before return
+    "RET505",  # unnecessary else after return
+    "RET507",  # unnecessary else after continue
+    "PT011",   # pytest.raises too broad
+    "PT012",   # pytest.raises block has multiple statements
+    "PLW0603", # global statement
+    "PLW2901", # loop variable overwritten
+    "G004",    # logging f-string
+    "PIE790",  # unnecessary pass
+    "PIE810",  # multiple startswith/endswith
+    "PGH003",  # blanket type ignore
+    "PLC1901", # compare to empty string
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "E501"]
+"src/item_extractor/coercers.py" = ["ARG001"]  # uniform coercer signature
+"src/item_extractor/__main__.py" = ["T201"]
+"tests/item_extractor/*.py" = ["E501"]  # inline HTML fixtures
+
+
+[tool.mypy]
+python_version = "3.9"
+follow_imports = "skip"
+ignore_missing_imports = true
+files = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync"]
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = "tests"
+norecursedirs = [".vscode", "__pycache__"]
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "slow: lower-importance tests that take an excessive amount of time",
+]
+
+
+[tool.coverage.run]
+branch = true
+source = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync"]
+
+
+[tool.vulture]
+min_confidence = 100
+paths = ["src/ddowiki_scraper", "src/item_normalizer", "src/item_db", "src/ddo_sync", "tests"]

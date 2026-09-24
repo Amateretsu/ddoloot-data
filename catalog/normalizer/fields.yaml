@@ -1,0 +1,74 @@
+# Infobox row labels -> output fields.
+#
+# labels:  every wording of the row label seen on the wiki (matched lowercased, with
+#          colons and non-breaking spaces normalised).
+# coerce:  a named coercer from item_extractor.coercers.
+# target:  dotted output path. Ignored when spread is true: the coercer then returns a
+#          {dotted.path: value} dict and each entry is set.
+# Cell text equal to any of null_values (case-insensitive) becomes null.
+null_values: ["none", "", "n/a", "-"]
+
+fields:
+  - {target: minimum_level, labels: [minimum level, min level], coerce: int}
+  - {target: required_race, labels: [race absolutely required, required race], coerce: text}
+  - {target: excluded_race, labels: [race absolutely excluded], coerce: text}
+  - {target: required_class, labels: [required class], coerce: text}
+  - {target: required_feat, labels: [feat requirement], coerce: text}
+  - {target: required_trait, labels: [required trait], coerce: text}
+  - {target: umd_dc, labels: [use magical device dc], coerce: text}
+  - {target: binding, labels: [binding, bind status], coerce: binding, spread: true}
+  - {target: material, labels: [material, made from], coerce: text}
+  - {target: hardness, labels: [hardness], coerce: int}
+  - {target: durability, labels: [durability], coerce: int}
+  - {target: base_value_cp, labels: [base value], coerce: copper}
+  - {target: weight, labels: [weight], coerce: float}
+  - {target: item_type, labels: [item type], coerce: text}
+  - {target: slot, labels: [slot, equips to], coerce: text}
+  - {target: source, labels: [location, locations], coerce: location, spread: true, needs_cell: true}
+  - {target: upgradeable, labels: ["upgradeable?"], coerce: text}
+  - {target: flavor_text, labels: [description, flavor text], coerce: text}
+  - {target: notes, labels: [notes], coerce: text}
+  - {target: tips, labels: [tips], coerce: text}
+  - {target: accepts_sentience, labels: ["accepts sentience?"], coerce: yes_no}
+
+  # Weapon rows
+  - {target: weapon_stats.proficiency, labels: [proficiency class, proficiency], coerce: text}
+  - {target: weapon_stats, labels: [damage and type, damage], coerce: damage, spread: true}
+  - {target: weapon_stats, labels: [critical threat range, critical roll], coerce: crit, spread: true}
+  - {target: weapon_stats.weapon_type, labels: [weapon type], coerce: first_segment}
+  - {target: weapon_stats.handedness, labels: [handedness], coerce: text}
+  - {target: weapon_stats.attack_mod, labels: [attack mod], coerce: text}
+  - {target: weapon_stats.damage_mod, labels: [damage mod], coerce: text}
+
+  # Armor rows
+  - {target: armor_stats.armor_type, labels: [armor type], coerce: text}
+  - {target: armor_stats, labels: [armor bonus], coerce: armor_bonus, spread: true}
+  - {target: armor_stats.max_dex_bonus, labels: [maximum dexterity bonus, maximum dex bonus, max dex bonus], coerce: int}
+  - {target: armor_stats.armor_check_penalty, labels: [armor check penalty], coerce: int}
+  - {target: armor_stats.arcane_spell_failure, labels: [arcane spell failure], coerce: int}
+
+  # Shield / orb rows
+  - {target: shield_stats.shield_type, labels: [shield type], coerce: text}
+  - {target: shield_stats.shield_bonus, labels: [shield bonus], coerce: int}
+  - {target: shield_stats.damage_reduction, labels: [damage reduction], coerce: int}
+
+# Rows the extractor recognises but deliberately does not store. They are still counted
+# in the run report so a change in how the wiki uses them is visible.
+ignore:
+  labels:
+    - target
+    - school
+    - spell resistance
+    - charge tier i
+    - charge tier ii
+    - charge tier iii
+    - charge tier iv
+    - charge tier v
+    - rarity
+    - augment type
+    - maximum stack size
+  label_patterns:
+    - '^f:.* shown\.(jpg|png)$'
+
+# Rows whose cell holds the effect list (see enchantments.yaml).
+effects_labels: [enchantments, enhancements]

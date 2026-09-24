@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meta.schema.json",
+  "title": "Bundle meta (meta.json)",
+  "type": "object",
+  "required": ["format_version", "catalog_version", "generated_at", "counts"],
+  "properties": {
+    "format_version": {"type": "integer", "minimum": 1},
+    "catalog_version": {"$ref": "common.schema.json#/$defs/catalog_version"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_commit": {"type": "string"},
+    "counts": {
+      "type": "object",
+      "required": ["items", "effects", "bonus_types", "option_lists", "servers", "redirects"],
+      "properties": {
+        "items": {"type": "integer", "minimum": 0},
+        "effects": {"type": "integer", "minimum": 0},
+        "bonus_types": {"type": "integer", "minimum": 0},
+        "option_lists": {"type": "integer", "minimum": 0},
+        "servers": {"type": "integer", "minimum": 0},
+        "redirects": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

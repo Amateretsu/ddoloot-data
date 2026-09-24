@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "effect.schema.json",
+  "title": "Effect (one entry of effects.json)",
+  "type": "object",
+  "required": ["key", "name"],
+  "properties": {
+    "key": {"$ref": "common.schema.json#/$defs/slug"},
+    "name": {"type": "string", "minLength": 1},
+    "tooltip": {"type": ["string", "null"]},
+    "verified": {"type": "boolean", "default": true}
+  }
+}
