@@ -128,6 +128,8 @@ class ScrapedItem(_Strict):
     # properties
     binding: str | None = None
     binding_raw: str | None = None
+    # the binding row's ", Exclusive" suffix; null when there is no binding row
+    exclusive: bool | None = None
     material: str | None = None
     hardness: int | None = None
     durability: int | None = None

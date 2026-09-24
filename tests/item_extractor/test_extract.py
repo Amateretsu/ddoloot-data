@@ -262,6 +262,48 @@ def test_binding_keeps_the_raw_wiki_text(cfg, label, cell, binding, raw):
     assert (item.binding, item.binding_raw) == (binding, raw)
 
 
+@pytest.mark.parametrize(
+    ("rows", "binding", "exclusive", "errors"),
+    [
+        ([("Binding", EXCLUSIVE_BINDING)], "account", True, {}),
+        (
+            [("Binding", EXCLUSIVE_BINDING.replace("Account", "Character"))],
+            "character",
+            True,
+            {},
+        ),
+        ([("Bind Status", "Bound to Account on Acquire")], "account", False, {}),
+        ([("Binding", "Unbound")], "unbound", False, {}),
+        # An untimed binding stays unmapped, but the row still says whether it is
+        # Exclusive.
+        (
+            [("Binding", "Bound to Character")],
+            None,
+            False,
+            {"binding": "Bound to Character"},
+        ),
+        (
+            [
+                (
+                    "Binding",
+                    EXCLUSIVE_BINDING.replace("Account&nbsp;on Acquire", "Character"),
+                )
+            ],
+            None,
+            True,
+            {"binding": "Bound to Character , Exclusive"},
+        ),
+        # No binding row, or one that says "None": nothing is known.
+        ([("Minimum Level", "5")], None, None, {}),
+        ([("Binding", "None")], None, None, {}),
+    ],
+)
+def test_exclusive_is_read_from_the_binding_row(cfg, rows, binding, exclusive, errors):
+    item, _ = extract(item_page(*rows), "u", cfg)
+    assert (item.binding, item.exclusive) == (binding, exclusive)
+    assert item.extraction_errors == errors
+
+
 def test_weapon_damage_without_bonus_and_crit(cfg):
     item, _ = extract(
         item_page(

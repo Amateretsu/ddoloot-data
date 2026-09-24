@@ -19,6 +19,7 @@
   "required_trait": "Artificer Rune Arm Use",
   "binding": "account",
   "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
   "material": "Gem",
   "hardness": 14,
   "durability": 115,

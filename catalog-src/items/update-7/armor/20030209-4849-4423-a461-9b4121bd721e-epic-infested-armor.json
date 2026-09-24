@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "account",
   "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
   "material": "Dwarven Iron",
   "hardness": 31,
   "durability": 360,

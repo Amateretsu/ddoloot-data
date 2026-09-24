@@ -21,6 +21,7 @@
   "required_trait": "Chaotic",
   "binding": "on_equip",
   "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
   "material": "Wood",
   "hardness": 9,
   "durability": 115,

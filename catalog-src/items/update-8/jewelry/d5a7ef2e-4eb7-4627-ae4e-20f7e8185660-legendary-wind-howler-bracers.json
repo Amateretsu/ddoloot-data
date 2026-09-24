@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "account",
   "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "exclusive": true,
   "material": "Steel",
   "hardness": 33,
   "durability": 330,

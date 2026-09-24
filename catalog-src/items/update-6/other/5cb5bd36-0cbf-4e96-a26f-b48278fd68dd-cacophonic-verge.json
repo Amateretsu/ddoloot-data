@@ -19,6 +19,7 @@
   "required_trait": null,
   "binding": "character",
   "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "exclusive": true,
   "material": "Wood",
   "hardness": 15,
   "durability": 75,

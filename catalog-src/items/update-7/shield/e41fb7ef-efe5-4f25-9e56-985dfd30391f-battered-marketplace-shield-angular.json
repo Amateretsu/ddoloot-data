@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "character",
   "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
   "material": "Steel",
   "hardness": 19,
   "durability": 165,

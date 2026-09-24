@@ -8,7 +8,8 @@ A coercer takes ``(text, cell, cfg)`` and returns either one value (for a plain 
 or, for ``spread`` fields, a ``{dotted.path: value}`` dict. ``cell`` is the row's ``<td>``
 Tag and ``cfg`` the typed :class:`~item_extractor.config.Config`. A coercer that cannot
 read the text raises :class:`Unparseable`; the extractor then leaves the field null and
-records the raw text in ``extraction_errors``.
+records the raw text in ``extraction_errors``. A spread coercer may still pass the values
+it could read in ``Unparseable.partial``, and those are set.
 """
 
 from __future__ import annotations
@@ -23,6 +24,10 @@ Coercer = Callable[[str, Any, Any], Any]
 
 class Unparseable(ValueError):
     """The cell text does not have the shape this coercer reads."""
+
+    def __init__(self, text: str, partial: dict[str, Any] | None = None) -> None:
+        super().__init__(text)
+        self.partial = partial or {}
 
 
 # "5.20[1d8+2] + 15 Pierce, Magic": weapon-dice multiplier, base dice and bonus inside the
@@ -42,6 +47,8 @@ _CRIT_RE = re.compile(r"(\d+(?:-\d+)?)\s*/\s*[xX×]?(\d+)")  # noqa: RUF001
 _INT_RE = re.compile(r"-?\d+")
 _FLOAT_RE = re.compile(r"-?\d+(?:\.\d+)?")
 _VARIANT_RE = re.compile(r"([A-Za-z][A-Za-z ]*?):\s*\+?(\d+)")
+# The wiki's ", Exclusive" after the binding ("Bound to Account on Acquire , Exclusive").
+_EXCLUSIVE_RE = re.compile(r"\s*,\s*exclusive$", re.I)
 
 
 def _int(text: str, cell: Any, cfg: Any) -> int | None:
@@ -87,10 +94,13 @@ def _copper(text: str, cell: Any, cfg: Any) -> int:
 
 
 def _binding(text: str, cell: Any, cfg: Any) -> dict[str, Any]:
-    binding = cfg.mappings.binding.get(text.lower())
+    # Exclusive is read even when the binding itself is not mapped.
+    base, suffixes = _EXCLUSIVE_RE.subn("", text)
+    exclusive = suffixes > 0
+    binding = cfg.mappings.binding.get(base.lower())
     if binding is None:
-        raise Unparseable(text)
-    return {"binding": binding, "binding_raw": text}
+        raise Unparseable(text, partial={"exclusive": exclusive})
+    return {"binding": binding, "binding_raw": text, "exclusive": exclusive}
 
 
 def _damage(text: str, cell: Any, cfg: Any) -> dict[str, Any]:

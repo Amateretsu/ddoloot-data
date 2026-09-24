@@ -21,6 +21,7 @@
   "required_trait": null,
   "binding": "on_equip",
   "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
   "material": "Steel",
   "hardness": 20,
   "durability": 190,
