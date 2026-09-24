@@ -28,6 +28,7 @@ from tests.canned import (
 )
 from tests.ddo_sync.conftest import (
     ITEM_PAGE_HTML,
+    PAGES,
     UPDATE_PAGE_HTML,
     InMemoryItemWriter,
     InMemoryPageStore,
@@ -254,6 +255,35 @@ class TestProcessQueue:
         assert success == total - 1
         assert len(writer.written) == total - 1
         assert queue_repo.get_queue_stats().failed == 1
+
+    def test_crafting_ingredient_page_is_skipped_not_failed(
+        self, store, queue_repo, sword_link, tmp_path
+    ):
+        ingredient = (PAGES / "Item_Mark_of_Sheshka.html").read_text(encoding="utf-8")
+        store.serve = lambda _url: ingredient
+        registry = Registry.load(tmp_path / "registry.jsonl")
+        writer = CatalogWriter(registry, tmp_path / "items", tmp_path)
+        queue_repo.register_update_page(PAGE_NAME, PAGE_URL)
+        queue_repo.enqueue_items([sword_link])
+
+        success, failures = DDOSyncer(store, writer, queue_repo).process_queue()
+
+        assert (success, failures) == (1, 0)
+        [item] = queue_repo.get_items_for_update_page(PAGE_NAME)
+        assert item.status == "complete"
+        assert not (tmp_path / "items").exists()
+        registry.save()
+        assert (tmp_path / "registry.jsonl").read_text() == ""
+        report_path = tmp_path / "update-5" / "report.jsonl"
+        [line] = [json.loads(raw) for raw in report_path.read_text().splitlines()]
+        assert line == {
+            "name": "Sword of Shadow",
+            "url": sword_link.wiki_url,
+            "update_page": PAGE_NAME,
+            "skipped": "not an equippable named item: wiki category 'Raw ingredients'",
+            "extraction_errors": {},
+            "warnings": [],
+        }
 
     def test_nameless_set_warning_reaches_the_report_line(
         self, store, queue_repo, tmp_path

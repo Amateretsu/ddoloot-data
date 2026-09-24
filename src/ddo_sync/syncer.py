@@ -36,7 +36,7 @@ from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.protocols import PageStoreProtocol, ScrapedItemWriterProtocol
 from ddo_sync.queue_db import QueueRepository
-from item_extractor import Config, extract, load_config
+from item_extractor import Config, NotEquipmentError, extract, load_config
 from page_store import RunStoppedError
 
 
@@ -184,6 +184,10 @@ class DDOSyncer:
              ``update_page`` so the writer can file it by update.
           5. Mark as ``complete``.
 
+        A page ``extract()`` classifies as not equipment
+        (:class:`item_extractor.NotEquipmentError`) is handed to the writer's ``skip``
+        instead and marked ``complete``: it is counted as a success, not a failure.
+
         If any step raises, the item is marked as ``failed`` and the error
         message is stored. Other items continue processing. A
         :class:`page_store.RunStoppedError` is not a page failure: it propagates
@@ -219,11 +223,19 @@ class DDOSyncer:
                 continue
             self._queue_repo.mark_in_progress(queue_item.id, _utcnow())
             try:
-                item, report = extract(
-                    page.html, queue_item.wiki_url, self._extractor_config
-                )
-                report = {"update_page": queue_item.update_page, **report}
-                self._writer.write(item, report)
+                try:
+                    item, report = extract(
+                        page.html, queue_item.wiki_url, self._extractor_config
+                    )
+                except NotEquipmentError as exc:
+                    self._writer.skip(
+                        queue_item.wiki_url,
+                        {"update_page": queue_item.update_page, "skipped": str(exc)},
+                    )
+                    logger.info(f"Skipped: {queue_item.item_name!r} — {exc}")
+                else:
+                    report = {"update_page": queue_item.update_page, **report}
+                    self._writer.write(item, report)
             except Exception as exc:
                 self._record_failure(queue_item.item_name, queue_item.id, exc)
                 failures += 1

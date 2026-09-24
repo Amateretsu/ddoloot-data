@@ -47,3 +47,11 @@ class ScrapedItemWriterProtocol(Protocol):
     def write(self, item: ScrapedItem, report: dict[str, Any]) -> None:
         """Persist *item* and the report ``extract()`` produced for it."""
         ...
+
+    def skip(self, url: str, report: dict[str, Any]) -> None:
+        """Record that the page at *url* is not an equippable Named Item.
+
+        *report* carries ``update_page`` and ``skipped`` (the reason); nothing but the
+        record is persisted.
+        """
+        ...

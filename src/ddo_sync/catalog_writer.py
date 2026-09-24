@@ -30,8 +30,9 @@ Both own the same layout rules, which live only in this module:
   newline. Nothing time-dependent is written, so only a wiki or extractor change alters it.
 
 ``report.jsonl`` is filed under the update page the item was queued from, and keeps
-exactly one line per page: writing a page again replaces its line, across runs and
-``--limit`` batches. Two spellings of one page URL (``%27`` or ``'``) are the same page.
+exactly one line per page, including a page skipped as not equipment (:meth:`skip`):
+writing a page again replaces its line, across runs and ``--limit`` batches. Two
+spellings of one page URL (``%27`` or ``'``) are the same page.
 """
 
 from __future__ import annotations
@@ -89,7 +90,16 @@ class CatalogWriter:
         else:
             update = update_slug(report.get("update_page"))
             self._write_item(item, item.wiki.page_id, update)
-        self._write_report_line(item, report, errors)
+        self._write_report_line(item.name, item.wiki.url, report, errors)
+
+    def skip(self, url: str, report: dict[str, Any]) -> None:
+        """Replace *url*'s report line with a skip record; write no item file or UUID.
+
+        The line is ``{name, url, update_page, skipped, extraction_errors: {},
+        warnings: []}``, with ``name`` taken from the URL's title.
+        """
+        name = _url_title(url).removeprefix("Item:")
+        self._write_report_line(name, url, report, {})
 
     def _write_item(self, item: ScrapedItem, page_id: int, update: str) -> None:
         named_item_id = self.registry.id_for(
@@ -111,14 +121,17 @@ class CatalogWriter:
                 _remove_empty_dirs(old.parent, self.items_dir)
 
     def _write_report_line(
-        self, item: ScrapedItem, report: dict[str, Any], errors: dict[str, str]
+        self,
+        name: str | None,
+        url: str,
+        report: dict[str, Any],
+        errors: dict[str, str],
     ) -> None:
         folder = self.report_dir / update_slug(report.get("update_page"))
         folder.mkdir(parents=True, exist_ok=True)
-        url = item.wiki.url
         key = _page_key(url)
         line = {
-            "name": item.name,
+            "name": name,
             "url": url,
             "update_page": None,
             **report,

@@ -269,13 +269,13 @@
     ]
   },
   "Item:Legendary Mark of Rhesh Turakbar": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
   "Item:Legendary Mark of Sheshka": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
   "Item:Legendary Scepter of the Ogre Magi": {
@@ -289,13 +289,13 @@
     ]
   },
   "Item:Mark of Rhesh Turakbar": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
   "Item:Mark of Sheshka": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
   "Item:Mask of Comedy": {
@@ -382,8 +382,8 @@
     ]
   },
   "Item:Token of the Twelve": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Ingredients'"
     ]
   },
   "Item:Twisted Talisman": {

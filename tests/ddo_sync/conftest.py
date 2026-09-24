@@ -25,9 +25,13 @@ class InMemoryItemWriter:
 
     def __init__(self) -> None:
         self.written: list[tuple[ScrapedItem, dict[str, Any]]] = []
+        self.skipped: list[tuple[str, dict[str, Any]]] = []
 
     def write(self, item: ScrapedItem, report: dict[str, Any]) -> None:
         self.written.append((item, report))
+
+    def skip(self, url: str, report: dict[str, Any]) -> None:
+        self.skipped.append((url, report))
 
 
 class InMemoryPageStore:

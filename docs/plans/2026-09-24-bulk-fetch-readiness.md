@@ -150,3 +150,59 @@ with ADR 0006.
   still held in `cache/pages` as a stored success. Left in place, as instructed.
 - **Offline rerun, Updates 5-13:** 0 fetch attempts, no `catalog-src` changes.
 - Tests after step 2: 332 passed, 1 skipped.
+
+### Step 3: pages with no infobox
+
+- **Decision:** a crafting-ingredient page is not a Named Item. CONTEXT.md defines a Named
+  Item as a uniquely named piece of DDO loot that players record Item Instances of, with
+  Customisations, Effects and Binding. The 5 pages (Token of the Twelve, Mark and Legendary
+  Mark of Rhesh Turakbar and of Sheshka) are stackable crafting materials with none of
+  these. They are listed on update pages, but they are not in the catalog. So each is
+  **skipped**:
+  - the queue row is marked `complete` and `process_queue` counts it as a success, not a
+    failure, so it does not count towards the bulk run's 10% stop;
+  - its `report.jsonl` line is `{name, url, update_page, skipped: "<reason>",
+    extraction_errors: {}, warnings: []}`;
+  - no item file, no registry line and no UUID.
+- **Signal:** the page has no infobox table **and** MediaWiki's `wgCategories` lists
+  `Ingredients` (Token of the Twelve) or `Raw ingredients` (the 4 Marks). None of the 197
+  other held `Item:` pages is in either category. The check runs only when there is no
+  infobox. A page with no infobox and no ingredient category still raises
+  `ExtractionError: no infobox table` and fails, and so does a page whose category list is
+  missing or unreadable, or a page with no `mw-parser-output`. The two category names are
+  a constant in the extractor, not config.
+- **Interface:** one new outcome and one writer method.
+  - `extract()` raises `NotEquipmentError`, a subclass of `ExtractionError`, so existing
+    callers (the `extract` CLI command) keep working.
+  - `ScrapedItemWriterProtocol` gains `skip(url, report)`: `CatalogWriter.skip` writes
+    only the report line, and the in-memory fake records it.
+  - The gaps baseline has a new kind, `skipped`, in place of `extraction_failed` for the
+    5 pages.
+- **Tests:**
+  - Through `extract()`: the real Mark of Sheshka page is committed as a fixture and is
+    classified as not equipment. The same page with an equipment-only, empty, missing or
+    garbled category list still fails with `no infobox table`. An infobox page in
+    `Raw ingredients` still extracts.
+  - Through the syncer with `CatalogWriter`: the row is `complete` and counts as
+    (1, 0), the report line is exact, and no item file or registry line is written.
+- **Offline rerun, Updates 5-13:** 0 fetch attempts; the script exits 0, and the inner
+  sync exit code is 2 (43 unheld pages fail as `NotHeld`, as before). Queue cycle: 210
+  successes and 43 failures, up from 205 and 48. No `catalog-src` changes: `report.jsonl`
+  lives in the gitignored `cache/extracted`. The 5 skip lines went to update-5 (Token)
+  and update-8 (the Marks). A second run left `git status` unchanged, and
+  `check_catalog('catalog-src')` returns [].
+- **Unheld pages likely to be skipped too:** the pending Update 8 rows include
+  `Mark_of_Bal_Molesh`, `Mark_of_Tzaryan_Rrac` and their Legendary versions. They are
+  probably the same ingredient pages, and are not verified here.
+- **Report totals** (all `cache/extracted/*/report.jsonl`):
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 205 | 20 | 60 | 5 | 0 | 0 |
+  | After | 210 | 20 | 60 | 5 | 0 | 5 |
+
+  The 5 extraction errors are 5 binding fields (`Bound to Character` 4,
+  `Bound to Account` 1), not the 5 ingredient pages. Those pages had no report line
+  before this step. This count finds 205 lines before this step, not the 213 that the
+  baseline records. The other totals match.
+- Tests after step 3: 339 passed, 1 skipped.
