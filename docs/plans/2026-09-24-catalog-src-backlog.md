@@ -97,7 +97,7 @@ command sequence to continue.
 
 Test baseline before step 1: 321 passed, 1 skipped.
 
-Live request tally (SESSION_BUDGET 1200): step 1 used 8. Running total: 8 of 1200.
+Live request tally (SESSION_BUDGET 1200): step 1 used 8; step 2 used 0. Running total: 8 of 1200.
 
 ### Step 1: discovery
 
@@ -138,3 +138,26 @@ Live request tally (SESSION_BUDGET 1200): step 1 used 8. Running total: 8 of 120
   would be stored and extracted the same way.
 - Tests after step 1: 321 passed, 1 skipped. CI lints `src tests`; `ruff check .` and
   `black --check .` also flag `spec/validate_bundle.py`, which fails the same way on main.
+
+### Step 2: gaps baseline
+
+- **Committed baseline:** `tests/item_extractor/extractor_gaps.json` maps each held `Item:`
+  page's title to its gaps by kind (`unmapped_rows` labels, `unclassified_effects` texts,
+  `extraction_errors` fields, `warnings`, `extraction_failed`). It is sorted JSON, and pages
+  with no gaps are left out. It is not under `tests/data/`, because `.gitignore`'s `**data`
+  would ignore that path.
+- **Update command:** the same test regenerates the baseline, the smallest option (no
+  script):
+  `UPDATE_GAPS_BASELINE=1 .venv/bin/pytest -q tests/item_extractor -k whole_page_store`.
+  It rewrites held pages' entries and keeps the entries of pages not held locally.
+- **Entries for unheld pages are not checked.** A held page's entry must match exactly: a
+  new gap fails as a regression or an unreviewed gap, and a fixed gap fails as stale until
+  the update command removes it. So a fix costs one command, and its diff shows the gap it
+  closed.
+- Non-item pages (category, update pages) are skipped by the `Item:` title filter, as
+  before. The CI skip is unchanged: the test skips when the Page Store holds no pages.
+- Seeded from the 13 held item pages: 4 pages, the pilot's two gap kinds (the wand's
+  `no umd check for` row and 4 `— N Charges` clickies).
+- No other test reads the Page Store. `test_catalog_integrity` and the registry test read
+  committed `catalog-src/`, which stays sound as it grows.
+- Tests after step 2: 321 passed, 1 skipped.

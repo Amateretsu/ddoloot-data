@@ -1,0 +1,25 @@
+{
+  "Item:Brawn's Spirits": {
+    "unclassified_effects": [
+      "Rage — 3 Charges"
+    ]
+  },
+  "Item:Epic Roderic's Wand": {
+    "unclassified_effects": [
+      "Summon Unknown Monster II — 6 Charges (Recharged/Day:6)"
+    ],
+    "unmapped_rows": [
+      "no umd check for"
+    ]
+  },
+  "Item:Illusionist's Garb": {
+    "unclassified_effects": [
+      "Hypnotic Pattern — 5 Charges"
+    ]
+  },
+  "Item:The Big Top": {
+    "unclassified_effects": [
+      "Otto's Resistible Dance — 1 Charges"
+    ]
+  }
+}

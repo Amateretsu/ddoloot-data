@@ -1,6 +1,7 @@
 """extract() on inline pages and on committed real wiki pages (tests/fixtures/pages/)."""
 
-import re
+import json
+import os
 import shutil
 from pathlib import Path
 
@@ -592,28 +593,52 @@ def test_real_page_with_none_values_and_no_effects(cfg):
 
 # ── Whole Page Store (skipped when empty) ─────────────────────────────────────
 
+# Every extractor gap the held Item pages show, by page title and kind, reviewed and
+# committed. Backlog runs update it deliberately after reviewing a batch's new gaps:
+#   UPDATE_GAPS_BASELINE=1 .venv/bin/pytest -q tests/item_extractor -k whole_page_store
+# The update rewrites the entries of held pages and keeps those of pages not held here.
+GAPS_BASELINE = Path(__file__).with_name("extractor_gaps.json")
 
-# Extractor gaps the step 4 pilot recorded (docs/plans/2026-09-24-catalog-src-item-files.md)
-# and left open: no field holds a wand's "No UMD check for" classes, and no rule reads a
-# clickie's charges ("Rage — 3 Charges").
-KNOWN_UNMAPPED_ROWS = {"no umd check for"}
-KNOWN_UNCLASSIFIED_EFFECT = re.compile(r" — \d+ Charges\b")
+
+def page_gaps(cached, cfg):
+    """The gaps extract() shows on one held page, as {kind: sorted values}."""
+    try:
+        item, report = extract(cached.html, cached.url, cfg)
+    except ExtractionError as exc:
+        return {"extraction_failed": [str(exc)]}
+    gaps = {
+        "extraction_errors": sorted(item.extraction_errors),
+        "extraction_failed": [] if item.name else ["no item name"],
+        "unclassified_effects": sorted(set(report["unclassified_effects"])),
+        "unmapped_rows": sorted(report["unmapped_rows"]),
+        "warnings": sorted(set(report["warnings"])),
+    }
+    return {kind: values for kind, values in gaps.items() if values}
 
 
-def test_whole_page_store_extracts_with_only_the_recorded_gaps(cfg):
+def test_whole_page_store_extracts_with_only_the_baselined_gaps(cfg):
     pages = list(PageStore(load_scraper_config()).iter_cached())
     if not pages:
         pytest.skip("the Page Store (config/scraper.yaml cache_dir) holds no pages")
-    reports = {}
-    for page in pages:
-        if not page.title.startswith("Item:"):
-            continue
-        item, reports[page.title] = extract(page.html, page.url, cfg)
-        assert item.name, page.title
-    summary = aggregate(reports)
-    assert set(summary["unmapped_rows"]) <= KNOWN_UNMAPPED_ROWS
-    assert [
-        text
-        for text in summary["unclassified_effects"]
-        if not KNOWN_UNCLASSIFIED_EFFECT.search(text)
-    ] == []
+    held = {page.title: page for page in pages if page.title.startswith("Item:")}
+    found = {
+        title: gaps for title, page in held.items() if (gaps := page_gaps(page, cfg))
+    }
+    baseline = json.loads(GAPS_BASELINE.read_text(encoding="utf-8"))
+
+    if os.environ.get("UPDATE_GAPS_BASELINE") == "1":
+        unheld = {title: gaps for title, gaps in baseline.items() if title not in held}
+        baseline = unheld | found
+        GAPS_BASELINE.write_text(
+            json.dumps(baseline, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+
+    # Entries for pages not held here are not checked. A held page's entry must match
+    # exactly: a new gap is a regression or unreviewed, and a fixed gap is removed from
+    # the baseline by the update command so the baseline never overstates the gaps.
+    expected = {title: gaps for title, gaps in baseline.items() if title in held}
+    assert found == expected, (
+        f"held Item pages' gaps differ from {GAPS_BASELINE.name}; review them, then "
+        "rerun with UPDATE_GAPS_BASELINE=1"
+    )
