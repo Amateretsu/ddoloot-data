@@ -385,7 +385,7 @@ Recorded, not fixed:
 
 - Before: 321 passed, 1 skipped.
 - After: 322 passed, 1 skipped.
-- The skip is the "no Playwright" test. The whole-Page-Store test runs locally against 211
+- The skip is the "no Playwright" test. The whole-Page-Store test runs locally against 202
   held item pages.
 
 ### Why the session stopped
