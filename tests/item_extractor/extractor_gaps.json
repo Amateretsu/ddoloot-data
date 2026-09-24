@@ -1,7 +1,7 @@
 {
   "Item:Commendation of Heroism": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
     ]
   },
   "Item:Legendary Mark of Bal Molesh": {
@@ -45,13 +45,13 @@
     ]
   },
   "Item:Pirate Treasure Map": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
     ]
   },
   "Item:Potion of Restoration": {
-    "extraction_failed": [
-      "no infobox table"
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
     ]
   },
   "Item:Quivering Quiver": {

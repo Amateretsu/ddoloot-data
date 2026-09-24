@@ -1455,3 +1455,20 @@ nothing left to decide.
   are left for review.
 - **Queue:** 355 total, 310 complete, 41 pending (Update 15 onwards), 4 failed.
 - Tests: 465 passed, 1 skipped.
+
+### Fix: skip consumables
+
+- **Evidence:** batch 2's 3 `no infobox table` failures (Commendation of Heroism, Potion
+  of Restoration, Pirate Treasure Map) are all in `Consumables without a type` and
+  `Minimum level 1 consumables`.
+- **Decision:** consumables are not equippable Named Items (CONTEXT.md), so they are
+  skipped like ingredients (step 3). A page with no infobox is skipped when a wiki
+  category is `Ingredients`, `Raw ingredients` or `Consumables without a type`, or ends
+  in ` consumables`.
+  - The check still runs only when there is no infobox.
+  - A category that merely mentions consumables (`Consumables using deprecated
+    parameter/…`) is not enough, and such a page still fails.
+- **Offline re-run over Updates 5-15:** 0 fetch attempts and no item-file change. The
+  gaps baseline moves the 3 pages from `extraction_failed` to `skipped`. A second run left
+  the tree identical, and `check_catalog` returns [].
+- Tests: 469 passed, 1 skipped (4 new `extract()` tests; 3 fail on the old code).
