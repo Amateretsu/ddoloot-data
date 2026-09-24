@@ -201,7 +201,7 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
         elif value is not None and rule.target is not None:
             _set_path(item, rule.target, value)
 
-    _apply_template(item, labels_seen, cfg, report)
+    _apply_template(item, labels_seen, _wiki_categories(html), cfg, report)
     for field in cfg.template_inputs:
         item.pop(field, None)
     item["extraction_errors"] = errors
@@ -209,7 +209,11 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
 
 
 def _apply_template(
-    item: dict[str, Any], labels: list[str], cfg: Config, report: dict[str, Any]
+    item: dict[str, Any],
+    labels: list[str],
+    categories: list[str],
+    cfg: Config,
+    report: dict[str, Any],
 ) -> None:
     label_set = set(labels)
     first = labels[0] if labels else None
@@ -247,6 +251,11 @@ def _apply_template(
         part = tpl.item_type_from_split
         parts = split(item.get(part.field) or "", part.split)
         item["item_type"] = parts[part.index] if len(parts) > part.index else None
+    if item.get("item_type") is None:
+        for category, item_type in tpl.item_type_from_category.items():
+            if category in categories:
+                item["item_type"] = item_type
+                break
 
     if tpl.equip_slots_from is not None:
         every = tpl.equip_slots_from

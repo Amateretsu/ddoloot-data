@@ -9,7 +9,7 @@
   },
   "template": "accessory_untyped",
   "category": "other",
-  "item_type": null,
+  "item_type": "Rune Arm",
   "equip_slots": [],
   "minimum_level": 7,
   "required_race": null,

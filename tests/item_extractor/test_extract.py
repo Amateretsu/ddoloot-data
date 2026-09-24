@@ -75,14 +75,23 @@ def page(filename):
     return (PAGES / filename).read_text(encoding="utf-8")
 
 
-def item_page(*rows, title="Item:Row Test"):
-    """A page in the real wiki shape whose infobox holds *rows* as (label, cell HTML)."""
+def item_page(*rows, title="Item:Row Test", categories=None):
+    """A page in the real wiki shape whose infobox holds *rows* as (label, cell HTML).
+
+    *categories*, when given, are the page's ``wgCategories``.
+    """
     body = "".join(
         f'<tr><th class="bg-color-1">{label}\n</th><td>{cell}\n</td></tr>'
         for label, cell in rows
     )
+    head = (
+        ""
+        if categories is None
+        else f'<head><script>RLCONF={{"wgCategories":{json.dumps(categories)}}};'
+        "</script></head>"
+    )
     return (
-        f'<html><body><h1 id="firstHeading">{title}</h1>'
+        f'<html>{head}<body><h1 id="firstHeading">{title}</h1>'
         f'<div class="mw-parser-output"><table class="wikitable">{body}</table></div>'
         "</body></html>"
     )
@@ -197,6 +206,64 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
     summary = aggregate({"a": r1, "b": r2})
     assert summary["templates"] == {"weapon": 1, "accessory": 1}
     assert summary["unmapped_rows"] == {"mystery row": ["a"]}
+
+
+@pytest.mark.parametrize(
+    ("rows", "categories", "item_type"),
+    [
+        (
+            [("UMD Difficulty", "15")],
+            ["Named wands", "Eternal wands", "Binds to character"],
+            "Wand",
+        ),
+        (
+            [
+                ("Minimum Level", "12"),
+                ("Required Trait", "Artificer Rune Arm Use"),
+            ],
+            ["Minimum level 12 weapons", "Rune Arms", "Craftable rune arms"],
+            "Rune Arm",
+        ),
+    ],
+    ids=["wand", "rune arm"],
+)
+def test_untyped_item_takes_its_type_from_its_wiki_category(
+    cfg, rows, categories, item_type
+):
+    item, _ = extract(item_page(*rows, categories=categories), "u", cfg)
+    assert item.template == "accessory_untyped"
+    assert item.item_type == item_type
+    assert item.category == "other", "the type does not move the item"
+    assert item.equip_slots == []
+
+
+@pytest.mark.parametrize(
+    "categories",
+    [["Named shields", "Binds to account"], [], None],
+    ids=["other categories", "no category", "no category list"],
+)
+def test_untyped_item_in_no_typed_category_keeps_a_null_type(cfg, categories):
+    item, _ = extract(
+        item_page(("Minimum Level", "5"), categories=categories), "u", cfg
+    )
+    assert item.template == "accessory_untyped"
+    assert item.item_type is None
+
+
+def test_a_type_row_wins_over_the_wiki_category(tmp_path):
+    config_dir = tmp_path / "extractor"
+    shutil.copytree(DEFAULT_CONFIG_DIR, config_dir)
+    path = config_dir / "templates.yaml"
+    data = yaml.safe_load(path.read_text())
+    accessory = next(t for t in data["templates"] if t["id"] == "accessory")
+    accessory["item_type_from_category"] = {"Named wands": "Wand"}
+    path.write_text(yaml.safe_dump(data))
+    cfg = load_config(config_dir)
+
+    typed = item_page(("Item Type", "Jewelry / Ring"), categories=["Named wands"])
+    untyped = item_page(("Item Type", "Jewelry"), categories=["Named wands"])
+    assert extract(typed, "u", cfg)[0].item_type == "Ring"
+    assert extract(untyped, "u", cfg)[0].item_type == "Wand"
 
 
 # ── One row at a time: what each kind of cell becomes ───────────────────────
@@ -842,8 +909,8 @@ def test_real_untyped_accessory_page(cfg):
     assert (item.template, item.category, item.item_type) == (
         "accessory_untyped",
         "other",
-        None,
-    )
+        "Rune Arm",
+    ), "no row names the type; the wiki category Rune Arms does"
     assert item.equip_slots == []
     assert item.required_trait == "Artificer Rune Arm Use"
     assert ("Maximum Charge Tier", 5, "tier") in [

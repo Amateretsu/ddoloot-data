@@ -8,6 +8,8 @@
 #                        in category_map).
 # item_type_from:        output path holding the value to promote to item_type, or
 #                        item_type_from_split to take one part of a split field.
+# item_type_from_category: wiki category → item_type, used only when no type row gave
+#                        one; the first listed category the page is in wins.
 # equip_slots:           fixed slots, or equip_slots_from to derive them from every part
 #                        of a split field.
 # Unknown keys are rejected when the config loads.
@@ -39,6 +41,10 @@ templates:
   - id: accessory_untyped
     detect: {default: true}
     category: other
+    # Maintainer decision 4g: no row names these types, so the wiki category does.
+    item_type_from_category:
+      Named wands: Wand
+      Rune Arms: Rune Arm
     equip_slots: []
 
 # Maps the first segment of a wiki item type to a spec category.
