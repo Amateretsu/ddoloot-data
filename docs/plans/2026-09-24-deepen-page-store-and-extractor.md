@@ -338,3 +338,52 @@ each leaves tests green and the CLI working end to end.
   syncer → `JsonItemWriter` test. Suite 235 → 241.
 - Verified: fixture `item` output is identical to step 4; each report gains only
   `"warnings": []`.
+
+## Final summary (2026-09-24)
+
+All five steps shipped as PRs #1–#5 on `Amateretsu/ddoloot-data`. Each was merged with CI
+green on Python 3.11 and 3.12, plus lint (ruff, black, isort) and the bundle-spec check.
+
+### What shipped
+
+| Step | PR | What shipped | Lines +/− |
+|------|----|--------------|-----------|
+| 1 | #1 | `item_normalizer` and `item_db` deleted. `ScrapedItem` pydantic model with `extraction_errors` and every field always written. `catalog/extractor/`. CLI subcommands with `extract-item`. Six fixture pages attributed in `NOTICE`. Python ≥ 3.11. Test network guard. | +3,742 / −7,160 |
+| 2 | #2 | `page_store` (`get` / `iter_cached`) with HTTP and lazy Playwright transports, `config/scraper.yaml`, a 4 s floor, RFC 9309 robots.txt and the ADR 0006 escalation rule. `ddoloot sample`. `ddowiki_scraper`, `aiohttp` and `scripts/` removed. | +2,718 / −3,107 |
+| 3 | #3 | HTML discovery through the Page Store. `wiki_api` and `page_discovery` (`/api.php`) deleted. One `QueueRepository` (schema v2). `cache/extracted/<update>/` with a `report.jsonl` per update. | +1,193 / −3,139 |
+| 4 | #4 | `load_config() -> Config` (frozen pydantic, `extra="forbid"`). `needs_cell` removed. Coercer tests replaced by `extract()` / `load_config()` tests. Fixture output byte-identical. | +661 / −281 |
+| 5 | #5 | `classify_effects(td, EnchantmentsConfig) -> EffectsBlock` in `effects.py`. No-rule entries go to unclassified. Nameless-set warning in `report.jsonl`. Classifier tests replaced by `extract()` / syncer tests. | +565 / −331 |
+
+### Numbers
+
+- **Tests:** 644 collected before (643 passed, 1 failed; the failure was a live robots.txt
+  read). After: 242 collected, 241 passed and 1 skipped (the whole-store smoke test, skipped
+  because `cache/pages/` is empty). The drop is deleted packages and private-helper tests;
+  every remaining test goes through a module interface.
+- **Lines:** across the repo, 13,557 deleted and 8,418 added (112 files). The additions
+  include 2,765 lines of committed fixture HTML. Python in `src/` + `tests/` went from
+  14,339 to 6,915 lines.
+- **Live wiki traffic for the whole run:** 7 requests, all to `/robots.txt` or
+  `/page/Item:Legendary_Gnollish_War_Bow`. That was 5 robots.txt reads (2 from pre-guard
+  baseline and step 1 test runs, 3 from step 2 smoke runs and diagnosis) and 2 challenged
+  reads of the one item page. The second item-page read was an orchestrator mistake: a
+  smoke command ran after its seeding step had failed. Zero requests went to `/api.php`.
+
+### Left out, and why
+
+- **Refetching the 40-page cache:** the plan says to delete and refetch it. The run was
+  limited to a handful of live pages, so the new store uses `cache/pages/` and the old
+  `cache/html/` stays unused on disk. An operator refetch needs the browser extra, because
+  the WAF challenges plain fetches.
+- **Live browser adapter:** it was never run. That needs Playwright plus Chromium and more
+  live requests than this run allowed. `config/scraper.yaml` ships with
+  `browser.enabled: false`, so a real `sync`/`sample` currently stops on the first challenge.
+  Enabling it is the operator's first action.
+- **Discovery index title:** `Named_items` is not verified live (step 3). Discovery fails
+  loudly if it is wrong, and `sync --page` does not need it.
+- **Findings recorded but not fixed** (outside the plan):
+  - Weapon damage in the `5.20[1d8+2] + …` form never parses (step 1).
+  - `normalize_label` keeps a colon that is followed by whitespace (step 4).
+  - Titles that differ only in punctuation collide in the results slug (step 3).
+- **Out of scope per the plan:** the UUID registry and `catalog-src` layout, the compile
+  stage and the ADR 0008 review gate.
