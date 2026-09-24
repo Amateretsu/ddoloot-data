@@ -17,6 +17,9 @@ Behind the interface, as implementation:
 * **Set merge.** A named set row and bare ``N Pieces Equipped`` rows merge into one named
   set whatever order the wiki lists them in: the set row's own bonuses first, then the bare
   rows in page order.
+* **Tiered values.** A ``Lesser``/``Greater``/``Superior`` Effect whose entry gives no
+  value takes it from its tooltip when the tooltip states exactly one bonus number. Its
+  tooltip Bonus Type counts only when every Bonus Type the tooltip names is the same.
 * **No-rule entries.** An entry no rule matches is recorded as unclassified; it never
   raises. An entry that reaches a ``fallback`` rule and contains a digit becomes an Effect
   and is also recorded as unclassified, for review.
@@ -194,7 +197,11 @@ def _first_match(
 
 
 def _bonus_type(
-    rules: EnchantmentsConfig, entry: _Entry, rule: EntryRule, groups: dict[str, Any]
+    rules: EnchantmentsConfig,
+    entry: _Entry,
+    rule: EntryRule,
+    groups: dict[str, Any],
+    tiered: bool = False,
 ) -> str | None:
     bt = rules.bonus_type
     if groups.get("btype"):
@@ -209,9 +216,10 @@ def _bonus_type(
         if m:
             return m.group(1).lower()
     if entry.tooltip:
-        m = bt.tooltip_pattern.search(entry.tooltip)
-        if m:
-            return m.group(1).lower()
+        found = [t.lower() for t in bt.tooltip_pattern.findall(entry.tooltip)]
+        # A tiered Effect's tooltip naming two different Bonus Types names none.
+        if found and (not tiered or len(set(found)) == 1):
+            return found[0]
     return None
 
 
@@ -256,6 +264,25 @@ def _number(raw: str | None, sign: str | None) -> float | int | None:
     return -value if sign == "-" else value
 
 
+def _tooltip_value(
+    rules: EnchantmentsConfig, tooltip: str | None, value_kind: str | None
+) -> tuple[float | int | None, str | None]:
+    """A tiered Effect's value from its tooltip: "Greater False Life" with "+30 maximum
+    health" is 30 flat. Only when the tooltip holds exactly one number and it reads as a
+    bonus; two numbers (attack and damage), dice, DCs or damage ranges give no value.
+    """
+    tv = rules.tooltip_value
+    if tv is None or tooltip is None:
+        return None, value_kind
+    if len(tv.number_pattern.findall(tooltip)) != 1:
+        return None, value_kind
+    m = tv.value_pattern.search(tooltip)
+    if m is None:
+        return None, value_kind
+    value = _number(m.group("value"), m.groupdict().get("sign"))
+    return value, "percent" if m.groupdict().get("pct") else "flat"
+
+
 def _effect(
     rules: EnchantmentsConfig, entry: _Entry, rule: EntryRule, groups: dict[str, str]
 ) -> Effect:
@@ -267,11 +294,16 @@ def _effect(
         value = _number(groups["value"], groups.get("sign"))
         if groups.get("pct"):
             value_kind = "percent"
+    name = _clean(rule.name.format(**groups) if rule.name else groups["name"])
+    tv = rules.tooltip_value
+    tiered = tv is not None and tv.name_pattern.match(name) is not None
+    if value is None and tiered:
+        value, value_kind = _tooltip_value(rules, entry.tooltip, value_kind)
     return Effect(
-        name=_clean(rule.name.format(**groups) if rule.name else groups["name"]),
+        name=name,
         value=value,
         value_kind=value_kind if value is not None else None,
-        bonus_type=_bonus_type(rules, entry, rule, groups),
+        bonus_type=_bonus_type(rules, entry, rule, groups, tiered),
         tooltip=entry.tooltip,
         charges=int(groups["charges"]) if "charges" in groups else None,
         recharge_per_day=int(groups["recharge"]) if "recharge" in groups else None,

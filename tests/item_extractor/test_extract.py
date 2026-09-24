@@ -621,6 +621,130 @@ def test_a_first_word_that_is_not_a_bonus_type_is_not_read_as_one(cfg):
     assert "bonus_name_paren_percent" not in report["rule_hits"]
 
 
+def tooltip_entry(name, tooltip, href="/page/x"):
+    """An Effects entry in the wiki's link-plus-tooltip shape."""
+    return (
+        f'<span class="popup"><a href="{href}">{name}</a><span class="popup tooltip">'
+        f"<b>{name}</b> : {tooltip}</span></span>"
+    )
+
+
+@pytest.mark.parametrize(
+    ("name", "tooltip", "value", "value_kind"),
+    [
+        (
+            "Greater False Life",
+            "This item grants the wearer +30 maximum health .",
+            30,
+            "flat",
+        ),
+        (
+            "Greater Elemental Energy",
+            (
+                "this item gives you a +20 bonus to your maximum hit points. This stacks "
+                "with all bonuses except for Greater Elemental Energy."
+            ),
+            20,
+            "flat",
+        ),
+        (
+            "Lesser Turning",
+            "Increases total number of Turn Undead uses by 2, once wielder rests.",
+            2,
+            "flat",
+        ),
+        ("Superior Vigor", "Grants +5% more healing amplification.", 5, "percent"),
+    ],
+)
+def test_tiered_effect_takes_its_single_value_from_the_tooltip(
+    cfg, name, tooltip, value, value_kind
+):
+    item, report = extract_effects(cfg, tooltip_entry(name, tooltip))
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.value_kind, effect.bonus_type) == (
+        name,
+        value,
+        value_kind,
+        None,
+    )
+    assert report["unclassified_effects"] == []
+
+
+@pytest.mark.parametrize(
+    ("name", "tooltip"),
+    [
+        (
+            "Greater Nimbleness",
+            (
+                "has a maximum Dexterity bonus 2 higher than normal, and its armor check "
+                "penalty is reduced by 4."
+            ),
+        ),
+        (
+            "Greater Stability",
+            (
+                "This item grants a +4 deflection bonus to AC and a +4 resistance bonus "
+                "to saving throws."
+            ),
+        ),
+        (
+            "Greater Aberration Bane",
+            (
+                "this weapon's effective enhancement bonus is +4 better than its normal "
+                "enhancement bonus. It deals an extra 3 to 18 points of damage."
+            ),
+        ),
+        ("Greater Poison Guard", "dealing 2d6 Strength damage. (DC 28) negates it."),
+        ("Greater Sirocco", "A successful Reflex save (DC 35) prevents the effect."),
+        ("Greater Shout", "Caster level: 20 Charges: 15 (15/day)"),
+        ("Greater Regeneration", "constantly healing the wearer over time."),
+    ],
+)
+def test_tiered_effect_with_no_single_bonus_in_its_tooltip_keeps_a_null_value(
+    cfg, name, tooltip
+):
+    item, _ = extract_effects(cfg, tooltip_entry(name, tooltip))
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.value_kind) == (name, None, None)
+
+
+def test_tiered_effect_takes_its_bonus_type_from_the_tooltip_only_when_it_names_one(
+    cfg,
+):
+    marksmanship = tooltip_entry(
+        "Greater Marksmanship",
+        "You gain a +3 Competence Bonus to Ranged Attack and a +2 Competence Bonus to "
+        "Ranged Damage.",
+    )
+    stability = tooltip_entry(
+        "Greater Stability",
+        "a +4 Deflection bonus to AC and a +4 Resistance bonus to saving throws.",
+    )
+    linked = tooltip_entry(
+        "Greater Heroism", "+3 Competence bonus to attack.", href="/page/Insight_bonus"
+    )
+    item, _ = extract_effects(cfg, marksmanship, stability, linked)
+    assert [(e.name, e.value, e.bonus_type) for e in item.effects] == [
+        ("Greater Marksmanship", None, "competence"),
+        ("Greater Stability", None, None),
+        ("Greater Heroism", 3, "insight"),
+    ]
+
+
+@pytest.mark.parametrize(
+    ("name", "value"),
+    [("False Life", None), ("False Life +36", 36), ("Greater False Life +36", 36)],
+)
+def test_an_effect_that_is_not_tiered_or_has_an_entry_value_ignores_the_tooltip_value(
+    cfg, name, value
+):
+    item, _ = extract_effects(
+        cfg, tooltip_entry(name, "This item grants the wearer +30 maximum health.")
+    )
+    [effect] = item.effects
+    assert (effect.name, effect.value) == (name.removesuffix(" +36"), value)
+
+
 @pytest.mark.parametrize(
     ("entry", "name", "value", "note"),
     [
