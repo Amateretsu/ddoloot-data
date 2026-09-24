@@ -220,3 +220,64 @@ Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the
 - `catalog_registry` is added to isort `known_first_party` and to the mypy, coverage and
   vulture paths. `.gitignore` needed no change.
 - Tests after step 2: 281 passed, 1 skipped. No network requests.
+
+### Step 3: committed layout writer
+
+- **`CatalogWriter` interface:** `CatalogWriter(registry, items_dir=Path("catalog-src/items"),
+  report_dir=Path("cache/extracted"))` with the single method `write(item, report)`. The
+  writer only mints IDs (`registry.id_for`), and the caller saves the registry. The module
+  is renamed `ddo_sync.item_writer` → `ddo_sync.catalog_writer`. The in-memory fake
+  (`InMemoryItemWriter` in `tests/ddo_sync/conftest.py`) is unchanged.
+- **`<update>` is spelled `update-<N>` or `unknown`**, the same as the report folders. It
+  comes from the existing `update_slug(report["update_page"])`, so
+  `Update_50_revamped_named_items` becomes `unknown`.
+- **Lowest update wins.** An item is written once for each update page that lists it, but
+  always to one file. `write()` globs `*/*/<uuid>-*.json`, ranks `update-N` folders by N with
+  `unknown` (and any other folder name) last, and keeps the lowest. An item never moves to
+  a higher update, even if the wiki later drops the lower listing.
+- **Moves:** when the update, category or slug changes, the new file is written atomically,
+  then the old file is deleted and any folder left empty is removed. Git sees a rename.
+- **The slug is ASCII only:**
+  - the name is lowercased, and every run of characters other than `a-z0-9` becomes `-`;
+  - the result is trimmed, cut to 60 characters and trimmed again;
+  - it is `item` when empty.
+  Accented letters count as non-alphanumerics (`Épée` → `p-e`), which keeps filenames
+  portable.
+- **Registry title:** `item.wiki.title`, or the title from the URL when that is null.
+- **Null `wiki.page_id`:** `write()` mints no UUID and writes no file. It records
+  `extraction_errors["wiki.page_id"] = "null page ID: no UUID, no item file written"` in the
+  report line and returns normally, so the queue marks the item complete, not failed.
+- **Report:** `report.jsonl` is filed under the update page the item was queued from, not
+  the item file's folder. The line format is unchanged. No per-item JSON is written under
+  `cache/`.
+- **CLI:** new module constants `ddo_sync.cli.ITEMS_DIR` and `ddo_sync.cli.REGISTRY_PATH`
+  sit next to `EXTRACTED_DIR`.
+  - `sync` loads the registry first. A load failure (`ValueError` or `OSError`) exits 1
+    before any request.
+  - The registry is saved in a `finally` at the end of every run: normal, challenge-stopped,
+    interrupted, fatal error or failed discovery.
+  - `--status` prints the Items and Reports paths.
+- **The integrity check is a public function,** `ddo_sync.check_catalog(catalog_src) ->
+  list[str]`. It returns one problem per line, each starting with the offending path, and
+  `[]` means the catalog is sound.
+  - It validates the registry with `Registry.load` and reads its lines for the
+    `id` → `page_id` map, so `Registry` gains no lookup method.
+  - It checks the layout depth and filename.
+  - For `<update>` it checks only the spelling, because the introduced-in update cannot be
+    derived from a single file.
+  - It checks the category folder and slug against the file's own `category` and `name`.
+  - It checks that the JSON is an object with `id` first, that the rest validates as a
+    `ScrapedItem`, and that `id` equals the filename's UUID.
+  - It checks that the file text is byte-identical to what `CatalogWriter` writes, which
+    also covers indent, key order and the trailing newline.
+  - It checks that `id` is in the registry with the same `page_id`, and that this is the
+    only file for that UUID.
+  - A missing or empty catalog passes. `tests/test_catalog_integrity.py` asserts
+    `check_catalog(<repo>/catalog-src) == []`.
+- **Test fixture:** `serve_wiki` now serves each `Item:` URL as its own Named Item, with
+  the name taken from the URL and page ID `100000 + crc32(title) % 100000`. Before this,
+  every fake item shared one page ID.
+- Tests after step 3: 318 passed, 1 skipped. No network requests. The orchestrator's
+  offline end-to-end sync through the canned transport wrote 3 item files into a temporary
+  catalog-src, including one item listed on updates 5 and 10 that ended up in a single
+  file under `update-5`. `check_catalog` reported 0 problems.
