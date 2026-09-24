@@ -344,3 +344,77 @@ Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the
 - `.gitignore` needed no change: `git check-ignore` finds nothing under `catalog-src`
   ignored.
 - Tests after step 4: 321 passed, 1 skipped.
+
+## Final summary
+
+### What shipped
+
+| Step | PR | What shipped |
+|---|---|---|
+| 0 | #8 | This plan. |
+| 1 | #9 | `browser.enabled: true`. Unmodified headless Chromium clears the WAF challenge, so no headed key was needed. The browser adapter sends at most 2 wiki `/page/` requests per fetch and aborts every other wiki request. A challenge is never retried. Every wiki request is logged at DEBUG. `Named_items` lists no update pages, so discovery falls back to the committed seed list `config/update_pages.yaml`. The Playwright extra is capped below 1.62, which has no Chromium for macOS 13. |
+| 2 | #10 | The `catalog_registry` module (`Registry.load` / `id_for` / `save`) and an empty committed `catalog-src/registry.jsonl`. |
+| 3 | #11 | `CatalogWriter` replaces `JsonItemWriter`. It writes `catalog-src/items/<update>/<category>/<uuid>-<slug>.json`, keeps the lowest update, keeps one file per UUID and moves a file when its path changes. Per-item JSON under `cache/extracted` is gone, and `report.jsonl` stays there. The CLI loads the registry and saves it on every run. `check_catalog()` and the CI integrity test cover `catalog-src/`. |
+| 4 | #12 | The live pilot on `Update_5_named_items`, with `--limit 12`. It committed 12 item files and 12 registry entries, plus two one-line extractor fixes (Exclusive binding, the `UMD Difficulty` label). |
+
+### Test counts
+
+- Before: 245 passed, 1 skipped (244 passed, 2 skipped once Playwright was installed).
+- After: 321 passed, 1 skipped.
+
+### Live requests
+
+24 of the 40-request budget:
+
+- Step 1: 8 of 12.
+- Steps 2 and 3: 0.
+- Step 4: 16 of 28.
+
+Every smoke run and re-run was served from the Page Store, and each re-run went through a
+no-network harness that saw 0 fetch attempts.
+
+### Item files committed
+
+12, all under `update-5`:
+
+| Category | Files |
+|---|---|
+| armor | 3 |
+| clothing | 2 |
+| jewelry | 3 |
+| weapon | 3 |
+| other | 1 |
+
+`check_catalog('catalog-src')` finds no problems, and a re-run of the pilot changes no
+committed file (`git status` stays clean).
+
+### Pilot report totals
+
+From `cache/extracted/update-5/report.jsonl`, 12 lines. The totals count dict keys and list
+entries, summed over the lines.
+
+| Count | After the pilot | Final, after the fixes |
+|---|---|---|
+| Unmapped rows | 2 | 1 (`no umd check for` on Epic Roderic's Wand) |
+| Unclassified effects | 4 | 4 (clicky charges such as `Rage — 3 Charges`) |
+| Extraction errors | 4 | 0 (all four were the Exclusive binding) |
+| Warnings | 0 | 0 |
+
+### Left out, and why
+
+- **The plan's `--limit 20`.** The pilot ran with `--limit 12`. At 20, the pessimistic worst
+  case was 44 requests against the step's 28. At 12 it is exactly 28; the pilot used 16.
+  17 items of Update 5 are still pending.
+- **The headed-browser fallback** (`browser.headless`), because headless worked.
+- **The real discovery index.** `Category:Named_items_by_update` was not followed, because
+  that would have exceeded the step 1 budget. The seed list holds only the 40 titles
+  already known and is not a complete list.
+- **Fixes for the recorded extractor gaps:**
+  - clicky charges and recharge;
+  - the wand's `No UMD check for:` row;
+  - no Exclusive field;
+  - null `item_type` for `accessory_untyped`.
+  Each needs a schema or classification decision, which is more than a one-line mapping.
+- **Out of scope in the plan:** the bulk backlog run, contacting the wiki admins, the effects
+  registry and review gate, the compile stage, bundle signing and bundle spec changes, and
+  maintainer-curated redirects.
