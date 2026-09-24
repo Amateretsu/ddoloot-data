@@ -230,7 +230,6 @@ def _configure_logging(verbose: bool) -> None:
             "| <level>{level:<8}</level> "
             "| {message}"
         ),
-        colorize=True,
     )
 
 
