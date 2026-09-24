@@ -11,6 +11,7 @@ attribute of the returned :class:`Config`.
 from __future__ import annotations
 
 import re
+import string
 from pathlib import Path
 from typing import Annotated, Literal
 
@@ -218,6 +219,9 @@ class EntryRule(_Strict):
     bonus_type_from: Literal["text"] | None = None
     hint_kind: str | None = None
     value_kind: Literal["flat", "percent", "tier", "number"] | None = None
+    #: An effect rule's name built from captures, e.g. ``DR/{bypass}``; without it the
+    #: ``name`` capture is the name.
+    name: str | None = None
     lowercase: list[str] = []
     fallback: bool = False
 
@@ -227,6 +231,15 @@ class EntryRule(_Strict):
             raise ValueError(f"rule {self.id!r}: a set rule needs item_pattern")
         if self.kind == "hint" and self.hint_kind is None:
             raise ValueError(f"rule {self.id!r}: a hint rule needs hint_kind")
+        if self.name is not None:
+            if self.kind != "effect":
+                raise ValueError(f"rule {self.id!r}: only an effect rule takes a name")
+            fields = {f for _, f, _, _ in string.Formatter().parse(self.name) if f}
+            unknown = fields - set(self.pattern.groupindex)
+            if unknown:
+                raise ValueError(
+                    f"rule {self.id!r}: name uses {sorted(unknown)}, not pattern groups"
+                )
         return self
 
 

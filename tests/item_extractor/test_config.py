@@ -139,3 +139,27 @@ def test_last_template_must_be_the_default(config_dir):
 def test_missing_file_is_rejected(tmp_path):
     with pytest.raises(ConfigError, match="missing config file"):
         load_config(tmp_path)
+
+
+def rule_by_id(data, rule_id):
+    return next(r for r in data["rules"] if r["id"] == rule_id)
+
+
+def test_effect_name_from_a_capture_the_pattern_lacks_is_rejected(config_dir):
+    edit(
+        config_dir,
+        "enchantments",
+        lambda d: rule_by_id(d, "alignment_dr").update(name="DR/{bypas}"),
+    )
+    with pytest.raises(ConfigError, match=r"name uses \['bypas'\], not pattern groups"):
+        load_config(config_dir)
+
+
+def test_name_on_a_rule_that_is_not_an_effect_is_rejected(config_dir):
+    edit(
+        config_dir,
+        "enchantments",
+        lambda d: rule_by_id(d, "augment_slot").update(name="{colour}"),
+    )
+    with pytest.raises(ConfigError, match="only an effect rule takes a name"):
+        load_config(config_dir)

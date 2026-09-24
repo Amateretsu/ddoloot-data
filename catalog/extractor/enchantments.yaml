@@ -30,6 +30,8 @@
 #   bonus_type_from: text      also read the Bonus Type from the `text` capture
 #   hint_kind                  (hint rules, required) kind; may use captures, e.g. '{hint}'
 #   lowercase                  captures to lowercase before use
+#   name                       (effect rules) the name built from captures, e.g.
+#                              'DR/{bypass}'; without it the `name` capture is the name
 # Unknown keys are rejected and every regex is compiled when the config loads.
 bonus_type:
   # Tooltip/entry anchors such as /page/Insight_bonus.
@@ -97,6 +99,23 @@ rules:
   - id: clicky
     kind: effect
     pattern: '^(?P<name>.+?)\s+[—-]\s+(?P<charges>\d+) Charges?(?:\s*\(Recharged/Day:\s*(?P<recharge>\d+)\))?$'
+
+  # Alignment DR: "DR 5/Evil" is the Effect "DR/Evil" with value 5. The bypass is part of
+  # the Effect's identity and DR has no Bonus Type (maintainer decision 4e).
+  - id: alignment_dr
+    kind: effect
+    value_kind: flat
+    name: 'DR/{bypass}'
+    pattern: '^DR\s+(?P<value>\d+)\s*/\s*(?P<bypass>[A-Za-z]+)$'
+
+  # A Bonus Type, a name and a parenthesised percentage: "Exceptional Fortification
+  # (+10%)" is Fortification, 10 percent, Bonus Type exceptional (maintainer decision 4e).
+  # The first word must be a Bonus Type already extracted from the held pages, so
+  # "Greater Fortification (+50%)" is not read as Bonus Type "greater".
+  - id: bonus_name_paren_percent
+    kind: effect
+    value_kind: percent
+    pattern: '^(?P<btype>Alchemical|Artifact|Competence|Deflection|Dodge|Enhancement|Equipment|Exceptional|Implement|Insight|Primal|Profane|Resistance|Shield|Vitality)\s+(?P<name>.+?)\s*\(\+(?P<value>\d+)(?P<pct>%)\)$'
 
   - id: bonus_to
     kind: effect

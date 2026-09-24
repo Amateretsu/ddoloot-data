@@ -66,10 +66,10 @@
       "note": null
     },
     {
-      "name": "Exceptional Fortification (+10%)",
-      "value": null,
-      "value_kind": null,
-      "bonus_type": null,
+      "name": "Fortification",
+      "value": 10,
+      "value_kind": "percent",
+      "bonus_type": "exceptional",
       "tooltip": "Exceptional Fortification (+10%) : This item produces a magical force that protects vital areas of the wearer more effectively. When a critical hit or sneak attack is scored on the wearer, there is a +10% chance that the critical hit or sneak attack is negated and the damage is instead rolled normally. This ability is considered an Insight bonus when determining stacking with other sources of fortification",
       "charges": null,
       "recharge_per_day": null,

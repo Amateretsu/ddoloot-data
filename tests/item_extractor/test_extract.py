@@ -481,6 +481,79 @@ def test_entry_that_only_mentions_charges_is_not_a_clicky(cfg, text):
     assert "clicky" not in report["rule_hits"]
 
 
+# An alignment DR entry as the wiki writes it: a DR link with a tooltip, then the rest.
+def dr_entry(value, bypass):
+    return (
+        '<span class="popup"><a href="/page/Damage_Reduction">DR</a>'
+        '<span class="popup tooltip"><b><a href="/page/Damage_Reduction">Damage '
+        f"Reduction</a> {value}/{bypass}</b>: Reduces physical damage by {value}, "
+        f"except from {bypass} attacks.</span></span> {value}/{bypass}"
+    )
+
+
+@pytest.mark.parametrize(
+    ("value", "bypass"), [(5, "Evil"), (15, "Evil"), (5, "Good"), (15, "Good")]
+)
+def test_alignment_dr_is_an_effect_named_by_its_bypass(cfg, value, bypass):
+    item, report = extract_effects(cfg, dr_entry(value, bypass))
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.value_kind, effect.bonus_type) == (
+        f"DR/{bypass}",
+        value,
+        "flat",
+        None,
+    )
+    assert effect.tooltip.startswith(f"Damage Reduction {value}/{bypass}")
+    assert report["unclassified_effects"] == []
+    assert report["rule_hits"] == {"alignment_dr": 1}
+
+
+@pytest.mark.parametrize(
+    "text", ["DR 5/Evil and Good", "DR 5/-", "Greater DR 5/Evil", "DR/Evil 5"]
+)
+def test_other_dr_forms_are_not_alignment_dr(cfg, text):
+    _, report = extract_effects(cfg, text)
+    assert "alignment_dr" not in report["rule_hits"]
+
+
+def test_bonus_named_before_a_parenthesised_percent_is_its_bonus_type(cfg):
+    item, report = extract_effects(
+        cfg,
+        '<span class="popup"><a href="/page/Fortification">Exceptional Fortification '
+        '(+10%)</a><span class="popup tooltip"><b>Exceptional Fortification (+10%)</b>: '
+        "there is a +10% chance that the critical hit is negated. This ability is "
+        "considered an Insight bonus when determining stacking with other sources of "
+        "fortification</span></span>",
+    )
+    [effect] = item.effects
+    assert (effect.name, effect.value, effect.value_kind, effect.bonus_type) == (
+        "Fortification",
+        10,
+        "percent",
+        "exceptional",
+    )
+    assert report["unclassified_effects"] == []
+    assert report["rule_hits"] == {"bonus_name_paren_percent": 1}
+
+
+@pytest.mark.parametrize(
+    "text",
+    ["Fortification +70%", "Exceptional Fortification (+10)", "Fortification (+10%)"],
+)
+def test_other_fortification_forms_are_not_read_as_a_parenthesised_percent(cfg, text):
+    _, report = extract_effects(cfg, text)
+    assert "bonus_name_paren_percent" not in report["rule_hits"]
+
+
+def test_a_first_word_that_is_not_a_bonus_type_is_not_read_as_one(cfg):
+    item, report = extract_effects(cfg, "Greater Fortification (+50%)")
+    assert [(e.name, e.bonus_type) for e in item.effects] == [
+        ("Greater Fortification (+50%)", None)
+    ]
+    assert report["unclassified_effects"] == ["Greater Fortification (+50%)"]
+    assert "bonus_name_paren_percent" not in report["rule_hits"]
+
+
 @pytest.mark.parametrize(
     ("entry", "name", "value", "note"),
     [

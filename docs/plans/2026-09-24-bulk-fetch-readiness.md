@@ -210,6 +210,11 @@ with ADR 0006.
   - whether `Exceptional Fortification` is its own Effect or `Fortification` with a Bonus
     Type, and which Bonus Type (`exceptional` as named, or `insight` as the tooltip says
     it stacks).
+- **Decided by the maintainer (2026-09-24):** A for DR: the bypass is part of the
+  Effect's identity, so `DR 5/Evil` is the Effect `DR/Evil` with value 5 (`flat`, no Bonus
+  Type), and likewise for `DR 15/Evil`, `DR 5/Good` and `DR 15/Good`. For Exceptional
+  Fortification: the Effect `Fortification`, 10, `percent`, Bonus Type `exceptional` as
+  the item names it. See "Decision 4e" below.
 
 ## Proposal: item_type for accessory_untyped
 
@@ -996,6 +1001,71 @@ with ADR 0006.
   | After | 211 | 0 | 7 | 0 | 0 | 5 |
 
 - Tests after decision 4c: 404 passed, 1 skipped.
+
+### Decision 4e: alignment DR and Exceptional Fortification
+
+- **Maintainer decision (2026-09-24):** option A of "Proposal: alignment DR and
+  Exceptional Fortification" for DR. The bypass is part of the Effect's identity:
+  `DR 5/Evil` is the Effect `DR/Evil`, value 5, `flat`, no Bonus Type, and likewise
+  `DR 15/Evil`, `DR 5/Good` and `DR 15/Good`. Exceptional Fortification is the Effect
+  `Fortification`, 10, `percent`, Bonus Type `exceptional` as the item names it (the
+  6 other `exceptional` Effects are named the same way). The tooltip is kept as today.
+- **Implementation:** two rules in `catalog/extractor/enchantments.yaml`, placed after
+  `clicky` and before `bonus_to`:
+  - `alignment_dr`: `^DR\s+(?P<value>\d+)\s*/\s*(?P<bypass>[A-Za-z]+)$`, anchored, with a
+    single-word bypass. The name is built by the one new rule key, `name: 'DR/{bypass}'`
+    (an effect rule's name as a format string over its captures; without it the `name`
+    capture is the name, as before). `config.py` checks at load that the key is only on
+    an effect rule and uses only pattern groups. `effects.py` formats it. DR's link and
+    tooltip carry no Bonus Type, so it stays null.
+  - `bonus_name_paren_percent`: the form `<Bonus> <Name> (+N%)`,
+    `^(?P<btype>…)\s+(?P<name>.+?)\s*\(\+(?P<value>\d+)(?P<pct>%)\)$`. The existing
+    `btype` capture gives the Bonus Type, which wins over the tooltip's "considered an
+    Insight bonus" wording (that sentence was never read as a Bonus Type). After review,
+    `btype` is not any first word but an alternation of the 15 Bonus Types already
+    extracted in the held `catalog-src` items (Alchemical, Artifact, Competence,
+    Deflection, Dodge, Enhancement, Equipment, Exceptional, Implement, Insight, Primal,
+    Profane, Resistance, Shield, Vitality). The config has no Bonus Type vocabulary to
+    reuse (`bonus_type` patterns take any capitalised word, and `catalog/bonus-types.yaml`
+    does not exist yet). So `Greater Fortification (+50%)` or `Improved X (+N%)` is not
+    read as Bonus Type `greater` or `improved`. It stays unclassified, as before.
+  - **Match check:** all 1041 Effects-list entries on the 202 held `Item:` pages were
+    run against both patterns. `alignment_dr` matches exactly the 6 DR entries and
+    `bonus_name_paren_percent` exactly `Exceptional Fortification (+10%)`, so the general
+    form was kept. No other held entry has `DR`, a `(+` or a bypass-style `/` (the only
+    other `/` forms are clicky `Recharged/Day` and the Mythic `and/or` hint). Shield DR
+    is an infobox row, not an Effects entry, so it is untouched.
+- **Tests (through `extract()`):** `test_alignment_dr_is_an_effect_named_by_its_bypass`
+  (the 4 held forms, in the wiki's link-plus-tooltip shape),
+  `test_other_dr_forms_are_not_alignment_dr` (4 cases),
+  `test_bonus_named_before_a_parenthesised_percent_is_its_bonus_type` (with the Insight
+  stacking tooltip) and `test_other_fortification_forms_are_not_read_as_a_parenthesised_percent`
+  (3 cases), and `test_a_first_word_that_is_not_a_bonus_type_is_not_read_as_one`
+  (`Greater Fortification (+50%)` stays a fallback Effect and is reported as unclassified).
+  In `test_config.py`, a `name` using an unknown capture and a `name` on a hint
+  rule are both rejected at load. The 5 extraction tests and 2 config tests failed before
+  the change.
+- **Files:** `catalog/extractor/enchantments.yaml`, `src/item_extractor/config.py`,
+  `src/item_extractor/effects.py`, `tests/item_extractor/test_extract.py`,
+  `tests/item_extractor/test_config.py`, `tests/item_extractor/extractor_gaps.json` (the
+  7 pages' `unclassified_effects` entries removed), this plan, and 7 item files under
+  `catalog-src/items`.
+- **`catalog-src` diff:** 7 item files, one Effect each: Templar's Bastion, Templar's
+  Docent and their Epic versions (`DR/Evil`, 5 or 15), Infested Armor and Epic Infested
+  Armor (`DR/Good`, 5 or 15), with `value_kind` `flat` and `bonus_type` still null; and
+  Sustaining Symbiont (`Fortification`, 10, `percent`, `exceptional`). Tooltips unchanged.
+  No registry change and no other file.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, the inner sync
+  exit code is 2, and 42 unheld pages are skipped. A second run left `git status` and the
+  diff unchanged, and `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 211 | 0 | 7 | 0 | 0 | 5 |
+  | After | 211 | 0 | 0 | 0 | 0 | 5 |
+
+- Tests after decision 4e: 419 passed, 1 skipped.
 
 ## Session summary
 
