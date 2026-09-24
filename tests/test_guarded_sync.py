@@ -18,7 +18,13 @@ from ddo_sync.discovery import update_page_url
 from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
 from page_store import PageStore, Response, load_scraper_config
-from tests.canned import CannedTransport, ok
+from tests.canned import (
+    CHALLENGE,
+    CannedTransport,
+    FakeBrowserPage,
+    fake_playwright_module,
+    ok,
+)
 
 _SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "guarded_sync.py"
 _spec = importlib.util.spec_from_file_location("guarded_sync", _SCRIPT)
@@ -132,6 +138,28 @@ def test_real_page_store_warnings_are_recognised(tmp_path):
     plain = CannedTransport().reply(
         ITEM + "A", *[Response(status=s) for s in (429, 502, 503)]
     )
+    lines: list[str] = []
+    sink = logger.add(lines.append, format=FORMAT, level="DEBUG")
+    try:
+        with PageStore(config, transport=plain, sleep=lambda _s: None) as store:
+            with pytest.raises(Exception, match="gave up"):
+                store.get(ITEM + "A")
+    finally:
+        logger.remove(sink)
+    guard, reasons = feed(*lines)
+    assert reasons[-1] == "3 consecutive HTTP 429/5xx responses"
+    assert guard.throttled_in_a_row == 3
+
+
+def test_browser_5xx_warnings_are_recognised(tmp_path, monkeypatch):
+    """A 503 in the real browser adapter (on a fake Playwright) counts like a plain one."""
+    page = FakeBrowserPage()
+    page.documents[ITEM + "A"] = [(503, "<html>Service Unavailable</html>")]
+    monkeypatch.setitem(
+        sys.modules, "playwright.sync_api", fake_playwright_module(page)
+    )
+    config = load_scraper_config(_write_config(tmp_path, max_retries=2))
+    plain = CannedTransport(default=lambda _u: CHALLENGE)
     lines: list[str] = []
     sink = logger.add(lines.append, format=FORMAT, level="DEBUG")
     try:

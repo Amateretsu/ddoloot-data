@@ -1223,6 +1223,63 @@ with ADR 0006.
 
 - Tests after this decision: 441 passed, 1 skipped.
 
+### Fix: browser returns real statuses
+
+- **Found in a live run:** `document …/Item:Wall_of_Wood_(level_23) -> 503 (browser)`, with
+  no WAF header, was followed by `Run stopped: WAF challenge … not cleared in the browser`.
+  `BrowserTransport.fetch` returned at once only on a 404. Any other status waited 30 s for
+  the article and then came back as a fake `202` with `x-amzn-waf-action: challenge`. So a
+  browser 429 or 5xx never reached the Page Store's retry and back-off, nor
+  `scripts/guarded_sync.py`'s 3-in-a-row 429/5xx stop, and a 403 block or 405 CAPTCHA
+  looked like an uncleared challenge.
+- **Change (`src/page_store/browser.py`):** a challenge is a `202` or an
+  `x-amzn-waf-action` header, the Page Store's own `_is_challenge` definition.
+  - First document not a challenge: return its status, body and headers at once, with no
+    wait. That covers 404 as before, and now 403, 405, 429 and 5xx. Headers such as
+    `retry-after` pass through.
+  - First document a challenge: wait for the article as before. If it appears, return the
+    final document's status and headers (Step 2). If it never appears, log the step 6
+    `no article …` WARNING. Then return the last document's real status when that
+    document is not a challenge (for example the reload got a 503 or 403). Otherwise
+    return the `202` challenge as before.
+- **Decision:** after a wait with no article, a last document of `200` still reports the
+  `202` challenge. An article that never appeared must not be stored as a success, and
+  stopping is the conservative choice. A first-document `200` returns at once without
+  checking for the article, the same as the plain path.
+- **Decision:** the Page Store and syncer are unchanged. A browser 429/5xx goes through
+  `_request`'s retry loop: the `<url>: HTTP <status> (attempt i/n)` warning, exponential
+  back-off from the crawl delay, then
+  `FetchError("gave up on <url> after n attempt(s): HTTP 503")`. That fails the item and
+  does not stop the run. guarded_sync's `_THROTTLED` pattern matches those warnings, so
+  3 in a row stop the run as on the plain path. A browser 403/405 fails the item as
+  `FetchError("HTTP 403 for <url>")`, like a plain one. If that repeats, guarded_sync's
+  over-10%-failed rule stops the run.
+- **Step 6 revisited:** step 6 read the Crimson_Chain stop as the WAF escalating after
+  sustained volume (cause 1). That reading is now **doubtful**. The Crimson_Chain run
+  logged no document status, so its "challenge not cleared" may have been a disguised
+  error, like this run's Wall_of_Wood 503, which came after about 6 minutes of load. The
+  wiki's own origin failing or throttling under a steady crawl fits both logs at least
+  as well as a WAF escalation does. The next failure's `document … -> <status>` line will
+  tell them apart.
+- **Tests:** in `tests/page_store/test_browser.py`, with the fake Playwright:
+  - first-document 403, 404, 405, 429, 500 and 503 return that status at once, with no
+    wait and no WAF header;
+  - a `retry-after` header passes through;
+  - a challenge whose reload is a 503 or a 403 gives that status;
+  - a challenge that clears still gives 200, and one that never clears still gives 202;
+  - a 200 reload with no article gives 202;
+  - through the Page Store, a browser 503 is retried 1 + max_retries times, not stored,
+    and fails as `FetchError`, with a canned browser transport and with the real adapter
+    on the fake.
+  The step 6 diagnostic test now covers waited loads (202, 202 then 405, 202 then 403).
+  A load that did not wait logs no `no article` line.
+  `tests/test_guarded_sync.py::test_browser_5xx_warnings_are_recognised` feeds the real
+  adapter's 503 log through the guard and stops on 3. The fake page now counts
+  `wait_for_selector` calls and accepts `(status, html, headers)` documents. 13 of the new
+  or changed tests fail on the old adapter.
+- Tests after this fix: 479 passed, 2 skipped. The skips are the whole-Page-Store test, with
+  no cache in this worktree, and the no-Playwright test (Playwright is installed).
+
 ## Session summary
 
 ### Outcomes

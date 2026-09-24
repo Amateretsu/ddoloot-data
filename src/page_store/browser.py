@@ -13,18 +13,24 @@ before it is sent, so a challenge that keeps reloading can never loop against th
 Requests to other hosts (the AWS WAF challenge script and token service) go through.
 Every wiki request is logged at DEBUG, so a ``--verbose`` run shows exactly what the wiki
 was sent. So is each request let through to another host (without its query), and each
-main-frame document's status and ``x-amzn-waf-action``. When the article never appears, one
-WARNING sums up the load: documents seen, wiki requests used, the last document's status
-and WAF action, and the browser's age. That tells a challenge (202) from a CAPTCHA (405) or
-a block (403), which all come back as the same ``202`` below. The HTML returned is the
-article as the server rendered it, since the wiki's own scripts never run.
+main-frame document's status and ``x-amzn-waf-action``. When a challenged load never shows
+the article, one WARNING sums it up: documents seen, wiki requests used, the last
+document's status and WAF action, and the browser's age. The HTML returned is the article
+as the server rendered it, since the wiki's own scripts never run.
 
-The status returned is that of the final document: the reload's once a challenge clears,
-not the challenge's. So a missing page answers ``404`` here as it does on the plain path,
-and the Page Store neither stores it nor calls it a success. A page whose content never
-appears (the WAF challenge did not clear) comes back as a ``202`` response with
-``x-amzn-waf-action: challenge``, so the Page Store's one challenge check covers both
-adapters.
+The status returned is the real one, so the Page Store treats it as on the plain path
+(404 and other 4xx fail the page, 429 and 5xx are retried):
+
+* the first document is not a WAF challenge (a ``202`` or an ``x-amzn-waf-action``
+  header, the Page Store's definition): its status, body and headers come back at once,
+  with no wait. A 403 block, a 405 CAPTCHA, a 429 or a 503 is reported as such, never as
+  a challenge;
+* it is a challenge: the adapter waits for the article. Once it appears, the final
+  document's status is returned (the reload's, not the challenge's). If it never
+  appears, the last document's status is returned when that document is neither a
+  challenge nor a ``200`` (the reload got a 503 or a 403, say); otherwise a ``202`` with
+  ``x-amzn-waf-action: challenge``, so the Page Store's one challenge check covers both
+  adapters.
 """
 
 from __future__ import annotations
@@ -74,20 +80,24 @@ class BrowserTransport:
             )
         except Exception as exc:  # playwright raises its own error types
             raise TransportError(f"browser could not load {url}: {exc}") from exc
-        if resp is not None and resp.status == 404:
-            return Response(status=404, text=page.content())
+        if resp is not None and not _is_challenge(resp):
+            return _response(resp, page.content())  # no challenge: nothing to wait for
         try:
             page.wait_for_selector(_CONTENT_SELECTOR, timeout=self._timeout_ms)
         except Exception:
-            self._log_no_article(url, self._document or resp)
+            last = self._document or resp
+            self._log_no_article(url, last)
+            if last is not None and not _is_challenge(last) and last.status != 200:
+                return _response(last, page.content())
             return Response(
                 status=202,
                 text=page.content(),
-                headers={"x-amzn-waf-action": "challenge"},
+                headers={_WAF_HEADER: "challenge"},
             )
         final = self._document or resp
-        status = final.status if final is not None else 200
-        return Response(status=status, text=page.content())
+        if final is None:
+            return Response(status=200, text=page.content())
+        return _response(final, page.content())
 
     def close(self) -> None:
         if self._browser is not None:
@@ -154,6 +164,20 @@ class BrowserTransport:
             return
         logger.debug(f"blocked {request.resource_type} {request.url} (browser)")
         route.abort()
+
+
+def _is_challenge(response: Any) -> bool:
+    """A WAF challenge, as the Page Store defines it: 202 or an ``x-amzn-waf-action``."""
+    return (
+        response.status == 202 or (response.headers or {}).get(_WAF_HEADER) is not None
+    )
+
+
+def _response(document: Any, html: str) -> Response:
+    """A playwright document response as the Page Store's :class:`Response`."""
+    return Response(
+        status=document.status, text=html, headers=dict(document.headers or {})
+    )
 
 
 def _describe(response: Any) -> str:
