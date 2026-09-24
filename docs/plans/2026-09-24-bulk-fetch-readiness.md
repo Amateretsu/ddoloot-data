@@ -924,3 +924,136 @@ with ADR 0006.
 - **Files:** `src/page_store/browser.py`, `tests/canned.py`,
   `tests/page_store/test_browser.py`, and this plan. No config change.
 - Tests after step 6: 400 passed, 1 skipped.
+
+### Step 7: one probe (live)
+
+- **Worst case, written first:** 1 + 2 + 1 = 4 (robots.txt, a challenged plain fetch, the
+  browser's challenge document and its reload). `scripts/guarded_sync.py --dry` agreed:
+  update pages read 9, unheld 0; 1 pending row, unheld; k = 1; F = 1; worst case 4. The
+  md5 of `data/queue.db` was the same before and after the dry run.
+- **Scratch config:** the committed `config/scraper.yaml` plus `max_retries: 0`,
+  `browser.consecutive_challenges: 1` and `cache_dir` = the repo's absolute
+  `cache/pages`. No other value changed.
+- **Command**, on the persistent `data/queue.db`, logged to a file, with the exit code read
+  without a pipe:
+  `.venv/bin/ddoloot sync --verbose --scraper-config $S/scraper.yaml --page
+  Update_8_named_items --limit 1 --max-retries 0 > $S/probe.log 2>&1 && echo "probe exit 0"
+  || echo "probe exit $?"`
+- **Requests: 4**, from `grep -c 'GET '`, at 14:34:54-14:35:04: robots.txt 200 (plain),
+  `Item:Crimson_Chain` 202 (plain), then in the browser the same page's challenge document
+  (202, `x-amzn-waf-action: challenge`) and its reload (200). Update pages 5-13 were read
+  from the Page Store at no cost. No `api.php`, `index.php` or `Special:` URL.
+- **The challenge cleared** in about 1 s. This was about 5 hours after batch 1's stop. The
+  step 6 diagnostics logged both documents with their status as intended.
+- **Crimson Chain was written:** `catalog-src/items/update-8/armor/…-crimson-chain.json`
+  and one registry line (197 → 198). No gaps. `check_catalog('catalog-src')` returns [].
+  It is committed with the session summary.
+- **Exit code 2** means "completed with failed items remaining". The 5 ingredient rows
+  are still `failed` in `data/queue.db`, marked before step 3. One offline
+  `ddoloot sync --reset-failed` puts them back to pending. The next run then re-reads them
+  from the Page Store as skipped, at no cost (see "To continue").
+- **Queue after the probe:** 253 total, 201 complete, 47 pending, 5 failed. 42 of the 47
+  pending are unheld.
+- Nothing more was fetched.
+
+## Session summary
+
+### Outcomes
+
+| Issue or gap | Outcome | PR | Why |
+|---|---|---|---|
+| Queue order by `page_name` string | fixed | #20 | Update pages and pending rows go in ascending update number, with non-numbered pages last. A multi-page batch causes no moves. |
+| Browser adapter stores a missing page as 200 | fixed | #21 | It reports the final document's status. A 404 is not stored, and the item fails with `page not found (404)`. |
+| No-infobox crafting-ingredient pages fail | fixed | #22 | They are not Named Items (CONTEXT.md). With no infobox and a wiki category of `Ingredients` or `Raw ingredients`, the page is skipped: marked complete, a report line, no item file. Any other page with no infobox still fails. |
+| 4a Clicky charges and recharge | fixed | #23 | Both forms parse to the spell name, plus the new optional Effect fields `charges` and `recharge_per_day`. ADR 0008's gate now sees the spell name. |
+| 4b Wand row `No UMD check for:` | fixed | #24 | New optional field `umd_exempt_classes` (text, as the wiki writes it). |
+| 4c Binding with no timing | proposed | #25 | No doc says what untimed means. Awaits the maintainer (options A-D; recommends A, treat it as on acquire). The raw text stays in `extraction_errors.binding`. |
+| 4d Exclusive | fixed | #26 | New optional field `exclusive`, from the binding row's `, Exclusive` suffix (49 true), also read when the binding is unmapped. |
+| 4e Alignment DR, Exceptional Fortification | proposed | #27 | Effect identity and Bonus Type decisions belong to ADR 0008's review gate. 7 effects stay unclassified. |
+| 4f Wiki bug notes in effect text | fixed | #28 | A trailing `( Bug: … )` is stripped before the rules run and kept in the new optional Effect field `note`. |
+| 4g `item_type` null for `accessory_untyped` | proposed | #29 | 20 wands and 4 rune arms have no type or slot row. Setting it would mint new values from wiki categories, which is the maintainer's decision. |
+| Bulk-run guard and worst-case dry run | fixed | #30 | `scripts/guarded_sync.py`: SIGINT on 3 consecutive 429/5xx, or failures > 10% with at least 3 failed. `--dry` prints `1 + 2F + min(F, k)` with no request. |
+| WAF stop on `Crimson_Chain` | investigated, diagnostics added | #31 | Most likely a WAF escalation after sustained load (13 min at a flat 4 s). Token expiry is unlikely, and the 2-document cap is ruled out. Mitigation: short runs with pauses. The crawl delay is unchanged. |
+| Probe | done, cleared | this PR | 4 requests. Crimson Chain fetched and written. |
+
+Earlier records corrected:
+- The 5 extraction errors are the 5 untimed bindings (4c), not the no-infobox pages. Those
+  pages had no report line before step 3.
+- Report lines were 205 before this session, not 213.
+- For an unmapped binding the raw text is in `extraction_errors.binding`, not
+  `binding_raw`.
+
+### Totals
+
+| | Report lines | Unmapped rows | Unclassified effects | Extraction errors | Warnings | Skipped |
+|---|---|---|---|---|---|---|
+| Before (brief) | 205 | 20 | 60 | 5 | 0 | — |
+| After | 211 | 0 | 7 | 5 | 0 | 5 |
+
+- The 7 unclassified effects are step 4e's.
+- The 5 extraction errors are step 4c's.
+- The 5 skipped lines are the ingredient pages.
+- Item files: 197 → 198 (Crimson Chain). Registry lines: 197 → 198. No existing UUID was
+  changed.
+
+Tests: 322 passed, 1 skipped before; 400 passed, 1 skipped after.
+
+Requests this session: 4 (the probe).
+
+### To continue (next session)
+
+The cadence is from step 6: at most `--limit 100` per process, a 20-minute pause between
+runs, a `--dry` before each run, and stop for the day on an uncleared challenge (guard exit
+1 or 3). One batch of about 200 item pages is therefore two runs of `--limit 100`. Keep
+`data/queue.db` and `cache/pages`.
+
+1. **Scratch config:** `config/scraper.yaml` plus `max_retries: 0`,
+   `browser.consecutive_challenges: 1` and `cache_dir` = the absolute path of the repo's
+   `cache/pages`.
+2. **Offline:** put the 5 failed ingredient rows back to pending. They are then re-read
+   from the Page Store as skipped, at no cost.
+   ```
+   .venv/bin/ddoloot sync --reset-failed
+   ```
+3. **Finish Updates 8 and 9:** 47 pending, 42 unheld, so the worst case is 1 + 84 + 1 = 86.
+   ```
+   .venv/bin/python scripts/guarded_sync.py --dry --scraper-config $SCRATCH/scraper.yaml \
+     --page Update_8_named_items Update_9_named_items --limit 100 --max-retries 0
+   .venv/bin/python scripts/guarded_sync.py --log $SCRATCH/run-8-9.log \
+     --scraper-config $SCRATCH/scraper.yaml \
+     --page Update_8_named_items Update_9_named_items --limit 100 --max-retries 0 \
+     && echo ok || echo "exit $?"
+   ```
+   Then verify offline:
+   ```
+   .venv/bin/python scripts/offline_rerun.py Update_5_named_items Update_6_named_items \
+     Update_7_named_items Update_8_named_items Update_9_named_items Update_10_named_items \
+     Update_11_named_items Update_12_named_items Update_13_named_items
+   UPDATE_GAPS_BASELINE=1 .venv/bin/pytest -q tests/item_extractor -k whole_page_store
+   ```
+   Then run the four CI checks and `check_catalog('catalog-src')`, confirm that a second
+   `offline_rerun.py` leaves `git status` unchanged, and commit.
+4. **Updates 14 upward, in ascending N,** in batches of about 200 item pages, using the
+   category counts in the backlog plan's step 1:
+   - Updates 14-16 (about 110);
+   - Update 17 (349, over several runs);
+   - Updates 18-25 (about 220);
+   - and so on.
+   For each batch, repeat until its pages have no pending rows:
+   ```
+   .venv/bin/python scripts/guarded_sync.py --dry --scraper-config $SCRATCH/scraper.yaml \
+     --page <batch pages> --limit 100 --max-retries 0
+   .venv/bin/python scripts/guarded_sync.py --log $SCRATCH/run-<N>.log \
+     --scraper-config $SCRATCH/scraper.yaml --page <batch pages> --limit 100 \
+     --max-retries 0 && echo ok || echo "exit $?"
+   sleep 1200
+   ```
+   - Queue order is numeric now (step 1), so one invocation can list several pages.
+   - After each batch, repeat step 3's offline verification over every update page done so
+     far, then commit.
+   - On exit 1 or 3: read the new `no article …` line. A 405 or 403 means stop until the
+     maintainer decides.
+   - If the challenge fails again at this cadence, recommend `crawl_delay_seconds: 8` to
+     the maintainer. This session did not change it.
+5. **Maintainer decisions pending:** the proposals for 4c, 4e and 4g in this plan. Until
+   they are decided, those gaps stay in the gaps baseline and `report.jsonl`.

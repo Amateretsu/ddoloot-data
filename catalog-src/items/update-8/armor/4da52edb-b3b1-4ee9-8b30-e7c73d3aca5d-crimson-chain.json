@@ -1,0 +1,137 @@
+{
+  "id": "4da52edb-b3b1-4ee9-8b30-e7c73d3aca5d",
+  "name": "Crimson Chain",
+  "wiki": {
+    "page_id": 12553,
+    "revision_id": 708315,
+    "title": "Item:Crimson Chain",
+    "url": "https://ddowiki.com/page/Item:Crimson_Chain"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Mithral",
+  "hardness": 26,
+  "durability": 160,
+  "base_value_cp": 5215000,
+  "weight": 40.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 10,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 9,
+    "armor_check_penalty": -1,
+    "arcane_spell_failure": 20
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dexterity",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Reflex Save",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Reflex Save +6 : This item gives a +6 Resistance bonus to your Reflex saves.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dodge",
+      "value": 6,
+      "value_kind": "percent",
+      "bonus_type": "dodge",
+      "tooltip": "Dodge +6% : +6% Enhancement bonus to Dodge.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Haste Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Haste Guard : When you are hit by enemies, there is a chance you will be Hasted, quickening your attack and movement speed.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Mithral",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A suit of chainmail crafted for Droaam troops to make them react more swiftly. When the wearer is struck by an attack, it will sometimes increase the speed of his or her movements and attacks briefly.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Undermine"
+    ],
+    "detail": "Rhyolite 's chest",
+    "crafted_from": [],
+    "raw": "Undermine , Rhyolite 's chest"
+  },
+  "extraction_errors": {}
+}
