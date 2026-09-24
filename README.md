@@ -13,7 +13,7 @@ Catalog data and build pipeline for [DDOLoot](https://github.com/Amateretsu/ddol
 | `config/update_pages.yaml` | seed list of `Update_<N>_named_items` pages, used when the named-items index links to none |
 | `tests/fixtures/pages/` | committed wiki item pages used as test fixtures (CC BY-SA, see `NOTICE`) |
 | `catalog-src/registry.jsonl` | the committed UUID registry: one `{"id", "page_id", "title"}` line per Named Item, sorted by page ID |
-| `catalog-src/items/<update>/<category>/` | one `<uuid>-<slug>.json` per Named Item: `{"id"} + ScrapedItem` (ADR 0006), written by `ddoloot sync` and checked in CI by `tests/test_catalog_integrity.py` |
+| `catalog-src/items/<update>/<category>/` | one `<uuid>-<slug>.json` per Named Item: `{"id"} + ScrapedItem` (ADR 0006), written by `ddoloot sync` and checked in CI by `tests/test_catalog_integrity.py`. It holds only the first 12 items of `Update_5_named_items` so far (the 2026-09-24 pilot) |
 | `catalog/extractor/` | extractor rules: row labels, templates, value maps, Effect classification |
 | `catalog/rules/` | option lists, slot compatibility, item overrides (ADR 0007) |
 | `catalog/effects/` | effect registry and aliases (ADR 0008) |

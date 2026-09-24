@@ -1,0 +1,63 @@
+{
+  "id": "169fc2ff-e602-40d1-9e0c-2c11d9889702",
+  "name": "Epic Roderic's Wand",
+  "wiki": {
+    "page_id": 11839,
+    "revision_id": 630348,
+    "title": "Item:Epic Roderic's Wand",
+    "url": "https://ddowiki.com/page/Item:Epic_Roderic%27s_Wand"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 179200000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "55",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Summon Unknown Monster II — 6 Charges (Recharged/Day:6)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Summon Unknown Monster II Caster level: 20 Charges: 6 (6/day)"
+    },
+    {
+      "name": "Augment Summoning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Augment Summoning : This item grants you the Augment Summoning feat, which gives your summoned creatures +4 to all ability scores, increased health, and increased fortification."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This is the unpredictable wand Malicia gave to Roderic, promising that it would protect him. What Roderic did not realize is that the wand recharges over time, but only if not being used.",
+  "notes": "When cast, it summons one creature at random from this list: Fiendish Troll: CR 10, melee, HP regen, tanky; like the Summon Monster VI spell. Summoned Efreet CR 12, Lawful Evil Outsider 200 Hit Points Immune to Fire Scimitar +21 Attack roll , 1d8+10 Damage roll Scorching Ray : 19 fire damage Flaming Sphere Fireball : 8d6 fire damage, DC 15 like the Summon Monster VII spell. Summoned Bezekira CR 14, Lawful Evil Outsider 215 Hit Points Spell Resistance 21 Strength 22 Claw/Bite +8 Attack roll , 1d10+13 Damage roll Knockdown DC 17 like the Summon Monster VIII spell. Hezrou Savage: CR 16; like the Summon Monster IX spell.",
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Roderic's Wand"
+    ],
+    "raw": "Epic version of Roderic's Wand"
+  },
+  "extraction_errors": {}
+}

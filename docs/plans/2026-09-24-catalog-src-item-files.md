@@ -152,7 +152,7 @@ PR, and leaves ruff, black, isort and pytest green and the CLI working.
 
 Test baseline before step 1: 245 passed, 1 skipped.
 
-Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the orchestrator smoke re-runs were served from the Page Store, 0 requests). Running total: 8 of 40.
+Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the orchestrator smoke re-runs were served from the Page Store, 0 requests); steps 2 and 3 used 0; step 4 used 16 (all re-runs offline, 0). Running total: 24 of 40.
 
 ### Step 1: browser fetch
 
@@ -281,3 +281,66 @@ Live request tally (budget 40; step 1 ≤ 12, step 4 ≤ 28): step 1 used 8 (the
   offline end-to-end sync through the canned transport wrote 3 item files into a temporary
   catalog-src, including one item listed on updates 5 and 10 that ended up in a single
   file under `update-5`. `check_catalog` reported 0 problems.
+
+### Step 4: pilot
+
+- **Worst-case request formula.** The pilot used a scratch config with `max_retries: 0`, so
+  nothing is retried. Before the switch to the browser, each page the run must fetch costs
+  at most 3 requests (a challenged plain fetch plus 2 in the browser), and at most 2 after
+  it. With F pages to fetch and k = `consecutive_challenges`, the worst case is
+  `1 (robots.txt) + 2F + min(F, k)`, where F = N + 1 (the update page, which was not yet
+  held, plus N items).
+- **N is 12, not the plan's 20.**
+  - With the committed k = 5, the worst case is 2N + 8, so N could be at most 10.
+  - The scratch config lowers k to 1, which gives 2N + 4 ≤ 28 and so N = 12, with a
+    worst case of exactly 28.
+  - N = 20 could have cost up to 44 requests, beyond the step's 28.
+  - The committed `config/scraper.yaml` is unchanged (`max_retries: 3`,
+    `consecutive_challenges: 5`).
+  - The scratch config was step 1's config plus `consecutive_challenges: 1`, with
+    `cache_dir` pointing at the repo's `cache/pages`.
+- **Command:** `ddoloot sync --page Update_5_named_items --limit 12`, using the scratch config
+  and a fresh scratch queue DB, with the browser enabled.
+- **Live run: 16 requests.**
+  - `robots.txt`, then `Update_5_named_items` as plain 202, browser challenged and browser
+    reload. The run logged "1 of 1 plain fetches challenged", and the rest of it used the
+    browser.
+  - Then 12 item pages at 1 browser request each; the WAF token persisted, so none needed a
+    reload. The items were Epic Sirocco, Epic Mummy Wrappings, Brawn's Spirits, Phiarlan
+    Mirror Cloak, Phiarlan Spy Dagger, The Big Top, Shimmering Pendant, Grim's Bracelet,
+    Garos' Malice, Utility Vest, Illusionist's Garb and Epic Roderic's Wand.
+  - Every `load.php` and `images.ddowiki.com` request was aborted before it was sent. No
+    `api.php`, `index.php` or `Special:` URL was requested.
+- **Re-runs are offline, on a fresh queue.** Re-running the same command against the same
+  queue DB would fetch the next 12 pending items live. Every re-run therefore went through
+  a no-network harness: the Page Store's transports raise on any fetch, and each re-run
+  used a fresh queue DB.
+  - Queue order is deterministic: `queued_at`, then rowid, which is the update page's
+    document order. A fresh queue therefore re-processes the same first 12 items.
+  - The harness saw 0 fetch attempts in every re-run.
+  - Re-running without the extractor fix left every checksum identical.
+  - After the fix, one re-run changed exactly the 4 Exclusive items and the report, and the
+    next re-run changed nothing.
+  - The registry never changed in a re-run.
+- **Fixes applied**, each a one-line mapping or label addition tested through `extract()`:
+  - binding `Bound to Account on Acquire , Exclusive` → `account`, with "Exclusive" kept
+    only in `binding_raw`;
+  - row label `UMD Difficulty` → `umd_dc`.
+- The whole-Page-Store extractor test (skipped in CI) now allows only the two recorded gaps
+  (`KNOWN_UNMAPPED_ROWS`, `KNOWN_UNCLASSIFIED_EFFECT`), so any new gap still fails it.
+- **Extractor gaps recorded, not fixed:**
+  - Clicky charges (`<Spell> — N Charges [(Recharged/Day:N)]`): no rule reads charges or
+    recharge. These entries stay valueless effects, flagged as unclassified. A rule would be a
+    classification decision, not a mapping.
+  - The wand row `No UMD check for:` has no ScrapedItem field. It stays unmapped, because
+    ignoring it would drop the data silently.
+  - There is no Exclusive field; it survives only in `binding_raw`.
+  - The wand uses the `accessory_untyped` template, so `item_type` is null and
+    `equip_slots` is empty. Its category, `other`, is correct.
+  - Three observations that match the wiki's own data:
+    - Illusionist's Garb has `item_type` "Clothing" but uses the armor template.
+    - Grim's Bracelet's `item_type` is "Necklace".
+    - `umd_dc` holds free text, such as "No UMD needed".
+- `.gitignore` needed no change: `git check-ignore` finds nothing under `catalog-src`
+  ignored.
+- Tests after step 4: 321 passed, 1 skipped.

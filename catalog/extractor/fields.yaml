@@ -21,7 +21,7 @@ fields:
   - {target: required_class, labels: [required class], coerce: text}
   - {target: required_feat, labels: [feat requirement], coerce: text}
   - {target: required_trait, labels: [required trait], coerce: text}
-  - {target: umd_dc, labels: [use magical device dc], coerce: text}
+  - {target: umd_dc, labels: [use magical device dc, umd difficulty], coerce: text}
   - {target: binding, labels: [binding, bind status], coerce: binding, spread: true}
   - {target: material, labels: [material, made from], coerce: text}
   - {target: hardness, labels: [hardness], coerce: int}

@@ -1,0 +1,72 @@
+{
+  "id": "e5954e30-081b-4688-bb9e-9b8c91c15908",
+  "name": "The Big Top",
+  "wiki": {
+    "page_id": 11699,
+    "revision_id": 635296,
+    "title": "Item:The Big Top",
+    "url": "https://ddowiki.com/page/Item:The_Big_Top"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1610000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Big Top",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Otto's Resistible Dance — 1 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Otto's Resistible Dance Caster level: 3 Charges: 1 (1/day)"
+    },
+    {
+      "name": "Use Magic Device",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Use Magic Device +1 : Passive: +1 Competence bonus to the Use Magic Device skill."
+    },
+    {
+      "name": "Perform",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Perform +6 : Passive: +6 Competence bonus to the Perform skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This is the strange, formal hat that Malicia was wearing when she was defeated. Placing it atop one's head confers a greater understanding of all things magical.",
+  "notes": null,
+  "tips": "Item was revamped on update 39. Earlier copies of the item have only the Otto's Resistible Dance and a Enhanced Use Magic Device +1 (which had the significance of being stackable due to being an enhancement bonus compared to the competence bonus it is now) .",
+  "source": {
+    "quests": [
+      "Under the Big Top"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Under the Big Top , end chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,104 @@
+{
+  "id": "fb247532-903b-4f0f-aa4f-926e0b7d07ca",
+  "name": "Phiarlan Spy Dagger",
+  "wiki": {
+    "page_id": 11696,
+    "revision_id": 671106,
+    "title": "Item:Phiarlan Spy Dagger",
+    "url": "https://ddowiki.com/page/Item:Phiarlan_Spy_Dagger"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dagger",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 80,
+  "base_value_cp": 1600200,
+  "weight": 1.0,
+  "upgradeable": "Epic Crafting to Epic Phiarlan Spy Dagger",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Dagger",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Acidic",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Acidic 2 : This effect causes the edges of this weapon to drip with acid, dealing 2d6 Acid damage on each hit."
+    },
+    {
+      "name": "Critical Weakening",
+      "value": 1,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Critical Weakening 1 : This deadly weapon saps the power and might from your enemies, dealing 1 Strength damage on each critical hit."
+    },
+    {
+      "name": "Deception",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "House Phiarlan assassins and spies carry daggers like this when the need to carry out a mission efficiently and from the shadows. This particular blade drips acid when drawn and can lure foes into letting their guard down.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Partycrashers"
+    ],
+    "detail": "Salva d'Phiarlan chest and bonus chests at end",
+    "crafted_from": [],
+    "raw": "Partycrashers , Salva d'Phiarlan chest and bonus chests at end"
+  },
+  "extraction_errors": {}
+}
