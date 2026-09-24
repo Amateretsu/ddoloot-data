@@ -32,7 +32,7 @@ def test_shipped_config_loads_as_typed_models():
     assert cfg.fields.rule_for("made from") is cfg.fields.rule_for("material")
     assert cfg.templates.templates[-1].detect.default is True
     assert cfg.enchantments.rules[-1].fallback is True
-    assert cfg.mappings.roman["V"] == 5
+    assert cfg.enchantments.roman["V"] == 5
 
 
 def test_spread_row_without_target_loads(config_dir):

@@ -1,5 +1,5 @@
 # Value maps applied by coercers. Keys match lowercased, whitespace-normalised text.
-# The four maps below are the whole file; an unknown key is rejected at load.
+# The three maps below are the whole file; an unknown key is rejected at load.
 
 # Wiki binding text -> spec binding enum. `on_equip` means "undecided until equipped".
 binding:
@@ -15,22 +15,5 @@ damage_types:
   pierce: Piercing
   magic: Magic
   force: Force
-
-roman:
-  I: 1
-  II: 2
-  III: 3
-  IV: 4
-  V: 5
-  VI: 6
-  VII: 7
-  VIII: 8
-  IX: 9
-  X: 10
-  XI: 11
-  XII: 12
-  XIII: 13
-  XIV: 14
-  XV: 15
 
 denominations: {pp: 1000, gp: 100, sp: 10, cp: 1}

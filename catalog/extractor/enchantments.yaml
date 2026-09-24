@@ -6,14 +6,18 @@
 # kind: effect     -> item.effects   (name, value, value_kind, bonus_type, tooltip)
 # kind: set        -> item.named_set: an entry (the set's name) whose tooltip lists
 #                     "N Pieces Equipped: ..." items
-# kind: set_bonus   -> a bare "N Pieces Equipped: ..." entry, appended to item.named_set
+# kind: set_bonus  -> a bare "N Pieces Equipped: ..." entry, merged into item.named_set.
+#                     Set and bare rows merge in any order (the set's own bonuses first).
+#                     Bare rows with no set row give a named set with `name: null` and a
+#                     warning in the run report.
 # kind: hint       -> item.customisation_hints: augment slots, Mythic/Reaper hints and
 #                     item-unique systems. These are curated in catalog/rules (ADR 0007),
 #                     never stored as effects.
 #
 # value_kind: flat | percent | tier | number (a `tier` or `pct` capture overrides it)
 # `fallback: true` marks the catch-all; entries reaching it that contain digits are
-# reported as unclassified for review.
+# stored as Effects and also reported as unclassified for review. An entry no rule
+# matches is reported as unclassified and dropped; it never stops the extraction.
 #
 # Other rule keys:
 #   when.has_children          the entry must (true) or must not (false) have a nested list
@@ -30,6 +34,24 @@ bonus_type:
   text_pattern: '\b([A-Z][a-z]+) [Bb]onus\b'
   # Last resort, on the tooltip: "+3 Quality bonus to ...".
   tooltip_pattern: '[+-]?\d+%?\s+([A-Z][a-z]+) [Bb]onus\b'
+
+# Roman numerals -> tier values (a `tier` capture is looked up here).
+roman:
+  I: 1
+  II: 2
+  III: 3
+  IV: 4
+  V: 5
+  VI: 6
+  VII: 7
+  VIII: 8
+  IX: 9
+  X: 10
+  XI: 11
+  XII: 12
+  XIII: 13
+  XIV: 14
+  XV: 15
 
 rules:
   - id: unique_system

@@ -309,3 +309,32 @@ each leaves tests green and the CLI working end to end.
 - Verified: `extract-item --html` output for all six fixtures is byte-identical to `main`.
 - Finding, not fixed: `normalize_label` strips a trailing colon only when it is the last
   character, so `"Required Race:\n"` would be an unmapped row. No page seen so far has one.
+
+### Step 5: EffectsBlock
+
+- The classifier module is renamed `item_extractor/enchantments.py` → `effects.py` to match
+  the domain term Effect; the YAML keeps the name `enchantments.yaml`.
+- `classify_effects(td, rules: EnchantmentsConfig) -> EffectsBlock`, not the whole `Config`.
+  The Roman numeral map was its only outside dependency, so it moved from `mappings.yaml`
+  to `enchantments.yaml` (`EnchantmentsConfig.roman`).
+- `EffectsBlock` is a frozen dataclass: `effects`, `customisation_hints`, `named_set`,
+  `unclassified`, `rule_hits`, `warnings`, holding the `ScrapedItem` submodels.
+- `classify_effects` is an internal seam of the extractor, not a tested interface: it is not
+  exported and `extract()` is its only caller. `Classified`, `EntryView`, `read_entry` and
+  `classify` are gone.
+- The "read before stripping tooltips" ordering is removed rather than hidden.
+  `classify_effects` reads a private copy of the cell, and `extract()` strips tooltip and
+  sortkey spans per non-Effects cell, so call order no longer matters.
+- Set merge in any order: the set row supplies the name and its tooltip bonuses, and bare
+  `N Pieces Equipped` rows are appended in page order. There is no dedup, and with two set
+  rows the last wins, as before.
+- A no-rule entry goes to `unclassified_effects`, not `effects`, and not `rule_hits`. The
+  old `raise ValueError("no rule matched …")` is removed. A fallback-rule entry containing a
+  digit is still stored and also flagged (unchanged).
+- The nameless set is kept with `name: null`, and the warning
+  `"named set with N bonus(es) has no name"` reaches the report.jsonl line. More than one
+  Effects row: only the first is classified, with a warning.
+- Tests: `test_enchantments.py` (21 direct tests) is replaced by 26 `extract()` tests and 1
+  syncer → `JsonItemWriter` test. Suite 235 → 241.
+- Verified: fixture `item` output is identical to step 4; each report gains only
+  `"warnings": []`.
