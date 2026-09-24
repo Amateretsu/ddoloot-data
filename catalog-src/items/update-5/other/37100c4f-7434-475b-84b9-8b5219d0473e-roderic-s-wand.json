@@ -27,6 +27,7 @@
   "upgradeable": "Epic Crafting to Epic Roderic's Wand",
   "accepts_sentience": null,
   "umd_dc": "39",
+  "umd_exempt_classes": "Wiz, Sor, Clr, FvS, Brd",
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,

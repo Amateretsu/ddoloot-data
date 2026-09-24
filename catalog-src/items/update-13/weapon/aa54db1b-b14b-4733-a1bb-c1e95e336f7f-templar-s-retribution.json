@@ -29,6 +29,7 @@
   "upgradeable": "Epic Crafting to Epic Templar's Retribution",
   "accepts_sentience": false,
   "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
   "weapon_stats": {
     "proficiency": "Exotic Weapon Proficiency",
     "weapon_type": "Bastard Sword",

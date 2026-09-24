@@ -29,6 +29,7 @@
   "upgradeable": "Legendary Crafting to Legendary Flameward",
   "accepts_sentience": true,
   "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
   "weapon_stats": {
     "proficiency": "Simple Weapon Proficiency",
     "weapon_type": "Club",

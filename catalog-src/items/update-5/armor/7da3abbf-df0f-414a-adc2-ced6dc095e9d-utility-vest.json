@@ -29,6 +29,7 @@
   "upgradeable": "Epic Crafting to Epic Utility Vest",
   "accepts_sentience": null,
   "umd_dc": null,
+  "umd_exempt_classes": null,
   "weapon_stats": null,
   "armor_stats": {
     "armor_type": "Light Armor",

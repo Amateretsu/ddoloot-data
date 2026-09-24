@@ -29,6 +29,7 @@
   "upgradeable": "Legendary Crafting to Legendary Doublecross Bow",
   "accepts_sentience": true,
   "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
   "weapon_stats": {
     "proficiency": "Exotic Weapon Proficiency",
     "weapon_type": "Repeating Light Crossbow",

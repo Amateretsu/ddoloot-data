@@ -29,6 +29,7 @@
   "upgradeable": "Epic Crafting to Epic Greatclub of the Scrag",
   "accepts_sentience": false,
   "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
   "weapon_stats": {
     "proficiency": "Martial Weapon Proficiency",
     "weapon_type": "Great Club",

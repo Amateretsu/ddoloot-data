@@ -27,6 +27,7 @@
   "upgradeable": "Not upgradeable",
   "accepts_sentience": null,
   "umd_dc": "45",
+  "umd_exempt_classes": "Wiz, Sor, DDM",
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,

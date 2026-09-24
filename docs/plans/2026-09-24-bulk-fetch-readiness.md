@@ -280,3 +280,51 @@ with ADR 0006.
   The 8 left are 6 alignment DR entries, `Exceptional Fortification (+10%)` and the bug
   note (steps 4e and 4f).
 - Tests after step 4a: 346 passed, 1 skipped.
+
+### Step 4b: wand UMD row
+
+- **Outcome: fixed**, with one backward-compatible schema addition.
+- **What the row holds:** in all 20 held wand pages, `No UMD check for:` sits beside
+  `UMD Difficulty` and lists abbreviated classes that use the wand with no Use Magic
+  Device check: `Wiz, Sor` (8), `Clr, FvS` (6), `Wiz, Sor, Brd` (3),
+  `Wiz, Sor, Clr, FvS, Brd` (2) and `Wiz, Sor, DDM` (1). No other field captures it:
+  `umd_dc` holds the DC, and `required_class` is a different row. So it does not
+  restate anything, and an ignore entry would drop data. The pilot (catalog-src-item-files
+  plan, step 4) refused to ignore it for the same reason.
+- **What the docs say:**
+  - CONTEXT.md: a Scraped Item is the record of a Named Item "as read from its wiki page".
+    No ADR reserves Scraped Item fields. ADR 0008 covers only Effects and Bonus Types, and
+    this row is neither.
+  - `fields.yaml` already maps each requirement-like row, such as `required_class`,
+    `required_race` and `umd_dc`, to a raw-text `str | None` field with the `text`
+    coercer. The Scraped Item is not in the app-owned `spec/v1` bundle schema, so
+    ddoloot-app needs no change. Step 4a set the precedent: an optional field that
+    defaults to null.
+- **Decision:**
+  - `ScrapedItem` gains `umd_exempt_classes: str | None = None`, next to `umd_dc`.
+  - `fields.yaml` maps the label `no umd check for` to it with `coerce: text`.
+  - The value is the raw text as written (`Wiz, Sor`). It is not split into a list, and
+    the abbreviations are not expanded into class names. That matches `required_class`,
+    needs no new coercer or class map, and is the smallest interface. Expanding the
+    abbreviations is left to the compile stage if the bundle ever needs it.
+- **Files:** `src/item_extractor/scraped_item.py`, `catalog/extractor/fields.yaml`,
+  `tests/item_extractor/test_extract.py`, `tests/item_extractor/extractor_gaps.json`, and
+  197 item files under `catalog-src/items`.
+- **Tests (through `extract()`):** two new `test_row_is_coerced_into_its_field` cases. One
+  is the plain label, and the other has a linked `UMD` in the label and a five-class
+  value. Both fail on main.
+- **`catalog-src` diff:** 197 item files, 1 added line each, and no registry change. It was
+  checked programmatically: the 20 wands gain their raw value, and the other 177 files
+  gain `"umd_exempt_classes": null`. The gaps baseline loses the 20 wand entries (100
+  lines), because they had no other gap.
+- **Offline rerun, Updates 5-13:** 0 fetch attempts, 43 unheld pages skipped, and the
+  inner sync exit code is 2. A second run left `git status` and the diff unchanged, and
+  `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 20 | 8 | 5 | 0 | 5 |
+  | After | 210 | 0 | 8 | 5 | 0 | 5 |
+
+- Tests after step 4b: 348 passed, 1 skipped.

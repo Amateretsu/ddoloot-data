@@ -27,6 +27,7 @@
   "upgradeable": "Altar of Vulkoor to Cacophonic Verge",
   "accepts_sentience": null,
   "umd_dc": "19",
+  "umd_exempt_classes": "Wiz, Sor, Brd",
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,

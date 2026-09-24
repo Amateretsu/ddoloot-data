@@ -217,6 +217,13 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
             "character",
         ),
         ('<a href="/page/UMD">UMD</a> Difficulty', "55", "umd_dc", "55"),
+        ("No UMD check for:", "Wiz, Sor", "umd_exempt_classes", "Wiz, Sor"),
+        (
+            'No <a href="/page/UMD">UMD</a> check for:',
+            "Wiz, Sor, Clr, FvS, Brd",
+            "umd_exempt_classes",
+            "Wiz, Sor, Clr, FvS, Brd",
+        ),
         ("Accepts Sentience?", "No", "accepts_sentience", False),
         ("Weight", "0.5 lbs", "weight", 0.5),
         ("Race\xa0Absolutely   Required", "Dwarf", "required_race", "Dwarf"),

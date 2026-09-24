@@ -29,6 +29,7 @@
   "upgradeable": "Legendary Crafting to Legendary Sacred Band",
   "accepts_sentience": null,
   "umd_dc": null,
+  "umd_exempt_classes": null,
   "weapon_stats": null,
   "armor_stats": null,
   "shield_stats": null,

@@ -29,6 +29,7 @@
   "upgradeable": "Epic Crafting to Epic Full Plate of the Ringleader",
   "accepts_sentience": null,
   "umd_dc": null,
+  "umd_exempt_classes": null,
   "weapon_stats": null,
   "armor_stats": {
     "armor_type": "Heavy Armor",
