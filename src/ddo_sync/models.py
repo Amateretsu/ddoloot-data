@@ -96,36 +96,20 @@ class UpdatePageStatus:
     """Current sync state for one registered update page.
 
     Attributes:
-        page_name:        Natural key, e.g. "Update_5_named_items".
-        page_url:         Full URL of the update page.
-        last_synced_at:   When we last fetched + parsed item links, or None.
-        wiki_modified_at: MediaWiki API timestamp of the last wiki edit, or None.
+        page_name:      Natural key, e.g. "Update_5_named_items".
+        page_url:       Full URL of the update page.
+        last_synced_at: When its item links were last read and queued, or None (never).
+        revision_id:    ``wgCurRevisionId`` of the copy they were read from, or None.
 
-    The ``needs_resync`` property is computed purely from the two timestamps —
-    no external logic needed, and the derivation is transparent to readers.
-
-    Example:
-        >>> status = UpdatePageStatus(
-        ...     page_name="Update_5_named_items",
-        ...     page_url="https://ddowiki.com/page/Update_5_named_items",
-        ...     last_synced_at=None,
-        ...     wiki_modified_at=None,
-        ... )
-        >>> status.needs_resync
-        True
+    There is no staleness flag: without a request nothing local can say the wiki has
+    changed, and ``--refresh`` is the only way to refetch a page. A refreshed read that
+    finds a new revision id is logged by the syncer.
     """
 
     page_name: str
     page_url: str
     last_synced_at: Optional[datetime]
-    wiki_modified_at: Optional[datetime]
-
-    @property
-    def needs_resync(self) -> bool:
-        """True when the wiki is newer than our last sync, or either timestamp is absent."""
-        if self.last_synced_at is None or self.wiki_modified_at is None:
-            return True
-        return self.wiki_modified_at > self.last_synced_at
+    revision_id: Optional[int]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -140,8 +124,8 @@ class SyncStatus:
         >>> status = syncer.get_status()
         >>> status.queue_stats.pending
         0
-        >>> status.update_pages["Update_5_named_items"].needs_resync
-        False
+        >>> status.update_pages["Update_5_named_items"].revision_id
+        628767
     """
 
     queue_stats: QueueStats

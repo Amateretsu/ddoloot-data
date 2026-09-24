@@ -3,8 +3,8 @@
 Subcommands:
 
     ddoloot sync                                   # discover update pages, scrape, extract
-    ddoloot sync --status                          # queue stats, no sync
-    ddoloot sync --discover                        # list pages, no sync
+    ddoloot sync --status                          # queue stats, no network
+    ddoloot sync --discover                        # list update pages, no item reads
     ddoloot sync --page Update_5_named_items [...] # specific pages only
     ddoloot sync --limit 50                        # cap queue items
     ddoloot sync --refresh                         # refetch pages the Page Store holds
@@ -16,8 +16,10 @@ Subcommands:
 Every wiki page is read through the Page Store (``page_store``), whose acquisition policy
 and cache directory come from ``--scraper-config PATH`` (default ``config/scraper.yaml``).
 ``sync`` and ``sample`` track the crawl in the SQLite queue at ``--queue-db PATH``
-(default ``data/queue.db``). ``sync`` writes each Scraped Item to
-``cache/extracted/<page-slug>.json`` plus ``cache/extracted/report.jsonl``.
+(default ``data/queue.db``). Discovery reads the named-items index page and the update
+pages through the Page Store too (never the MediaWiki API). ``sync`` writes each Scraped
+Item to ``cache/extracted/<update>/<page-slug>.json`` plus one
+``cache/extracted/<update>/report.jsonl`` per update (``<update>`` is e.g. ``update-8``).
 ``extract-item`` never touches the network. Add ``--verbose`` to any subcommand for DEBUG
 logging.
 
@@ -39,10 +41,10 @@ from urllib.parse import quote
 
 from loguru import logger
 
-from ddo_sync.exceptions import UpdatePageError
+from ddo_sync.discovery import discover_update_pages
+from ddo_sync.exceptions import QueueDbError, UpdatePageError
 from ddo_sync.item_writer import JsonItemWriter
 from ddo_sync.models import SyncStatus
-from ddo_sync.page_discovery import UpdatePageDiscoverer
 from ddo_sync.queue_db import QueueRepository
 from ddo_sync.sampler import sample_pages
 from ddo_sync.syncer import DDOSyncer
@@ -108,7 +110,7 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Discover update pages, scrape item pages and extract Scraped Items.",
         description=(
             "Discover named-item update pages, read each queued item page through the "
-            f"Page Store and write its Scraped Item JSON under {EXTRACTED_DIR}."
+            f"Page Store and write its Scraped Item JSON under {EXTRACTED_DIR}/<update>/."
         ),
     )
     mode = sync.add_mutually_exclusive_group()
@@ -120,7 +122,10 @@ def _build_parser() -> argparse.ArgumentParser:
     mode.add_argument(
         "--discover",
         action="store_true",
-        help="List all discoverable update pages then exit (no scraping).",
+        help=(
+            "List the update pages the named-items index links to, then exit "
+            "(reads only the index page)."
+        ),
     )
     mode.add_argument(
         "--reset-failed",
@@ -236,9 +241,13 @@ def _cmd_status(queue_db: Path) -> int:
         logger.warning("No queue database found. Run `ddoloot sync` to start a sync.")
         return 0
 
-    with QueueRepository(str(queue_db)) as qr:
-        stats = qr.get_queue_stats()
-        pages = qr.list_update_pages()
+    try:
+        with QueueRepository(str(queue_db)) as qr:
+            stats = qr.get_queue_stats()
+            pages = qr.list_update_pages()
+    except QueueDbError as exc:
+        logger.error(str(exc))
+        return 1
 
     logger.info("─" * 56)
     logger.info(f"Queue DB : {queue_db}")
@@ -256,16 +265,23 @@ def _cmd_status(queue_db: Path) -> int:
         synced = (
             p.last_synced_at.strftime("%Y-%m-%d %H:%M") if p.last_synced_at else "never"
         )
-        flag = "  [STALE]" if p.needs_resync else ""
-        logger.info(f"    {p.page_name:<42} synced: {synced}{flag}")
+        revision = p.revision_id if p.revision_id is not None else "-"
+        logger.info(f"    {p.page_name:<42} synced: {synced}  revision: {revision}")
     return 0
 
 
-def _cmd_discover() -> int:
-    logger.info("Querying DDO Wiki for named-item update pages…")
+def _cmd_discover(scraper_config: Optional[Path], refresh: bool) -> int:
+    config = _load_store_config(scraper_config)
+    if config is None:
+        return 1
+    logger.info("Reading the named-items index through the Page Store…")
     try:
-        pages = UpdatePageDiscoverer().discover()
-    except Exception as exc:
+        with PageStore(config) as store:
+            pages = discover_update_pages(store, refresh=refresh)
+    except RunStoppedError as exc:
+        logger.error(f"Run stopped: {exc}")
+        return 1
+    except UpdatePageError as exc:
         logger.error(f"Discovery failed: {exc}")
         return 1
 
@@ -297,23 +313,6 @@ def _cmd_sync(
     if config is None:
         return 1
     queue_db.parent.mkdir(parents=True, exist_ok=True)
-
-    # ── Resolve page list ────────────────────────────────────────────────────
-    if page_names:
-        pages = [n.replace(" ", "_") for n in page_names]
-        logger.info(f"Targeting {len(pages)} specific update page(s).")
-    else:
-        logger.info("Discovering DDO named-item update pages…")
-        try:
-            pages = UpdatePageDiscoverer().discover()
-        except Exception as exc:
-            logger.error(f"Page discovery failed: {exc}")
-            return 1
-        if not pages:
-            logger.warning("No update pages found — nothing to sync.")
-            return 0
-        logger.info(f"Discovered {len(pages)} update page(s).")
-
     _install_sigint_handler()
 
     try:
@@ -321,6 +320,17 @@ def _cmd_sync(
             PageStore(config) as store,
             QueueRepository(str(queue_db)) as queue_repo,
         ):
+            if page_names:
+                pages = [n.replace(" ", "_") for n in page_names]
+                logger.info(f"Targeting {len(pages)} specific update page(s).")
+            else:
+                logger.info("Discovering named-item update pages…")
+                try:
+                    pages = discover_update_pages(store, refresh=refresh)
+                except UpdatePageError as exc:
+                    logger.error(f"Page discovery failed: {exc}")
+                    return 1
+
             syncer = DDOSyncer(
                 page_store=store,
                 writer=JsonItemWriter(EXTRACTED_DIR),
@@ -333,7 +343,7 @@ def _cmd_sync(
                 syncer.register_update_page(name)
 
             logger.info("Starting sync cycle…")
-            status = _run_sync(syncer, limit)
+            status = syncer.sync_all(limit=limit)
             _print_summary(status, queue_db)
 
     except KeyboardInterrupt:
@@ -350,25 +360,6 @@ def _cmd_sync(
     return 0 if status.queue_stats.failed == 0 else 2
 
 
-def _run_sync(syncer: DDOSyncer, limit: Optional[int]) -> SyncStatus:
-    reset = syncer._queue_repo.reset_failed_to_pending(syncer._max_retries)
-    if reset:
-        logger.info(f"Reset {reset} previously failed item(s) to pending.")
-
-    for page_status in syncer._queue_repo.list_update_pages():
-        syncer._refresh_wiki_timestamp(page_status.page_name)
-        updated = syncer._queue_repo.get_update_page_status(page_status.page_name)
-        if updated and updated.needs_resync:
-            logger.info(f"Re-syncing update page: {page_status.page_name!r}")
-            try:
-                syncer.sync_update_page(page_status.page_name)
-            except UpdatePageError as exc:
-                logger.error(f"Could not sync {page_status.page_name!r}: {exc}")
-
-    syncer.process_queue(limit=limit)
-    return syncer.get_status()
-
-
 def _print_summary(status: SyncStatus, queue_db: Path) -> None:
     q = status.queue_stats
     logger.info("─" * 56)
@@ -378,13 +369,11 @@ def _print_summary(status: SyncStatus, queue_db: Path) -> None:
     logger.info(f"  Failed    : {q.failed}")
     logger.info(f"  Total     : {q.total}")
 
-    stale = [p for p in status.update_pages.values() if p.needs_resync]
-    if stale:
-        logger.warning(f"  {len(stale)} update page(s) still stale:")
-        for p in stale:
+    unread = [p for p in status.update_pages.values() if p.last_synced_at is None]
+    if unread:
+        logger.warning(f"  {len(unread)} update page(s) could not be read:")
+        for p in unread:
             logger.warning(f"    {p.page_name}")
-    else:
-        logger.info("  All update pages are up to date.")
 
     logger.info(f"  Queue DB : {queue_db}")
     logger.info(f"  Items    : {EXTRACTED_DIR}")
@@ -477,7 +466,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     if args.status:
         return _cmd_status(queue_db)
     if args.discover:
-        return _cmd_discover()
+        return _cmd_discover(args.scraper_config, args.refresh)
     if args.reset_failed:
         return _cmd_reset_failed(queue_db)
     return _cmd_sync(

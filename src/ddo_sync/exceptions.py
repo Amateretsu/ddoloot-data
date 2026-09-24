@@ -2,8 +2,7 @@
 
 Exception hierarchy:
     DDOSyncError (base)
-    ├── UpdatePageError   — failed to fetch or parse an update page
-    ├── WikiApiError      — MediaWiki API call failed or returned unexpected JSON
+    ├── UpdatePageError   — failed to read the named-items index or an update page
     └── QueueDbError      — SQLite error in the queue database
         └── QueueSchemaError — schema initialization failed
 """
@@ -18,7 +17,7 @@ class DDOSyncError(Exception):
 
 
 class UpdatePageError(DDOSyncError):
-    """Raised when an update page cannot be fetched or parsed.
+    """Raised when the named-items index or an update page cannot be read or parsed.
 
     Attributes:
         page_url: The URL of the update page that failed.
@@ -30,21 +29,6 @@ class UpdatePageError(DDOSyncError):
     def __init__(self, message: str, page_url: Optional[str] = None) -> None:
         super().__init__(message)
         self.page_url = page_url
-
-
-class WikiApiError(DDOSyncError):
-    """Raised when the MediaWiki API returns an error or unexpected structure.
-
-    Attributes:
-        url: The API URL that was called.
-
-    Example:
-        >>> raise WikiApiError("Missing 'query' key", url="https://ddowiki.com/api.php")
-    """
-
-    def __init__(self, message: str, url: Optional[str] = None) -> None:
-        super().__init__(message)
-        self.url = url
 
 
 class QueueDbError(DDOSyncError):

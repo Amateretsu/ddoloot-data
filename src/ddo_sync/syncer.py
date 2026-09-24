@@ -1,9 +1,10 @@
 """DDOSyncer — orchestrates the full DDO item sync pipeline.
 
-Wires together the Page Store (behind
-:class:`~ddo_sync.protocols.PageStoreProtocol`), WikiApiClient, UpdatePageParser,
-QueueRepository, the Scraped Item extractor (called in-process through ``extract()``)
-and a :class:`~ddo_sync.protocols.ScrapedItemWriterProtocol` adapter into one sync cycle.
+Wires the Page Store (behind :class:`~ddo_sync.protocols.PageStoreProtocol`), the
+discovery module (update page -> item links), the queue module
+(:class:`~ddo_sync.queue_db.QueueRepository`), the Scraped Item extractor (called
+in-process through ``extract()``) and a
+:class:`~ddo_sync.protocols.ScrapedItemWriterProtocol` adapter into one sync cycle.
 
 Every page read goes through the Page Store, so a page already held costs no request;
 ``refresh=True`` refetches every page the run touches. When the Page Store says the run
@@ -28,42 +29,28 @@ from typing import List, Optional, Tuple
 
 from loguru import logger
 
+from ddo_sync.discovery import read_update_page, update_page_url
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
-from ddo_sync.protocols import (
-    PageStoreProtocol,
-    QueueRepositoryProtocol,
-    ScrapedItemWriterProtocol,
-    UpdatePageParserProtocol,
-    WikiApiClientProtocol,
-)
-from ddo_sync.update_page_parser import UpdatePageParser
-from ddo_sync.wiki_api import WikiApiClient
+from ddo_sync.protocols import PageStoreProtocol, ScrapedItemWriterProtocol
+from ddo_sync.queue_db import QueueRepository
 from item_extractor import Config, extract, load_config
 from page_store import RunStoppedError
-
-_BASE_URL = "https://ddowiki.com"
-_PAGE_PREFIX = f"{_BASE_URL}/page/"
 
 
 class DDOSyncer:
     """Orchestrates the full DDO item sync pipeline.
 
     All dependencies are injected so callers control lifecycle (context
-    managers, session reuse, in-memory testing).  ``api_client`` and
-    ``parser`` default to the standard implementations when omitted.
+    managers, in-memory testing).
 
     Args:
         page_store:  Object satisfying :class:`~ddo_sync.protocols.PageStoreProtocol`.
         writer:      Object satisfying
                      :class:`~ddo_sync.protocols.ScrapedItemWriterProtocol`.
-        queue_repo:  Object satisfying :class:`~ddo_sync.protocols.QueueRepositoryProtocol`.
+        queue_repo:  The crawl queue.
         max_retries: Items that have failed this many times are not reset to
                      pending on the next cycle (default: 3).
-        api_client:  Optional :class:`~ddo_sync.protocols.WikiApiClientProtocol`.
-                     Defaults to :class:`~ddo_sync.wiki_api.WikiApiClient`.
-        parser:      Optional :class:`~ddo_sync.protocols.UpdatePageParserProtocol`.
-                     Defaults to :class:`~ddo_sync.update_page_parser.UpdatePageParser`.
         extractor_config: Extractor rules; defaults to ``load_config()``
                      (``catalog/extractor/``).
         refresh:     Refetch every page this syncer reads instead of using the copy
@@ -79,10 +66,8 @@ class DDOSyncer:
         self,
         page_store: PageStoreProtocol,
         writer: ScrapedItemWriterProtocol,
-        queue_repo: QueueRepositoryProtocol,
+        queue_repo: QueueRepository,
         max_retries: int = 3,
-        api_client: Optional[WikiApiClientProtocol] = None,
-        parser: Optional[UpdatePageParserProtocol] = None,
         extractor_config: Optional[Config] = None,
         refresh: bool = False,
     ) -> None:
@@ -92,10 +77,6 @@ class DDOSyncer:
         self._queue_repo = queue_repo
         self._extractor_config = extractor_config or load_config()
         self._max_retries = max_retries
-        self._api_client: WikiApiClientProtocol = api_client or WikiApiClient()
-        self._parser: UpdatePageParserProtocol = parser or UpdatePageParser(
-            base_url=_BASE_URL
-        )
 
     # ── Registration ─────────────────────────────────────────────────────────
 
@@ -114,97 +95,81 @@ class DDOSyncer:
             >>> syncer.register_update_page("Update_6_named_items")
         """
         normalized = page_name.replace(" ", "_")
-        url = self._build_page_url(normalized)
-        self._queue_repo.register_update_page(normalized, url)
+        self._queue_repo.register_update_page(normalized, update_page_url(normalized))
         logger.info(f"Registered update page: {normalized!r}")
 
     # ── Sync orchestration ───────────────────────────────────────────────────
 
-    def sync_all(self) -> SyncStatus:
+    def sync_all(self, limit: Optional[int] = None) -> SyncStatus:
         """Run a full sync cycle for all registered update pages.
 
         Steps:
           1. Reset failed items below ``max_retries`` back to pending.
-          2. For each registered update page:
-             a. Query MediaWiki API for the page's last-modified timestamp.
-             b. Store ``wiki_modified_at`` in the queue database.
-             c. If ``needs_resync`` is True: fetch HTML, parse links, enqueue.
-          3. Process the full queue via :meth:`process_queue`.
+          2. Read every registered update page (:meth:`sync_update_page`) and queue any
+             item link not queued yet. A held page costs no request, so this is cheap; a
+             page that cannot be read is logged and skipped.
+          3. Process up to *limit* pending items via :meth:`process_queue`.
           4. Return :meth:`get_status`.
 
         Returns:
             :class:`SyncStatus` snapshot after all processing completes.
 
-        Example:
-            >>> status = syncer.sync_all()
-            >>> status.queue_stats.complete
-            47
+        Raises:
+            page_store.RunStoppedError: The Page Store says stop the run.
         """
         reset_count = self._queue_repo.reset_failed_to_pending(self._max_retries)
         if reset_count:
             logger.info(f"Reset {reset_count} failed items to pending")
 
         for page_status in self._queue_repo.list_update_pages():
-            page_name = page_status.page_name
-            self._refresh_wiki_timestamp(page_name)
+            try:
+                self.sync_update_page(page_status.page_name)
+            except UpdatePageError as exc:
+                logger.error(
+                    f"Failed to sync update page {page_status.page_name!r}: {exc}"
+                )
 
-            # Re-read status after updating the timestamp
-            updated = self._queue_repo.get_update_page_status(page_name)
-            if updated and updated.needs_resync:
-                logger.info(f"Update page {page_name!r} needs re-sync — fetching")
-                try:
-                    self.sync_update_page(page_name)
-                except UpdatePageError as exc:
-                    logger.error(f"Failed to sync update page {page_name!r}: {exc}")
-
-        self.process_queue()
+        self.process_queue(limit=limit)
         return self.get_status()
 
     def sync_update_page(self, page_name: str) -> List[ItemLink]:
-        """Force a sync of one update page regardless of the resync check.
+        """Read one update page, enqueue its new item links and record the revision read.
 
-        Fetches the page HTML, parses item links, enqueues new items, and
-        records ``last_synced_at``. Does **not** process the queue — call
-        :meth:`process_queue` separately.
+        Registers the page first if it is not tracked yet.
+
+        Does **not** process the queue — call :meth:`process_queue` separately.
 
         Args:
-            page_name: Natural key of the update page to sync.
+            page_name: Natural key of the update page to sync (spaces accepted).
 
         Returns:
-            List of :class:`ItemLink` objects discovered on the page.
+            List of :class:`ItemLink` objects found on the page.
 
         Raises:
-            UpdatePageError: If the page cannot be fetched or parsed.
+            UpdatePageError: If the page cannot be fetched or its HTML is empty.
             page_store.RunStoppedError: The Page Store says stop the run.
-
-        Example:
-            >>> links = syncer.sync_update_page("Update_5_named_items")
-            >>> len(links)
-            12
         """
         normalized = page_name.replace(" ", "_")
-        page_url = self._build_page_url(normalized)
+        self._queue_repo.register_update_page(normalized, update_page_url(normalized))
+        previous = self._queue_repo.get_update_page_status(normalized)
+        page = read_update_page(self._page_store, normalized, refresh=self._refresh)
+        inserted = self._queue_repo.enqueue_items(page.links)
+        self._queue_repo.mark_page_synced(normalized, _utcnow(), page.revision_id)
 
-        logger.info(f"Syncing update page: {normalized!r}")
-
-        try:
-            html = self._page_store.get(page_url, refresh=self._refresh).html
-        except RunStoppedError:
-            raise
-        except Exception as exc:
-            raise UpdatePageError(
-                f"Failed to fetch update page {normalized!r}: {exc}",
-                page_url=page_url,
-            ) from exc
-
-        links = self._parser.parse(html, normalized)
-        inserted = self._queue_repo.enqueue_items(links)
-        self._queue_repo.mark_page_synced(normalized, _utcnow())
-
+        if (
+            previous is not None
+            and previous.revision_id is not None
+            and previous.revision_id != page.revision_id
+        ):
+            logger.info(
+                f"{normalized!r} changed: revision {previous.revision_id} -> "
+                f"{page.revision_id}"
+            )
         logger.info(
-            f"Synced {normalized!r}: {len(links)} items found, {inserted} newly queued"
+            f"Synced {normalized!r}: {len(page.links)} items found, "
+            f"{inserted} newly queued"
         )
-        return links
+        return page.links
 
     def process_queue(self, limit: Optional[int] = None) -> Tuple[int, int]:
         """Process pending items from the scrape queue.
@@ -213,7 +178,8 @@ class DDOSyncer:
           1. Read the item page through the Page Store.
           2. Mark as ``in_progress``.
           3. Extract a Scraped Item via ``item_extractor.extract``.
-          4. Hand item and report to the writer.
+          4. Hand item and report to the writer; the report carries the item's
+             ``update_page`` so the writer can file it by update.
           5. Mark as ``complete``.
 
         If any step raises, the item is marked as ``failed`` and the error
@@ -254,6 +220,7 @@ class DDOSyncer:
                 item, report = extract(
                     page.html, queue_item.wiki_url, self._extractor_config
                 )
+                report = {"update_page": queue_item.update_page, **report}
                 self._writer.write(item, report)
             except Exception as exc:
                 self._record_failure(queue_item.item_name, queue_item.id, exc)
@@ -300,21 +267,6 @@ class DDOSyncer:
         error_msg = f"{type(exc).__name__}: {exc}"
         self._queue_repo.mark_failed(item_id, _utcnow(), error_msg)
         logger.warning(f"Failed: {item_name!r} — {error_msg}")
-
-    def _build_page_url(self, page_name: str) -> str:
-        return f"{_PAGE_PREFIX}{page_name}"
-
-    def _refresh_wiki_timestamp(self, page_name: str) -> None:
-        """Query the MediaWiki API and store the result in the queue database."""
-        try:
-            modified_at = self._api_client.get_last_modified(page_name)
-            self._queue_repo.set_wiki_modified_at(page_name, modified_at)
-        except Exception as exc:
-            # Non-fatal: treat the page as potentially stale on API failure.
-            logger.warning(
-                f"Could not fetch wiki_modified_at for {page_name!r}: {exc}. "
-                "Page will be treated as needing re-sync."
-            )
 
 
 def _utcnow() -> datetime:

@@ -1,13 +1,19 @@
-"""SQLite-backed scrape queue and update page sync state.
+"""Queue module: the SQLite crawl ledger for update pages and the Named Items they list.
 
-Connection lifecycle:
-lazy open, context manager, explicit transactions, row_factory = sqlite3.Row.
+One repository class, :class:`QueueRepository`, owns both tables of one SQLite file:
+
+- ``update_pages``: every tracked ``Update_<N>_named_items`` page, when its item links were
+  last read and the revision id of the copy they were read from;
+- ``scrape_queue``: one row per item link found on an update page, with its status
+  (``pending -> in_progress -> complete | failed | skipped``).
+
+The database is local and disposable: there are no migrations. A file written by an older
+schema is refused with :class:`~ddo_sync.exceptions.QueueSchemaError`; delete it and rerun.
 
 Example:
-    >>> from ddo_sync.queue_db import QueueRepository
-    >>> with QueueRepository(":memory:") as qr:
+    >>> with QueueRepository("data/queue.db") as qr:
     ...     qr.register_update_page("Update_5_named_items",
-                "https://ddowiki.com/page/Update_5_named_items")
+    ...                             "https://ddowiki.com/page/Update_5_named_items")
     ...     qr.enqueue_items(links)
     ...     items = qr.get_pending_items(limit=10)
 """
@@ -22,9 +28,37 @@ from loguru import logger
 
 from ddo_sync.exceptions import QueueDbError, QueueSchemaError
 from ddo_sync.models import ItemLink, QueueItem, QueueStats, UpdatePageStatus
-from ddo_sync.schema import QUEUE_SCHEMA_SQL
 
-_VALID_STATUSES = frozenset({"pending", "in_progress", "complete", "failed", "skipped"})
+# Stored in PRAGMA user_version. Version 1 had update_pages.wiki_modified_at (from the
+# MediaWiki API); version 2 records the revision id read from the page HTML instead.
+QUEUE_SCHEMA_VERSION: int = 2
+
+_SCHEMA_SQL: str = """
+CREATE TABLE IF NOT EXISTS update_pages (
+    page_name      TEXT PRIMARY KEY,  -- e.g. "Update_5_named_items"
+    page_url       TEXT NOT NULL,     -- e.g. "https://ddowiki.com/page/Update_5_named_items"
+    last_synced_at TEXT,              -- ISO 8601 UTC when item links were last read, or NULL
+    revision_id    INTEGER            -- wgCurRevisionId of the copy read, or NULL
+);
+
+-- UNIQUE (item_name, update_page): re-reading an update page never re-queues an item.
+CREATE TABLE IF NOT EXISTS scrape_queue (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_name      TEXT    NOT NULL,
+    wiki_url       TEXT    NOT NULL,
+    update_page    TEXT    NOT NULL REFERENCES update_pages(page_name) ON DELETE CASCADE,
+    status         TEXT    NOT NULL DEFAULT 'pending',
+    queued_at      TEXT    NOT NULL,
+    started_at     TEXT,
+    completed_at   TEXT,
+    error_message  TEXT,
+    retry_count    INTEGER NOT NULL DEFAULT 0,
+    UNIQUE (item_name, update_page)
+);
+
+CREATE INDEX IF NOT EXISTS idx_sq_status      ON scrape_queue(status);
+CREATE INDEX IF NOT EXISTS idx_sq_update_page ON scrape_queue(update_page);
+"""
 
 
 class QueueRepository:
@@ -62,12 +96,14 @@ class QueueRepository:
             self._conn = sqlite3.connect(self._db_path)
             self._conn.row_factory = sqlite3.Row
             self._conn.execute("PRAGMA foreign_keys = ON")
-            self._conn.executescript(QUEUE_SCHEMA_SQL)
-            self._conn.commit()
+            _apply_schema(self._conn, self._db_path)
             logger.debug(f"queue_db opened: {self._db_path!r}")
         except sqlite3.Error as exc:
-            self._conn = None
+            self._close_quietly()
             raise QueueSchemaError(f"Failed to initialize queue schema: {exc}") from exc
+        except QueueSchemaError:
+            self._close_quietly()
+            raise
 
     def close(self) -> None:
         """Commit and close the connection. Idempotent."""
@@ -106,43 +142,26 @@ class QueueRepository:
                 f"Failed to register update page {page_name!r}: {exc}"
             ) from exc
 
-    def mark_page_synced(self, page_name: str, synced_at: datetime) -> None:
-        """Record when item links were last successfully parsed from the page.
+    def mark_page_synced(
+        self, page_name: str, synced_at: datetime, revision_id: Optional[int] = None
+    ) -> None:
+        """Record that the page's item links were read, and from which revision.
 
         Args:
-            page_name: Natural key.
-            synced_at: UTC datetime to record.
+            page_name:   Natural key.
+            synced_at:   UTC datetime to record.
+            revision_id: ``wgCurRevisionId`` of the copy that was read, or ``None``.
         """
         try:
             with self._get_conn() as conn:
                 conn.execute(
-                    "UPDATE update_pages SET last_synced_at = ? WHERE page_name = ?",
-                    (_iso(synced_at), page_name),
+                    "UPDATE update_pages SET last_synced_at = ?, revision_id = ? "
+                    "WHERE page_name = ?",
+                    (_iso(synced_at), revision_id, page_name),
                 )
         except sqlite3.Error as exc:
             raise QueueDbError(
                 f"Failed to mark page synced {page_name!r}: {exc}"
-            ) from exc
-
-    def set_wiki_modified_at(
-        self, page_name: str, modified_at: Optional[datetime]
-    ) -> None:
-        """Store the ``wiki_modified_at`` timestamp fetched from the MediaWiki API.
-
-        Args:
-            page_name:   Natural key.
-            modified_at: UTC datetime from the API, or ``None`` if the page
-                         was not found on the wiki.
-        """
-        try:
-            with self._get_conn() as conn:
-                conn.execute(
-                    "UPDATE update_pages SET wiki_modified_at = ? WHERE page_name = ?",
-                    (_iso(modified_at) if modified_at else None, page_name),
-                )
-        except sqlite3.Error as exc:
-            raise QueueDbError(
-                f"Failed to set wiki_modified_at for {page_name!r}: {exc}"
             ) from exc
 
     def get_update_page_status(self, page_name: str) -> Optional[UpdatePageStatus]:
@@ -152,7 +171,7 @@ class QueueRepository:
             page_name: Natural key.
 
         Returns:
-            :class:`UpdatePageStatus` with ``needs_resync`` computed, or ``None``.
+            :class:`UpdatePageStatus`, or ``None``.
         """
         try:
             row = (
@@ -361,6 +380,11 @@ class QueueRepository:
 
     # ── Internal helpers ─────────────────────────────────────────────────────
 
+    def _close_quietly(self) -> None:
+        if self._conn is not None:
+            self._conn.close()
+        self._conn = None
+
     def _get_conn(self) -> sqlite3.Connection:
         if self._conn is None:
             self.open()
@@ -394,6 +418,21 @@ class QueueRepository:
 # ── Module-level helpers ─────────────────────────────────────────────────────
 
 
+def _apply_schema(conn: sqlite3.Connection, db_path: str) -> None:
+    version = conn.execute("PRAGMA user_version").fetchone()[0]
+    has_tables = conn.execute(
+        "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'update_pages'"
+    ).fetchone()[0]
+    if has_tables and version != QUEUE_SCHEMA_VERSION:
+        raise QueueSchemaError(
+            f"{db_path} uses queue schema version {version}, not "
+            f"{QUEUE_SCHEMA_VERSION}. The queue is disposable: delete the file and rerun."
+        )
+    conn.executescript(_SCHEMA_SQL)
+    conn.execute(f"PRAGMA user_version = {QUEUE_SCHEMA_VERSION}")
+    conn.commit()
+
+
 def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -413,7 +452,7 @@ def _row_to_update_page_status(row: sqlite3.Row) -> UpdatePageStatus:
         page_name=row["page_name"],
         page_url=row["page_url"],
         last_synced_at=_parse_iso(row["last_synced_at"]),
-        wiki_modified_at=_parse_iso(row["wiki_modified_at"]),
+        revision_id=row["revision_id"],
     )
 
 

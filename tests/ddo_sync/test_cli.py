@@ -1,16 +1,17 @@
 """The ``ddoloot`` console script, through ``main(argv)``.
 
 The wiki is never contacted: the Page Store is replaced with an in-memory fake (or a real
-Page Store over a canned transport), the MediaWiki API client with a fake, and every path
-the CLI writes to points into a temporary directory.
+Page Store over a canned transport) and every path the CLI writes to points into a
+temporary directory.
 """
 
 from __future__ import annotations
 
 import json
+import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -19,7 +20,14 @@ from ddo_sync.models import ItemLink
 from ddo_sync.queue_db import QueueRepository
 from page_store import ChallengeError, PageStore
 from tests.canned import CHALLENGE, CannedTransport, ok
-from tests.ddo_sync.conftest import PAGES, InMemoryPageStore, serve_wiki
+from tests.ddo_sync.conftest import (
+    INDEX_URL,
+    ITEM_PAGE_HTML,
+    NAMED_ITEMS_INDEX_HTML,
+    PAGES,
+    InMemoryPageStore,
+    serve_wiki,
+)
 
 PAGE = "Update_5_named_items"
 BREAKER_URL = "https://ddowiki.com/page/Item:Breaker_of_Bodies"
@@ -62,15 +70,6 @@ def paths(tmp_path, monkeypatch):
         "out": cache / "extracted",
         "config": config,
     }
-
-
-@pytest.fixture(autouse=True)
-def no_wiki_api():
-    """The syncer's default MediaWiki client, replaced so no request is made."""
-    client = MagicMock()
-    client.get_last_modified.return_value = None
-    with patch("ddo_sync.syncer.WikiApiClient", return_value=client):
-        yield client
 
 
 def run_sync(paths, *args: str, store: FakePageStore | None = None) -> int:
@@ -126,16 +125,29 @@ def test_sync_pages_writes_scraped_items(paths):
     assert run_sync(paths, "--page", "Update 5 named items", store=store) == 0
 
     assert store.requests[0] == f"https://ddowiki.com/page/{PAGE}"
+    assert INDEX_URL not in store.requests
     assert store.config.cache_dir == (paths["config"].parent / "cache/pages").resolve()
-    written = sorted(p.name for p in paths["out"].glob("*.json"))
+    assert sorted(p.name for p in paths["out"].iterdir()) == ["update-5"]
+    written = sorted(p.name for p in (paths["out"] / "update-5").glob("*.json"))
     assert written == [
         "Item_Ring_of_Fire.json",
         "Item_Shield_of_Light.json",
         "Item_Sword_of_Shadow.json",
     ]
-    item = json.loads((paths["out"] / "Item_Sword_of_Shadow.json").read_text())
+    item = json.loads(
+        (paths["out"] / "update-5" / "Item_Sword_of_Shadow.json").read_text()
+    )
     assert item["wiki"]["url"] == "https://ddowiki.com/page/Item:Sword_of_Shadow"
-    assert len((paths["out"] / "report.jsonl").read_text().splitlines()) == 3
+    report = (paths["out"] / "update-5" / "report.jsonl").read_text().splitlines()
+    assert len(report) == 3
+    assert {json.loads(line)["update_page"] for line in report} == {PAGE}
+
+    # A second run rewrites the report lines instead of appending duplicates.
+    assert run_sync(paths, "--page", PAGE, "--reset-failed", store=store) == 0
+    assert run_sync(paths, "--page", PAGE, "--refresh", store=store) == 0
+    assert (
+        len((paths["out"] / "update-5" / "report.jsonl").read_text().splitlines()) == 3
+    )
 
 
 def test_sync_rate_limit_flag_is_gone(paths):
@@ -189,7 +201,7 @@ def test_sync_uses_the_queue_db_flag(paths, tmp_path):
 
 def test_sync_limit_caps_processed_items(paths):
     assert run_sync(paths, "--page", PAGE, "--limit", "1") == 0
-    assert len(list(paths["out"].glob("*.json"))) == 1
+    assert len(list(paths["out"].glob("*/*.json"))) == 1
 
 
 def test_sync_with_failed_items_exits_two(paths):
@@ -205,23 +217,41 @@ def test_sync_with_failed_items_exits_two(paths):
         assert qr.get_queue_stats().failed == 3
 
 
-def test_sync_discovers_pages_when_none_given(paths):
-    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
-        discoverer.return_value.discover.return_value = [PAGE]
-        assert run_sync(paths) == 0
-    assert len(list(paths["out"].glob("*.json"))) == 3
+def test_sync_discovers_update_pages_from_the_index_page(paths):
+    store = FakePageStore()
+    assert run_sync(paths, store=store) == 0
+
+    assert store.requests[0] == INDEX_URL
+    update_urls = {u for u in store.requests if "_named_items" in u}
+    assert update_urls == {
+        "https://ddowiki.com/page/Update_5_named_items",
+        "https://ddowiki.com/page/Update_8_named_items",
+        "https://ddowiki.com/page/Update_10_named_items",
+    }
+    assert not any("api.php" in u for u in store.requests)
+    # Every update page lists the same three items; each is filed under its update.
+    assert sorted(p.name for p in paths["out"].iterdir()) == [
+        "update-10",
+        "update-5",
+        "update-8",
+    ]
+    assert len(list(paths["out"].glob("*/*.json"))) == 9
 
 
 def test_sync_discovery_failure_exits_one(paths):
-    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
-        discoverer.return_value.discover.side_effect = RuntimeError("down")
-        assert run_sync(paths) == 1
+    def serve(url: str) -> str:
+        if url == INDEX_URL:
+            return ITEM_PAGE_HTML  # a page that links to no update page
+        return serve_wiki(url)
+
+    assert run_sync(paths, store=FakePageStore(serve)) == 1
 
 
-def test_sync_with_nothing_discovered_exits_zero(paths):
-    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
-        discoverer.return_value.discover.return_value = []
-        assert run_sync(paths) == 0
+def test_sync_discovery_challenge_exits_one(paths):
+    def serve(url: str) -> str:
+        raise ChallengeError("WAF challenge", url=url)
+
+    assert run_sync(paths, store=FakePageStore(serve)) == 1
 
 
 def test_sync_interrupted_exits_one(paths):
@@ -260,12 +290,54 @@ def test_sync_reset_failed_without_queue_db():
     assert main(["sync", "--reset-failed"]) == 0
 
 
-def test_sync_discover_lists_pages():
-    with patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer:
-        discoverer.return_value.discover.return_value = [PAGE]
-        assert main(["sync", "--discover"]) == 0
-        discoverer.return_value.discover.side_effect = RuntimeError("down")
-        assert main(["sync", "--discover"]) == 1
+def test_sync_discover_lists_pages_reading_only_the_index(paths):
+    store = FakePageStore()
+    args = ["sync", "--discover", "--scraper-config", str(paths["config"])]
+    with patch("ddo_sync.cli.PageStore", store):
+        assert main(args) == 0
+        assert main(args) == 0
+        assert main([*args, "--refresh"]) == 0
+    assert store.requests == [INDEX_URL, INDEX_URL]
+    assert not paths["queue_db"].exists()
+
+
+def test_sync_discover_failure_exits_one(paths):
+    args = ["sync", "--discover", "--scraper-config", str(paths["config"])]
+    with patch("ddo_sync.cli.PageStore", FakePageStore(lambda _url: ITEM_PAGE_HTML)):
+        assert main(args) == 1
+    with patch(
+        "ddo_sync.cli.PageStore",
+        FakePageStore(lambda url: (_ for _ in ()).throw(ChallengeError("c", url=url))),
+    ):
+        assert main(args) == 1
+
+
+def test_sync_through_a_real_page_store_over_canned_responses(paths):
+    transport = CannedTransport(default=lambda url: ok(serve_wiki(url)))
+    transport.reply("https://ddowiki.com/robots.txt", ok("User-agent: *\nAllow: /\n"))
+    transport.reply(INDEX_URL, ok(NAMED_ITEMS_INDEX_HTML))
+    with patch("ddo_sync.cli.PageStore", canned_store(transport)):
+        code = main(
+            [
+                "sync",
+                "--scraper-config",
+                str(paths["config"]),
+                "--limit",
+                "2",
+            ]
+        )
+    assert code == 0
+    assert all("/page/" in u or u.endswith("robots.txt") for u in transport.requests)
+    assert len(list(paths["out"].glob("update-*/*.json"))) == 2
+
+
+def test_sync_status_refuses_a_queue_db_from_an_older_schema(paths):
+    paths["queue_db"].parent.mkdir(parents=True)
+    conn = sqlite3.connect(paths["queue_db"])
+    conn.execute("CREATE TABLE update_pages (page_name TEXT PRIMARY KEY)")
+    conn.commit()
+    conn.close()
+    assert main(["sync", "--status"]) == 1
 
 
 # ── sample ────────────────────────────────────────────────────────────────────
@@ -371,10 +443,7 @@ def test_extract_item_page_without_infobox_exits_one(tmp_path):
 def test_extract_item_makes_no_network_request(paths):
     html = PAGES / "Item_Epic_Whirling_Words.html"
     transport = CannedTransport()
-    with (
-        patch("ddo_sync.cli.PageStore", canned_store(transport)),
-        patch("ddo_sync.cli.UpdatePageDiscoverer") as discoverer,
-    ):
+    with patch("ddo_sync.cli.PageStore", canned_store(transport)):
         assert main(["extract-item", "Epic Whirling Words", "--html", str(html)]) == 0
         main(
             [
@@ -385,4 +454,3 @@ def test_extract_item_makes_no_network_request(paths):
             ]
         )
     assert transport.requests == []
-    discoverer.assert_not_called()
