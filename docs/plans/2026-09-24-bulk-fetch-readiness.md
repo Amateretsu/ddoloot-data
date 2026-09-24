@@ -141,6 +141,73 @@ with ADR 0006.
 - **Decision needed:** the maintainer decides between A and D (or checks the 5 items in
   game). C needs a ddoloot-app change and an ADR-level decision about the Binding enum.
 
+## Proposal: alignment DR and Exceptional Fortification
+
+- **Gap:** 7 unclassified Effects, stored by the `plain_effect` fallback with their whole
+  text as the name and `value`, `value_kind` and `bonus_type` null.
+  - Alignment DR (6): `DR 5/Evil` (Templar's Bastion, Templar's Docent), `DR 15/Evil`
+    (their Epic versions), `DR 5/Good` (Infested Armor) and `DR 15/Good` (Epic Infested
+    Armor). The entry is a `DR` link to `/page/Damage_Reduction` followed by ` 5/Evil`.
+    Its tooltip reads `Damage Reduction 5/Evil : Reduces physical damage by 5, except from
+    Evil attacks.`
+  - `Exceptional Fortification (+10%)` (1, Sustaining Symbiont), linked to
+    `/page/Fortification`. Its tooltip gives a `+10% chance` and ends: "This ability is
+    considered an Insight bonus when determining stacking with other sources of
+    fortification".
+- **Why this is not a parse fix like step 4a's clicky:** the clicky rule removed a suffix
+  and kept the spell's name as written, so the gate still saw a name from the source.
+  Neither family here can be parsed without choosing something the source does not state:
+  - **DR:** the value sits inside the name, between `DR` and the bypass. Every parse
+    builds a name the page never shows (`DR/Evil`, `Damage Reduction/Evil`, or `DR` with
+    the bypass in a new field). Whether the bypass is part of the Effect's identity
+    (`DR/Evil` and `DR/Good` as two Effects) or a qualifier of one `Damage Reduction`
+    Effect is an Effect identity decision. ADR 0008 reserves those for the review gate,
+    and keys are immutable once shipped (ADR 0005). DR also has no Bonus Type, and the
+    Effect has no field for a qualifier. `shield_stats.damage_reduction` holds a shield's
+    own DR number and does not fit either.
+  - **Exceptional Fortification:** the rule vocabulary cannot read `(+10%)` today, so a new
+    parenthesised-value rule is needed. That part alone would be a parse fix. The Bonus
+    Type is not. The existing rules find no Bonus Type here: there is no `*_bonus` link,
+    and the tooltip has no `+N% <Type> bonus`. So the parse would give
+    `Exceptional Fortification`, 10, `percent`, bonus type null. `exceptional` is already
+    extracted for 6 Effects (`Exceptional Wisdom +1` and others), but each of those
+    tooltips says `+N Exceptional bonus`. This one says the bonus stacks as **Insight**.
+    Choosing `exceptional`, `insight` or null, and whether the Effect is
+    `Exceptional Fortification` or `Fortification` with a Bonus Type (the other 4 held
+    Fortification Effects are `Fortification` with `enhancement`), are Bonus Type and
+    Effect identity decisions for the gate. `catalog/effects/` and
+    `catalog/bonus-types.yaml` are still empty, so no registry entry answers this yet.
+- **Options, DR:**
+  - A) A `kind: effect` rule, `^DR\s+(?P<value>\d+)\s*/\s*(?P<bypass>.+)$`, that gives the
+    name `DR/<bypass>` (for example `DR/Evil`), `value` 5, `value_kind: flat` and bonus type
+    null. This needs a small rule feature to build a name from captures. The gate then
+    decides `DR/Evil` and `DR/Good` once each, not once per value.
+  - B) Name `Damage Reduction`, value 5, and a new optional Effect field `bypass`
+    (`str | None`, default null). This is backward compatible for the Scraped Item. The
+    bundle's app-owned `item_effect` has no such field, so the bypass would be lost at
+    compile time unless ddoloot-app changes.
+  - C) Keep the status quo: the raw names reach the gate as they are (`DR 5/Evil` and
+    `DR 15/Evil` are separate raw strings), and the maintainer merges or ignores them.
+    Each value is then its own alias, and the value is not machine-readable.
+- **Options, Exceptional Fortification:**
+  - D) A parenthesised-value rule, `^(?P<name>.+?)\s*\(\+(?P<value>\d+)(?P<pct>%)?\)$`,
+    giving `Exceptional Fortification`, 10, `percent`. The bonus type stays null for the
+    gate to decide, or a hand-written override in `catalog/rules/overrides` sets it.
+  - E) The same rule, with the bonus type fixed to `insight` from the tooltip's stacking
+    sentence. That is one page's wording and would need a new tooltip pattern. Not
+    recommended for 1 item.
+  - F) Keep the status quo, as in C.
+- **Recommendation:** A for DR, because the bypass is what tells the Effects apart in play
+  and the value becomes machine-readable without a schema change. D for Exceptional
+  Fortification, with the Bonus Type decided at the gate. Until the maintainer decides,
+  C and F stand: the 7 stay unclassified in `report.jsonl` and the gaps baseline.
+- **Decision needed:** the maintainer, as the ADR 0008 reviewer, decides:
+  - whether a DR bypass is part of the Effect's identity (A), a qualifier (B, which also
+    needs a ddoloot-app change to reach the bundle), or neither (C);
+  - whether `Exceptional Fortification` is its own Effect or `Fortification` with a Bonus
+    Type, and which Bonus Type (`exceptional` as named, or `insight` as the tooltip says
+    it stacks).
+
 ## Decisions made during execution
 
 ### Step 1: queue order
@@ -447,3 +514,36 @@ with ADR 0006.
   | After | 210 | 0 | 8 | 5 | 0 | 5 |
 
 - Tests after step 4d: 356 passed, 1 skipped.
+
+### Step 4e: alignment DR and Exceptional Fortification
+
+- **Outcome: proposed**, not fixed. See "Proposal: alignment DR and Exceptional
+  Fortification" above.
+- **What the docs say:** ADR 0008 gives the review gate, at catalog build, every new
+  Effect and Bonus Type, and ADR 0005 makes keys immutable once shipped. A scraper-side
+  parse that only removes a value from a name as written (step 4a) makes no gate decision.
+  `catalog/effects/` and `catalog/bonus-types.yaml` are still empty, so no registry entry
+  settles either family. CONTEXT.md's Effect has an optional value and Bonus Type, and no
+  qualifier.
+- **Decision:**
+  - DR: the value sits inside the name (`DR 5/Evil`). Any parse must build a name the page
+    does not show and decide whether the bypass (`Evil`, `Good`) is part of the Effect's
+    identity. That is an Effect identity decision, so it is proposed.
+  - Exceptional Fortification: only the `(+10%)` form is new to the rules, but the Bonus
+    Type is ambiguous. The name says Exceptional, the tooltip says it stacks as Insight,
+    and the existing rules would find none. The other held Fortification Effects are
+    named `Fortification` with `enhancement`. Choosing the Bonus Type and the Effect name
+    is for the gate, so it is proposed too. `exceptional` is already extracted for 6
+    Effects whose tooltips say `Exceptional bonus`, so it is not a new Bonus Type. The
+    open question is which Bonus Type this Effect carries.
+  - All 7 stay unclassified, visible in `report.jsonl` and the gaps baseline.
+- **Files:** this plan only. No extractor, mapping, schema or writer change, so no
+  offline re-run and no baseline regeneration. `catalog-src` diff: none.
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 0 | 8 | 5 | 0 | 5 |
+  | After | 210 | 0 | 8 | 5 | 0 | 5 |
+
+- Tests after step 4e: 356 passed, 1 skipped (unchanged).
