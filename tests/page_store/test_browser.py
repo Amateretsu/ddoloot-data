@@ -245,3 +245,61 @@ def test_routing_logs_passed_hosts_and_the_blocked_extra_document(log_lines):
         *[f"GET {BOW} (browser)"] * MAX_WIKI_REQUESTS,
         f"blocked document {BOW} (browser)",
     ]
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://www.google-analytics.com/g/collect?v=2&tid=G-X",
+        "https://www.google.com/g/collect?v=2",
+        "https://www.googletagmanager.com/gtag/js?id=G-X",
+        "https://i.creativecommons.org/l/by-sa/3.0/88x31.png",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+        "https://stats.g.doubleclick.net/j/collect",
+        "https://fonts.googleapis.com/css?family=Roboto",
+        "https://token.awswaf.com.evil.example/challenge.js",  # suffix, not substring
+        "https://awswaf.com/x",
+    ],
+)
+def test_third_party_hosts_are_blocked_and_logged_without_query(log_lines, url):
+    route = _Route(url, "script")
+
+    BrowserTransport("ddoloot-test", timeout_seconds=1)._route(route)
+
+    assert route.outcome == "aborted"
+    (logged,) = log_lines
+    assert logged == f"blocked script {url.split('?')[0]} (browser)"
+    assert not logged.startswith("GET ")  # guarded_sync counts "GET " lines as requests
+
+
+def test_the_waf_challenge_host_passes(log_lines):
+    transport = BrowserTransport("ddoloot-test", timeout_seconds=1)
+    routes = [
+        _Route("https://abc.us-east-1.token.awswaf.com/abc/challenge.js", "script"),
+        _Route("https://abc.us-east-1.token.awswaf.com/abc/inputs?client=b", "fetch"),
+    ]
+
+    for route in routes:
+        transport._route(route)
+
+    assert [r.outcome for r in routes] == ["continued", "continued"]
+    assert log_lines == [
+        "pass script https://abc.us-east-1.token.awswaf.com/abc/challenge.js (browser)",
+        "pass fetch https://abc.us-east-1.token.awswaf.com/abc/inputs (browser)",
+    ]
+
+
+def test_wiki_documents_and_subresources_are_unchanged(log_lines):
+    transport = BrowserTransport("ddoloot-test", timeout_seconds=1)
+    style = _Route("https://ddowiki.com/load.php?modules=site.styles", "stylesheet")
+    image = _Route("https://images.ddowiki.com/a.png", "image")
+    pages = [_Route(BOW, "document") for _ in range(MAX_WIKI_REQUESTS + 1)]
+
+    for route in [pages[0], style, image, *pages[1:]]:
+        transport._route(route)
+
+    assert [r.outcome for r in pages] == ["continued"] * MAX_WIKI_REQUESTS + ["aborted"]
+    assert style.outcome == image.outcome == "aborted"
+    assert [m for m in log_lines if m.startswith("GET ")] == [
+        f"GET {BOW} (browser)"
+    ] * MAX_WIKI_REQUESTS
