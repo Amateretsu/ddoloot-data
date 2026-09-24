@@ -42,7 +42,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Will Save",
@@ -51,7 +52,8 @@
       "bonus_type": "resistance",
       "tooltip": "Will Save +9 : This item gives a +9 Resistance bonus to your Will saves.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Accuracy",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "True Seeing",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Raven's Eye",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

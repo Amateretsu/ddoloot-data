@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Proof Against Poison +8 : This item grants its wearer immunity to natural poisons. This item also grants a +8 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 9 + their Fortitude save).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "False Life",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "False Life +36 : +36 Enhancement bonus to hit points.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Protection",
@@ -60,7 +62,8 @@
       "bonus_type": "deflection",
       "tooltip": "Protection +8 : Passive: +8 Deflection bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Insightful Assassinate",
@@ -69,7 +72,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Assassinate +5 : +5 Insight bonus to the DC of character's Assassinate attempts.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Vulkoor's Cunning",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +10 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

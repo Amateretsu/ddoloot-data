@@ -42,7 +42,8 @@
       "bonus_type": "resistance",
       "tooltip": "Resistance +11 : Passive: +11 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Perform",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Perform +21 : Passive: +21 Competence bonus to the Perform skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Insightful Resonance",
@@ -60,7 +62,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Resonance +74 : Passive: +74 Insight bonus to Sonic Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Evocation Focus",
@@ -69,7 +72,8 @@
       "bonus_type": "equipment",
       "tooltip": "Evocation Focus +9 : +9 Equipment bonus to the DC of Evocation spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Anthem",
@@ -78,7 +82,8 @@
       "bonus_type": null,
       "tooltip": "Anthem : When equipped by a character with Bard levels, this item begins to hum an inspiring tune. Your bard songs regenerate slowly over time.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

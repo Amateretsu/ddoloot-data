@@ -49,7 +49,8 @@
       "bonus_type": null,
       "tooltip": "Summon Monster IX Caster level: 20 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhancement Bonus",
@@ -58,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Intelligence",
@@ -67,7 +69,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Charisma",
@@ -76,7 +79,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Conjuration Focus",
@@ -85,7 +89,8 @@
       "bonus_type": "equipment",
       "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Spell Resistance",
@@ -94,7 +99,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Deadly Diabolist",
@@ -103,7 +109,8 @@
       "bonus_type": null,
       "tooltip": "Epic Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +8 to all Ability Scores.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

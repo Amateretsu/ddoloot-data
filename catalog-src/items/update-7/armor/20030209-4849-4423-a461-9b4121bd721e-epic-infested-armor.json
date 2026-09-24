@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fortification",
@@ -58,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Greater Disease Guard",
@@ -67,7 +69,8 @@
       "bonus_type": null,
       "tooltip": "Greater Disease Guard : This item carries the Maggot Plague disease, which deals 2d6 Constitution damage and may be contracted by enemies that hit you. A successful Fortitude Save (DC 28) will negate this effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Sheltering",
@@ -76,7 +79,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Sheltering +24 : +24 Enhancement bonus to Physical and Magical Resistance Ratings",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Demonic Shield",
@@ -85,7 +89,8 @@
       "bonus_type": "profane",
       "tooltip": "Demonic Shield : Each time you are hit in melee combat there is a chance that a shield of demonic energy will grant you a +30 Profane bonus to temporary hit points .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "DR 15/Good",
@@ -94,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Damage Reduction 15/Good : Reduces physical damage by 15, except from Good attacks.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Spell Resistance",
@@ -103,7 +109,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

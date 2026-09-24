@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Greater Regeneration",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Greater Regeneration : This item is imbued with an undeniable goodness that freely flows outward in a pleasant palpable current, constantly healing the wearer over time.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Anarchic Burst",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Anarchic Burst 4 : This weapon is a chaotic conduit, dealing 4d6 Chaos damage on a successful hit to Lawful enemies, and 10d6 Chaos damage on a critical hit to Lawful enemies. This effect makes the weapon chaotically aligned. Lawful characters wielding this weapon will suffer one negative level.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Icy Blast",
@@ -85,7 +88,8 @@
       "bonus_type": null,
       "tooltip": "Icy Blast 4 : This weapon is sheathed in icy cold, dealing 4d6 Cold damage on a successful hit, and an additional 4d6 Cold damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Impact",
@@ -94,7 +98,8 @@
       "bonus_type": null,
       "tooltip": "Impact : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

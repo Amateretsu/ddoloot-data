@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Heal",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Heal +13 : Passive: +13 Competence bonus to the Heal skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "True Seeing",
@@ -60,7 +62,8 @@
       "bonus_type": null,
       "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Reflex Save",
@@ -69,7 +72,8 @@
       "bonus_type": "resistance",
       "tooltip": "Reflex Save +6 : This item gives a +6 Resistance bonus to your Reflex saves.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Battle-Scarred",
@@ -78,7 +82,8 @@
       "bonus_type": null,
       "tooltip": "Battle-Scarred : This item has obviously seen use in many fights. It is chipped and scratched, but perhaps in the future there will be a way to restore it to its former glory.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Wrath of Sora Kell",
@@ -87,7 +92,8 @@
       "bonus_type": "artifact",
       "tooltip": "Wrath of Sora Kell : 3 Pieces Equipped: +20 Artifact bonus to Universal Spell Power +5 Artifact bonus to Physical Resistance Rating +3 Artifact bonus to Hit and Damage +1 Artifact bonus to Imbue Dice",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

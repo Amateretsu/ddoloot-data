@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Exploding Fire Shot",
@@ -49,7 +50,8 @@
       "bonus_type": null,
       "tooltip": null,
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Banishing Weapons",
@@ -58,7 +60,8 @@
       "bonus_type": null,
       "tooltip": "Banishing Weapons : While wearing this item, your melee and ranged weapons gain Vorpal Effect: In addition, on an attack roll of 20 which is confirmed as a critical hit this weapon will banish a creature from this plan of existence. Powerful creatures may resist the vorpal effect until sufficiently wounded.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Taint of Evil",
@@ -67,7 +70,8 @@
       "bonus_type": null,
       "tooltip": "Taint of Evil : Good aligned characters equipping this item suffer a temporary negative level until the item is removed.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Rune Arm Imbue : Fire",
@@ -76,7 +80,8 @@
       "bonus_type": null,
       "tooltip": "Rune Arm Imbue : Fire IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of Fire damage per hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Craftable Rune Arm",
@@ -85,7 +90,8 @@
       "bonus_type": null,
       "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

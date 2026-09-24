@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Physical Sheltering",
@@ -58,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cold Absorption",
@@ -67,7 +69,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Cold Absorption +27% : Passive: 27% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cold Resistance",
@@ -76,7 +79,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Freezing Ice Guard",
@@ -85,7 +89,8 @@
       "bonus_type": null,
       "tooltip": "Freezing Ice Guard : This item stores the pitiless immovable power of the ice deep within. When the wearer of this item is successfully attacked in melee, this power occasionally comes to the surface, attempting to freeze an enemy solid and encase them in ice.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

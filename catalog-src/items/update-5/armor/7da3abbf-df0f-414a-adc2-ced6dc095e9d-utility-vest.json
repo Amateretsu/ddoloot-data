@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Dexterity",
@@ -58,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Dexterity +3 : This item makes the wearer more nimble and dexterous, granting a +3 Enhancement bonus to Dexterity.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Disable Device",
@@ -67,7 +69,8 @@
       "bonus_type": "competence",
       "tooltip": "Disable Device +6 : Passive: +6 Competence bonus to the Disable Device skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Open Lock",
@@ -76,7 +79,8 @@
       "bonus_type": "competence",
       "tooltip": "Open Lock +6 : Passive: +6 Competence bonus to the Open Lock skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

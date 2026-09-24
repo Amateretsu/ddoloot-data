@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Flaming Blast",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Flaming Blast 2 : This weapon burns with deadly magical fire, dealing 2d6 Fire damage on a successful hit, and an additional 2d6 Fire damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Incineration",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Feat : Precise Shot",
@@ -85,7 +88,8 @@
       "bonus_type": null,
       "tooltip": "Feat : Precise Shot : While equipped this item grants the feat Precise Shot, allowing your ranged attacks to pass through other characters and monsters to strike your target.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Scorching Ray",
@@ -94,7 +98,8 @@
       "bonus_type": null,
       "tooltip": "Scorching Ray Caster level: 5 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

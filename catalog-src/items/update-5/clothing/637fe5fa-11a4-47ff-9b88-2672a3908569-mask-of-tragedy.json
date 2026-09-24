@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Crushing Despair Caster level: 7 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Wisdom",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Wisdom +3 : This item makes the wearer more in tune with her surroundings, granting a +3 Enhancement bonus to Wisdom.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Void Lore",
@@ -60,7 +62,8 @@
       "bonus_type": "equipment",
       "tooltip": "Void Lore +8 : Passive: Your Negative Energy and Poison spells gain a 8% Equipment bonus to their chance to critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nullification",
@@ -69,7 +72,8 @@
       "bonus_type": "equipment",
       "tooltip": "Nullification +55 : Passive: +55 Equipment bonus to Negative (Necrotic) and Poison Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

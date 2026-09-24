@@ -1,9 +1,4 @@
 {
-  "Item:Epic Golden Guile": {
-    "unclassified_effects": [
-      "Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)"
-    ]
-  },
   "Item:Epic Infested Armor": {
     "unclassified_effects": [
       "DR 15/Good"

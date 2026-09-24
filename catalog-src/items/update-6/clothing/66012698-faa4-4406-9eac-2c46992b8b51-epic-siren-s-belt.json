@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Protection",
@@ -51,7 +52,8 @@
       "bonus_type": "deflection",
       "tooltip": "Protection +8 : Passive: +8 Deflection bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Shield",
@@ -60,7 +62,8 @@
       "bonus_type": "shield",
       "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Proof Against Disease",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Proof Against Disease +6 : This item grants its wearer immunity to natural diseases. This item also grants a +6 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 7 + their Fortitude save).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Siren's Ward",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Siren's Ward : 2 Pieces Equipped: +10% Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws +3 Artifact bonus to Shield Armor Class",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

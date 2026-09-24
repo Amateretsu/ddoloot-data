@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enchantment Focus",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Enchantment Focus +6 : +6 Equipment bonus to the DC of Enchantment spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Concentration",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Concentration +17 : Passive: +17 Competence bonus to the Concentration skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Spell Save",
@@ -69,7 +72,8 @@
       "bonus_type": "resistance",
       "tooltip": "Spell Save +8 : This item gives a +8 Resistance bonus to your saves versus spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Elder's Knowledge",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

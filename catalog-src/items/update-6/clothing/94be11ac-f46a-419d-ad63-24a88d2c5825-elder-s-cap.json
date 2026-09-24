@@ -42,7 +42,8 @@
       "bonus_type": "artifact",
       "tooltip": "Elder's Knowledge : +2% Artifact bonus to spell critical chance. 5% Legendary bonus to spell crit damage.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Intelligence",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Intelligence +5 : This item focuses the power of the wearer's mind, granting a +5 Enhancement bonus to Intelligence.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Concentration",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Concentration +10 : Passive: +10 Competence bonus to the Concentration skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

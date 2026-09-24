@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Strength",
@@ -58,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Strength +14 : This item gives the wearer the power of Ogre Strength, granting a +14 Enhancement bonus to Strength.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fortitude Save",
@@ -67,7 +69,8 @@
       "bonus_type": "resistance",
       "tooltip": "Fortitude Save +12 : This item gives a +12 Resistance bonus to your Fortitude saves.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Unstoppable Staggering Blow",
@@ -76,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Unstoppable Staggering Blow : On a Vorpal strike with a Melee weapon, this weapon will trip your opponent, forcing them to fall prone for 2 seconds. There is no save against this effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Insightful Doublestrike",
@@ -85,7 +89,8 @@
       "bonus_type": "insight",
       "tooltip": "Insightful Doublestrike 7% : Passive: 7% Insight bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Adamantine",
@@ -94,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Dexterity +9 : This item makes the wearer more nimble and dexterous, granting a +9 Enhancement bonus to Dexterity.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Bluff",
@@ -51,7 +52,8 @@
       "bonus_type": "competence",
       "tooltip": "Bluff +17 : Passive: +17 Competence bonus to the Bluff skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Seeker",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Seeker +9 : Provides a +9 Enhancement bonus to confirm critical hits, and a +9 Enhancement bonus to critical hit damage (before multipliers are applied).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Deception",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Deception +7 : +7 Enhancement bonus to hit and +11 to damage for any hit that would qualify as a sneak attack.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Raven's Eye",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

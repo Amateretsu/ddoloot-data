@@ -42,7 +42,8 @@
       "bonus_type": "artifact",
       "tooltip": "Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +5 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Dexterity",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Dexterity +5 : This item makes the wearer more nimble and dexterous, granting a +5 Enhancement bonus to Dexterity.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Deception",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

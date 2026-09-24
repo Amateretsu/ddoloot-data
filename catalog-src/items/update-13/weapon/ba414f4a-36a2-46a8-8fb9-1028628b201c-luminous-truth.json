@@ -58,7 +58,8 @@
       "bonus_type": "implement",
       "tooltip": "Spellcasting Implement +15 : Passive: +15 Implement bonus to Universal Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhancement Bonus",
@@ -67,7 +68,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Power of the Flames of Purity",
@@ -76,7 +78,8 @@
       "bonus_type": "equipment",
       "tooltip": "Power of the Flames of Purity +97: Passive: +97 Equipment bonus to Fire and Light Spell Power.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Purifying Flame Lore",
@@ -85,7 +88,8 @@
       "bonus_type": "equipment",
       "tooltip": "Purifying Flame Lore +14 : Passive: Your Fire and Light spells gain a +14% Equipment bonus to their chance to critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Flaming Blast",
@@ -94,7 +98,8 @@
       "bonus_type": null,
       "tooltip": "Flaming Blast 4 : This weapon burns with deadly magical fire, dealing 4d6 Fire damage on a successful hit, and an additional 4d6 Fire damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Coruscating",
@@ -103,7 +108,8 @@
       "bonus_type": null,
       "tooltip": "Coruscating 4 : This effect causes the edges of this weapon to coruscate, dealing 4d6 Light damage on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Incineration",
@@ -112,7 +118,8 @@
       "bonus_type": null,
       "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

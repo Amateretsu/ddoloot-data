@@ -42,7 +42,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Wizardry +195 : +195 Enhancement bonus to spell points .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Illusion Focus",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Illusion Focus +6 : +6 Equipment bonus to the DC of Illusion spells.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Magical Sheltering",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Efficient Metamagic - Extend",
@@ -69,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Efficient Metamagic - Extend II : The additional spell point cost for using the Extend Metamagic feat is reduced by 2 SP .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Elder's Knowledge",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

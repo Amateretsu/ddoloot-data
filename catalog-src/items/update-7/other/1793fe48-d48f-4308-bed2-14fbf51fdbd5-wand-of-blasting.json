@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": "Elemental Surge Caster level: 12 Charges: 10 (10/day)",
       "charges": 10,
-      "recharge_per_day": 10
+      "recharge_per_day": 10,
+      "note": null
     },
     {
       "name": "Potency",
@@ -49,7 +50,8 @@
       "bonus_type": "equipment",
       "tooltip": "Potency +36 : Passive: +36 Equipment bonus to each Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

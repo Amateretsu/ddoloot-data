@@ -42,7 +42,8 @@
       "bonus_type": "artifact",
       "tooltip": "Siren's Ward : 2 Pieces Equipped: +3 Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Constitution",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Constitution +5 : This item gives the wearer improved health, granting a +5 Enhancement bonus to Constitution.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Sonic Resistance",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Sonic Resistance +18 : Passive: +18 Enhancement bonus to your Sonic Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects.",
       "charges": 10,
-      "recharge_per_day": 5
+      "recharge_per_day": 5,
+      "note": null
     },
     {
       "name": "Lifesealed",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Lifesealed +27 : You are immune to magical effects that cause instant death. In addition, you have a +27% enhancement bonus to Negative Energy Absorption .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Hallowed",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Hallowed : An item with this quality assists only wearers who have the ability to turn undead . Hallowed items provide an +9 Enhancement bonus to the maximum Hit Dice of undead turned.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Sacred",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Sacred +9 : An item with this quality assists only wearers who have the ability to turn undead . Sacred items provide an +9 Enhancement bonus to your effective level for Turning Undead .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Radiance Guard",
@@ -78,7 +82,8 @@
       "bonus_type": null,
       "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Divine Blessing",
@@ -87,7 +92,8 @@
       "bonus_type": "artifact",
       "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

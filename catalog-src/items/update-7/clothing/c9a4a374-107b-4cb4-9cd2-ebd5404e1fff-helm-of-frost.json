@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Frost Lance Caster level: 5 Charges: 3 (3/day)",
       "charges": 3,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Glaciation",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Glaciation +59 : Passive: +59 Equipment bonus to Cold Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Charisma",
@@ -60,7 +62,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Charisma +4 : This item makes the wearer have more flair, granting a +4 Enhancement bonus to Charisma.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Magical Sheltering",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Magical Sheltering +9 : +9 Enhancement bonus to Magical Resistance Rating",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cold Resistance",
@@ -78,7 +82,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Cold Resistance +14 : Passive: +14 Enhancement bonus to your Cold Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Might of the Abishai",
@@ -87,7 +92,8 @@
       "bonus_type": "profane",
       "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

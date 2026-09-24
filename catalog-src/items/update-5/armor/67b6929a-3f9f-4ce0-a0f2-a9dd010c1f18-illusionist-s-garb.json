@@ -49,7 +49,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Hypnotic Pattern",
@@ -58,7 +59,8 @@
       "bonus_type": null,
       "tooltip": "Hypnotic Pattern Caster level: 3 Charges: 5 (5/day)",
       "charges": 5,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Intelligence",
@@ -67,7 +69,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Intelligence +3 : This item focuses the power of the wearer's mind, granting a +3 Enhancement bonus to Intelligence.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Will Save",
@@ -76,7 +79,8 @@
       "bonus_type": "resistance",
       "tooltip": "Will Save +4 : This item gives a +4 Resistance bonus to your Will saves.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

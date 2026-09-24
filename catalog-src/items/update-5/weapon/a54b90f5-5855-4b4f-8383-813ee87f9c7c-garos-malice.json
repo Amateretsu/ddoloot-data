@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fiery",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Fiery 2 : This effect causes the edges of this weapon to burn with enchanted flames, dealing 2d6 Fire damage on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Deception",
@@ -76,7 +78,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Doublestrike",
@@ -85,7 +88,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

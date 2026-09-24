@@ -42,7 +42,8 @@
       "bonus_type": "alchemical",
       "tooltip": "Cannith Combat Infusion : Your ranged and melee attacks have a chance to cause this item to inject a Cannith Combat Infusion into your bloodstream. For the next ten seconds, this will grant a +4 Alchemical bonus to Strength, Constitution and Dexterity, as well as a 5% Alchemical bonus to your chance to doublestrike and a +2 Alchemical bonus to Armor Class .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Incite",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Incite +20 : +20% Enhancement bonus to increased threat generation from melee damage",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Balance",
@@ -60,7 +62,8 @@
       "bonus_type": "competence",
       "tooltip": "Balance +10 : Passive: +10 Competence bonus to the Balance skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Enhanced Balance",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Enhanced Balance +5 : Passive: +5 Enhancement bonus to the Balance skill.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Nearly Finished - Fabricator's Ingenuity",
@@ -78,7 +82,8 @@
       "bonus_type": "artifact",
       "tooltip": "Fabricator's Ingenuity : +25% stacking fortification and +2 artifact bonus to your attack and damage rolls.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

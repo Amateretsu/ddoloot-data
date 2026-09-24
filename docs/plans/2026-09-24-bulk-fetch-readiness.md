@@ -547,3 +547,69 @@ with ADR 0006.
   | After | 210 | 0 | 8 | 5 | 0 | 5 |
 
 - Tests after step 4e: 356 passed, 1 skipped (unchanged).
+
+### Step 4f: wiki bug notes
+
+- **Outcome: fixed**, with one backward-compatible schema addition.
+- **What the source holds:** 1 held occurrence, on Epic Golden Guile. The Enchantments
+  entry is the `Improved Deception +17` link and its tooltip, followed by plain text with a
+  bold label: ` (<b>Bug: </b> Provides +5 to bluff, not +17)`. There is no template class
+  or span around it. After the tooltip is removed and whitespace collapsed, the entry reads
+  `Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)`, which no value rule
+  matched, so `plain_effect` stored the whole text as the name and flagged it. The other
+  `Bug:` texts in the held pages are in Tips rows (for example Twisted Talisman) and stay in
+  `tips`.
+- **What the docs say:** CONTEXT.md: a Scraped Item "carries every Effect with its raw
+  name, value and Bonus Type". The bug note is neither: it is a wiki editor's comment on
+  the entry. Stripping it makes no ADR 0008 decision: the name left is the one written on
+  the page (`Improved Deception`, the same name the non-epic Golden Guile already gives),
+  and the value and Bonus Type come from the existing rules. No ADR reserves Scraped Item
+  fields, and the Scraped Item is not in the app-owned `spec/v1`. Steps 4a, 4b and 4d set
+  the precedent of an optional field that defaults to null.
+- **Decision:**
+  - `effects.py` takes a trailing note off the entry text before the rules run. The
+    pattern is narrow: `\s+\(\s*(?P<note>Bug:[^()]*?)\s*\)$`. It needs a space, a
+    parenthesis, `Bug:` with a capital B, no nested parentheses, and the end of the entry.
+    It is a module constant, like step 3's ingredient categories, not a rule key: it runs
+    before routing, whatever rule later matches.
+  - The note is kept on the Effect in a new `note: str | None = None`, as written
+    (`Bug: Provides +5 to bluff, not +17`). Other places were considered and rejected:
+    - `tooltip` is the wiki's hover text, and adding the note would change its meaning;
+    - the item's `notes` and `tips` are their own infobox rows;
+    - a report entry only would lose the note from `catalog-src`, because `report.jsonl`
+      is gitignored, and the note says the stated value is wrong, which the maintainer
+      should see next to the Effect.
+    One scalar on the Effect is the smallest interface that keeps it.
+  - A note on an entry that is not an Effect (a hint or a set row) has no field, so it is
+    reported as a run-report warning rather than dropped silently. No held entry does this.
+  - The Effect parses as `Improved Deception`, 17, `flat`, bonus type null. The tooltip
+    says `+17 enhancement bonus` in lower case, which `tooltip_pattern` does not read. That
+    is unchanged behaviour, not new to this step.
+- **Files:** `src/item_extractor/scraped_item.py`, `src/item_extractor/effects.py`,
+  `catalog/extractor/enchantments.yaml` (header comment only),
+  `tests/item_extractor/test_extract.py`, `tests/item_extractor/extractor_gaps.json`, and
+  197 item files under `catalog-src/items`.
+- **Tests (through `extract()`):**
+  - `test_bug_note_is_kept_apart_from_the_effect`: the real markup, and a no-value entry
+    with `&nbsp;`;
+  - `test_entry_without_a_trailing_bug_note_keeps_its_text`: 3 near-misses (text after
+    the note, lower-case `bug:`, `Note:`), whose name stays the whole text;
+  - `test_bug_note_on_a_hint_is_reported_not_dropped`.
+  All 6 fail on main (the near-misses only because `note` did not exist).
+- **`catalog-src` diff:** 197 item files, no registry change. It was checked
+  programmatically: every Effect gains `"note": null` and nothing else changes, except
+  Epic Golden Guile's entry. That one goes from `Improved Deception +17 ( Bug: … )` with
+  null value to `Improved Deception`, 17, `flat`, with the note. The gaps baseline loses
+  that one entry.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, 43 unheld
+  pages skipped, and the inner sync exit code is 2. A second run left `git status` and the
+  diff unchanged, and `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 210 | 0 | 8 | 5 | 0 | 5 |
+  | After | 210 | 0 | 7 | 5 | 0 | 5 |
+
+  The 7 left are step 4e's alignment DR entries and `Exceptional Fortification (+10%)`.
+- Tests after step 4f: 362 passed, 1 skipped.

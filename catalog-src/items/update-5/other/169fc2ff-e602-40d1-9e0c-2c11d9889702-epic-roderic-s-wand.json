@@ -40,7 +40,8 @@
       "bonus_type": null,
       "tooltip": "Summon Unknown Monster II Caster level: 20 Charges: 6 (6/day)",
       "charges": 6,
-      "recharge_per_day": 6
+      "recharge_per_day": 6,
+      "note": null
     },
     {
       "name": "Augment Summoning",
@@ -49,7 +50,8 @@
       "bonus_type": null,
       "tooltip": "Augment Summoning : This item grants you the Augment Summoning feat, which gives your summoned creatures +4 to all ability scores, increased health, and increased fortification.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

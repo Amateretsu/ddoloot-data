@@ -58,7 +58,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Telekinetic",
@@ -67,7 +68,8 @@
       "bonus_type": null,
       "tooltip": "Epic Telekinetic : Targets that suffer a critical hit from a Telekinetic weapon must make a DC 35 Strength or Dexterity check or be knocked down. The target will then be forced to make DC 16 Balance checks to recover from this effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Force Blast",
@@ -76,7 +78,8 @@
       "bonus_type": null,
       "tooltip": "Force Blast 4 : This weapon ripples with intense force, dealing 4d6 Force damage on a successful hit, and an additional 4d6 Force damage on a critical hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Greater Sirocco",
@@ -85,7 +88,8 @@
       "bonus_type": null,
       "tooltip": "Greater Sirocco : A critical hit with this weapon causes a whirlwind of desert sand to swirl about the target, temporarily blinding it. A successful Reflex save (DC 35) prevents the effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Smoke Screen",
@@ -94,7 +98,8 @@
       "bonus_type": null,
       "tooltip": "Smoke Screen : You are surrounded by wisps of concealing smoke, giving opponents a 20% concealment chance to miss you.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Air Guard",
@@ -103,7 +108,8 @@
       "bonus_type": null,
       "tooltip": "Air Guard : This Weapon stores the incredible, dynamic power of the air deep within. When the user of this weapon is successfully attacked in melee, this power occasionally comes to the surface, knocking enemies over or speeding up the wearer with rushing winds.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "The Epic Desert's Biting Sands",
@@ -112,7 +118,8 @@
       "bonus_type": "artifact",
       "tooltip": "The Epic Desert's Biting Sands : 2 Pieces Equipped: +4% Artifact bonus to Force Spellcrit Chance +20 Artifact bonus to Force Spellpower +20 Artifact bonus to Magical Resistance Rating Cap",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

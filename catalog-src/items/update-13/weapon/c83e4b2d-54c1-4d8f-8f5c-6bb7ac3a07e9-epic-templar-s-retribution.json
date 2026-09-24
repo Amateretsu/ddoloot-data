@@ -60,7 +60,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Holy Burst",
@@ -69,7 +70,8 @@
       "bonus_type": null,
       "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 10d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Good Blast",
@@ -78,7 +80,8 @@
       "bonus_type": null,
       "tooltip": "Good Blast 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit, and an additional 4d6 Good damage on a critical hit. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Coruscating",
@@ -87,7 +90,8 @@
       "bonus_type": null,
       "tooltip": "Coruscating 4 : This effect causes the edges of this weapon to coruscate, dealing 4d6 Light damage on each hit.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Godly Wrath",
@@ -96,7 +100,8 @@
       "bonus_type": null,
       "tooltip": "Godly Wrath : This weapon is filled with the power of a wrathful deity. Occasionally, this holy power is unleashed, applying a lasting effect that deals 2 to 8 light damage every two seconds for six seconds. If the effect is reapplied before it wears off, the effect will stack and the duration will reset. The effect can be stacked up to 3 times.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Cold Iron",
@@ -105,7 +110,8 @@
       "bonus_type": null,
       "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [

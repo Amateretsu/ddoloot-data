@@ -62,7 +62,8 @@
       "bonus_type": "alchemical",
       "tooltip": "Spell Turmoil : When casting any damaging Fire, Cold, Acid or Electric spells, there is a chance that you will gain a +20 Alchemical bonus to Spell Power to one of those energy types for 30 seconds.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Lesser Evocation Augmentation",
@@ -71,7 +72,8 @@
       "bonus_type": null,
       "tooltip": "Lesser Evocation Augmentation IX : Increases the wearer's caster level when casting ninth level or lower Evocation spells by one.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Trace of Madness",
@@ -80,7 +82,8 @@
       "bonus_type": null,
       "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Power Drain",
@@ -89,7 +92,8 @@
       "bonus_type": null,
       "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul ).",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

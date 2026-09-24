@@ -59,7 +59,8 @@
       "bonus_type": "enhancement",
       "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Adamantine",
@@ -68,7 +69,8 @@
       "bonus_type": null,
       "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Greater Stone Prison",
@@ -77,7 +79,8 @@
       "bonus_type": null,
       "tooltip": "Greater Stone Prison : This weapon is invested with the power of the earth. On an attack roll of 20 which is confirmed as a critical hit it will attempt to turn the target to stone, as the Flesh to Stone spell. A successful Fortitude save (DC 33) negates this effect.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Rock Shattering",
@@ -86,7 +89,8 @@
       "bonus_type": null,
       "tooltip": "Rock Shattering : When striking stone-like creatures (such as gargoyles and earth elementals ) or creatures that have been turned to stone, there is a chance this weapon will instantly shatter and destroy the target.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Maiming",
@@ -95,7 +99,8 @@
       "bonus_type": null,
       "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. Whenever you score a critical hit with this weapon it deals an amount of extra untyped damage depending on its critical multiplier: x2 - 1 to 6, x3 - 2 to 12, x4 - 3 to 18.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Unwieldy",
@@ -104,7 +109,8 @@
       "bonus_type": null,
       "tooltip": "Unwieldy : This weapon is very large and makes you clumsier as you wield it, causing a -2 Dexterity penalty.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

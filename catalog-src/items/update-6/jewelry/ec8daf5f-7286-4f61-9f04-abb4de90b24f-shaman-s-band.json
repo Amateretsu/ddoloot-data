@@ -42,7 +42,8 @@
       "bonus_type": "equipment",
       "tooltip": "Spell Penetration +2 : Passive: +2 Equipment bonus to Spell Penetration checks.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Wizardry",
@@ -51,7 +52,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Wizardry +60 : +60 Enhancement bonus to spell points .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Shaman's Fury",
@@ -60,7 +62,8 @@
       "bonus_type": "artifact",
       "tooltip": "Shaman's Fury : 2 Pieces Equipped: +2% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +10 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [],

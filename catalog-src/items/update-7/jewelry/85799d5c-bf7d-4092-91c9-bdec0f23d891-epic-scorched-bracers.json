@@ -42,7 +42,8 @@
       "bonus_type": null,
       "tooltip": "Fire Storm Caster level: 17 Charges: 5 (5/day)",
       "charges": 5,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Combustion",
@@ -51,7 +52,8 @@
       "bonus_type": "equipment",
       "tooltip": "Combustion +111 : Passive: +111 Equipment bonus to Fire Spell Power .",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Armor Bonus",
@@ -60,7 +62,8 @@
       "bonus_type": null,
       "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Physical Sheltering",
@@ -69,7 +72,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Fire Resistance",
@@ -78,7 +82,8 @@
       "bonus_type": "enhancement",
       "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance.",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     },
     {
       "name": "Epic Might of the Abishai",
@@ -87,7 +92,8 @@
       "bonus_type": "profane",
       "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs",
       "charges": null,
-      "recharge_per_day": null
+      "recharge_per_day": null,
+      "note": null
     }
   ],
   "customisation_hints": [
