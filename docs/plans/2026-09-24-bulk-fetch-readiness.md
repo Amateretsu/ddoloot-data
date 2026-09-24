@@ -105,3 +105,24 @@ with ADR 0006.
 ### Session summary
 
 ## Decisions made during execution
+
+### Step 1: queue order
+
+- **Where:** `QueueRepository` in `src/ddo_sync/queue_db.py`. Both orderings were by
+  string: `list_update_pages()` (the order `sync_all` reads update pages and queues their
+  links) by `page_name`, and `get_pending_items()` (the order `process_queue` writes
+  items) by `queued_at`, which follows the string order in which pages were read.
+- **Change:** both now order by update number parsed from `Update_<N>_named_items`
+  (a deterministic SQL function registered on the connection), with non-numbered pages
+  last, by name. Pending items within a page follow row id, which is document order.
+  `limit` applies after ordering, so a partial batch takes the lowest updates first.
+- **Decision:** `queued_at` is dropped from the pending order rather than kept as a
+  tiebreak. The update number is the order that matters (an item lands under its
+  introducing update first, so a multi-page batch causes no writer moves), and row id
+  already gives FIFO within a page. No schema change; the interface is unchanged.
+- **Tests:** two queue tests replace the by-name listing test, with pages Update_10,
+  Update_9, Update_5 and two non-numbered pages: page listing order, and pending order
+  with and without `limit`. Both fail on main.
+- **Offline rerun, Updates 5-13:** 0 fetch attempts, no `catalog-src` changes,
+  `check_catalog('catalog-src')` returns [].
+- Tests after step 1: 323 passed, 1 skipped.
