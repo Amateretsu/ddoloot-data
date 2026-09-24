@@ -1,7 +1,11 @@
-"""Canned-response adapter for the Page Store's transport seam (tests only)."""
+"""Canned-response adapter for the Page Store's transport seam (tests only).
+
+Also a fake Playwright, so the browser adapter runs with no browser and no network.
+"""
 
 from __future__ import annotations
 
+import types
 from typing import Callable, Dict, List, Union
 
 from page_store import Response
@@ -48,3 +52,81 @@ class CannedTransport:
 
     def close(self) -> None:
         self.closed = True
+
+
+# ── A fake Playwright, for the browser adapter ───────────────────────────────
+
+
+class _FakeRequest:
+    def __init__(self, frame: object, navigation: bool) -> None:
+        self.frame = frame
+        self._navigation = navigation
+
+    def is_navigation_request(self) -> bool:
+        return self._navigation
+
+
+class _FakeResponse:
+    def __init__(self, status: int, request: _FakeRequest) -> None:
+        self.status = status
+        self.request = request
+
+
+class FakeBrowserPage:
+    """Plays the wiki in a "browser": each URL loads a script of documents in turn.
+
+    ``documents[url]`` is a list of ``(status, html)``: the document ``goto`` loads, then
+    each reload the page makes by itself (a WAF challenge clearing). Every document fires
+    a main-frame navigation response; after the last one, the challenge script's own
+    response fires too (not a navigation), as a real challenge page's would. ``goto``
+    returns the first response, as Playwright's does. The content is the last document.
+    """
+
+    main_frame = object()
+
+    def __init__(self) -> None:
+        self.documents: Dict[str, List[tuple[int, str]]] = {}
+        self.visited: List[str] = []
+        self._listeners: List[Callable[[_FakeResponse], None]] = []
+        self._html = ""
+
+    def route(self, _pattern: str, _handler: Callable) -> None:
+        pass
+
+    def on(self, event: str, listener: Callable[[_FakeResponse], None]) -> None:
+        if event == "response":
+            self._listeners.append(listener)
+
+    def goto(self, url: str, **_options: object) -> _FakeResponse:
+        self.visited.append(url)
+        responses = []
+        for status, html in self.documents[url]:
+            responses.append(
+                _FakeResponse(status, _FakeRequest(self.main_frame, navigation=True))
+            )
+            self._fire(responses[-1])
+            self._html = html
+        self._fire(_FakeResponse(200, _FakeRequest(self.main_frame, navigation=False)))
+        return responses[0]
+
+    def wait_for_selector(self, selector: str, **_options: object) -> None:
+        if selector.lstrip("#") not in self._html:
+            raise TimeoutError(f"{selector} never appeared")
+
+    def content(self) -> str:
+        return self._html
+
+    def _fire(self, response: _FakeResponse) -> None:
+        for listener in self._listeners:
+            listener(response)
+
+
+def fake_playwright_module(page: FakeBrowserPage) -> types.ModuleType:
+    """A stand-in for ``playwright.sync_api`` whose browser has the one *page*."""
+    browser = types.SimpleNamespace(new_page=lambda **_: page, close=lambda: None)
+    playwright = types.SimpleNamespace(
+        chromium=types.SimpleNamespace(launch=lambda: browser), stop=lambda: None
+    )
+    module = types.ModuleType("playwright.sync_api")
+    module.sync_playwright = lambda: types.SimpleNamespace(start=lambda: playwright)
+    return module

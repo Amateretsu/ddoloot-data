@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from datetime import timezone
 
 import pytest
@@ -12,7 +13,19 @@ from ddo_sync import CatalogWriter
 from ddo_sync.exceptions import UpdatePageError
 from ddo_sync.models import ItemLink, SyncStatus
 from ddo_sync.syncer import DDOSyncer
-from page_store import ChallengeError, FetchError
+from page_store import (
+    BrowserPolicy,
+    ChallengeError,
+    FetchError,
+    PageStore,
+    ScraperConfig,
+)
+from tests.canned import (
+    CHALLENGE,
+    CannedTransport,
+    FakeBrowserPage,
+    fake_playwright_module,
+)
 from tests.ddo_sync.conftest import (
     ITEM_PAGE_HTML,
     UPDATE_PAGE_HTML,
@@ -265,6 +278,37 @@ class TestProcessQueue:
         report_path = tmp_path / "update-5" / "report.jsonl"
         [line] = [json.loads(raw) for raw in report_path.read_text().splitlines()]
         assert line["warnings"] == ["named set with 1 bonus(es) has no name"]
+
+    def test_a_page_missing_behind_a_challenge_fails_its_item(
+        self, queue_repo, writer, sword_link, tmp_path, monkeypatch
+    ):
+        page = FakeBrowserPage()
+        page.documents[sword_link.wiki_url] = [
+            (202, "<html>challenge</html>"),
+            (404, '<html><div id="mw-content-text">no text</div></html>'),
+        ]
+        monkeypatch.setitem(
+            sys.modules, "playwright.sync_api", fake_playwright_module(page)
+        )
+        config = ScraperConfig(
+            user_agent="ddoloot-test",
+            cache_dir=tmp_path / "pages",
+            respect_robots_txt=False,
+            browser=BrowserPolicy(enabled=True),
+        )
+        plain = CannedTransport(default=lambda _url: CHALLENGE)
+        store = PageStore(config, transport=plain, sleep=lambda _s: None)
+        queue_repo.register_update_page(PAGE_NAME, PAGE_URL)
+        queue_repo.enqueue_items([sword_link])
+
+        success, failures = DDOSyncer(store, writer, queue_repo).process_queue()
+
+        assert (success, failures) == (0, 1)
+        assert writer.written == []
+        assert list(store.iter_cached()) == []
+        [item] = queue_repo.get_items_for_update_page(sword_link.update_page)
+        assert item.status == "failed"
+        assert "page not found (404)" in item.error_message
 
 
 # ── get_status ────────────────────────────────────────────────────────────────

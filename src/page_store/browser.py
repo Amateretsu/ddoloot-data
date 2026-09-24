@@ -15,9 +15,12 @@ Every wiki request is logged at DEBUG, so a ``--verbose`` run shows exactly what
 was sent. The HTML returned is the article as the server rendered it, since the wiki's
 own scripts never run.
 
-A page whose content never appears (the WAF challenge did not clear) comes back as a
-``202`` response with ``x-amzn-waf-action: challenge``, so the Page Store's one challenge
-check covers both adapters.
+The status returned is that of the final document: the reload's once a challenge clears,
+not the challenge's. So a missing page answers ``404`` here as it does on the plain path,
+and the Page Store neither stores it nor calls it a success. A page whose content never
+appears (the WAF challenge did not clear) comes back as a ``202`` response with
+``x-amzn-waf-action: challenge``, so the Page Store's one challenge check covers both
+adapters.
 """
 
 from __future__ import annotations
@@ -50,10 +53,12 @@ class BrowserTransport:
         self._browser: Any = None
         self._page: Any = None
         self._wiki_requests = 0
+        self._document: Any = None  # the main frame's latest navigation response
 
     def fetch(self, url: str) -> Response:
         page = self._ensure_page()
         self._wiki_requests = 0
+        self._document = None
         try:
             resp = page.goto(
                 url, wait_until="domcontentloaded", timeout=self._timeout_ms
@@ -70,7 +75,9 @@ class BrowserTransport:
                 text=page.content(),
                 headers={"x-amzn-waf-action": "challenge"},
             )
-        return Response(status=200, text=page.content())
+        final = self._document or resp
+        status = final.status if final is not None else 200
+        return Response(status=status, text=page.content())
 
     def close(self) -> None:
         if self._browser is not None:
@@ -94,7 +101,14 @@ class BrowserTransport:
             self._browser = self._playwright.chromium.launch()
             self._page = self._browser.new_page(user_agent=self._user_agent)
             self._page.route("**/*", self._route)
+            self._page.on("response", self._on_response)
         return self._page
+
+    def _on_response(self, response: Any) -> None:
+        """Remember the response of each main-frame navigation (the page, its reload)."""
+        request = response.request
+        if request.is_navigation_request() and request.frame == self._page.main_frame:
+            self._document = response
 
     def _route(self, route: Any) -> None:
         """Let through non-wiki requests and up to two wiki ``/page/`` documents."""
