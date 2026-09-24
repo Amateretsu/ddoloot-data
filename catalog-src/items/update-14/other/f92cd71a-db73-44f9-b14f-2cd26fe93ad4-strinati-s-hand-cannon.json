@@ -1,0 +1,101 @@
+{
+  "id": "f92cd71a-db73-44f9-b14f-2cd26fe93ad4",
+  "name": "Strinati's Hand Cannon",
+  "wiki": {
+    "page_id": 24231,
+    "revision_id": 682871,
+    "title": "Item:Strinati's Hand Cannon",
+    "url": "https://ddowiki.com/page/Item:Strinati%27s_Hand_Cannon"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": "Rune Arm",
+  "equip_slots": [],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Gem",
+  "hardness": 13,
+  "durability": 95,
+  "base_value_cp": 2375000,
+  "weight": 0.25,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Exploding Cannon Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null,
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Wizardry",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Wizardry II : This item grants the wearer +50 maximum spell points . Sorcerers and Favored Souls gain up to double spell points from items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Rune Arm Imbue : Fire",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Fire II: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d4 points of fire damage per hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Craftable Rune Arm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Despite a long period of disuse spent resting in Cannoneer Strinati's watery grave, this rune arm still appears to be functional.",
+  "notes": ". Disjuncted version: The Hand Cannon in action",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Cannoneer Strinati 's Chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Cannoneer Strinati 's Chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

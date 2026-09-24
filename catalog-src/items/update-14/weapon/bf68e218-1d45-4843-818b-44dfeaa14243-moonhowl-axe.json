@@ -1,0 +1,108 @@
+{
+  "id": "bf68e218-1d45-4843-818b-44dfeaa14243",
+  "name": "Moonhowl Axe",
+  "wiki": {
+    "page_id": 24646,
+    "revision_id": 633523,
+    "title": "Item:Moonhowl Axe",
+    "url": "https://ddowiki.com/page/Item:Moonhowl_Axe"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Darkwood",
+  "hardness": 9,
+  "durability": 120,
+  "base_value_cp": 1600500,
+  "weight": 8.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Club",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR, CHA",
+    "damage_mod": "STR, CHA"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Proficiency: Greatclub",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Proficiency: Greatclub : While equipped this item grants the wielder all required knowledge to wield a Greatclub without proficiency penalties.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Screaming",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Screaming : Screaming weapons emit a piercing screech whenever they are used to make a successful attack. This screech does an additional 1 to 6 sonic damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This large, stringed instrument is named after its former owner, the bugbear bard Hafgrim Moonhowler. Local tales have it that Hafgrim partied hard, and drunk harder. When inebriated, Hafgrim would often start tavern brawls with this lute, swinging it about wildly. One pirate started referring to it as 'Moonhowl's Axe', and the name stuck.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "Hafgrim Moonhowler 's Chest (Rare Encounter)",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , Hafgrim Moonhowler 's Chest (Rare Encounter)"
+  },
+  "extraction_errors": {}
+}

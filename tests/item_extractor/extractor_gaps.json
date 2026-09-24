@@ -1,10 +1,30 @@
 {
+  "Item:Commendation of Heroism": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Legendary Mark of Bal Molesh": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
   "Item:Legendary Mark of Rhesh Turakbar": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
   "Item:Legendary Mark of Sheshka": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
+  "Item:Legendary Mark of Tzaryan Rrac": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
+  "Item:Mark of Bal Molesh": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
     ]
@@ -17,6 +37,27 @@
   "Item:Mark of Sheshka": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
+  "Item:Mark of Tzaryan Rrac": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
+  "Item:Pirate Treasure Map": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Potion of Restoration": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Quivering Quiver": {
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
     ]
   },
   "Item:Token of the Twelve": {

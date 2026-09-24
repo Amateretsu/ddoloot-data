@@ -29,12 +29,17 @@ class ExtractionError(ValueError):
 
 class NotEquipmentError(ExtractionError):
     """The page is a wiki item article with no infobox that is filed as a crafting
-    ingredient: a real item, but not an equippable Named Item. Not a failure."""
+    ingredient or a consumable: a real item, but not an equippable Named Item. Not a
+    failure."""
 
 
-# Wiki categories of item articles that are crafting ingredients, not equipment. Only a
-# page with no infobox is checked, so an equipment page in one of them still extracts.
-_NON_EQUIPMENT_CATEGORIES = ("Ingredients", "Raw ingredients")
+# Wiki categories of item articles that are not equipment: crafting ingredients, and
+# consumables ("Consumables without a type", "Minimum level 1 consumables", "Three-Barrel
+# Cove (heroic) consumables"). Only a page with no infobox is checked, so an equipment
+# page in one of them still extracts.
+_NON_EQUIPMENT_CATEGORY_RE = re.compile(
+    r"^(?:Ingredients|Raw ingredients|Consumables without a type|.+ consumables)$"
+)
 
 
 def _set_path(target: dict[str, Any], path: str, value: Any) -> None:
@@ -120,7 +125,8 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
 
     Raises:
         NotEquipmentError: no infobox table, and the page is filed in a crafting
-            ingredient category (``Ingredients``, ``Raw ingredients``).
+            ingredient category (``Ingredients``, ``Raw ingredients``) or a consumable
+            category (``Consumables without a type``, ``… consumables``).
         ExtractionError: no infobox table could be found.
     """
     soup = BeautifulSoup(html, "html.parser")
@@ -130,7 +136,7 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
     table = _main_table(content, cfg)
     if table is None:
         for category in _wiki_categories(html):
-            if category in _NON_EQUIPMENT_CATEGORIES:
+            if _NON_EQUIPMENT_CATEGORY_RE.match(category):
                 raise NotEquipmentError(
                     f"not an equippable named item: wiki category {category!r}"
                 )

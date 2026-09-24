@@ -1,0 +1,93 @@
+{
+  "id": "7c191a89-6f4a-4edc-8edb-50b9f8791b0c",
+  "name": "Thaarak Bracelet",
+  "wiki": {
+    "page_id": 14582,
+    "revision_id": 635273,
+    "title": "Item:Thaarak Bracelet",
+    "url": "https://ddowiki.com/page/Item:Thaarak_Bracelet"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 15,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 8,
+  "durability": 70,
+  "base_value_cp": 3620000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Acid Breath",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Acid Breath Caster level: 10 Charges: 3 (3/day)",
+      "charges": 3,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Vitality",
+      "value": 20,
+      "value_kind": "flat",
+      "bonus_type": "vitality",
+      "tooltip": "Vitality +20 : Passive: +20 Vitality bonus to Hit Points.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "DR/Lawful",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 3/Lawful : Reduces physical damage by 3, except from Lawful attacks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Dodge",
+      "value": 4,
+      "value_kind": "percent",
+      "bonus_type": "dodge",
+      "tooltip": "Dodge +4% : +4% Enhancement bonus to Dodge.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This ornament, adorned with a prominent green gem, will empower it's wearer with many of the qualities of dreaded Thaarak Hounds , like their tough skin the ability to breath deadly acid.",
+  "notes": null,
+  "tips": "Update 18: Toughness replaced by Vitality +20. Update 19: Dodge chance doubled.",
+  "source": {
+    "quests": [
+      "Harbinger of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Harbinger of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

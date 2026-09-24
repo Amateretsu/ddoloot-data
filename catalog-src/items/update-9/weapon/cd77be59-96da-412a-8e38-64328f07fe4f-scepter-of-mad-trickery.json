@@ -1,0 +1,119 @@
+{
+  "id": "cd77be59-96da-412a-8e38-64328f07fe4f",
+  "name": "Scepter of Mad Trickery",
+  "wiki": {
+    "page_id": 14483,
+    "revision_id": 690605,
+    "title": "Item:Scepter of Mad Trickery",
+    "url": "https://ddowiki.com/page/Item:Scepter_of_Mad_Trickery"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 13,
+  "durability": 130,
+  "base_value_cp": 12800002,
+  "weight": 3.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Club",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Illusion Focus",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Illusion Focus II : +2 Equipment bonus to the DC of Illusion spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Enchantment Focus",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Enchantment Focus II : +2 Equipment bonus to the DC of Enchantment spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spell Penetration",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Penetration II : Passive: +2 Equipment bonus to Spell Penetration checks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Mind Turbulence",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Holding this scepter by its slippery grip, you hear voices cackling madly and a chill runs down your spine. Suddenly your thoughts are filled with ways to weave illusions that will drive your enemies to insanity.",
+  "notes": null,
+  "tips": "You can remove the Mind Turbulence penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "Harbinger of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Harbinger of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

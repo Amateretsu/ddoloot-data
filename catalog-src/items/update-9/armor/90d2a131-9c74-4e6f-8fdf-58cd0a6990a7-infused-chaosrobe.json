@@ -1,0 +1,100 @@
+{
+  "id": "90d2a131-9c74-4e6f-8fdf-58cd0a6990a7",
+  "name": "Infused Chaosrobe",
+  "wiki": {
+    "page_id": 14552,
+    "revision_id": 708654,
+    "title": "Item:Infused Chaosrobe",
+    "url": "https://ddowiki.com/page/Item:Infused_Chaosrobe"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Clothing",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Cloth",
+  "hardness": 10,
+  "durability": 85,
+  "base_value_cp": 6405500,
+  "weight": 0.0,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Clothing",
+    "armor_bonus": 0,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spell Turmoil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "alchemical",
+      "tooltip": "Spell Turmoil : When casting any damaging Fire, Cold, Acid or Electric spells, there is a chance that you will gain a +20 Alchemical bonus to Spell Power to one of those energy types for 30 seconds.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Lesser Evocation Augmentation",
+      "value": 9,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Lesser Evocation Augmentation IX : Increases the wearer's caster level when casting ninth level or lower Evocation spells by one.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Power Drain",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul ).",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This robe, imbued with powerful and unpredictable magic, seems to have come from Kythri originally. The denizens of Xoriat likely found its wild enchantments intriguing, so they seized it and brought it back with them to their own realm.",
+  "notes": "You can remove the Power Drain penalty with a Sustaining Symbiont .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Fear Factory"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Fear Factory , End chest"
+  },
+  "extraction_errors": {}
+}

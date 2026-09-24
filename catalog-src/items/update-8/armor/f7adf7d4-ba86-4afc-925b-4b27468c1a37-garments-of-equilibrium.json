@@ -1,0 +1,117 @@
+{
+  "id": "f7adf7d4-ba86-4afc-925b-4b27468c1a37",
+  "name": "Garments of Equilibrium",
+  "wiki": {
+    "page_id": 12810,
+    "revision_id": 708514,
+    "title": "Item:Garments of Equilibrium",
+    "url": "https://ddowiki.com/page/Item:Garments_of_Equilibrium"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Clothing",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Cloth",
+  "hardness": 14,
+  "durability": 125,
+  "base_value_cp": 4805500,
+  "weight": null,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Clothing",
+    "armor_bonus": 0,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Fortification",
+      "value": 100,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fortification +100% : +100% Enhancement bonus to reduced chance of taking critical damage on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Concentration",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +14 : Passive: +14 Competence bonus to the Concentration skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Reinforced Fists",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Reinforced Fists : This item surrounds your fists with kinetic energy. Your unarmed damage is boosted by one half die.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Resistance",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +5 : Passive: +5 Resistance bonus to Fortitude, Reflex, and Will Saving Throws.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A field of mystical energy surrounds these garments, protecting the wearer from critical damage and reinforcing his or her fists with extra power.",
+  "notes": "This outfit gives both incredible protection, offensive abilities and skills for any Monk . Concentration boosts ki , the mystical energy that powers all Monk abilities. Heavy Fortification reduces critical hit damage and frees up an equipment slot many other classes use for this property (such as the Minos Legens ). NOTE: As of a few updates ago - MOTU? - reinforced fists has been changed to only provide a +.5[w], not a die step increase.",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Siegebreaker"
+    ],
+    "detail": "Medusas' chests",
+    "crafted_from": [],
+    "raw": "Siegebreaker , Medusas' chests"
+  },
+  "extraction_errors": {}
+}

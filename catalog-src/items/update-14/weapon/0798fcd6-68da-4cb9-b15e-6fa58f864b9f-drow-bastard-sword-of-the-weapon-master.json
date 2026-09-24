@@ -1,0 +1,89 @@
+{
+  "id": "0798fcd6-68da-4cb9-b15e-6fa58f864b9f",
+  "name": "Drow Bastard Sword of the Weapon Master",
+  "wiki": {
+    "page_id": 27837,
+    "revision_id": 693662,
+    "title": "Item:Drow Bastard Sword of the Weapon Master",
+    "url": "https://ddowiki.com/page/Item:Drow_Bastard_Sword_of_the_Weapon_Master"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Bastard Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 21,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 31,
+  "durability": 290,
+  "base_value_cp": 8403500,
+  "weight": 6.0,
+  "upgradeable": "Catalyst Crafting to Perfected Bastard Sword of the Weapon Master Legendary Perfected Bastard Sword of the Weapon Master",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Bastard Sword",
+    "handedness": null,
+    "damage_multiplier": 3.2,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "17-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Maiming",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. Whenever you score a critical hit with this weapon it deals an amount of extra untyped damage depending on its critical multiplier: x2 - 1 to 6, x3 - 2 to 12, x4 - 3 to 18.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Although Drow craftsmanship is among the finest in Faerun, few are foolhardy enough to steal from the owner of such a weapon.",
+  "notes": null,
+  "tips": "With Update 28 Patch 1 the critical threat range was expanded from 18-20 to 17-20 to offset the effect caused by the changes to the feat Improved Critical .",
+  "source": {
+    "quests": [
+      "The House of Rusted Blades"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The House of Rusted Blades , End chest"
+  },
+  "extraction_errors": {}
+}

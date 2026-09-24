@@ -1,0 +1,93 @@
+{
+  "id": "21723b65-c5f4-4b9b-8b40-1273f272b4bc",
+  "name": "Corsair's Galoshes",
+  "wiki": {
+    "page_id": 24362,
+    "revision_id": 629174,
+    "title": "Item:Corsair's Galoshes",
+    "url": "https://ddowiki.com/page/Item:Corsair%27s_Galoshes"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Boots",
+  "equip_slots": [
+    "feet"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": "Leather",
+  "hardness": 15,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Balance",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Balance +5 : Passive: +5 Competence bonus to the Balance skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Jump",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Jump +5 : Passive: +5 Competence bonus to the Jump skill.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Striding",
+      "value": 15,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Striding +15% : This item makes you more fleet of foot, giving you a 15% Enhancement bonus your movement speed.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Corsair's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Corsair's Cunning : 2 Item Set Bonus: Underwater Action 3 Item Set Bonus: Feather Falling",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "These boots are thigh-high and waterproof. Good for keeping your feet dry.",
+  "notes": null,
+  "tips": "The Pirate Treasure Map , the 3 items from the Corsair's Cunning set, the 4 'Scoundrel's type' weapons and Brine Shaman's Staff have a chance of appearing in the end reward list of any of the Three-Barrel Cove (heroic) quests, except Guard Duty . Every third completion you will receive a complete list.",
+  "source": {
+    "quests": [
+      "Three-Barrel Cove (heroic)"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Three-Barrel Cove (heroic) , End reward"
+  },
+  "extraction_errors": {}
+}

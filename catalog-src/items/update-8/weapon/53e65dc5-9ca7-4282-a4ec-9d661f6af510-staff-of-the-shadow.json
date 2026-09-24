@@ -1,0 +1,119 @@
+{
+  "id": "53e65dc5-9ca7-4282-a4ec-9d661f6af510",
+  "name": "Staff of the Shadow",
+  "wiki": {
+    "page_id": 12614,
+    "revision_id": 635017,
+    "title": "Item:Staff of the Shadow",
+    "url": "https://ddowiki.com/page/Item:Staff_of_the_Shadow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Wood",
+  "hardness": 22,
+  "durability": 200,
+  "base_value_cp": 4800001,
+  "weight": 4.0,
+  "upgradeable": "Cauldron of Sora Katra to Infectious Shadow Staff Bloody Shadow Staff Destructive Shadow Staff Petrifying Shadow Staff",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 1.4,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Vampirism",
+      "value": 1,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Vampirism 1 : This weapon thirsts for the blood of your enemies, healing you for +1d2 hit points with each hit. Note: internal cooldown of 1 second.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Life Stealing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Life Stealing : This weapon has a chance to drain 1 to 3 levels from its target on a critical hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Entropic",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Entropic 3 : This weapon is intensely powerful, and crackles with destructive, unpredictable magic. It deals an additional 3d6 untyped damage on each hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Malleable",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Malleable : This item has a magical aura of malleability and can be combined with any item that has the Fusible property to create a new, more powerful fusion of the two items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "The Shadow, worshipped throughout Droaam for his inclination towards destruction, is said to have invested this withered staff with some of his arcane power.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

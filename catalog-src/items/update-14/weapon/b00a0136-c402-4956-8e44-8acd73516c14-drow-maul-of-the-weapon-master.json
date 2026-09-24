@@ -1,0 +1,112 @@
+{
+  "id": "b00a0136-c402-4956-8e44-8acd73516c14",
+  "name": "Drow Maul of the Weapon Master",
+  "wiki": {
+    "page_id": 27615,
+    "revision_id": 693655,
+    "title": "Item:Drow Maul of the Weapon Master",
+    "url": "https://ddowiki.com/page/Item:Drow_Maul_of_the_Weapon_Master"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Maul",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 21,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 31,
+  "durability": 295,
+  "base_value_cp": 8401200,
+  "weight": 10.0,
+  "upgradeable": "Catalyst Crafting to Perfected Maul of the Weapon Master Legendary Perfected Maul of the Weapon Master",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Maul",
+    "handedness": null,
+    "damage_multiplier": 3.2,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Maiming",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. Whenever you score a critical hit with this weapon it deals an amount of extra untyped damage depending on its critical multiplier: x2 - 1 to 6, x3 - 2 to 12, x4 - 3 to 18.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "One of the following:",
+      "name": "One of the following:",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Insightful Combat Mastery +5",
+        "Shatter +10",
+        "Stunning +10",
+        "Vertigo +10",
+        "Tendon Slice 10%"
+      ]
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Although Drow craftsmanship is among the finest in Faerun, few are foolhardy enough to steal from the owner of such a weapon.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The House of Rusted Blades"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "The House of Rusted Blades , End Chest"
+  },
+  "extraction_errors": {}
+}

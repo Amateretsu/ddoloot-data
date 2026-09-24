@@ -1,0 +1,119 @@
+{
+  "id": "5e889347-4d8b-48e7-9656-652cafc8d4e1",
+  "name": "Axe of Famine",
+  "wiki": {
+    "page_id": 14501,
+    "revision_id": 628396,
+    "title": "Item:Axe of Famine",
+    "url": "https://ddowiki.com/page/Item:Axe_of_Famine"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dwarven War Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 18,
+  "durability": 165,
+  "base_value_cp": 12803000,
+  "weight": 8.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Dwarven War Axe",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "2d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Life-Devouring",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Life-Devouring : This weapon deprives an enemy of its energy and passes it on to you. When you roll a 20 on an attack, the enemy must make a DC 28 Fortitude save or be subjected to a -6 penalty to all stats. At the same time you will feel your power return, as though Greater Restoration were cast on you. (Greater Restoration cures all temporary ability damage, restores all negative levels suffered from energy drain, and eliminates fatigue, exhaustion, confusion, and insanity suffered by you.)",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Strength Sapping",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Strength Sapping : Every time this weapon deals damage, the target must succeed on a Fortitude save (DC 15) or become exhausted.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Weakening",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Weakening : This weapon drains the enemies' melee power. -1 Strength on a successful hit.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Incite",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Incite +15 : +15% Enhancement bonus to increased threat generation from melee damage",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This weapon drives those it strikes mad with sensations of starvation, sapping their strength while simultaneously reversing damage to its wielder's body and mind.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Harbinger of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Harbinger of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

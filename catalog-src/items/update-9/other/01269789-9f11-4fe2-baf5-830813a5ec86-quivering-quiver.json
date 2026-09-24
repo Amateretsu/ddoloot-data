@@ -1,0 +1,61 @@
+{
+  "id": "01269789-9f11-4fe2-baf5-830813a5ec86",
+  "name": "Quivering Quiver",
+  "wiki": {
+    "page_id": 14505,
+    "revision_id": 634101,
+    "title": "Item:Quivering Quiver",
+    "url": "https://ddowiki.com/page/Item:Quivering_Quiver"
+  },
+  "template": "accessory",
+  "category": "other",
+  "item_type": "Wide Quiver",
+  "equip_slots": [],
+  "minimum_level": null,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "exclusive": false,
+  "material": null,
+  "hardness": null,
+  "durability": null,
+  "base_value_cp": 500000,
+  "weight": 1.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Arrow Spitting",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Arrow Spitting : While this item is equipped and an enemy hits you, there is a chance that this item will produce a stack of 20 arrows of a random type. Where exactly the arrows come from remains a mystery.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This quiver is completely organic, and is rough and slimy to the touch. It shivers periodically, and when provoked it will sometimes disgorge arrows of a random type. Try not to think about where they've been. The quiver will also hold 10 different types of arrow or bolt and can store each type in a stack of up to 300. Total capacity: 3000.",
+  "notes": "Randomly produces stacks of 20 arrows (never bolts) of the following if you are hit: +1 Xoriat Lawbane Arrows - Lawful Outsider Bane , ML:2 +3 Xoriat Arrows - ML:4 +3 Xoriat Cold Iron Arrows - ML:4 +3 Xoriat Adamantine Arrows - ML:4 +3 Xoriat Silver Arrows - ML:4 +3 Xoriat Corrosive Arrows - Acid , ML:6 +3 Xoriat Flaming Arrows - ML:6 +3 Xoriat Frost Arrows - ML:6 +3 Xoriat Shock Arrows - ML:6 +3 Xoriat Anarchic Arrows - ML:8",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Harbinger of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Harbinger of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

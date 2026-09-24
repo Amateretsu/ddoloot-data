@@ -1,0 +1,129 @@
+{
+  "id": "42bd3677-e465-4a10-bdde-a99e83e73c89",
+  "name": "Polycurse Dagger",
+  "wiki": {
+    "page_id": 14535,
+    "revision_id": 713098,
+    "title": "Item:Polycurse Dagger",
+    "url": "https://ddowiki.com/page/Item:Polycurse_Dagger"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dagger",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 18,
+  "durability": 120,
+  "base_value_cp": 12800200,
+  "weight": 1.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Dagger",
+    "handedness": null,
+    "damage_multiplier": 2.0,
+    "damage_dice": "1d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Polycurse",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Polycurse : This weapon is enchanted with many diverse curses. On a critical hit an enemy may be hit with one of these effects at random: Blindness , Exhaustion , Bestow Curse , or Enervation .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Sneak Attack Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sneak Attack Bonus +3 : Provides a +3 Enhancement modifier to your attack bonus and a +5 Enhancement bonus to damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Deception",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deception : This weapon is hard to focus upon and thus provides a +3 enhancement bonus to Bluff checks. In addition, Deception weapons have a small chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Curse Vector",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Curse Vector : This item is a carrier of curses. It can apply them to your foes, but also to you- when you are damaged there is a small chance that you will have a Bestow Curse cast on you.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Corrosive Salt",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Corrosive Salt : This weapon stores a caustic, insatiable power deep within. When this weapon is used, this power can come to the surface in the form of a noxious, corrosive salt that dissolves all substances.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "An unusually large dagger turned vile and unpredictable after being wielded by the creatures of Xoriat. Enemies cut by the dagger's blade are subject to a wide array of debilitating curses.",
+  "notes": null,
+  "tips": "You can remove the Curse Vector penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "Harbinger of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Harbinger of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

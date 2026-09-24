@@ -1,0 +1,119 @@
+{
+  "id": "789d497f-06fd-4669-bc97-e5a2d5439965",
+  "name": "Hooked Blade",
+  "wiki": {
+    "page_id": 12615,
+    "revision_id": 631467,
+    "title": "Item:Hooked Blade",
+    "url": "https://ddowiki.com/page/Item:Hooked_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Khopesh",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "exclusive": false,
+  "material": "Steel",
+  "hardness": 22,
+  "durability": 185,
+  "base_value_cp": 4802000,
+  "weight": 12.0,
+  "upgradeable": "Malleable to Bloody Hooked Blade Destructive Hooked Blade Infectious Hooked Blade Petrifying Hooked Blade",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "umd_exempt_classes": null,
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Khopesh",
+    "handedness": null,
+    "damage_multiplier": 1.4,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Limb Chopper",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Limb Chopper : This potent and feared ability allows the weapon to sever the limbs of those it strikes. On an attack roll of 20 which is confirmed as a critical hit, the weapon severs an opponent's limb from its body. Some creatures, including many aberrations and all oozes , have no limbs. Others, such as golems and undead creatures, are not affected by the loss of their limbs. Most other creatures, however, have their movement slowed 75% and attacks slowed by 50% when a limb is cut off.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Maiming",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +3d8 damage.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Human Bane",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Human Bane 3 : This weapon is attuned specifically to hunt those with diversity and ambition, dealing an additional 3d10 bane damage vs. Humans.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Malleable",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Malleable : This item has a magical aura of malleability and can be combined with any item that has the Fusible property to create a new, more powerful fusion of the two items.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A vicious, curved sword wielded by Droaam raiders of all races and types. It is sharp and jagged enough to slice straight through enemy limbs, crippling them severely.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Attack on Stormreach"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Attack on Stormreach , End reward"
+  },
+  "extraction_errors": {}
+}

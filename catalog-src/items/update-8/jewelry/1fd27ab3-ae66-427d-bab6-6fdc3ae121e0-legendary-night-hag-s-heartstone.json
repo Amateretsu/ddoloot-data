@@ -1,0 +1,146 @@
+{
+  "id": "1fd27ab3-ae66-427d-bab6-6fdc3ae121e0",
+  "name": "Legendary Night Hag's Heartstone",
+  "wiki": {
+    "page_id": 101482,
+    "revision_id": 691068,
+    "title": "Item:Legendary Night Hag's Heartstone",
+    "url": "https://ddowiki.com/page/Item:Legendary_Night_Hag%27s_Heartstone"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "exclusive": false,
+  "material": "Gem",
+  "hardness": 51,
+  "durability": 320,
+  "base_value_cp": 12405000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "umd_exempt_classes": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Insightful Spell Focus Mastery",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Spell Focus Mastery +3 : +3 Insight bonus to the DC of all spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Spell Penetration",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Penetration +9 : Passive: +9 Equipment bonus to Spell Penetration checks.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Magical Efficiency",
+      "value": 10,
+      "value_kind": "percent",
+      "bonus_type": null,
+      "tooltip": "Magical Efficiency 10% : You take a 10% Enhancement discount to the Spell Point cost of your spells.",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Efficient Metamagic - Embolden",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Embolden II : The additional spell point cost for using the Embolden Metamagic feat is reduced by 2 SP .",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Legendary Wrath of Sora Kell",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Legendary Wrath of Sora Kell : 3 Pieces Equipped: +25 Artifact bonus to Universal Spell Power +30 Artifact bonus to Physical Resistance Rating +3 Artifact bonus to Hit and Damage +3 Artifact bonus to Imbue Dice",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    },
+    {
+      "name": "Legendary Perfected Wrath",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Legendary Perfected Wrath : 3 Pieces Equipped: +3 Artifact bonus to all Ability Scores +15% Artifact bonus to Helplessness Damage",
+      "charges": null,
+      "recharge_per_day": null,
+      "note": null
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Trinket Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Trinket Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "The night hags of Droaam carry these vile gems with them wherever they go, which allow them to enter the dreams of others. This particular specimen contains great potential for spellcasting, and are often used to twist the mines of their foes.",
+  "notes": null,
+  "tips": "This Minor Artifact has a maximum of 4 filigree slots.",
+  "source": {
+    "quests": [
+      "Siegebreaker"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Siegebreaker , end chest"
+  },
+  "extraction_errors": {}
+}
