@@ -1410,3 +1410,21 @@ nothing left to decide.
 - **Tests:** `tests/test_bulk_fetch.py` (21) and `tests/test_scraper_bulk_config.py` (2),
   all offline: a temporary queue, a temporary Page Store, a fake run and a fake sleep.
   Total: 464 passed, 1 skipped.
+
+### Bulk fetch: prep done (2026-09-24)
+
+- `ddoloot sync --reset-failed` ran, offline: it reset the 5 failed ingredient rows to
+  pending. The queue is now 253 total, 201 complete, 52 pending and 0 failed. The 5 reset
+  rows are held, so the next run skips them at no cost.
+- Driver dry run after the reset (`data/queue.db` md5 unchanged, no request):
+  ```
+  update pages read: 10, unheld: 1 (Update_14_named_items)
+  pending rows processed (--limit 100): 52, unheld: 42
+  F <= 101; worst case 1 + 2F + min(F, k) <= 204 requests
+  budget left: 1200; fits
+  ```
+- The first live command is
+  `.venv/bin/python scripts/bulk_fetch.py --log-dir <dir> --budget 1200`. At about 100
+  requests a run and 204 held back for the worst case, one invocation makes about 10 runs,
+  about 5 hours. The step 6 estimate for the whole backlog is about 8,150 requests, so
+  plan on about 8 invocations.
