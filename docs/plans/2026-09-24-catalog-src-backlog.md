@@ -95,4 +95,46 @@ command sequence to continue.
 
 ## Decisions made during execution
 
-Live request tally (SESSION_BUDGET 1200): 0 used.
+Test baseline before step 1: 321 passed, 1 skipped.
+
+Live request tally (SESSION_BUDGET 1200): step 1 used 8. Running total: 8 of 1200.
+
+### Step 1: discovery
+
+- **Requests: 8 of 15.** Two runs, each worst case 1 + 2 + 1 = 4 (scratch config: committed
+  values plus `max_retries: 0`, `consecutive_challenges: 1`). Each was robots.txt, a plain
+  202, a browser challenge and a browser reload: `Category:Named_items_by_update`, then
+  `Update_4_named_items`. The challenge cleared both times.
+- **The category lists 82 subcategories on one page:** `Category:Update_<N>_named_items`
+  for N = 0-81 except 66, plus `Category:Unknown_release_named_items`. The listing shows
+  each subcategory's member count, so no subcategory was fetched.
+- **Category-to-article match:** the stored `Update_5_named_items` has a navigation box
+  linking `/page/Update_<N>_named_items` for every N in 6-81 except 66, which confirms those
+  articles exist. The single verification fetch went to `Update_4_named_items`, the least
+  certain one: the wiki has no such article (`wgArticleId` 0, no item links).
+- **Option (b): the seed list was regenerated**, as the smaller change. Discovery already
+  falls back to `config/update_pages.yaml`, so step 1 changes data and a comment, not code.
+  It holds the 76 pages N = 5-81 except 66, in ascending N.
+- **Left out of the list, deliberately:**
+  - Update_0 to Update_4: no article, so they have no update page to read. Their categories
+    hold 25 item pages. Reaching them would need discovery from categories, which is out
+    of scope here.
+  - `Unknown_release_named_items`: its category is empty and there is no article. So
+    nothing files under `unknown` from discovery in this session.
+- **Backlog estimate:** the 76 categories hold 8,050 item pages; Update_5 links 29 items
+  against 26 category members, so the queue will hold about 8,980 rows. The largest updates
+  are 69 (846), 75 (739), 37 (640), 81 (548), 42 (427) and 61 (378). About 8,040 item pages
+  and 75 update pages remain to fetch. Expected cost is about 1 request per page plus about
+  3 per run, roughly **8,240 requests** at 200 items a run; the pessimistic formula gives
+  about 16,300. SESSION_BUDGET covers about 14% of it.
+- **Queue dedupe:** the queue's unique key is `(item_name, update_page)`, so an item listed
+  on two update pages is queued twice. The second row costs no request, because the Page
+  Store holds the page, and `CatalogWriter` keeps one file under the lowest update.
+- **`sync` without `--page` re-reads every update page registered in the queue DB**, so
+  batches run with `--page`.
+- **Recorded, not fixed: the browser adapter stores a missing page as a 200.**
+  `BrowserTransport.fetch` checks only the first `goto` response's status, not the reload's.
+  Update_4's "no article" page is now in `cache/pages` (gitignored). A missing `Item:` page
+  would be stored and extracted the same way.
+- Tests after step 1: 321 passed, 1 skipped. CI lints `src tests`; `ruff check .` and
+  `black --check .` also flag `spec/validate_bundle.py`, which fails the same way on main.
