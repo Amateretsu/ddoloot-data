@@ -216,6 +216,15 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
             "binding",
             "character",
         ),
+        # The wiki's untimed forms mean on acquire (maintainer decision 4c).
+        ("Binding", "Bound to Character", "binding", "character"),
+        ("Binding", "Bound to Account", "binding", "account"),
+        (
+            "Binding",
+            EXCLUSIVE_BINDING.replace("Account&nbsp;on Acquire", "Character"),
+            "binding",
+            "character",
+        ),
         ('<a href="/page/UMD">UMD</a> Difficulty', "55", "umd_dc", "55"),
         ("No UMD check for:", "Wiz, Sor", "umd_exempt_classes", "Wiz, Sor"),
         (
@@ -255,6 +264,7 @@ def test_row_is_coerced_into_its_field(cfg, label, cell, field, expected):
             "account",
             "Bound to Account on Acquire , Exclusive",
         ),
+        ("Binding", "Bound to Account", "account", "Bound to Account"),
     ],
 )
 def test_binding_keeps_the_raw_wiki_text(cfg, label, cell, binding, raw):
@@ -274,14 +284,8 @@ def test_binding_keeps_the_raw_wiki_text(cfg, label, cell, binding, raw):
         ),
         ([("Bind Status", "Bound to Account on Acquire")], "account", False, {}),
         ([("Binding", "Unbound")], "unbound", False, {}),
-        # An untimed binding stays unmapped, but the row still says whether it is
-        # Exclusive.
-        (
-            [("Binding", "Bound to Character")],
-            None,
-            False,
-            {"binding": "Bound to Character"},
-        ),
+        # An untimed binding is read as on acquire, with or without Exclusive.
+        ([("Binding", "Bound to Character")], "character", False, {}),
         (
             [
                 (
@@ -289,9 +293,9 @@ def test_binding_keeps_the_raw_wiki_text(cfg, label, cell, binding, raw):
                     EXCLUSIVE_BINDING.replace("Account&nbsp;on Acquire", "Character"),
                 )
             ],
-            None,
+            "character",
             True,
-            {"binding": "Bound to Character , Exclusive"},
+            {},
         ),
         # No binding row, or one that says "None": nothing is known.
         ([("Minimum Level", "5")], None, None, {}),

@@ -19,8 +19,8 @@
   "required_class": null,
   "required_feat": null,
   "required_trait": null,
-  "binding": null,
-  "binding_raw": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character",
   "exclusive": false,
   "material": "Steel",
   "hardness": 19,
@@ -86,7 +86,5 @@
     "crafted_from": [],
     "raw": "DDO Store"
   },
-  "extraction_errors": {
-    "binding": "Bound to Character"
-  }
+  "extraction_errors": {}
 }

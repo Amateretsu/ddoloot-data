@@ -17,8 +17,8 @@
   "required_class": null,
   "required_feat": null,
   "required_trait": "Artificer Rune Arm Use",
-  "binding": null,
-  "binding_raw": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account",
   "exclusive": false,
   "material": "Gem",
   "hardness": 19,
@@ -127,7 +127,5 @@
     "crafted_from": [],
     "raw": "Reign of Madness , End reward"
   },
-  "extraction_errors": {
-    "binding": "Bound to Account"
-  }
+  "extraction_errors": {}
 }

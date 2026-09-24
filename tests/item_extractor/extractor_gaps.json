@@ -14,11 +14,6 @@
       "DR 15/Evil"
     ]
   },
-  "Item:Glorious Obscenity": {
-    "extraction_errors": [
-      "binding"
-    ]
-  },
   "Item:Infested Armor": {
     "unclassified_effects": [
       "DR 5/Good"
@@ -42,26 +37,6 @@
   "Item:Mark of Sheshka": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
-    ]
-  },
-  "Item:Phiarlan Veil Shield (angular)": {
-    "extraction_errors": [
-      "binding"
-    ]
-  },
-  "Item:Phiarlan Veil Shield (round)": {
-    "extraction_errors": [
-      "binding"
-    ]
-  },
-  "Item:Stormreach Marketplace Shield (angular)": {
-    "extraction_errors": [
-      "binding"
-    ]
-  },
-  "Item:Stormreach Marketplace Shield (round)": {
-    "extraction_errors": [
-      "binding"
     ]
   },
   "Item:Sustaining Symbiont": {
