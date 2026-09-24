@@ -270,6 +270,10 @@ with ADR 0006.
   - whether wiki categories may feed Scraped Item fields;
   - whether rune arms stay `other` or become `weapon`.
   Equip slots for either kind (C) would need a game-knowledge source and are not proposed.
+- **Decided by the maintainer (2026-09-24):** option B. `item_type` comes from the wiki
+  category for `accessory_untyped` items: `Named wands` gives `Wand`, `Rune Arms` gives
+  `Rune Arm`. Rune arms stay `other`, `equip_slots` is unchanged, and a type row, when
+  present, wins. See "Decision 4g" below.
 
 ## Decisions made during execution
 
@@ -1066,6 +1070,53 @@ with ADR 0006.
   | After | 211 | 0 | 0 | 0 | 0 | 5 |
 
 - Tests after decision 4e: 419 passed, 1 skipped.
+
+### Decision 4g: accessory_untyped item_type
+
+- **Maintainer decision (2026-09-24):** option B of "Proposal: item_type for
+  accessory_untyped". Wiki categories may feed `item_type` for items on the
+  `accessory_untyped` template: `Category:Named wands` gives `Wand`, and
+  `Category:Rune Arms` gives `Rune Arm`. Rune arms stay in category `other`, so no file
+  moves, and `equip_slots` stays []. A type row, when present, takes precedence. An item
+  in neither category keeps a null `item_type`.
+- **Implementation:** one new optional template key, `item_type_from_category` (wiki
+  category → `item_type`, an ordered map; the first listed category the page is in wins),
+  typed in `config.py` as `dict[str, str]` defaulting to {}, so unknown keys are still
+  rejected. `extract()` passes the page's categories (the step 3 `_wiki_categories`
+  reader of `wgCategories`) to `_apply_template`, which applies the map only when
+  `item_type` is still null after `item_type_from` / `item_type_from_split`. Only
+  `accessory_untyped` sets the key in `templates.yaml`, with the two entries above. No
+  schema, mapping or writer change: `item_type` is already a nullable free string.
+- **Tests (through `extract()`):**
+  `test_untyped_item_takes_its_type_from_its_wiki_category` (wand and rune arm, in the
+  held pages' first-row and category shapes; category stays `other`, slots []),
+  `test_untyped_item_in_no_typed_category_keeps_a_null_type` (other categories, empty
+  list, no list), and `test_a_type_row_wins_over_the_wiki_category` (a config copy that
+  gives the `accessory` template the map: `Jewelry / Ring` keeps `Ring`, a type row with
+  no second part falls back to `Wand`). The 3 positive cases failed before the change.
+  `test_real_untyped_accessory_page` (the Epic Whirling Words fixture, in `Rune Arms`)
+  now expects `Rune Arm`. `item_page()` gains an optional `categories` argument.
+- **Files:** `catalog/extractor/templates.yaml`, `src/item_extractor/config.py`,
+  `src/item_extractor/extractor.py`, `tests/item_extractor/test_extract.py`, this plan,
+  and 24 item files under `catalog-src/items`. `extractor_gaps.json` is unchanged after
+  regeneration (a null `item_type` was never a gap).
+- **`catalog-src` diff:** exactly the 24 `accessory_untyped` item files, one line each:
+  `item_type` goes from null to `Wand` (20: the 12 Eternal Wands, Roderic's Wand and Epic,
+  Brimstone Verge and Epic, Cacophonic Verge, Epic and Dampened, Wand of Blasting) or
+  `Rune Arm` (4: Animus, Chulchannad's Claw, The Pea Shooter, Glorious Obscenity). No
+  file moves, no registry change and no other file. Every held `accessory_untyped` item
+  is in one of the two categories, so none keeps a null `item_type`.
+- **Offline rerun, Updates 5-13:** the script exits 0 with 0 fetch attempts, the inner sync
+  exit code is 2, and 42 unheld pages are skipped. A second run left `git status` and the
+  diff unchanged, and `check_catalog('catalog-src')` returns [].
+- **Report totals:**
+
+  | | Lines | Unmapped | Unclassified | Errors | Warnings | Skipped |
+  |---|---|---|---|---|---|---|
+  | Before | 211 | 0 | 0 | 0 | 0 | 5 |
+  | After | 211 | 0 | 0 | 0 | 0 | 5 |
+
+- Tests after decision 4g: 425 passed, 1 skipped.
 
 ## Session summary
 

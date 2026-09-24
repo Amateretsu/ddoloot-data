@@ -177,6 +177,8 @@ class Template(_Strict):
     category_from: SplitPart | None = None
     item_type_from: str | None = None
     item_type_from_split: SplitPart | None = None
+    #: Wiki category → item_type, for a page no type row gives one; first match wins.
+    item_type_from_category: dict[str, str] = {}
     equip_slots: list[str] = []
     equip_slots_from: SplitAll | None = None
 

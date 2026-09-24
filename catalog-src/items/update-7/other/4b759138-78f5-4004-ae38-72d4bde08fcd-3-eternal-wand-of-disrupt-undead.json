@@ -9,7 +9,7 @@
   },
   "template": "accessory_untyped",
   "category": "other",
-  "item_type": null,
+  "item_type": "Wand",
   "equip_slots": [],
   "minimum_level": 1,
   "required_race": null,
