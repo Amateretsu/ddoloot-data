@@ -128,15 +128,14 @@ def test_sync_pages_writes_scraped_items(paths):
     assert INDEX_URL not in store.requests
     assert store.config.cache_dir == (paths["config"].parent / "cache/pages").resolve()
     assert sorted(p.name for p in paths["out"].iterdir()) == ["update-5"]
-    written = sorted(p.name for p in (paths["out"] / "update-5").glob("*.json"))
-    assert written == [
-        "Item_Ring_of_Fire.json",
-        "Item_Shield_of_Light.json",
-        "Item_Sword_of_Shadow.json",
+    # File names are "<slug>-<8 hex of the title hash>.json".
+    written = sorted((paths["out"] / "update-5").glob("*.json"))
+    assert [p.stem[:-9] for p in written] == [
+        "Item_Ring_of_Fire",
+        "Item_Shield_of_Light",
+        "Item_Sword_of_Shadow",
     ]
-    item = json.loads(
-        (paths["out"] / "update-5" / "Item_Sword_of_Shadow.json").read_text()
-    )
+    item = json.loads(written[2].read_text())
     assert item["wiki"]["url"] == "https://ddowiki.com/page/Item:Sword_of_Shadow"
     report = (paths["out"] / "update-5" / "report.jsonl").read_text().splitlines()
     assert len(report) == 3

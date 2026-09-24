@@ -17,6 +17,12 @@ def breaker():
     return extract(ITEM_PAGE_HTML, URL, load_config())
 
 
+def _one(folder, stem):
+    """The JSON file for *stem*; names carry an 8-hex title hash after the stem."""
+    [path] = folder.glob(f"{stem}-????????.json")
+    return path
+
+
 def _lines(path):
     return [json.loads(x) for x in path.read_text().splitlines()]
 
@@ -28,7 +34,7 @@ def test_writes_item_json_under_its_update_folder(tmp_path, breaker):
     )
 
     written = json.loads(
-        (tmp_path / "update-8" / "Item_Breaker_of_Bodies.json").read_text()
+        _one(tmp_path / "update-8", "Item_Breaker_of_Bodies").read_text()
     )
     assert set(written) == set(ScrapedItem.model_fields), "every field is written"
     assert ScrapedItem.model_validate(written) == item
@@ -67,9 +73,9 @@ def test_rewriting_a_page_replaces_its_report_line(tmp_path, breaker):
 
     lines = _lines(tmp_path / "update-8" / "report.jsonl")
     assert [line["url"] for line in lines] == [VEST_URL, URL]
-    assert sorted(p.name for p in (tmp_path / "update-8").glob("*.json")) == [
-        "Item_Breaker_of_Bodies.json",
-        "Item_Dark_Ressurectionist_s_Frock_Vest.json",
+    assert sorted(p.stem[:-9] for p in (tmp_path / "update-8").glob("*.json")) == [
+        "Item_Breaker_of_Bodies",
+        "Item_Dark_Ressurectionist_s_Frock_Vest",
     ]
 
 
@@ -79,7 +85,48 @@ def test_a_page_without_an_update_goes_to_unknown(tmp_path, breaker):
     writer.write(item, report)
     writer.write(item, {"update_page": "Update_50_revamped_named_items", **report})
 
-    assert (tmp_path / "unknown" / "Item_Breaker_of_Bodies.json").exists()
+    assert _one(tmp_path / "unknown", "Item_Breaker_of_Bodies").exists()
     [line] = _lines(tmp_path / "unknown" / "report.jsonl")
     assert line["update_page"] == "Update_50_revamped_named_items"
     assert sorted(p.name for p in tmp_path.iterdir()) == ["unknown"]
+
+
+def _as_page(item, url):
+    return item.model_copy(update={"wiki": item.wiki.model_copy(update={"url": url})})
+
+
+def test_titles_differing_only_in_punctuation_or_case_get_their_own_files(
+    tmp_path, breaker
+):
+    item, report = breaker
+    urls = [
+        "https://ddowiki.com/page/Item:Foo%27s_Bar",
+        "https://ddowiki.com/page/Item:Foo_s_Bar",
+        "https://ddowiki.com/page/Item:Firebreak_(level_17)",
+        "https://ddowiki.com/page/Item:Firebreak_(Level_17)",
+    ]
+    writer = JsonItemWriter(tmp_path)
+    for url in urls:
+        writer.write(
+            _as_page(item, url), {"update_page": "Update_8_named_items", **report}
+        )
+
+    written = [
+        json.loads(p.read_text()) for p in (tmp_path / "update-8").glob("*.json")
+    ]
+    assert sorted(w["wiki"]["url"] for w in written) == sorted(urls)
+    assert len(_lines(tmp_path / "update-8" / "report.jsonl")) == 4
+
+
+def test_two_spellings_of_one_page_url_share_one_file_and_report_line(
+    tmp_path, breaker
+):
+    item, report = breaker
+    writer = JsonItemWriter(tmp_path)
+    for url in (VEST_URL, VEST_URL.replace("%27", "'")):
+        writer.write(
+            _as_page(item, url), {"update_page": "Update_8_named_items", **report}
+        )
+
+    assert len(list((tmp_path / "update-8").glob("*.json"))) == 1
+    assert len(_lines(tmp_path / "update-8" / "report.jsonl")) == 1
