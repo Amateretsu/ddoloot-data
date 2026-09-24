@@ -285,3 +285,27 @@ each leaves tests green and the CLI working end to end.
 - `ddo_sync/discovery.py` absorbs `update_page_parser`. Its interface is
   `discover_update_pages(store, refresh)`, `read_update_page(store, name, refresh) ->
   UpdatePage`, `update_page_url`, `update_slug`.
+
+### Step 4: typed extractor Config
+
+- `load_config(config_dir=None) -> Config` returns one frozen pydantic model (`extra="forbid"`
+  throughout) holding `FieldsConfig`, `TemplatesConfig`, `MappingsConfig` and
+  `EnchantmentsConfig`. Only `Config` and `ConfigError` are exported. Lookups are
+  `cfg.fields.rule_for(label)`, `cfg.fields.is_ignored(label)` and `cfg.template_inputs`.
+- `ConfigError` messages are `<file>: <key.path>: <message>`, without pydantic's input dumps.
+- Every regex is compiled at load; a bad pattern fails as `bad pattern '<p>': <re error>`.
+  Config labels are normalised once at load instead of per page.
+- `needs_cell` is removed; it was the only unread knob (every other key was checked and is
+  read). A `spread` row may omit `target`, and then its errors are keyed by its first
+  normalised label. The shipped YAML keeps the spread targets because they are the step-1
+  `extraction_errors` keys. A non-spread row without `target` fails at load.
+- `split` in `templates.yaml` is always a list (`SplitPart` / `SplitAll` models).
+- One `EntryRule` model with kind-specific optional keys: a set rule requires
+  `item_pattern`, a hint rule requires `hint_kind`, and `kind`/`value_kind` are Literals. The
+  three `bonus_type` patterns are required.
+- Tests: `test_coercers.py` (10) is deleted; the old config tests (7) became 17
+  `load_config()` interface tests, and 13 `extract()` tests were added using an
+  `item_page(*rows)` builder in the real page shape. Suite 222 → 235.
+- Verified: `extract-item --html` output for all six fixtures is byte-identical to `main`.
+- Finding, not fixed: `normalize_label` strips a trailing colon only when it is the last
+  character, so `"Required Race:\n"` would be an unmapped row. No page seen so far has one.

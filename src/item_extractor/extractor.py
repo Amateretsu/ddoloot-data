@@ -49,7 +49,7 @@ def _main_table(content: Tag, cfg: Config) -> Tag | None:
     for table in content.find_all("table"):
         rows = _rows(table)
         labels = {normalize_label(th.get_text()) for th, _ in rows}
-        score = len(rows) + (100 if labels & cfg.effects_labels else 0)
+        score = len(rows) + (100 if labels & cfg.fields.effects_labels else 0)
         if score > best_score:
             best, best_score = table, score
     return best
@@ -116,7 +116,7 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
     effects, hints = [], []
     for th, td in rows:
         label = normalize_label(th.get_text())
-        if label in cfg.effects_labels:
+        if label in cfg.fields.effects_labels:
             for li in (td.find("ul") or td).find_all("li", recursive=False):
                 entry = read_entry(li)
                 if not entry.text:
@@ -145,32 +145,30 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
     for th, td in rows:
         label = normalize_label(th.get_text())
         labels_seen.append(label)
-        if label in cfg.effects_labels:
+        if label in cfg.fields.effects_labels:
             continue
-        entry_cfg = cfg.label_index.get(label)
+        rule = cfg.fields.rule_for(label)
         text = re.sub(
             r"\s+", " ", td.get_text(" ", strip=True).replace("\xa0", " ")
         ).strip()
-        if entry_cfg is None:
-            if label in cfg.ignored_labels or any(
-                p.search(label) for p in cfg.ignored_patterns
-            ):
+        if rule is None:
+            if cfg.fields.is_ignored(label):
                 report["ignored_rows"].append(label)
             else:
                 report["unmapped_rows"][label] = text[:120]
             continue
-        if text.lower() in cfg.null_values:
+        if text.lower() in cfg.fields.null_values:
             continue
         try:
-            value = COERCERS[entry_cfg["coerce"]](text, td, cfg)
+            value = COERCERS[rule.coerce](text, td, cfg)
         except Unparseable:
-            errors[entry_cfg["target"]] = text
+            errors[rule.error_key] = text
             continue
-        if entry_cfg.get("spread"):
+        if rule.spread:
             for path, v in value.items():
                 _set_path(item, path, v)
-        elif value is not None:
-            _set_path(item, entry_cfg["target"], value)
+        elif value is not None and rule.target is not None:
+            _set_path(item, rule.target, value)
 
     _apply_template(item, labels_seen, cfg, report)
     for field in cfg.template_inputs:
@@ -184,50 +182,45 @@ def _apply_template(
 ) -> None:
     label_set = set(labels)
     first = labels[0] if labels else None
-    for tpl in cfg.templates["templates"]:
-        detect = tpl["detect"]
-        if detect.get("default"):
+    for tpl in cfg.templates.templates:
+        detect = tpl.detect
+        if (
+            detect.default
+            or first in detect.first_label
+            or label_set & detect.has_label
+        ):
             break
-        if "first_label" in detect and first in {
-            normalize_label(x) for x in detect["first_label"]
-        }:
-            break
-        if "has_label" in detect and label_set & {
-            normalize_label(x) for x in detect["has_label"]
-        }:
-            break
-    report["template"] = tpl["id"]
-    item["template"] = tpl["id"]
+    report["template"] = tpl.id
+    item["template"] = tpl.id
 
-    def split(value: str, seps: list[str] | str) -> list[str]:
-        seps = [seps] if isinstance(seps, str) else seps
+    def split(value: str, seps: list[str]) -> list[str]:
         parts = [value]
         for sep in seps:
             parts = [p for part in parts for p in part.split(sep)]
         return [p.strip() for p in parts if p.strip()]
 
-    category = tpl.get("category")
-    if "category_from" in tpl:
-        src = tpl["category_from"]
-        raw = item.get(src["field"])
+    category = tpl.category
+    if tpl.category_from is not None:
+        src = tpl.category_from
+        raw = item.get(src.field)
         if raw:
-            head = split(raw, src["split"])[src["index"]]
-            category = cfg.templates["category_map"].get(head.lower())
+            head = split(raw, src.split)[src.index]
+            category = cfg.templates.category_map.get(head.lower())
             if category is None:
                 report.setdefault("unknown_categories", []).append(head)
     item["category"] = category or "other"
 
-    if "item_type_from" in tpl:
-        item["item_type"] = _get_path(item, tpl["item_type_from"])
-    elif "item_type_from_split" in tpl:
-        src = tpl["item_type_from_split"]
-        parts = split(item.get(src["field"]) or "", src["split"])
-        item["item_type"] = parts[src["index"]] if len(parts) > src["index"] else None
+    if tpl.item_type_from is not None:
+        item["item_type"] = _get_path(item, tpl.item_type_from)
+    elif tpl.item_type_from_split is not None:
+        part = tpl.item_type_from_split
+        parts = split(item.get(part.field) or "", part.split)
+        item["item_type"] = parts[part.index] if len(parts) > part.index else None
 
-    if "equip_slots_from" in tpl:
-        src = tpl["equip_slots_from"]
+    if tpl.equip_slots_from is not None:
+        every = tpl.equip_slots_from
         item["equip_slots"] = [
-            _slug(s) for s in split(item.pop(src["field"], "") or "", src["split"])
+            _slug(s) for s in split(item.pop(every.field, "") or "", every.split)
         ]
     else:
-        item["equip_slots"] = list(tpl.get("equip_slots", []))
+        item["equip_slots"] = list(tpl.equip_slots)

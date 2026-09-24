@@ -1,4 +1,5 @@
 # Value maps applied by coercers. Keys match lowercased, whitespace-normalised text.
+# The four maps below are the whole file; an unknown key is rejected at load.
 
 # Wiki binding text -> spec binding enum. `on_equip` means "undecided until equipped".
 binding:

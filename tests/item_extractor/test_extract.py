@@ -1,10 +1,13 @@
 """extract() on inline pages and on committed real wiki pages (tests/fixtures/pages/)."""
 
+import shutil
 from pathlib import Path
 
 import pytest
+import yaml
 
-from item_extractor import ExtractionError, ScrapedItem, aggregate, extract
+from item_extractor import ExtractionError, ScrapedItem, aggregate, extract, load_config
+from item_extractor.config import DEFAULT_CONFIG_DIR
 from page_store import PageStore, load_scraper_config
 
 PAGES = Path(__file__).resolve().parents[1] / "fixtures" / "pages"
@@ -54,6 +57,19 @@ UNPARSEABLE = """
 
 def page(filename):
     return (PAGES / filename).read_text(encoding="utf-8")
+
+
+def item_page(*rows, title="Item:Row Test"):
+    """A page in the real wiki shape whose infobox holds *rows* as (label, cell HTML)."""
+    body = "".join(
+        f'<tr><th class="bg-color-1">{label}\n</th><td>{cell}\n</td></tr>'
+        for label, cell in rows
+    )
+    return (
+        f'<html><body><h1 id="firstHeading">{title}</h1>'
+        f'<div class="mw-parser-output"><table class="wikitable">{body}</table></div>'
+        "</body></html>"
+    )
 
 
 def test_weapon_page(cfg):
@@ -126,6 +142,107 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
     summary = aggregate({"a": r1, "b": r2})
     assert summary["templates"] == {"weapon": 1, "accessory": 1}
     assert summary["unmapped_rows"] == {"mystery row": ["a"]}
+
+
+# ── One row at a time: what each kind of cell becomes ───────────────────────
+
+
+@pytest.mark.parametrize(
+    ("label", "cell", "field", "expected"),
+    [
+        ("Base Value", "3 pp, 2 gp, 5 sp, 8 cp", "base_value_cp", 3_258),
+        ("Base Value", "12 cp", "base_value_cp", 12),
+        ("Binding", "Bound to Account on Acquire", "binding", "account"),
+        ("Binding", "Unbound", "binding", "unbound"),
+        ("Accepts Sentience?", "No", "accepts_sentience", False),
+        ("Weight", "0.5 lbs", "weight", 0.5),
+        ("Race\xa0Absolutely   Required", "Dwarf", "required_race", "Dwarf"),
+    ],
+)
+def test_row_is_coerced_into_its_field(cfg, label, cell, field, expected):
+    item, report = extract(item_page((label, cell)), "u", cfg)
+    assert getattr(item, field) == expected
+    assert report["unmapped_rows"] == {}
+    assert item.extraction_errors == {}
+
+
+def test_binding_keeps_the_raw_wiki_text(cfg):
+    item, _ = extract(
+        item_page(("Bind Status", "Bound to Character on Equip")), "u", cfg
+    )
+    assert (item.binding, item.binding_raw) == (
+        "on_equip",
+        "Bound to Character on Equip",
+    )
+
+
+def test_weapon_damage_without_bonus_and_crit(cfg):
+    item, _ = extract(
+        item_page(
+            ("Proficiency Class", "Simple Weapon Proficiency"),
+            ("Damage", "1d8 Piercing"),
+            ("Critical Roll", "19-20 / x3"),
+        ),
+        "u",
+        cfg,
+    )
+    stats = item.weapon_stats
+    assert (stats.damage_dice, stats.damage_bonus, stats.damage_types) == (
+        "1d8",
+        None,
+        ["Piercing"],
+    )
+    assert (stats.critical_range, stats.critical_multiplier) == ("19-20", 3)
+
+
+def test_armor_bonus_with_material_variants(cfg):
+    item, _ = extract(
+        item_page(
+            ("Armor Type", "Docent"),
+            ("Armor Bonus", "Adamantine Body: +26 Mithral Body: +15"),
+        ),
+        "u",
+        cfg,
+    )
+    assert item.armor_stats.armor_bonus is None
+    assert [(v.name, v.value) for v in item.armor_stats.armor_bonus_variants] == [
+        ("Adamantine Body", 26),
+        ("Mithral Body", 15),
+    ]
+
+
+def test_location_splits_quests_ingredients_and_detail(cfg):
+    cell = (
+        '<a href="/page/Item:Scale_of_Tiamat">Scale of Tiamat</a> + '
+        '<a href="/page/Item:Sands_Shard">Sands Shard</a>, crafted at the altar'
+    )
+    item, _ = extract(item_page(("Location", cell)), "u", cfg)
+    assert item.source.quests == []
+    assert item.source.crafted_from == ["Scale of Tiamat", "Sands Shard"]
+    assert item.source.detail == "crafted at the altar"
+
+
+def test_ignored_rows_are_reported_not_mapped(cfg):
+    _, report = extract(
+        item_page(("Rarity", "Rare"), ("School", "Evocation")), "u", cfg
+    )
+    assert report["ignored_rows"] == ["rarity", "school"]
+    assert report["unmapped_rows"] == {}
+
+
+def test_spread_row_without_target_records_errors_under_its_first_label(tmp_path):
+    config_dir = tmp_path / "extractor"
+    shutil.copytree(DEFAULT_CONFIG_DIR, config_dir)
+    path = config_dir / "fields.yaml"
+    data = yaml.safe_load(path.read_text())
+    next(r for r in data["fields"] if r["coerce"] == "binding").pop("target")
+    path.write_text(yaml.safe_dump(data))
+
+    item, _ = extract(
+        item_page(("Bind Status", "Bound to nobody")), "u", load_config(config_dir)
+    )
+    assert item.binding is None
+    assert item.extraction_errors == {"binding": "Bound to nobody"}
 
 
 # ── Committed real pages ──────────────────────────────────────────────────────

@@ -59,7 +59,7 @@ Two stages, so scraping never depends on the effects registry (ADR 0008):
 1. **Extract** (config-driven): HTML to a *scraped item* JSON, committed under `catalog-src/items/` (ADR 0006). Effects carry the raw name, parsed value, bonus type and tooltip. No registry lookups.
 2. **Compile** (later slice): scraped items plus the registry and rules to the spec's bundle `items.json`.
 
-Config lives in the data repo as YAML (`catalog/extractor/`), validated by JSON Schema:
+Config lives in the data repo as YAML (`catalog/extractor/`). (As built, `item_extractor.load_config()` validates it at load as typed pydantic models that reject unknown keys, not JSON Schema; the per-file headers document the keys.) The files:
 
 - `fields.yaml`: canonical field, alias group (all label variants), coercer (`int`, `float`, `copper`, `percent`, `text`, `null_if_none`, `list`), and which templates it applies to.
 - `templates.yaml`: template detection (first row label or row-set signature) and per-template category and slot derivation.
