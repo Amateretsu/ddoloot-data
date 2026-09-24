@@ -1340,3 +1340,73 @@ The maintainer decided the three proposals and the run cadence on 2026-09-24:
 Report totals now: 211 lines, 0 unmapped rows, 0 unclassified effects, 0 extraction errors,
 0 warnings, 5 skipped. Tests: 425 passed, 1 skipped. So step 5 of "To continue" has
 nothing left to decide.
+
+### Bulk fetch: ready-to-run
+
+`scripts/bulk_fetch.py` runs "To continue" steps 3 and 4 as one loop, and
+`config/scraper-bulk.yaml` replaces the scratch config of step 1.
+
+```
+.venv/bin/ddoloot sync --reset-failed      # once, offline: "To continue" step 2
+.venv/bin/python scripts/bulk_fetch.py --dry
+.venv/bin/python scripts/bulk_fetch.py --log-dir $SCRATCH/bulk --budget <requests left>
+```
+
+- **Config:** `config/scraper-bulk.yaml` is `config/scraper.yaml` plus `max_retries: 0`
+  and `browser.consecutive_challenges: 1`, the settings of every live run in both plans.
+  Its `cache_dir: ../cache/pages` resolves to the repo's `cache/pages`, as the loader
+  confirms. `tests/test_scraper_bulk_config.py` fails if any other key differs from
+  `config/scraper.yaml`. Politeness values are still changed only in `scraper.yaml`.
+- **Defaults and their sources:**
+  - `--limit 100` and `--pause 1200`: Step 6's mitigation.
+  - `--budget 1200`: SESSION_BUDGET in the backlog plan. It covers this invocation only,
+    so pass what is left when resuming.
+  - `--max-retries 0`: always passed, as batch 1 decided.
+  - `--scraper-config config/scraper-bulk.yaml`.
+- **Each run** is one `scripts/guarded_sync.py` run, imported rather than copied: its
+  stop guard, its log and its exit code. Its `--page` list is every update page with
+  pending rows, plus the next page of `config/update_pages.yaml` (ascending N) not yet
+  read into the queue when the pending rows are fewer than `--limit`. A new update page
+  costs 1 request to read, and its rows fill the run. The sync processes the whole
+  pending queue in update order anyway (Step 5 finding), so this list only decides when
+  a new page is read.
+- **Before each run:** the worst case comes from guarded_sync's dry run (now
+  `worst_case_plan`, which returns it). With a new page it is the upper bound
+  `F <= unheld pages + --limit`. The loop stops if the worst case, times
+  `1 + max_retries`, exceeds `--budget` less the requests spent. Spent requests are the
+  `GET ` lines in each run's log, as `grep -c 'GET '` counts them.
+- **After each run:** exit 0 or 2 continue after the pause, with no pause after a run
+  that sent 0 wiki requests. Exit 1 or 3 stop with Step 6's advice. Any other exit code
+  stops too.
+- **The loop also stops** at `--max-runs`, when the backlog is complete, and on Ctrl-C
+  (exit 130). Two safety stops were added because the docs are silent: a new update page
+  still not read after its run (so an unreadable page is not re-read run after run), and
+  a run that changed nothing in the queue.
+- **Logs:** `--log-dir` holds `run-NNN.log`, numbered after any logs already there, and
+  `summary.log`, one line per run: pages, requests, items completed (skipped included),
+  skipped and failed, the exit code and the log name. At exit the driver prints the runs,
+  the requests against the budget, the pages still pending, and the `offline_rerun.py`
+  command over every update page read so far. Then run the rest of "To continue" step 3
+  by hand: regenerate the gaps baseline, review the diff, run the CI checks and
+  `check_catalog`, and commit.
+- **Queue:** it is only read, from guarded_sync's copy made through a `mode=ro`
+  connection, so only the syncs write `data/queue.db`. The driver does not reset failed
+  rows. Run `--reset-failed` yourself, as above.
+- **Exit codes:** 0 for backlog complete, `--max-runs` or `--dry`; 1 for any other stop;
+  130 for Ctrl-C; 64 for a usage error.
+- **Dry run on the real queue (2026-09-24, before `--reset-failed`, sockets patched to
+  raise, md5 of `data/queue.db` and `cache/pages/index.json` unchanged):**
+  ```
+  next run --page: Update_8_named_items Update_9_named_items Update_14_named_items
+  update pages read: 10, unheld: 1 (Update_14_named_items)
+  pending rows processed (--limit 100): 47, unheld: 42
+  not yet read into the queue: Update_14_named_items; their item rows are not known offline.
+  upper bound: all 100 processed rows unheld.
+  k = browser.consecutive_challenges = 1
+  F <= 101; worst case 1 + 2F + min(F, k) <= 204 requests
+  budget left: 1200; fits
+  stopped: dry run: no request sent
+  ```
+- **Tests:** `tests/test_bulk_fetch.py` (21) and `tests/test_scraper_bulk_config.py` (2),
+  all offline: a temporary queue, a temporary Page Store, a fake run and a fake sleep.
+  Total: 464 passed, 1 skipped.
