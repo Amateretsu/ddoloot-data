@@ -1,0 +1,102 @@
+{
+  "id": "ffb4d3e1-8fc8-40bc-8499-850f3a553805",
+  "name": "Epic Frozen Plate",
+  "wiki": {
+    "page_id": 11977,
+    "revision_id": 708422,
+    "title": "Item:Epic Frozen Plate",
+    "url": "https://ddowiki.com/page/Item:Epic_Frozen_Plate"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Dwarven Iron",
+  "hardness": 31,
+  "durability": 360,
+  "base_value_cp": 8150000,
+  "weight": 50.0,
+  "upgradeable": "Legendary Crafting to Legendary Frozen Plate",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 26,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Physical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Physical Sheltering +24 : +24 Enhancement bonus to Physical Resistance Rating"
+    },
+    {
+      "name": "Cold Absorption",
+      "value": 27,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Absorption +27% : Passive: 27% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Cold Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance."
+    },
+    {
+      "name": "Freezing Ice Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Freezing Ice Guard : This item stores the pitiless immovable power of the ice deep within. When the wearer of this item is successfully attacked in melee, this power occasionally comes to the surface, attempting to freeze an enemy solid and encase them in ice."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A sturdy suit of armor covered in a thin layer of ice and infuse with the power of cold. It seems to have been left on the ocean floor and taken on the properties of the freezing, forbidding depths.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Frozen Plate"
+    ],
+    "raw": "Epic version of Frozen Plate"
+  },
+  "extraction_errors": {}
+}

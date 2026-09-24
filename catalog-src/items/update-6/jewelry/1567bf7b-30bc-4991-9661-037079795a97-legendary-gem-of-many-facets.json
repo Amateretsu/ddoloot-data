@@ -1,0 +1,77 @@
+{
+  "id": "1567bf7b-30bc-4991-9661-037079795a97",
+  "name": "Legendary Gem of Many Facets",
+  "wiki": {
+    "page_id": 91995,
+    "revision_id": 684172,
+    "title": "Item:Legendary Gem of Many Facets",
+    "url": "https://ddowiki.com/page/Item:Legendary_Gem_of_Many_Facets"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 30,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 50,
+  "durability": 301,
+  "base_value_cp": 12020000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Craftable (hidden)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Craftable : This item can be enhanced via Essence Crafting ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "From this chain hangs a gem that is very finely cut, giving it countless glittering faces. It can take the place of various other items for the purpose of activating certain set bonuses. This item will randomly choose from available set bonuses whenever it is re-acquired or upgraded to a higher level version. This item is also keyed for Essence Crafting, and may be Disjuncted so that it can be crafted upon. Note that upgrading this item to a higher level version through Epic or Legendary Crafting will destroy what has been crafted upon it, and will also re-roll available set bonuses.",
+  "notes": null,
+  "tips": "This item cannot be fed to sentient jewels . You can reroll the set bonuses for 100 Threads of Fate at the Altar of Legendary Rituals .",
+  "source": {
+    "quests": [
+      "The Chronoscope (Legendary)"
+    ],
+    "detail": "end chest or Legendary version of",
+    "crafted_from": [
+      "Epic Gem of Many Facets"
+    ],
+    "raw": "The Chronoscope (Legendary) , end chest, or Legendary version of Epic Gem of Many Facets"
+  },
+  "extraction_errors": {}
+}

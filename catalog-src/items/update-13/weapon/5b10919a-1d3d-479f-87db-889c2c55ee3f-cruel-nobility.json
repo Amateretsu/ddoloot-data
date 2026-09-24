@@ -1,0 +1,113 @@
+{
+  "id": "5b10919a-1d3d-479f-87db-889c2c55ee3f",
+  "name": "Cruel Nobility",
+  "wiki": {
+    "page_id": 20818,
+    "revision_id": 672731,
+    "title": "Item:Cruel Nobility",
+    "url": "https://ddowiki.com/page/Item:Cruel_Nobility"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Scimitar",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 26,
+  "durability": 220,
+  "base_value_cp": 6402000,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Cruel Nobility",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Scimitar",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Evil",
+      "Lawful",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Axiomatic Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Axiomatic Burst 4 : This weapon is an implement of law, dealing 4d6 Law damage on a successful hit to Chaotic enemies, and 9d6 Law damage on a critical hit to Chaotic enemies. This effect makes the weapon lawfully aligned. Chaotic characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Evil Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Evil Blast 4 : This weapon is a sinister implement of evil deeds, dealing 4d6 Evil damage on a successful hit, and an additional 4d6 Evil damage on a critical hit. This effect makes the weapon evil aligned. Good characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Bleeding",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Bleeding 4 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 4d8 bleeding damage to those that are vulnerable to it."
+    },
+    {
+      "name": "Disintegration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disintegration : This weapon has a dark, insidious power deep within. Occasionally, this power lashes out violently at enemies and attempts to disintegrate them."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A finely wrought scimitar that once belonged to a Rakshasa noble, glowing darkly with an unholy aura. It tears into enemies viciously and is especially debilitating against those whose hearts are not evil",
+  "notes": null,
+  "tips": "Grants two negative levels on a Chaotic Good character.",
+  "source": {
+    "quests": [
+      "The Lords of Dust"
+    ],
+    "detail": "Tahmael 's chest",
+    "crafted_from": [],
+    "raw": "The Lords of Dust , Tahmael 's chest"
+  },
+  "extraction_errors": {}
+}

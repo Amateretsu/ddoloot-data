@@ -1,0 +1,111 @@
+{
+  "id": "463ced9b-3fa3-4e4c-8b4b-95cc53e15658",
+  "name": "Envenomed Blade",
+  "wiki": {
+    "page_id": 20819,
+    "revision_id": 629814,
+    "title": "Item:Envenomed Blade",
+    "url": "https://ddowiki.com/page/Item:Envenomed_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Short Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 26,
+  "durability": 215,
+  "base_value_cp": 6401000,
+  "weight": 2.0,
+  "upgradeable": "Epic Crafting to Epic Envenomed Blade",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Short Sword",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Poison Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit."
+    },
+    {
+      "name": "Paralyzing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Paralyzing : Any creature struck by this weapon must succeed on a DC 17 Will save or be paralyzed. The target may attempt a new save to end the effect every several seconds; otherwise the paralysis lasts for 1 minute."
+    },
+    {
+      "name": "Armor-Piercing",
+      "value": 12,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Armor-Piercing 12% : Passive: +12% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)"
+    },
+    {
+      "name": "Deadly Spider Venom",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deadly Spider Venom : This item is steeped in deadly spider venom. On an attack roll of 20 which is confirmed as a critical hit it will inflict the target with a poison that deals 10d6 poison damage every 2 seconds for 6 seconds. When the poison wears off, it also deals 3d6 Constitution damage to the target. A successful Fortitude save (DC 34) negates the Constitution damage."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A small blade wielded by the drow assassins of Faerun's Underdark, steeped in a powerful poison that causes persistent damage to its targets. It is also a thin and sharp enough weapon to bypass the defenses of many targets and deliver critical blows.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Lords of Dust"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The Lords of Dust , End chest"
+  },
+  "extraction_errors": {}
+}

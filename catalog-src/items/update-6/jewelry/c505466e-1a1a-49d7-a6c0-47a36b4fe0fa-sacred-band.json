@@ -1,0 +1,79 @@
+{
+  "id": "c505466e-1a1a-49d7-a6c0-47a36b4fe0fa",
+  "name": "Sacred Band",
+  "wiki": {
+    "page_id": 12034,
+    "revision_id": 634420,
+    "title": "Item:Sacred Band",
+    "url": "https://ddowiki.com/page/Item:Sacred_Band"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Sacred Band",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Divine Blessing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower"
+    },
+    {
+      "name": "Lesser Turning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Lesser Turning : Increases total number of Turn Undead uses by 2, once wielder rests. If you unequip the item you will lose these turns."
+    },
+    {
+      "name": "Wisdom",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Heal",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Heal +10 : Passive: +10 Competence bonus to the Heal skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Though used primarily by drow ascetics, this ring will aid any healer in his or her duties.",
+  "notes": null,
+  "tips": "Completes to a set item with the Sacred Helm .",
+  "source": {
+    "quests": [
+      "The Claw of Vulkoor"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Claw of Vulkoor , End reward"
+  },
+  "extraction_errors": {}
+}

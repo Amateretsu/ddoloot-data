@@ -1,0 +1,72 @@
+{
+  "id": "1efb5e42-f656-4d0f-89fd-1ee34c97d7e1",
+  "name": "Bracers of the Claw",
+  "wiki": {
+    "page_id": 12026,
+    "revision_id": 628731,
+    "title": "Item:Bracers of the Claw",
+    "url": "https://ddowiki.com/page/Item:Bracers_of_the_Claw"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Bracers of the Claw",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Vulkoor's Might",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage"
+    },
+    {
+      "name": "Constitution",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Constitution +5 : This item gives the wearer improved health, granting a +5 Enhancement bonus to Constitution."
+    },
+    {
+      "name": "Fortification",
+      "value": 70,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fortification +70% : +70% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Drow warriors don these bracers before combat and are granted great power in battle. They claim the bracers are infused with Vulkoor's Wrath.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,72 @@
+{
+  "id": "cb615703-6844-458b-a5f3-238e6fbd70ca",
+  "name": "Boots of the Mire",
+  "wiki": {
+    "page_id": 12174,
+    "revision_id": 628681,
+    "title": "Item:Boots of the Mire",
+    "url": "https://ddowiki.com/page/Item:Boots_of_the_Mire"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Boots",
+  "equip_slots": [
+    "feet"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Boots of the Mire",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Marshwalker",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "enhancement",
+      "tooltip": "Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to Jump and Tumble"
+    },
+    {
+      "name": "Underwater Action",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Underwater Action : This item grants the wearer the ability to breathe water as if it were air."
+    },
+    {
+      "name": "Balance",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Balance +10 : Passive: +10 Competence bonus to the Balance skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "These boots were designed to ease travel through swampy, water-logged regions.",
+  "notes": null,
+  "tips": "Old versions had Balance +7 . They don't retroactively change but have to be reacquired.",
+  "source": {
+    "quests": [
+      "Fathom the Depths"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Fathom the Depths , End reward"
+  },
+  "extraction_errors": {}
+}

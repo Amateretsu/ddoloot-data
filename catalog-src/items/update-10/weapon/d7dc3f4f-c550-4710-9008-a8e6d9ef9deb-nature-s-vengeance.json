@@ -1,0 +1,102 @@
+{
+  "id": "d7dc3f4f-c550-4710-9008-a8e6d9ef9deb",
+  "name": "Nature's Vengeance",
+  "wiki": {
+    "page_id": 16454,
+    "revision_id": 679760,
+    "title": "Item:Nature's Vengeance",
+    "url": "https://ddowiki.com/page/Item:Nature%27s_Vengeance"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 29,
+  "durability": 240,
+  "base_value_cp": 6400001,
+  "weight": 4.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Greater Aberration Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Aberration Bane : A bane weapon excels at attacking one type or subtype of creature. Against Aberrations, this weapon's effective enhancement bonus is +4 better than its normal enhancement bonus. It deals an extra 3 to 18 points of damage against the foe."
+    },
+    {
+      "name": "Sun Burst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Sun Burst : This weapon flashes an intense burst of sunlight on any critical hit. The target is blasted for 6 to 36 of light damage and is blinded as well. Oozes and Undead take 12 to 72 light damage. A successful DC 22 Reflex save reduces the damage by half and negates the blindness."
+    },
+    {
+      "name": "Greater Stability",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Stability : This item grants a +4 deflection bonus to AC and a +4 resistance bonus to saving throws for characters of True Neutral alignment."
+    },
+    {
+      "name": "Densewood",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Densewood : Densewood is a particularly hardy type of wood often used for shields. It is heavier than normal wood, but has much higher hardness."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Surely the tool of a Gatekeeper druid for driving back extraplanar horrors, this wooden staff is a potent weapon against such terrible foes. The fate of the item's original owner, as well as the exact age of the staff, remain unknown.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Reign of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Reign of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

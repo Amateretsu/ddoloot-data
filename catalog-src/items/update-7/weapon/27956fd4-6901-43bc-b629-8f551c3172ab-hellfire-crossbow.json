@@ -1,0 +1,111 @@
+{
+  "id": "27956fd4-6901-43bc-b629-8f551c3172ab",
+  "name": "Hellfire Crossbow",
+  "wiki": {
+    "page_id": 12794,
+    "revision_id": 668705,
+    "title": "Item:Hellfire Crossbow",
+    "url": "https://ddowiki.com/page/Item:Hellfire_Crossbow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Repeating Light Crossbow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 9,
+  "durability": 120,
+  "base_value_cp": 1625000,
+  "weight": 6.0,
+  "upgradeable": "Epic Crafting to Epic Hellfire Crossbow",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Repeating Light Crossbow",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Flaming Blast",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Flaming Blast 2 : This weapon burns with deadly magical fire, dealing 2d6 Fire damage on a successful hit, and an additional 2d6 Fire damage on a critical hit."
+    },
+    {
+      "name": "Incineration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage."
+    },
+    {
+      "name": "Feat : Precise Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feat : Precise Shot : While equipped this item grants the feat Precise Shot, allowing your ranged attacks to pass through other characters and monsters to strike your target."
+    },
+    {
+      "name": "Scorching Ray — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Scorching Ray Caster level: 5 Charges: 3 (3/day)"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This crossbow has much in common with an orthon warrior's ranged weaponry. It invests the ammunition it launches with powerful, fiery energy.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "and (Legendary) Razor Arm 's chest",
+    "crafted_from": [],
+    "raw": "The Chronoscope , and The Chronoscope (Legendary) , Razor Arm 's chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,124 @@
+{
+  "id": "20030209-4849-4423-a461-9b4121bd721e",
+  "name": "Epic Infested Armor",
+  "wiki": {
+    "page_id": 12364,
+    "revision_id": 630187,
+    "title": "Item:Epic Infested Armor",
+    "url": "https://ddowiki.com/page/Item:Epic_Infested_Armor"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Dwarven Iron",
+  "hardness": 31,
+  "durability": 360,
+  "base_value_cp": 8150000,
+  "weight": 50.0,
+  "upgradeable": "Legendary Crafting to Legendary Infested Armor",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 26,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Fortification",
+      "value": 111,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+    },
+    {
+      "name": "Greater Disease Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Disease Guard : This item carries the Maggot Plague disease, which deals 2d6 Constitution damage and may be contracted by enemies that hit you. A successful Fortitude Save (DC 28) will negate this effect."
+    },
+    {
+      "name": "Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sheltering +24 : +24 Enhancement bonus to Physical and Magical Resistance Ratings"
+    },
+    {
+      "name": "Demonic Shield",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Demonic Shield : Each time you are hit in melee combat there is a chance that a shield of demonic energy will grant you a +30 Profane bonus to temporary hit points ."
+    },
+    {
+      "name": "DR 15/Good",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 15/Good : Reduces physical damage by 15, except from Good attacks."
+    },
+    {
+      "name": "Spell Resistance",
+      "value": 28,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "An orthon warrior's body is crawling with hungry maggots that feed on its wounds. This suit of armor, crafted from the salvaged parts of an orthon's protective gear, is similarly infested and may impart a disease to those that attack the wearer.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Infested Armor"
+    ],
+    "raw": "Epic version of Infested Armor"
+  },
+  "extraction_errors": {}
+}

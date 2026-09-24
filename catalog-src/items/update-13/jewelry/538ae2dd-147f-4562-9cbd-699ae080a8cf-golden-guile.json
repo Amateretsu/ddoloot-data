@@ -1,0 +1,88 @@
+{
+  "id": "538ae2dd-147f-4562-9cbd-699ae080a8cf",
+  "name": "Golden Guile",
+  "wiki": {
+    "page_id": 21003,
+    "revision_id": 631197,
+    "title": "Item:Golden Guile",
+    "url": "https://ddowiki.com/page/Item:Golden_Guile"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gold",
+  "hardness": 18,
+  "durability": 170,
+  "base_value_cp": 6405000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Golden Guile",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dusk",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Dusk : Equipping this item engulfs you in twilight shadows. Attacks from enemies have a 10% chance to miss you due to concealment."
+    },
+    {
+      "name": "Diplomacy",
+      "value": 16,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Diplomacy +16 : Passive: +16 Competence bonus to the Diplomacy skill."
+    },
+    {
+      "name": "Bluff",
+      "value": 16,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Bluff +16 : Passive: +16 Competence bonus to the Bluff skill."
+    },
+    {
+      "name": "Improved Deception",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Deception : This item makes your weapons hard to focus upon and thus provides a +5 enhancement bonus to Bluff checks. In addition, while using this item your weapons have a chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Neck Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Neck Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A necklace worn by a Rakshasa with links and a charm made of pure gold. It seems to increase the wearer's ability to convince others of what he or she wants them to believe, even making it possible to distract enemies in the midst of a battle.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Lords of Dust"
+    ],
+    "detail": "Marideth 's chest",
+    "crafted_from": [],
+    "raw": "The Lords of Dust , Marideth 's chest"
+  },
+  "extraction_errors": {}
+}

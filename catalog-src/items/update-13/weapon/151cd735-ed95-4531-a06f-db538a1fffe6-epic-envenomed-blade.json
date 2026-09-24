@@ -1,0 +1,118 @@
+{
+  "id": "151cd735-ed95-4531-a06f-db538a1fffe6",
+  "name": "Epic Envenomed Blade",
+  "wiki": {
+    "page_id": 23267,
+    "revision_id": 640352,
+    "title": "Item:Epic Envenomed Blade",
+    "url": "https://ddowiki.com/page/Item:Epic_Envenomed_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Short Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 255,
+  "base_value_cp": 8001000,
+  "weight": 2.0,
+  "upgradeable": "Legendary Crafting to Legendary Envenomed Blade",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Short Sword",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Poison Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit."
+    },
+    {
+      "name": "Improved Paralyzing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Paralyzing : Any creature struck by this weapon must succeed on a DC 28 Will save or be paralyzed. The target may attempt a new save to end the effect every several seconds; otherwise the paralysis lasts for 1 minute."
+    },
+    {
+      "name": "Armor-Piercing",
+      "value": 15,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)"
+    },
+    {
+      "name": "Deadly Spider Venom",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deadly Spider Venom : This item is steeped in deadly spider venom. On an attack roll of 20 which is confirmed as a critical hit it will inflict the target with a poison that deals 10d6 poison damage every 2 seconds for 6 seconds. When the poison wears off, it also deals 3d6 Constitution damage to the target. A successful Fortitude save (DC 34) negates the Constitution damage."
+    },
+    {
+      "name": "Enervation",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Enervation : This weapon stores a menacing, ravenous power deep within. When this weapon is used, this power occasionally comes to the surface, draining the life force of the enemy and giving negative levels ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A small blade wielded by the drow assassins of Faerun's Underdark, steeped in a powerful poison that causes persistent damage to its targets. It is also a thin and sharp enough weapon to bypass the defenses of many targets and deliver critical blows.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Envenomed Blade"
+    ],
+    "raw": "Epic version of Envenomed Blade"
+  },
+  "extraction_errors": {}
+}

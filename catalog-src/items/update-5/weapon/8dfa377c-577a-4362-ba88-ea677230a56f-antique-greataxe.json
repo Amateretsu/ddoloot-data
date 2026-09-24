@@ -1,0 +1,112 @@
+{
+  "id": "8dfa377c-577a-4362-ba88-ea677230a56f",
+  "name": "Antique Greataxe",
+  "wiki": {
+    "page_id": 12641,
+    "revision_id": 628272,
+    "title": "Item:Antique Greataxe",
+    "url": "https://ddowiki.com/page/Item:Antique_Greataxe"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Adamantine",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1902000,
+  "weight": 12.0,
+  "upgradeable": "Epic Crafting to Epic Antique Greataxe",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Axe",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Slashing",
+      "Adamantine",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Impactful",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Impactful 2 : This effect causes the edges of this weapon to ripple with force, dealing 2 to 12 force on each hit."
+    },
+    {
+      "name": "Evil Outsider Bane",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Evil Outsider Bane 2 : This weapon is attuned specifically to hunt monsters that bring ill intent from other planes, dealing an additional 2d10 bane damage vs. Evil Outsiders."
+    },
+    {
+      "name": "Melee Alacrity",
+      "value": 5,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Melee Alacrity 5% : Gain 5% Enhancement bonus to Melee attack speed. Does not stack with the Haste spell."
+    },
+    {
+      "name": "Adamantine",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Lamden Wynn of the Golden Wing Inn kept this greataxe behind the bar in case of trouble. It's an old family heirloom, but he offered it to you as compensation for your efforts.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,103 @@
+{
+  "id": "1fc5b24e-21cf-4495-96a2-02febcee7eb1",
+  "name": "Dampened Greatclub of the Scrag",
+  "wiki": {
+    "page_id": 12027,
+    "revision_id": 629305,
+    "title": "Item:Dampened Greatclub of the Scrag",
+    "url": "https://ddowiki.com/page/Item:Dampened_Greatclub_of_the_Scrag"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Chaotic",
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "material": "Wood",
+  "hardness": 9,
+  "durability": 115,
+  "base_value_cp": 3200500,
+  "weight": 8.0,
+  "upgradeable": "Altar of Vulkoor to Greatclub of the Scrag",
+  "accepts_sentience": false,
+  "umd_dc": "20",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Club",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Bludgeoning",
+      "Chaotic",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dampened",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "True Chaos",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "True Chaos : This weapon is infused with the power of True Chaos. It does an additional 1 to 6 damage to non-chaotic targets and can only be wielded by Chaotic-aligned characters."
+    },
+    {
+      "name": "Cold Touch",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cold Touch : The temperature around this weapon is colder than normal. A cold touch weapon deals an additional +1 cold damage on a successful hit."
+    },
+    {
+      "name": "Regeneration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This particularly nasty weapon once belonged to one of the Scrag in High Priestess' Slikir's service. It seems that when the troll was killed, its blood seeped into this club, granting the weapon some of the creature's characteristics.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "Mine chest",
+    "crafted_from": [],
+    "raw": "Into the Deep , Mine chest"
+  },
+  "extraction_errors": {}
+}

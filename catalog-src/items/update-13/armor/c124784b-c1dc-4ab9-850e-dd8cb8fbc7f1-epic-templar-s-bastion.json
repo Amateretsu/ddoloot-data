@@ -1,0 +1,109 @@
+{
+  "id": "c124784b-c1dc-4ab9-850e-dd8cb8fbc7f1",
+  "name": "Epic Templar's Bastion",
+  "wiki": {
+    "page_id": 22786,
+    "revision_id": 708417,
+    "title": "Item:Epic Templar's Bastion",
+    "url": "https://ddowiki.com/page/Item:Epic_Templar%27s_Bastion"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Medium Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Medium Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Mithral",
+  "hardness": 36,
+  "durability": 360,
+  "base_value_cp": 9050000,
+  "weight": 25.0,
+  "upgradeable": "Legendary Crafting to Legendary Templar's Bastion",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Medium Armor",
+    "armor_bonus": 26,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 3,
+    "armor_check_penalty": -2,
+    "arcane_spell_failure": 25
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "DR 15/Evil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 15/Evil : Reduces physical damage by 15, except from Evil attacks."
+    },
+    {
+      "name": "Spell Resistance",
+      "value": 28,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance ."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Radiance Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded."
+    },
+    {
+      "name": "Mithral",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Templars of the Silver Flame wear these resilient suits of armor, said to be blessed by Tira Miron, to protect themselves from weapon blows and harmful magic alike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Templar's Bastion"
+    ],
+    "raw": "Epic version of Templar's Bastion"
+  },
+  "extraction_errors": {}
+}

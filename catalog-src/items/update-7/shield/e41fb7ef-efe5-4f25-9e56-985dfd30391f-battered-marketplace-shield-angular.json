@@ -1,0 +1,99 @@
+{
+  "id": "e41fb7ef-efe5-4f25-9e56-985dfd30391f",
+  "name": "Battered Marketplace Shield (angular)",
+  "wiki": {
+    "page_id": 124290,
+    "revision_id": 677537,
+    "title": "Item:Battered Marketplace Shield (angular)",
+    "url": "https://ddowiki.com/page/Item:Battered_Marketplace_Shield_(angular)"
+  },
+  "template": "shield",
+  "category": "shield",
+  "item_type": "Large Shield",
+  "equip_slots": [
+    "off_hand"
+  ],
+  "minimum_level": null,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "material": "Steel",
+  "hardness": 19,
+  "durability": 165,
+  "base_value_cp": 8102000,
+  "weight": 15.0,
+  "upgradeable": "Stone of Change to Enhanced Stormreach Marketplace Shield (angular)",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": {
+    "proficiency": "Shield Proficiency (General)",
+    "weapon_type": null,
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 3,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": {
+    "armor_type": null,
+    "armor_bonus": null,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": -1,
+    "arcane_spell_failure": 15
+  },
+  "shield_stats": {
+    "shield_type": "Large Shield",
+    "shield_bonus": 6,
+    "damage_reduction": 6
+  },
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Enhanced Haggle",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Haggle +3 : Passive: +3 Enhancement bonus to the Haggle skill."
+    },
+    {
+      "name": "Regeneration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Regeneration : Causes the wearer to regenerate 1 hit point a minute using positive energy."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A depiction of a large tent is just barely visible on the surface of this rusted, battle-worn shield. Perhaps there is some way to make the image clear again by combining this shield with another Marketplace shield that is in better shape.",
+  "notes": null,
+  "tips": "This item cannot be fed to sentient jewels . You can change the appearance of the shield with the Stormreach Marketplace Shield (angular) from the DDO Store .",
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

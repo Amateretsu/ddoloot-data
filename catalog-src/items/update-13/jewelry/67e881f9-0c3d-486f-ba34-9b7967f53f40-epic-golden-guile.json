@@ -1,0 +1,95 @@
+{
+  "id": "67e881f9-0c3d-486f-ba34-9b7967f53f40",
+  "name": "Epic Golden Guile",
+  "wiki": {
+    "page_id": 21993,
+    "revision_id": 630146,
+    "title": "Item:Epic Golden Guile",
+    "url": "https://ddowiki.com/page/Item:Epic_Golden_Guile"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gold",
+  "hardness": 22,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Golden Guile",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Ghostly",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "enhancement",
+      "tooltip": "Ghostly : Equipping this item causes you to become partially incorporeal. Your melee attacks do not roll a miss chance for Incorporeal targets. Enemy attacks have a 10% chance to miss you due to incorporeality . You receive a +5 enhancement bonus to your Hide and Move Silently skills."
+    },
+    {
+      "name": "Bluff",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Bluff +17 : Passive: +17 Competence bonus to the Bluff skill."
+    },
+    {
+      "name": "Diplomacy",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Diplomacy +17 : Passive: +17 Competence bonus to the Diplomacy skill."
+    },
+    {
+      "name": "Improved Deception +17 ( Bug: Provides +5 to bluff, not +17)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Deception : This item makes your weapons hard to focus upon and thus provides a +17 enhancement bonus to Bluff checks. In addition, while using this item your weapons have a chance to envelop the target in darkness, making them vulnerable to sneak attacks for a short time."
+    },
+    {
+      "name": "Exceptional Alluring Skills Bonus",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "exceptional",
+      "tooltip": "Exceptional Alluring Skills Bonus : +8 Exceptional bonus to Bluff , Diplomacy , Haggle , Intimidate , and Perform ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A necklace worn by a Rakshasa with links and a charm made of pure gold. It seems to increase the wearer's ability to convince others of what he or she wants them to believe, even making it possible to distract enemies in the midst of a battle.",
+  "notes": null,
+  "tips": "After U15.2 Epic Golden Guile was changed to Bind to Character on acquire. After U50, it's BtA again.",
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Golden Guile"
+    ],
+    "raw": "Epic version of Golden Guile"
+  },
+  "extraction_errors": {}
+}

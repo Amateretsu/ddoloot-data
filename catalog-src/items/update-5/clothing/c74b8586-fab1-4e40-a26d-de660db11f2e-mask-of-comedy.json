@@ -1,0 +1,79 @@
+{
+  "id": "c74b8586-fab1-4e40-a26d-de660db11f2e",
+  "name": "Mask of Comedy",
+  "wiki": {
+    "page_id": 12567,
+    "revision_id": 633436,
+    "title": "Item:Mask of Comedy",
+    "url": "https://ddowiki.com/page/Item:Mask_of_Comedy"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Mask of Comedy",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Good Hope — 1 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Good Hope Caster level: 5 Charges: 1 (1/day)"
+    },
+    {
+      "name": "Charisma",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Healing Lore",
+      "value": 8,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Healing Lore +8 : Passive: Your Positive Energy spells gain a 8% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Devotion",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +55 : Passive: +55 Equipment bonus to Positive (Healing) Spell Power ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A mask crafted for and used by the actors of the Livewood Theater . It represents happiness and high spirits, and is invested with magic to match.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Under the Big Top"
+    ],
+    "detail": "Maz'il'tilnik 's or Herli'nak the Untamed 's chest",
+    "crafted_from": [],
+    "raw": "Under the Big Top , Maz'il'tilnik 's or Herli'nak the Untamed 's chest"
+  },
+  "extraction_errors": {}
+}

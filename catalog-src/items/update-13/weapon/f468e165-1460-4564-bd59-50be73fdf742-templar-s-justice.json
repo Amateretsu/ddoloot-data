@@ -1,0 +1,120 @@
+{
+  "id": "f468e165-1460-4564-bd59-50be73fdf742",
+  "name": "Templar's Justice",
+  "wiki": {
+    "page_id": 21005,
+    "revision_id": 635261,
+    "title": "Item:Templar's Justice",
+    "url": "https://ddowiki.com/page/Item:Templar%27s_Justice"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dwarven War Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cold Iron",
+  "hardness": 26,
+  "durability": 245,
+  "base_value_cp": 6403000,
+  "weight": 8.0,
+  "upgradeable": "Epic Crafting to Epic Templar's Justice",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Dwarven War Axe",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Good",
+      "Cold Iron",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Cold Iron",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics."
+    },
+    {
+      "name": "Holy Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 9d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Good Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Good Blast 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit, and an additional 4d6 Good damage on a critical hit. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Coruscating",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Coruscating 4 : This effect causes the edges of this weapon to coruscate, dealing 4d6 Light damage on each hit."
+    },
+    {
+      "name": "Godly Wrath",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Godly Wrath : This weapon is filled with the power of a wrathful deity. Occasionally, this holy power is unleashed, applying a lasting effect that deals 2 to 8 light damage every two seconds for six seconds. If the effect is reapplied before it wears off, the effect will stack and the duration will reset. The effect can be stacked up to 3 times."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A sanctified axe that shines brightly with the power of the Silver Flame. It is said to deliver the wrath of Tira Miron again and again upon those that it strikes.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Spinner of Shadows"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "The Spinner of Shadows , end chest"
+  },
+  "extraction_errors": {}
+}

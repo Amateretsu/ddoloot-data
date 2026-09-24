@@ -1,0 +1,103 @@
+{
+  "id": "e2fcb8f9-e8f6-4537-8bfc-edca207b13a0",
+  "name": "Epic Boots of Corrosion",
+  "wiki": {
+    "page_id": 12689,
+    "revision_id": 629850,
+    "title": "Item:Epic Boots of Corrosion",
+    "url": "https://ddowiki.com/page/Item:Epic_Boots_of_Corrosion"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Boots",
+  "equip_slots": [
+    "feet"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Boots of Corrosion",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Corrosion",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Corrosion +111 : Passive: +111 Equipment bonus to Acid Spell Power ."
+    },
+    {
+      "name": "Nullification",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+    },
+    {
+      "name": "Disintegration Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disintegration Guard : This item has a store of dark, insidious power deep within. When the wearer of this item is successfully attacked in melee, this power occasionally lashes out violently at enemies and attempts to disintegrate them."
+    },
+    {
+      "name": "Acid Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance."
+    },
+    {
+      "name": "Epic Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "These boots are filled with caustic, entropic power. They appear to have almost fallen apart from containing such energy.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Boots of Corrosion"
+    ],
+    "raw": "Epic version of Boots of Corrosion"
+  },
+  "extraction_errors": {}
+}

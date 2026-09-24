@@ -1,0 +1,79 @@
+{
+  "id": "683b282d-0118-4cfe-8b57-786ef8c5aabc",
+  "name": "Sacred Helm",
+  "wiki": {
+    "page_id": 12012,
+    "revision_id": 634421,
+    "title": "Item:Sacred Helm",
+    "url": "https://ddowiki.com/page/Item:Sacred_Helm"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Sacred Helm",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Negative Energy Absorption - 5 Charges (Recharged/Day: 5)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects."
+    },
+    {
+      "name": "Deathblock",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deathblock : The wearer of this item is immune to all death spells and magical death effects."
+    },
+    {
+      "name": "Eternal Faith",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Eternal Faith : An item with this quality assists only wearers who have the ability to turn undead. Eternal Faith increase the owner's effective level for the turning check by +2, his maximum Hit Dice turned by +2, and his total Hit Dice turned by +4."
+    },
+    {
+      "name": "Divine Blessing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Divine Blessing : 2 Pieces Equipped: +2% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +10 Artifact bonus to Light, Alignment, and Positive Spellpower"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Though used primarily by drow ascetics, this helm will protect any healer from death magic and the undead.",
+  "notes": null,
+  "tips": "Completes to a set item with the Ring Sacred Band",
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

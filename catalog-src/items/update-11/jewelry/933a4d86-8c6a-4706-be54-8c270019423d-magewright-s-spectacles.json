@@ -1,0 +1,86 @@
+{
+  "id": "933a4d86-8c6a-4706-be54-8c270019423d",
+  "name": "Magewright's Spectacles",
+  "wiki": {
+    "page_id": 18843,
+    "revision_id": 633372,
+    "title": "Item:Magewright's Spectacles",
+    "url": "https://ddowiki.com/page/Item:Magewright%27s_Spectacles"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 12,
+  "durability": 110,
+  "base_value_cp": 10020000,
+  "weight": 0.1,
+  "upgradeable": "Cannith Reforging Station",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Intelligence",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Intelligence +6 : This item focuses the power of the wearer's mind, granting a +6 Enhancement bonus to Intelligence."
+    },
+    {
+      "name": "Spell Penetration",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Penetration III : Passive: +3 Equipment bonus to Spell Penetration checks."
+    },
+    {
+      "name": "Concentration",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +10 : Passive: +10 Competence bonus to the Concentration skill."
+    },
+    {
+      "name": "Enhanced Concentration",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Concentration +5 : Passive: +5 Enhancement bonus to the Concentration skill."
+    },
+    {
+      "name": "Nearly Finished - Magewright's Expertise",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "alchemical",
+      "tooltip": "Magewright's Expertise : Spell Focus I: +1 to DCs for all spells. Magewright's Quick Wits : Chance to gain a 10 second buff of +12 Alchemical bonus to Universal Spell Power each time the wearer is hit by a physical attack."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A pair of spectacles often worn by House Cannith magewrights. It enhances the functions of one's brain, improving the ability of the wearer to focus his or her energies.",
+  "notes": null,
+  "tips": "+ + + +",
+  "source": {
+    "quests": [
+      "House Cannith Manufactury"
+    ],
+    "detail": "Stellite 's Chest (Rare encounter)",
+    "crafted_from": [],
+    "raw": "House Cannith Manufactury , Stellite 's Chest (Rare encounter)"
+  },
+  "extraction_errors": {}
+}

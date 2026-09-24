@@ -1,0 +1,91 @@
+{
+  "id": "b41b1e50-9f43-4d2d-abc2-a231c22a2b14",
+  "name": "The Pea Shooter",
+  "wiki": {
+    "page_id": 17892,
+    "revision_id": 682838,
+    "title": "Item:The Pea Shooter",
+    "url": "https://ddowiki.com/page/Item:The_Pea_Shooter"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 14,
+  "durability": 115,
+  "base_value_cp": 3500000,
+  "weight": 0.25,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Acid Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Potency",
+      "value": 28,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +28 : Passive: +28 Equipment bonus to each Spell Power ."
+    },
+    {
+      "name": "Inherent Acid Resistance -",
+      "value": 5,
+      "value_kind": "number",
+      "bonus_type": "insight",
+      "tooltip": "Inherent Acid Resistance - 5 : This item provides a +5 Insight bonus to your Acid resistance."
+    },
+    {
+      "name": "Rune Arm Imbue : Acid",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Acid II: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d4 points of acid damage per hit."
+    },
+    {
+      "name": "Craftable Rune Arm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Inlaid with livewood, this rune arm pulses with life energy.",
+  "notes": "Disjuncted version:",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

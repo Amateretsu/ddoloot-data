@@ -1,0 +1,79 @@
+{
+  "id": "0106c401-ad7f-441a-b156-1ceb043014ad",
+  "name": "Ring of Elemental Essence",
+  "wiki": {
+    "page_id": 11843,
+    "revision_id": 634235,
+    "title": "Item:Ring of Elemental Essence",
+    "url": "https://ddowiki.com/page/Item:Ring_of_Elemental_Essence"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1620000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Ring of Elemental Essence",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Glaciation",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Glaciation +55 : Passive: +55 Equipment bonus to Cold Spell Power ."
+    },
+    {
+      "name": "Combustion",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power ."
+    },
+    {
+      "name": "Magnetism",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Magnetism +55 : Passive: +55 Equipment bonus to Electricity Spell Power ."
+    },
+    {
+      "name": "Corrosion",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Corrosion +55 : Passive: +55 Equipment bonus to Acid Spell Power ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This ring seems very ancient, and is set with numerous colored gems that pulse with elemental power. It will enhance the effectiveness of many kinds of offensive magic.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

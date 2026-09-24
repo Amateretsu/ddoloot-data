@@ -1,0 +1,72 @@
+{
+  "id": "bc8f965f-d793-481d-9a7d-162a34c7b3d8",
+  "name": "Siren's Charm",
+  "wiki": {
+    "page_id": 12179,
+    "revision_id": 634803,
+    "title": "Item:Siren's Charm",
+    "url": "https://ddowiki.com/page/Item:Siren%27s_Charm"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Siren's Charm",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Siren's Ward",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Siren's Ward : 2 Pieces Equipped: +3 Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws"
+    },
+    {
+      "name": "Constitution",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Constitution +5 : This item gives the wearer improved health, granting a +5 Enhancement bonus to Constitution."
+    },
+    {
+      "name": "Sonic Resistance",
+      "value": 18,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sonic Resistance +18 : Passive: +18 Enhancement bonus to your Sonic Resistance."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This rare charm is enchanted with the protective magic of a water spirit and will defend the wearer from harm.",
+  "notes": null,
+  "tips": "Old versions had * Constitution +4 and Sonic Resistance +10 . They don't retroactive change but have to be reacquired.",
+  "source": {
+    "quests": [
+      "Fathom the Depths"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Fathom the Depths , End reward"
+  },
+  "extraction_errors": {}
+}

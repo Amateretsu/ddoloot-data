@@ -1,0 +1,72 @@
+{
+  "id": "94be11ac-f46a-419d-ad63-24a88d2c5825",
+  "name": "Elder's Cap",
+  "wiki": {
+    "page_id": 12008,
+    "revision_id": 629715,
+    "title": "Item:Elder's Cap",
+    "url": "https://ddowiki.com/page/Item:Elder%27s_Cap"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Elder's Cap",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Elder's Knowledge",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Elder's Knowledge : +2% Artifact bonus to spell critical chance. 5% Legendary bonus to spell crit damage."
+    },
+    {
+      "name": "Intelligence",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Intelligence +5 : This item focuses the power of the wearer's mind, granting a +5 Enhancement bonus to Intelligence."
+    },
+    {
+      "name": "Concentration",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +10 : Passive: +10 Competence bonus to the Concentration skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Tribal drow elders use these caps to focus their minds and recall past events. They are passed down through the generations but few of them remain in existence.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

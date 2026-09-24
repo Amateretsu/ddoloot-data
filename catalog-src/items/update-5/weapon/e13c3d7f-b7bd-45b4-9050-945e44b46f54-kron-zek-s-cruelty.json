@@ -1,0 +1,104 @@
+{
+  "id": "e13c3d7f-b7bd-45b4-9050-945e44b46f54",
+  "name": "Kron'zek's Cruelty",
+  "wiki": {
+    "page_id": 12404,
+    "revision_id": 672760,
+    "title": "Item:Kron'zek's Cruelty",
+    "url": "https://ddowiki.com/page/Item:Kron%27zek%27s_Cruelty"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Scimitar",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 100,
+  "base_value_cp": 1602000,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Kron'zek's Cruelty",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Scimitar",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Electrifying",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Electrifying 2 : This effect causes the edges of this weapon to arc with electricity, dealing 2d6 Lightning damage on each hit."
+    },
+    {
+      "name": "Maiming",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +2d8 damage."
+    },
+    {
+      "name": "Bleeding",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Bleeding 2 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 2d8 bleeding damage to those that are vulnerable to it."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A scimitar imbued with the essence of a powerful blue abishai . Sparks fly from its edge, and it delivers grievous wounds on critical hits .",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Under the Big Top"
+    ],
+    "detail": "Kron'zek 's chest",
+    "crafted_from": [],
+    "raw": "Under the Big Top , Kron'zek 's chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,59 @@
+{
+  "id": "5b493cc3-6208-4e9b-b661-8bb7ff58116b",
+  "name": "Trinket",
+  "wiki": {
+    "page_id": 25690,
+    "revision_id": 682872,
+    "title": "Item:Trinket",
+    "url": "https://ddowiki.com/page/Item:Trinket"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": null,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "material": "Gem",
+  "hardness": 28,
+  "durability": 90,
+  "base_value_cp": 915000,
+  "weight": 0.1,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Craftable (hidden)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Craftable : This item can be enhanced via Essence Crafting ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A small trinket capable of being imbued with magical effects.",
+  "notes": null,
+  "tips": "Gem of Many Facets (or its epic and legendary version) is strictly superior to plain trinket. It comes with a Yellow augment slot and is part of named item sets. It is not possible to apply shards with effects until you disjunct the item ( DDO Forums ARCHIVE ME! ) Craftable trinket from the DDO Store is BtA ( DDO Forums ARCHIVE ME! ). You can turn the item into BtA version by applying a BtA shard.",
+  "source": {
+    "quests": [
+      "Random",
+      "DDO Store"
+    ],
+    "detail": "and and special events (e.g. Snowpeaks Festival )",
+    "crafted_from": [],
+    "raw": "Random , and DDO Store and special events (e.g. Snowpeaks Festival )"
+  },
+  "extraction_errors": {}
+}

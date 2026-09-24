@@ -1,0 +1,120 @@
+{
+  "id": "c83e4b2d-54c1-4d8f-8f5c-6bb7ac3a07e9",
+  "name": "Epic Templar's Retribution",
+  "wiki": {
+    "page_id": 21902,
+    "revision_id": 640368,
+    "title": "Item:Epic Templar's Retribution",
+    "url": "https://ddowiki.com/page/Item:Epic_Templar%27s_Retribution"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Bastard Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cold Iron",
+  "hardness": 30,
+  "durability": 280,
+  "base_value_cp": 8003500,
+  "weight": 6.0,
+  "upgradeable": "Legendary Crafting to Legendary Templar's Retribution",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Bastard Sword",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Good",
+      "Cold Iron",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Holy Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 10d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Good Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Good Blast 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit, and an additional 4d6 Good damage on a critical hit. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Coruscating",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Coruscating 4 : This effect causes the edges of this weapon to coruscate, dealing 4d6 Light damage on each hit."
+    },
+    {
+      "name": "Godly Wrath",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Godly Wrath : This weapon is filled with the power of a wrathful deity. Occasionally, this holy power is unleashed, applying a lasting effect that deals 2 to 8 light damage every two seconds for six seconds. If the effect is reapplied before it wears off, the effect will stack and the duration will reset. The effect can be stacked up to 3 times."
+    },
+    {
+      "name": "Cold Iron",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A sanctified blade that shines brightly with the power of the Silver Flame. It is said to deliver the wrath of Tira Miron again and again upon those that it strikes.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Templar's Retribution"
+    ],
+    "raw": "Epic version of Templar's Retribution"
+  },
+  "extraction_errors": {}
+}

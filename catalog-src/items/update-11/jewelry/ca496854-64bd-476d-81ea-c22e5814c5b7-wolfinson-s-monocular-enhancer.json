@@ -1,0 +1,79 @@
+{
+  "id": "ca496854-64bd-476d-81ea-c22e5814c5b7",
+  "name": "Wolfinson's Monocular Enhancer",
+  "wiki": {
+    "page_id": 17948,
+    "revision_id": 635851,
+    "title": "Item:Wolfinson's Monocular Enhancer",
+    "url": "https://ddowiki.com/page/Item:Wolfinson%27s_Monocular_Enhancer"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Glass",
+  "hardness": 12,
+  "durability": 110,
+  "base_value_cp": 10020000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Reconstruct — 1 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Reconstruct Caster level: 10 Charges: 1 (1/day)"
+    },
+    {
+      "name": "Reconstruction",
+      "value": 72,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Reconstruction +72 : Passive: +72 Equipment bonus to Repair and Rust Spell Power ."
+    },
+    {
+      "name": "Search",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Search +10 : Passive: +10 Competence bonus to the Search skill."
+    },
+    {
+      "name": "Enhanced Search",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Search +5 : Passive: +5 Enhancement bonus to the Search skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A strange, singular, glass eyepiece that appear to be a relic from the Last War. Legend has it that Professor Philius Wolfinson used it to repair constructs during that time period, until it was lost on an expedition to Xen'drik to recover ancient artifacts for House Cannith.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Power Play"
+    ],
+    "detail": "Scrapheap's chest",
+    "crafted_from": [],
+    "raw": "Power Play , Scrapheap's chest"
+  },
+  "extraction_errors": {}
+}

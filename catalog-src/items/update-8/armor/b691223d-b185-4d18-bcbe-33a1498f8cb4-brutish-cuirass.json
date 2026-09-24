@@ -1,0 +1,117 @@
+{
+  "id": "b691223d-b185-4d18-bcbe-33a1498f8cb4",
+  "name": "Brutish Cuirass",
+  "wiki": {
+    "page_id": 12814,
+    "revision_id": 708398,
+    "title": "Item:Brutish Cuirass",
+    "url": "https://ddowiki.com/page/Item:Brutish_Cuirass"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Adamantine",
+  "hardness": 33,
+  "durability": 216,
+  "base_value_cp": 6450000,
+  "weight": 50.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 17,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Strength",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +6 : This item gives the wearer the power of Ogre Strength, granting a +6 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Fortitude Save",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Fortitude Save +6 : This item gives a +6 Resistance bonus to your Fortitude saves."
+    },
+    {
+      "name": "Staggering Blow",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Staggering Blow : This item is enchanted to make your attacks send enemies reeling. When you roll a 20 on an attack with a melee weapon you will knock the target down unless it makes a DC 17 Balance check."
+    },
+    {
+      "name": "Acid Resistance",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Acid Resistance +24 : Passive: +24 Enhancement bonus to your Acid Resistance."
+    },
+    {
+      "name": "Adamantine",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This suit of armor seems to have been crafted for Droaam troops to enhance their aggressive tendencies. It invests the wearer's attacks with great fervor, causing them to stun enemies occasionally.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Blockade Buster"
+    ],
+    "detail": "Bash's Chest",
+    "crafted_from": [],
+    "raw": "Blockade Buster , Bash's Chest"
+  },
+  "extraction_errors": {}
+}

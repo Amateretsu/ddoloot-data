@@ -1,0 +1,93 @@
+{
+  "id": "db80af48-af7f-4778-8d35-3647692bf08f",
+  "name": "Dampened Robe of Dissonance",
+  "wiki": {
+    "page_id": 12681,
+    "revision_id": 686648,
+    "title": "Item:Dampened Robe of Dissonance",
+    "url": "https://ddowiki.com/page/Item:Dampened_Robe_of_Dissonance"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Clothing",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire",
+  "material": "Cloth",
+  "hardness": 4,
+  "durability": 25,
+  "base_value_cp": 105500,
+  "weight": 0.0,
+  "upgradeable": "Altar of Vulkoor to Robe of Dissonance",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Clothing",
+    "armor_bonus": 0,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dampened",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+    },
+    {
+      "name": "Sonic Resistance",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sonic Resistance +3 : Passive: +3 Enhancement bonus to your Sonic Resistance."
+    },
+    {
+      "name": "Sonic Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Sonic Guard : This item blasts those that attack the wearer, causing 1d6 sonic damage on a successful melee attack."
+    },
+    {
+      "name": "Resonance",
+      "value": 48,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Resonance +48 : Passive: +48 Equipment bonus to Sonic Spell Power ."
+    },
+    {
+      "name": "Impulse",
+      "value": 48,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Impulse +48 : Passive: +48 Equipment bonus to Force, Untyped, Slashing, Piercing, and Bludgeoning Spell Power ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This vibrant robe hums faintly with two separate yet intertwined forces. The magical field it projects punishes enemies who attempt to attack the wearer, as well as strengthening his or her sonic-based and force-based spells.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Fathom the Depths"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Fathom the Depths , End Chest"
+  },
+  "extraction_errors": {}
+}

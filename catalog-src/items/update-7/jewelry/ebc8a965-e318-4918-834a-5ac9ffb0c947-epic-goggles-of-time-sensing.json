@@ -1,0 +1,103 @@
+{
+  "id": "ebc8a965-e318-4918-834a-5ac9ffb0c947",
+  "name": "Epic Goggles of Time-Sensing",
+  "wiki": {
+    "page_id": 14157,
+    "revision_id": 630141,
+    "title": "Item:Epic Goggles of Time-Sensing",
+    "url": "https://ddowiki.com/page/Item:Epic_Goggles_of_Time-Sensing"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 22,
+  "durability": 210,
+  "base_value_cp": 8020000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Goggles of Time-Sensing",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Haste — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Insightful Wisdom",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom."
+    },
+    {
+      "name": "Search",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Search +17 : Passive: +17 Competence bonus to the Search skill."
+    },
+    {
+      "name": "Spot",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Spot +17 : Passive: +17 Competence bonus to the Spot skill."
+    },
+    {
+      "name": "Speed",
+      "value": 30,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A strange, complex pair of goggles that allows the wearer to view the passage of time more slowly than normal. Through this awareness the actions of the wearer and his or her allies can occasionally be hastened.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Goggles of Time-Sensing"
+    ],
+    "raw": "Epic version of Goggles of Time-Sensing"
+  },
+  "extraction_errors": {}
+}

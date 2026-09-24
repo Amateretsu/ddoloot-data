@@ -1,0 +1,125 @@
+{
+  "id": "43389963-0501-4ccf-ab89-d3daa59a1fbc",
+  "name": "Scepter of the Fleshweaver",
+  "wiki": {
+    "page_id": 12306,
+    "revision_id": 689645,
+    "title": "Item:Scepter of the Fleshweaver",
+    "url": "https://ddowiki.com/page/Item:Scepter_of_the_Fleshweaver"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 10,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "material": "Wood",
+  "hardness": 15,
+  "durability": 150,
+  "base_value_cp": 4000001,
+  "weight": 3.0,
+  "upgradeable": "Cauldron of Sora Katra to Master Transmuter's Staff",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Club",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 4,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +10 : Passive: +10 Implement bonus to Universal Spell Power ."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Intelligence",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Intelligence +6 : This item focuses the power of the wearer's mind, granting a +6 Enhancement bonus to Intelligence."
+    },
+    {
+      "name": "Transmutation Focus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Transmutation Focus +4 : +4 Equipment bonus to the DC of Transmutation spells."
+    },
+    {
+      "name": "Devotion",
+      "value": 77,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +77 : Passive: +77 Equipment bonus to Positive (Healing) Spell Power ."
+    },
+    {
+      "name": "Fragmented",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory."
+    },
+    {
+      "name": "Stone to Flesh — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Stone to Flesh Caster level: 5 Charges: 3 (3/day)"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Said to be a creation of Mordain the Fleshweaver, master transmuter of Droaam , this scepter boosts the wielder's intellect and improves his or her skill with transmutation magic.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Frame Work"
+    ],
+    "detail": "end chests Dorris ' chests",
+    "crafted_from": [],
+    "raw": "Frame Work , end chests, Dorris ' chests"
+  },
+  "extraction_errors": {}
+}

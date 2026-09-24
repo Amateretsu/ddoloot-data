@@ -1,0 +1,70 @@
+{
+  "id": "9dd269d8-97b2-4bbb-900f-55af2d020d49",
+  "name": "Brimstone Verge",
+  "wiki": {
+    "page_id": 11844,
+    "revision_id": 628792,
+    "title": "Item:Brimstone Verge",
+    "url": "https://ddowiki.com/page/Item:Brimstone_Verge"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 3,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 700000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Brimstone Verge",
+  "accepts_sentience": null,
+  "umd_dc": "20",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Burning Hands — 50 Charges (Recharged/Day:50)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Burning Hands Caster level: 3 Charges: 50 (50/day)"
+    },
+    {
+      "name": "Combustion",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Combustion +55 : Passive: +55 Equipment bonus to Fire Spell Power ."
+    },
+    {
+      "name": "Fire Lore",
+      "value": 8,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Fire Lore +8 : Passive: Your Fire spells gain a 8% Equipment bonus to their chance to critical hit."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin rod of blackened wood containing charges of the Burning Hands spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

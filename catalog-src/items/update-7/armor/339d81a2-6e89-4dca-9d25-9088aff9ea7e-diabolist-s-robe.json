@@ -1,0 +1,109 @@
+{
+  "id": "339d81a2-6e89-4dca-9d25-9088aff9ea7e",
+  "name": "Diabolist's Robe",
+  "wiki": {
+    "page_id": 12765,
+    "revision_id": 690586,
+    "title": "Item:Diabolist's Robe",
+    "url": "https://ddowiki.com/page/Item:Diabolist%27s_Robe"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Clothing",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Cloth",
+  "hardness": 6,
+  "durability": 45,
+  "base_value_cp": 1605500,
+  "weight": 0.0,
+  "upgradeable": "Epic Crafting to Epic Diabolist's Robe",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Clothing",
+    "armor_bonus": 2,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Summon Monster III — 1 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Summon Monster III Caster level: 5 Charges: 1 (1/day)"
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Intelligence",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Intelligence +3 : This item focuses the power of the wearer's mind, granting a +3 Enhancement bonus to Intelligence."
+    },
+    {
+      "name": "Charisma",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +3 : This item makes the wearer have more flair, granting a +3 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Conjuration Focus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Conjuration Focus +2 : +2 Equipment bonus to the DC of Conjuration spells."
+    },
+    {
+      "name": "Deadly Diabolist",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Deadly Diabolist : 2 Pieces Equipped: Your Summons, Charmed Monsters, and Hirelings gain +4 to all Ability Scores."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This infernal robe is connected to the devils of Shavarath somehow, though the exact nature of the link is unclear. It can summon evil creatures to the wearer's aid, and facilitates the casting of conjuration-based magic.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

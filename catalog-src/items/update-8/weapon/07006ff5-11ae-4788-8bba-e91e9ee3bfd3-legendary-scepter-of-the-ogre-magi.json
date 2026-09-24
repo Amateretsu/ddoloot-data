@@ -1,0 +1,141 @@
+{
+  "id": "07006ff5-11ae-4788-8bba-e91e9ee3bfd3",
+  "name": "Legendary Scepter of the Ogre Magi",
+  "wiki": {
+    "page_id": 101478,
+    "revision_id": 632827,
+    "title": "Item:Legendary Scepter of the Ogre Magi",
+    "url": "https://ddowiki.com/page/Item:Legendary_Scepter_of_the_Ogre_Magi"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 36,
+  "durability": 360,
+  "base_value_cp": 12400001,
+  "weight": 3.0,
+  "upgradeable": null,
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Club",
+    "handedness": null,
+    "damage_multiplier": 5.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 2,
+    "enhancement_bonus": 15,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Cone of Cold — 3 Charges (Recharged/Day:3)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cone of Cold Caster level: 9 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Spellcasting Implement",
+      "value": 31,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +31 : Passive: +31 Implement bonus to Universal Spell Power ."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Potency",
+      "value": 103,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +103 : Passive: +103 Equipment bonus to each Spell Power ."
+    },
+    {
+      "name": "Concentration",
+      "value": 21,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +21 : Passive: +21 Competence bonus to the Concentration skill."
+    },
+    {
+      "name": "Healing Lore",
+      "value": 22,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Healing Lore +22 : Passive: Your Positive Energy spells gain a 22% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Fragmented",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Purple Augment Slot",
+      "name": null,
+      "colour": "Purple",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Lost to time, this scepter was eventually recovered by ogre magi and put to use in combat. It improves the damage of one's spells and makes him or her less likely to be interrupted while casting them.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Assault on Summerfield"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Assault on Summerfield , end chest"
+  },
+  "extraction_errors": {}
+}

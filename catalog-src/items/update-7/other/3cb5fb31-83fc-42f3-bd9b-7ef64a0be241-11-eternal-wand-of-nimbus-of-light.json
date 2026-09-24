@@ -1,0 +1,56 @@
+{
+  "id": "3cb5fb31-83fc-42f3-bd9b-7ef64a0be241",
+  "name": "+11 Eternal Wand of Nimbus of Light",
+  "wiki": {
+    "page_id": 29710,
+    "revision_id": 627683,
+    "title": "Item:+11 Eternal Wand of Nimbus of Light",
+    "url": "https://ddowiki.com/page/Item:%2B11_Eternal_Wand_of_Nimbus_of_Light"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 1,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 500000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "20",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Nimbus of Light — 50 Charges (Recharged/Day:50)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Nimbus of Light Caster level: 11 Charges: 50 (50/day)"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin rod of blackened wood containing charges of the Nimbus of Light spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Mabar Endless Night Festival"
+    ],
+    "detail": "Upgrade of 9 Eternal Wand of Nimbus of Light",
+    "crafted_from": [],
+    "raw": "Mabar Endless Night Festival , Upgrade of +9 Eternal Wand of Nimbus of Light"
+  },
+  "extraction_errors": {}
+}

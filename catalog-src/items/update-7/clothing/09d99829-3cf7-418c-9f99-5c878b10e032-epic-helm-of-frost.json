@@ -1,0 +1,102 @@
+{
+  "id": "09d99829-3cf7-418c-9f99-5c878b10e032",
+  "name": "Epic Helm of Frost",
+  "wiki": {
+    "page_id": 12740,
+    "revision_id": 630157,
+    "title": "Item:Epic Helm of Frost",
+    "url": "https://ddowiki.com/page/Item:Epic_Helm_of_Frost"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Helm of Frost",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Polar Ray — 5 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Polar Ray Caster level: 20 Charges: 5 (5/day)"
+    },
+    {
+      "name": "Glaciation",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Glaciation +111 : Passive: +111 Equipment bonus to Cold Spell Power ."
+    },
+    {
+      "name": "Charisma",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Cold Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance."
+    },
+    {
+      "name": "Epic Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This helm has a chill about it and is cold where it touches your skin. Nevertheless it will protect you from harmful cold magic, and allows you to release some of that energy against foes.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Helm of Frost"
+    ],
+    "raw": "Epic version of Helm of Frost"
+  },
+  "extraction_errors": {}
+}

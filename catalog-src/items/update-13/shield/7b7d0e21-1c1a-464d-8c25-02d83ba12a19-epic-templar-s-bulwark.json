@@ -1,0 +1,131 @@
+{
+  "id": "7b7d0e21-1c1a-464d-8c25-02d83ba12a19",
+  "name": "Epic Templar's Bulwark",
+  "wiki": {
+    "page_id": 21614,
+    "revision_id": 630537,
+    "title": "Item:Epic Templar's Bulwark",
+    "url": "https://ddowiki.com/page/Item:Epic_Templar%27s_Bulwark"
+  },
+  "template": "shield",
+  "category": "shield",
+  "item_type": "Tower Shield",
+  "equip_slots": [
+    "off_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Mithral",
+  "hardness": 35,
+  "durability": 300,
+  "base_value_cp": 8404500,
+  "weight": 25.0,
+  "upgradeable": "Legendary Crafting to Legendary Templar's Bulwark",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": {
+    "proficiency": "Tower Shield Proficiency",
+    "weapon_type": null,
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "2d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Silver",
+      "Mithral",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": {
+    "armor_type": null,
+    "armor_bonus": null,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 4,
+    "armor_check_penalty": -6,
+    "arcane_spell_failure": 40
+  },
+  "shield_stats": {
+    "shield_type": "Tower Shield",
+    "shield_bonus": 16,
+    "damage_reduction": 13
+  },
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class , attack and damage rolls ."
+    },
+    {
+      "name": "Fire Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance."
+    },
+    {
+      "name": "Cold Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Resistance +36 : Passive: +36 Enhancement bonus to your Cold Resistance."
+    },
+    {
+      "name": "Electric Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance."
+    },
+    {
+      "name": "Acid Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Acid Resistance +36 : Passive: +36 Enhancement bonus to your Acid Resistance."
+    },
+    {
+      "name": "Mithral",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mithral : Mithral armor is one type lighter then normal. Arcane Spell Failure decreased by 10%. Maximum dexterity bonus increased by 2. Armor check penalty reduced by 3."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Templars of the Silver Flame wield these massive tower shields, said to blessed by Tira Miron, to guard against weapon blows and elemental spells alike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Templar's Bulwark"
+    ],
+    "raw": "Epic version of Templar's Bulwark"
+  },
+  "extraction_errors": {}
+}

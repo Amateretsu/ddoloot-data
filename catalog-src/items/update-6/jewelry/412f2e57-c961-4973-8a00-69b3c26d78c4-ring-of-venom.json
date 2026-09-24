@@ -1,0 +1,72 @@
+{
+  "id": "412f2e57-c961-4973-8a00-69b3c26d78c4",
+  "name": "Ring of Venom",
+  "wiki": {
+    "page_id": 12011,
+    "revision_id": 634272,
+    "title": "Item:Ring of Venom",
+    "url": "https://ddowiki.com/page/Item:Ring_of_Venom"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Ring of Venom",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Vulkoor's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +5 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison"
+    },
+    {
+      "name": "Dexterity",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +5 : This item makes the wearer more nimble and dexterous, granting a +5 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Deception",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Drow assassins say this ring is infused with Vulkoor's subtle poisons. Wearing it will make one's attacks deft and lethal.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

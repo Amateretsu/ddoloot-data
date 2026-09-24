@@ -1,0 +1,111 @@
+{
+  "id": "9df1eddf-51eb-4813-ac6f-6131d5088825",
+  "name": "Bloody Cleaver",
+  "wiki": {
+    "page_id": 12482,
+    "revision_id": 628628,
+    "title": "Item:Bloody Cleaver",
+    "url": "https://ddowiki.com/page/Item:Bloody_Cleaver"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Falchion",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 10,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Character on Equip",
+  "material": "Steel",
+  "hardness": 20,
+  "durability": 190,
+  "base_value_cp": 4007500,
+  "weight": 8.0,
+  "upgradeable": "Fusible to Crippling Cleaver Maiming Cleaver Vengeful Cleaver Vampiric Cleaver",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Falchion",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "2d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 4,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Bleeding",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Bleeding 3 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 3d8 bleeding damage to those that are vulnerable to it."
+    },
+    {
+      "name": "Humanoid Bane",
+      "value": 3,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Humanoid Bane 3 : This weapon is attuned specifically to those that walk among us, dealing an additional 3d10 bane damage vs. Humanoids."
+    },
+    {
+      "name": "Bodyfeeder",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Bodyfeeder : Whenever a bodyfeeder weapon you wield scores a critical hit, you gain 15 temporary hit points that last for up to 1 minute."
+    },
+    {
+      "name": "Fusible",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fusible : Something about this item looks incomplete. Perhaps in the future it will be compatible with another item to create a brand-new fusion of the two."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This large blade was once wielded handily by one of the Droaam Army's half-orc chefs. As one can imagine, it's very well-sharpened and has been used to carry out many a gruesome deed.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Frame Work"
+    ],
+    "detail": "End chests Dorris ' chests",
+    "crafted_from": [],
+    "raw": "Frame Work , End chests, Dorris ' chests"
+  },
+  "extraction_errors": {}
+}

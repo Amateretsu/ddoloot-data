@@ -1,0 +1,102 @@
+{
+  "id": "5978f3e5-6e5b-4136-b3ef-3a5636aea24d",
+  "name": "Teraza's Sight",
+  "wiki": {
+    "page_id": 12526,
+    "revision_id": 635268,
+    "title": "Item:Teraza's Sight",
+    "url": "https://ddowiki.com/page/Item:Teraza%27s_Sight"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 11,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 13,
+  "durability": 120,
+  "base_value_cp": 4410000,
+  "weight": 0.1,
+  "upgradeable": "Battle-Scarred to Teraza's Perfect Sight",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Wisdom",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Heal",
+      "value": 13,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Heal +13 : Passive: +13 Competence bonus to the Heal skill."
+    },
+    {
+      "name": "True Seeing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing ."
+    },
+    {
+      "name": "Reflex Save",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Reflex Save +6 : This item gives a +6 Resistance bonus to your Reflex saves."
+    },
+    {
+      "name": "Battle-Scarred",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Battle-Scarred : This item has obviously seen use in many fights. It is chipped and scratched, but perhaps in the future there will be a way to restore it to its former glory."
+    },
+    {
+      "name": "Wrath of Sora Kell",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Wrath of Sora Kell : 3 Pieces Equipped: +20 Artifact bonus to Universal Spell Power +5 Artifact bonus to Physical Resistance Rating +3 Artifact bonus to Hit and Damage +1 Artifact bonus to Imbue Dice"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Head Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Head Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A crown said to have been originally crafted for the hag queen Sora Teraza. It bestows its wearer with great wisdom, and the ability to see things as they truly are.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Frame Work"
+    ],
+    "detail": "End chests Dorris ' chests",
+    "crafted_from": [],
+    "raw": "Frame Work , End chests, Dorris ' chests"
+  },
+  "extraction_errors": {}
+}

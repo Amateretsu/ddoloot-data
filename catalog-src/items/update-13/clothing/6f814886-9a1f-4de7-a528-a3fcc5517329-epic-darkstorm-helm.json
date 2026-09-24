@@ -1,0 +1,95 @@
+{
+  "id": "6f814886-9a1f-4de7-a528-a3fcc5517329",
+  "name": "Epic Darkstorm Helm",
+  "wiki": {
+    "page_id": 22663,
+    "revision_id": 699104,
+    "title": "Item:Epic Darkstorm Helm",
+    "url": "https://ddowiki.com/page/Item:Epic_Darkstorm_Helm"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Gold",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Darkstorm Helm",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Call Lightning Storm — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Call Lightning Storm Caster level: 30 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Lightning Lore",
+      "value": 16,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Lightning Lore +16 : Passive: Your Electricity spells gain a +16% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Void Lore",
+      "value": 16,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Void Lore +16 : Passive: Your Negative Energy and Poison spells gain a +16% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Magnetism",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Magnetism +111 : Passive: +111 Equipment bonus to Electricity Spell Power ."
+    },
+    {
+      "name": "Nullification",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +111 : Passive: +111 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Helms such as this, forged from some dark and glittering metal, are worn by drow spellcasters both arcane and divine to heighten the power of their spells. This helm can channel enough energy to start a brief thunderstorm.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Darkstorm Helm"
+    ],
+    "raw": "Epic version of Darkstorm Helm"
+  },
+  "extraction_errors": {}
+}

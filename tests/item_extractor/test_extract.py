@@ -164,6 +164,12 @@ def test_aggregate_counts_templates_and_unmapped(cfg):
         ("Binding", "Bound to Account on Acquire", "binding", "account"),
         ("Binding", "Unbound", "binding", "unbound"),
         ("Binding", EXCLUSIVE_BINDING, "binding", "account"),
+        (
+            "Binding",
+            EXCLUSIVE_BINDING.replace("Account", "Character"),
+            "binding",
+            "character",
+        ),
         ('<a href="/page/UMD">UMD</a> Difficulty', "55", "umd_dc", "55"),
         ("Accepts Sentience?", "No", "accepts_sentience", False),
         ("Weight", "0.5 lbs", "weight", 0.5),

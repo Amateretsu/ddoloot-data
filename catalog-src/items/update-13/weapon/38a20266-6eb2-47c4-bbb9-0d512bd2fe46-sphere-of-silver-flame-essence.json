@@ -1,0 +1,74 @@
+{
+  "id": "38a20266-6eb2-47c4-bbb9-0d512bd2fe46",
+  "name": "Sphere of Silver Flame Essence",
+  "wiki": {
+    "page_id": 25636,
+    "revision_id": 668173,
+    "title": "Item:Sphere of Silver Flame Essence",
+    "url": "https://ddowiki.com/page/Item:Sphere_of_Silver_Flame_Essence"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Dart",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": null,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "unbound",
+  "binding_raw": "Unbound",
+  "material": null,
+  "hardness": null,
+  "durability": null,
+  "base_value_cp": 5,
+  "weight": 0.5,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Dart",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "6d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 0,
+    "damage_types": [
+      "Bludgeoning",
+      "Good"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Holy",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Holy : A holy weapon is imbued with holy power. This power makes the weapon good-aligned. Evil characters wielding this weapon suffer a negative level. The weapon deals an extra 2 to 12 damage against all targets of evil alignment."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This sphere contains a minuscule portion of a guardian spirit of the silver flame. Use it to smite your foes and claim your ground.",
+  "notes": null,
+  "tips": "This item cannot be fed to sentient jewels . This projectile can also weaken the Spinner 's aura (see The Spinner of Shadows ). This is an in-quest only item and is destroyed on exiting the adventure or on death. This item can only be received by talking to the Silver Flame spirit during the first phase of the quest.",
+  "source": {
+    "quests": [
+      "The Spinner of Shadows"
+    ],
+    "detail": "The Silver Flame",
+    "crafted_from": [],
+    "raw": "The Spinner of Shadows , The Silver Flame"
+  },
+  "extraction_errors": {}
+}

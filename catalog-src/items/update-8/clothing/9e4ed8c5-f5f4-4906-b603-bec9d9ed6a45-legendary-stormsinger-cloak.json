@@ -1,0 +1,111 @@
+{
+  "id": "9e4ed8c5-f5f4-4906-b603-bec9d9ed6a45",
+  "name": "Legendary Stormsinger Cloak",
+  "wiki": {
+    "page_id": 101355,
+    "revision_id": 689070,
+    "title": "Item:Legendary Stormsinger Cloak",
+    "url": "https://ddowiki.com/page/Item:Legendary_Stormsinger_Cloak"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Cloak",
+  "equip_slots": [
+    "back"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 330,
+  "base_value_cp": 12420000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Resistance",
+      "value": 11,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +11 : Passive: +11 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+    },
+    {
+      "name": "Perform",
+      "value": 21,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Perform +21 : Passive: +21 Competence bonus to the Perform skill."
+    },
+    {
+      "name": "Insightful Resonance",
+      "value": 74,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Resonance +74 : Passive: +74 Insight bonus to Sonic Spell Power ."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +9 : +9 Equipment bonus to the DC of Evocation spells."
+    },
+    {
+      "name": "Anthem",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Anthem : When equipped by a character with Bard levels, this item begins to hum an inspiring tune. Your bard songs regenerate slowly over time."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Cloak Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Cloak Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Some harpies of the Stormsinger flight wear cloaks such as this to increase their musical prowess. It will also protect the wearer with violent sonic energy.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Assault on Summerfield"
+    ],
+    "detail": "Captain Markus ' chest and optional chests",
+    "crafted_from": [],
+    "raw": "Assault on Summerfield , Captain Markus ' chest and optional chests"
+  },
+  "extraction_errors": {}
+}

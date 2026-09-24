@@ -1,0 +1,103 @@
+{
+  "id": "d15fd52a-06fa-4d05-811d-75f984248240",
+  "name": "Epic Shaman's Band",
+  "wiki": {
+    "page_id": 11945,
+    "revision_id": 690522,
+    "title": "Item:Epic Shaman's Band",
+    "url": "https://ddowiki.com/page/Item:Epic_Shaman%27s_Band"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Shaman's Band",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spell Penetration",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Penetration +6 : Passive: +6 Equipment bonus to Spell Penetration checks."
+    },
+    {
+      "name": "Conjuration Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Conjuration Focus +6 : +6 Equipment bonus to the DC of Conjuration spells."
+    },
+    {
+      "name": "Armor Bonus",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor."
+    },
+    {
+      "name": "Reflex Save",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Reflex Save +9 : This item gives a +9 Resistance bonus to your Reflex saves."
+    },
+    {
+      "name": "Epic Shaman's Fury",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Drow shamans often carry these rings to make their fearsome spells more likely to strike their foes.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Shaman's Band"
+    ],
+    "raw": "Epic version of Shaman's Band"
+  },
+  "extraction_errors": {}
+}

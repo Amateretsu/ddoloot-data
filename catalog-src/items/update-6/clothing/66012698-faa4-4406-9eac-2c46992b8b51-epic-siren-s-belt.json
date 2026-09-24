@@ -1,0 +1,103 @@
+{
+  "id": "66012698-faa4-4406-9eac-2c46992b8b51",
+  "name": "Epic Siren's Belt",
+  "wiki": {
+    "page_id": 11970,
+    "revision_id": 667962,
+    "title": "Item:Epic Siren's Belt",
+    "url": "https://ddowiki.com/page/Item:Epic_Siren%27s_Belt"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Belt",
+  "equip_slots": [
+    "waist"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Siren's Belt",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Armor Bonus",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Armor Bonus +9 : This item surrounds the wearer with an invisible but tangible field of force, granting +9 armor bonus to AC, just as though he were wearing armor."
+    },
+    {
+      "name": "Protection",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "deflection",
+      "tooltip": "Protection +8 : Passive: +8 Deflection bonus to Armor Class ."
+    },
+    {
+      "name": "Shield",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "shield",
+      "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield."
+    },
+    {
+      "name": "Proof Against Disease",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Disease +6 : This item grants its wearer immunity to natural diseases. This item also grants a +6 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 7 + their Fortitude save)."
+    },
+    {
+      "name": "Epic Siren's Ward",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Siren's Ward : 2 Pieces Equipped: +10% Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws +3 Artifact bonus to Shield Armor Class"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This rare belt is enchanted with the protective magic of a water spirit and is capable of defending the wearer from harm.",
+  "notes": null,
+  "tips": "Legacy Scroll/Seal/Shard for this item are wrongfully named \"... of Siren's Bracers\"",
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Siren's Belt"
+    ],
+    "raw": "Epic version of Siren's Belt"
+  },
+  "extraction_errors": {}
+}

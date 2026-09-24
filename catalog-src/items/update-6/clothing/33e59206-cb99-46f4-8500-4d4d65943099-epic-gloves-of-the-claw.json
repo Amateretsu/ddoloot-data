@@ -1,0 +1,103 @@
+{
+  "id": "33e59206-cb99-46f4-8500-4d4d65943099",
+  "name": "Epic Gloves of the Claw",
+  "wiki": {
+    "page_id": 11946,
+    "revision_id": 630138,
+    "title": "Item:Epic Gloves of the Claw",
+    "url": "https://ddowiki.com/page/Item:Epic_Gloves_of_the_Claw"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Gloves of the Claw",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Strength",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +9 : This item gives the wearer the power of Ogre Strength, granting a +9 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Intimidate",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Intimidate +17 : Passive: +17 Competence bonus to the Intimidate skill."
+    },
+    {
+      "name": "Competence Healing Amplification",
+      "value": 38,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Healing Amplification : This effect amplifies all incoming positive energy healing by +38 ( Competence bonus ). Includes spells, potions, and other effects."
+    },
+    {
+      "name": "Natural Armor",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Natural Armor +9 : Passive: +9 Natural Armor Bonus to Armor Class ."
+    },
+    {
+      "name": "Epic Vulkoor's Might",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Drow warriors don these gloves before combat and are granted great power in battle. They claim the gloves are infused with Vulkoor's wrath.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Gloves of the Claw"
+    ],
+    "raw": "Epic version of Gloves of the Claw"
+  },
+  "extraction_errors": {}
+}

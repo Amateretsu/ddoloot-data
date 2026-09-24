@@ -1,0 +1,103 @@
+{
+  "id": "501905f8-c9aa-4fda-a6e3-fb71f0142bc7",
+  "name": "Epic Raven's Sight",
+  "wiki": {
+    "page_id": 12023,
+    "revision_id": 644748,
+    "title": "Item:Epic Raven's Sight",
+    "url": "https://ddowiki.com/page/Item:Epic_Raven%27s_Sight"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Raven's Sight",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Insightful Wisdom",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Insight bonus to Wisdom."
+    },
+    {
+      "name": "Will Save",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Will Save +9 : This item gives a +9 Resistance bonus to your Will saves."
+    },
+    {
+      "name": "Accuracy",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls"
+    },
+    {
+      "name": "True Seeing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "True Seeing : Passive: You gain the benefit of the spell True Seeing ."
+    },
+    {
+      "name": "Epic Raven's Eye",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Goggles like these make the wearer's vision much sharper and are often employed by drow scouts and spies.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Raven's Sight"
+    ],
+    "raw": "Epic version of Raven's Sight"
+  },
+  "extraction_errors": {}
+}

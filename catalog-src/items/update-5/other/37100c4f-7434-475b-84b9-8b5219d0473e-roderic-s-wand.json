@@ -1,0 +1,56 @@
+{
+  "id": "37100c4f-7434-475b-84b9-8b5219d0473e",
+  "name": "Roderic's Wand",
+  "wiki": {
+    "page_id": 11841,
+    "revision_id": 634377,
+    "title": "Item:Roderic's Wand",
+    "url": "https://ddowiki.com/page/Item:Roderic%27s_Wand"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 3,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 14400000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Roderic's Wand",
+  "accepts_sentience": null,
+  "umd_dc": "39",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Summon Unknown Monster — 12 Charges (Recharged/Day:12)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Summon Unknown Monster Caster level: 7 Charges: 12 (12/day)"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This is the unpredictable wand Malicia gave to Roderic , promising that it would protect him. What Roderic did not realize is that the wand recharges over time, but only if not being used.",
+  "notes": "Augment Summoning does work on creatures summoned by this wand. When cast, it summons one creature at random from this list: Celestial Dog : CR 1; Lawful Good; like the Summon Monster I spell. Fiendish Monstrous Scorpion : CR 2; immune to poison, melee, can poison on attack; like the Summon Monster II spell. Summoned Hellhound : CR 4; hide, breath of fire, fireball, melee; like the Summon Monster III spell. Fiendish Monstrous Spider : CR 6; web, ranged acid damage, tremor sense; like the Summon Monster IV spell.",
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,100 @@
+{
+  "id": "5bcd8fe8-25fa-416b-84b0-f97d5c9f8a0d",
+  "name": "Fleshshaper's Brigandine",
+  "wiki": {
+    "page_id": 16491,
+    "revision_id": 708282,
+    "title": "Item:Fleshshaper's Brigandine",
+    "url": "https://ddowiki.com/page/Item:Fleshshaper%27s_Brigandine"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Medium Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Medium Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Magesteel",
+  "hardness": 23,
+  "durability": 244,
+  "base_value_cp": 5615000,
+  "weight": 35.0,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Medium Armor",
+    "armor_bonus": 18,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 4,
+    "armor_check_penalty": -4,
+    "arcane_spell_failure": 10
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Negative Energy Absorption",
+      "value": 20,
+      "value_kind": "percent",
+      "bonus_type": null,
+      "tooltip": "Negative Energy Absorption +20% : This effect absorbs 20% of all negative damage the character would have taken, after all other protections have been penetrated."
+    },
+    {
+      "name": "Fleshmaker",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fleshmaker : Magical insight into the ways of the flesh allow the wearer of this item to receive more effect from healing spells cast on them. +20 Positive Healing Amplification ."
+    },
+    {
+      "name": "Disintegration Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disintegration Guard : This item has a store of dark, insidious power deep within. When the wearer of this item is successfully attacked in melee, this power occasionally lashes out violently at enemies and attempts to disintegrate them."
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+    },
+    {
+      "name": "Power Drain",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul )."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A suit of metal plates once worn by a mad fleshcrafter of Xoriat. It's said that there is a matching staff, and like that staff this armor will expand the wearer's ability to manipulate positive and negative energies.",
+  "notes": "You can remove the Power Drain penalty with a Sustaining Symbiont .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Reign of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Reign of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,103 @@
+{
+  "id": "4bc82b06-5bf8-4d43-8b65-f7f785e6bc0b",
+  "name": "Epic Bracers of the Claw",
+  "wiki": {
+    "page_id": 13899,
+    "revision_id": 629860,
+    "title": "Item:Epic Bracers of the Claw",
+    "url": "https://ddowiki.com/page/Item:Epic_Bracers_of_the_Claw"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Bracers of the Claw",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Insightful Constitution",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Constitution +4 : This item gives the wearer improved health, granting a +4 Insight bonus to Constitution."
+    },
+    {
+      "name": "Fortification",
+      "value": 111,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fortification +111% : +111% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+    },
+    {
+      "name": "Parrying",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Parrying +4 : +4 Insight bonus to Armor Class , +4 Insight bonus to Saves."
+    },
+    {
+      "name": "False Life",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "False Life +36 : +36 Enhancement bonus to hit points."
+    },
+    {
+      "name": "Epic Vulkoor's Might",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage +3 Artifact bonus to Critical Confirmation +3 Artifact bonus to Critical Damage"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Drow warriors don these bracers before combat and are granted great power in battle. They claim the bracers are infused with Vulkoor's wrath.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Bracers of the Claw"
+    ],
+    "raw": "Epic version of Bracers of the Claw"
+  },
+  "extraction_errors": {}
+}

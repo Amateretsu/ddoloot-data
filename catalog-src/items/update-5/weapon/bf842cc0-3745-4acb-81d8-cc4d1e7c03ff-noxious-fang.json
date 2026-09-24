@@ -1,0 +1,111 @@
+{
+  "id": "bf842cc0-3745-4acb-81d8-cc4d1e7c03ff",
+  "name": "Noxious Fang",
+  "wiki": {
+    "page_id": 12081,
+    "revision_id": 713341,
+    "title": "Item:Noxious Fang",
+    "url": "https://ddowiki.com/page/Item:Noxious_Fang"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Throwing Dagger",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 80,
+  "base_value_cp": 3200200,
+  "weight": 1.0,
+  "upgradeable": "Epic Crafting to Epic Noxious Fang",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Throwing Dagger",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Poisonous",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Poisonous 2 : This effect causes the edges of this weapon to drip with a vile venom, dealing 2d6 poison damage on each hit."
+    },
+    {
+      "name": "Critical Befouling",
+      "value": 1,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Critical Befouling 1 : This deadly weapon saps the charm from your enemies, dealing 1 Charisma damage on each critical hit."
+    },
+    {
+      "name": "Fortitude Save",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Fortitude Save +4 : This item gives a +4 Resistance bonus to your Fortitude saves."
+    },
+    {
+      "name": "Returning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Returning : This missile will return to you."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "One of the dread spider Mandible's poisonous fangs was transformed into a throwing knife. It deals poison damage and is enchanted to always return to the thrower.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Snitch"
+    ],
+    "detail": "Mandible 's chest (optional named spider)",
+    "crafted_from": [],
+    "raw": "The Snitch , Mandible 's chest (optional named spider)"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,115 @@
+{
+  "id": "898aaaa8-3217-4002-b080-0543e1224ba9",
+  "name": "Epic Templar's Docent",
+  "wiki": {
+    "page_id": 22792,
+    "revision_id": 630539,
+    "title": "Item:Epic Templar's Docent",
+    "url": "https://ddowiki.com/page/Item:Epic_Templar%27s_Docent"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Docent",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": "Warforged",
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 41,
+  "durability": 250,
+  "base_value_cp": 20000000,
+  "weight": null,
+  "upgradeable": "Legendary Crafting to Legendary Templar's Docent",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Docent",
+    "armor_bonus": null,
+    "armor_bonus_variants": [
+      {
+        "name": "Adamantine Body",
+        "value": 20
+      },
+      {
+        "name": "Mithral Body",
+        "value": 9
+      },
+      {
+        "name": "Composite Plating",
+        "value": 3
+      }
+    ],
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "DR 15/Evil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 15/Evil : Reduces physical damage by 15, except from Evil attacks."
+    },
+    {
+      "name": "Spell Resistance",
+      "value": 28,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Spell Resistance +28: +28 Enhancement bonus to Spell Resistance ."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Radiance Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Templars of the Silver Flame wear these resilient docents, said to be blessed by Tira Miron, to protect themselves from weapon blows and harmful magic alike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Templar's Docent"
+    ],
+    "raw": "Epic version of Templar's Docent"
+  },
+  "extraction_errors": {}
+}

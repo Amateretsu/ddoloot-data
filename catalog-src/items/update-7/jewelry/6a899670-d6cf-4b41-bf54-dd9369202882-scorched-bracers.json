@@ -1,0 +1,102 @@
+{
+  "id": "6a899670-d6cf-4b41-bf54-dd9369202882",
+  "name": "Scorched Bracers",
+  "wiki": {
+    "page_id": 12395,
+    "revision_id": 678372,
+    "title": "Item:Scorched Bracers",
+    "url": "https://ddowiki.com/page/Item:Scorched_Bracers"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 11,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Scorched Bracers",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Fireball — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fireball Caster level: 5 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Combustion",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Combustion +59 : Passive: +59 Equipment bonus to Fire Spell Power ."
+    },
+    {
+      "name": "Armor Bonus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Armor Bonus +4 : This item surrounds the wearer with an invisible but tangible field of force, granting +4 armor bonus to AC, just as though he were wearing armor."
+    },
+    {
+      "name": "Physical Sheltering",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Physical Sheltering +9 : +9 Enhancement bonus to Physical Resistance Rating"
+    },
+    {
+      "name": "Fire Resistance",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Resistance +14 : Passive: +14 Enhancement bonus to your Fire Resistance."
+    },
+    {
+      "name": "Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A pair of bracers that guards the wearer against magic flames. They seem to have been tested vigorously until the protection was perfected.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "end chest and (Legendary) heroic chest",
+    "crafted_from": [],
+    "raw": "The Chronoscope , end chest, and The Chronoscope (Legendary) , heroic chest"
+  },
+  "extraction_errors": {}
+}

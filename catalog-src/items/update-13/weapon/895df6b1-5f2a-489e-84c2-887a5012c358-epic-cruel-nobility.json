@@ -1,0 +1,112 @@
+{
+  "id": "895df6b1-5f2a-489e-84c2-887a5012c358",
+  "name": "Epic Cruel Nobility",
+  "wiki": {
+    "page_id": 22790,
+    "revision_id": 672741,
+    "title": "Item:Epic Cruel Nobility",
+    "url": "https://ddowiki.com/page/Item:Epic_Cruel_Nobility"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Scimitar",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 260,
+  "base_value_cp": 8002000,
+  "weight": 4.0,
+  "upgradeable": "Legendary Crafting to Legendary Cruel Nobility",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Scimitar",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Evil",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Axiomatic Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Axiomatic Burst 4 : This weapon is an implement of law, dealing 4d6 Law damage on a successful hit to Chaotic enemies, and 10d6 Law damage on a critical hit to Chaotic enemies. This effect makes the weapon lawfully aligned. Chaotic characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Evil Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Evil Blast 4 : This weapon is a sinister implement of evil deeds, dealing 4d6 Evil damage on a successful hit, and an additional 4d6 Evil damage on a critical hit. This effect makes the weapon evil aligned. Good characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Bleeding",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Bleeding 4 : This weapon is wickedly curved, with spines and hooks meant to cause damage to those with flesh. This weapon does 4d8 bleeding damage to those that are vulnerable to it."
+    },
+    {
+      "name": "Disintegration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disintegration : This weapon has a dark, insidious power deep within. Occasionally, this power lashes out violently at enemies and attempts to disintegrate them."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A finely wrought scimitar that once belonged to a Rakshasa noble, glowing darkly with an unholy aura. It tears into enemies viciously and is especially debilitating against those whose hearts are not evil",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Cruel Nobility"
+    ],
+    "raw": "Epic version of Cruel Nobility"
+  },
+  "extraction_errors": {}
+}

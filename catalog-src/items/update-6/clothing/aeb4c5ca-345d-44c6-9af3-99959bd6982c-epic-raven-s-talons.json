@@ -1,0 +1,103 @@
+{
+  "id": "aeb4c5ca-345d-44c6-9af3-99959bd6982c",
+  "name": "Epic Raven's Talons",
+  "wiki": {
+    "page_id": 11944,
+    "revision_id": 630311,
+    "title": "Item:Epic Raven's Talons",
+    "url": "https://ddowiki.com/page/Item:Epic_Raven%27s_Talons"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Raven's Talons",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dexterity",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +9 : This item makes the wearer more nimble and dexterous, granting a +9 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Bluff",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Bluff +17 : Passive: +17 Competence bonus to the Bluff skill."
+    },
+    {
+      "name": "Seeker",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +9 : Provides a +9 Enhancement bonus to confirm critical hits, and a +9 Enhancement bonus to critical hit damage (before multipliers are applied)."
+    },
+    {
+      "name": "Deception",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +7 : +7 Enhancement bonus to hit and +11 to damage for any hit that would qualify as a sneak attack."
+    },
+    {
+      "name": "Epic Raven's Eye",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Critical Confirmation and Critical Damage +5 Artifact bonus to Search and Spot"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Gloves like these make the wearer's attacks more precise and are often employed by drow scouts and spies.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Raven's Talons"
+    ],
+    "raw": "Epic version of Raven's Talons"
+  },
+  "extraction_errors": {}
+}

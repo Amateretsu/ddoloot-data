@@ -1,0 +1,103 @@
+{
+  "id": "b7561f0c-c568-4122-9c4f-d7eb5c277e46",
+  "name": "Epic Elder's Cap",
+  "wiki": {
+    "page_id": 11943,
+    "revision_id": 689540,
+    "title": "Item:Epic Elder's Cap",
+    "url": "https://ddowiki.com/page/Item:Epic_Elder%27s_Cap"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Elder's Cap",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Intelligence",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Intelligence +9 : This item focuses the power of the wearer's mind, granting a +9 Enhancement bonus to Intelligence."
+    },
+    {
+      "name": "Enchantment Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Enchantment Focus +6 : +6 Equipment bonus to the DC of Enchantment spells."
+    },
+    {
+      "name": "Concentration",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +17 : Passive: +17 Competence bonus to the Concentration skill."
+    },
+    {
+      "name": "Spell Save",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Spell Save +8 : This item gives a +8 Resistance bonus to your saves versus spells."
+    },
+    {
+      "name": "Epic Elder's Knowledge",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Tribal drow elders use these caps to focus their minds and recall past events. They are passed down through the generations but few of them remain in existence.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Elder's Cap"
+    ],
+    "raw": "Epic version of Elder's Cap"
+  },
+  "extraction_errors": {}
+}
