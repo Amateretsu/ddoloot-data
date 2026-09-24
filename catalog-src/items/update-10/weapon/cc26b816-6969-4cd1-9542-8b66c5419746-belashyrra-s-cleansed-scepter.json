@@ -1,0 +1,103 @@
+{
+  "id": "cc26b816-6969-4cd1-9542-8b66c5419746",
+  "name": "Belashyrra's Cleansed Scepter",
+  "wiki": {
+    "page_id": 15890,
+    "revision_id": 690948,
+    "title": "Item:Belashyrra's Cleansed Scepter",
+    "url": "https://ddowiki.com/page/Item:Belashyrra%27s_Cleansed_Scepter"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Light Hammer",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 6400100,
+  "weight": 2.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Light Hammer",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d4",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Single-Mindedness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Single-Mindedness : This item drives your magic towards chaos, and you cannot focus as well on the nuances of subtler spells. -2 DCs on your enchantment spells."
+    },
+    {
+      "name": "Efficient Metamagic - Empower",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Empower II : The additional spell point cost for using the Empower Metamagic feat is reduced by 2 SP ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "unique_system",
+      "raw": "One of the following combinations:",
+      "name": "One of the following combinations:",
+      "colour": null,
+      "text": null,
+      "children": [
+        "Spellcasting Implement +15 , Radiance +84 , Greater Regeneration",
+        "Spellcasting Implement +15 , Combustion +84 , Fire Lore V",
+        "Spellcasting Implement +15 , Glaciation +84 , Ice Lore V",
+        "Evocation Focus II , Kinetic Lore V",
+        "Necromancy Focus II , Void Lore V"
+      ]
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Though this is but a simple scepter, you feel as though you're holding an instrument of great power and destruction in your hand as you grip its handle. You find you cannot weave your spells quite as craftily, but they have become much more explosive.",
+  "notes": null,
+  "tips": "Also claimed to drop from Acute Delirium. You can remove the Single-Mindedness penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "The Lord of Eyes"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "The Lord of Eyes , end chest"
+  },
+  "extraction_errors": {}
+}

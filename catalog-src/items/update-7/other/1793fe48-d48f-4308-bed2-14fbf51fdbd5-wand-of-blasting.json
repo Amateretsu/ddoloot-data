@@ -1,0 +1,72 @@
+{
+  "id": "1793fe48-d48f-4308-bed2-14fbf51fdbd5",
+  "name": "Wand of Blasting",
+  "wiki": {
+    "page_id": 12325,
+    "revision_id": 635752,
+    "title": "Item:Wand of Blasting",
+    "url": "https://ddowiki.com/page/Item:Wand_of_Blasting"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 10,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 22400000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "35",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Elemental Surge — 10 Charges (Recharged/Day:10)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Elemental Surge Caster level: 12 Charges: 10 (10/day)"
+    },
+    {
+      "name": "Potency",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +36 : Passive: +36 Equipment bonus to each Spell Power ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Many strange and powerful magical artifacts have been unearthed from the ancient Droaam ruins. This one is a wand that unpredictably casts one of many destructive spells when activated.",
+  "notes": "Suspected damage: 10d6 fire, cold, acid, or electric damage (unconfirmed). Deals ~70-75 damage with Wand Mastery I (+25%). Perhaps 12x(1d3+3) = average 60 55-65 damage with no wand damage enhancements. 12x(1d3+3) looks about right (and is consistent with its caster level of 12) Does not appear to have a saving throw Charges take more time to regenerate than they do for other eternal wands.",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Diplomatic Impunity"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Diplomatic Impunity , end chest"
+  },
+  "extraction_errors": {}
+}

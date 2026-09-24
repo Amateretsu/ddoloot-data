@@ -1,0 +1,95 @@
+{
+  "id": "3e66ffd7-de90-432a-b997-3cba6a2e352e",
+  "name": "Epic Charged Gauntlets",
+  "wiki": {
+    "page_id": 12401,
+    "revision_id": 629925,
+    "title": "Item:Epic Charged Gauntlets",
+    "url": "https://ddowiki.com/page/Item:Epic_Charged_Gauntlets"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Charged Gauntlets",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Greater Shocking Blow",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a powerful bolt of lightning (20 to 120 electric damage)."
+    },
+    {
+      "name": "Strength",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +9 : This item gives the wearer the power of Ogre Strength, granting a +9 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Speed",
+      "value": 30,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Speed +30% : +30% enhancement bonus to movement speed , 15% bonus to attack speed ."
+    },
+    {
+      "name": "Electric Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Electric Resistance +36 : Passive: +36 Enhancement bonus to your Electric Resistance."
+    },
+    {
+      "name": "Epic Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "These gloves channel powerful electric energy into enemies that you strike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Charged Gauntlets"
+    ],
+    "raw": "Epic version of Charged Gauntlets"
+  },
+  "extraction_errors": {}
+}

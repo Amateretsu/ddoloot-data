@@ -1,0 +1,79 @@
+{
+  "id": "5b222970-3c55-4535-a394-035cb13d419c",
+  "name": "Fabricator's Gauntlets",
+  "wiki": {
+    "page_id": 18842,
+    "revision_id": 630711,
+    "title": "Item:Fabricator's Gauntlets",
+    "url": "https://ddowiki.com/page/Item:Fabricator%27s_Gauntlets"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 16,
+  "durability": 110,
+  "base_value_cp": 10005000,
+  "weight": 0.1,
+  "upgradeable": "Nearly Finished",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Strength",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +6 : This item gives the wearer the power of Ogre Strength, granting a +6 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Resistance",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +5 : Passive: +5 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+    },
+    {
+      "name": "Melee Alacrity",
+      "value": 10,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Melee Alacrity 10% : Gain 10% Enhancement bonus to Melee attack speed. Does not stack with the Haste spell."
+    },
+    {
+      "name": "Nearly Finished - Fabricator's Ingenuity",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Fabricator's Ingenuity : +25% stacking fortification and +2 artifact bonus to your attack and damage rolls."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Fabricators of House Cannith wear bulky gauntlets like these to increase their manual strength and their ability to work with raw materials.",
+  "notes": null,
+  "tips": "Upgrade (becomes Bound to Character on Acquire ): + + + +",
+  "source": {
+    "quests": [
+      "House Cannith Manufactury"
+    ],
+    "detail": "Wrack 's chest (Rare encounter)",
+    "crafted_from": [],
+    "raw": "House Cannith Manufactury , Wrack 's chest (Rare encounter)"
+  },
+  "extraction_errors": {}
+}

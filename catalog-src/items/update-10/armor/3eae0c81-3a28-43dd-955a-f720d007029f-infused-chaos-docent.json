@@ -1,0 +1,99 @@
+{
+  "id": "3eae0c81-3a28-43dd-955a-f720d007029f",
+  "name": "Infused Chaos Docent",
+  "wiki": {
+    "page_id": 16453,
+    "revision_id": 687196,
+    "title": "Item:Infused Chaos Docent",
+    "url": "https://ddowiki.com/page/Item:Infused_Chaos_Docent"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Docent",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": "Warforged",
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 18,
+  "durability": 130,
+  "base_value_cp": 6410000,
+  "weight": null,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Docent",
+    "armor_bonus": null,
+    "armor_bonus_variants": [
+      {
+        "name": "Adamantine Body",
+        "value": 16
+      },
+      {
+        "name": "Mithral Body",
+        "value": 7
+      },
+      {
+        "name": "Composite Plating",
+        "value": 2
+      }
+    ],
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spell Turmoil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "alchemical",
+      "tooltip": "Spell Turmoil : When casting any damaging Fire, Cold, Acid or Electric spells, there is a chance that you will gain a +20 Alchemical bonus to Spell Power to one of those energy types for 30 seconds."
+    },
+    {
+      "name": "Lesser Evocation Augmentation",
+      "value": 9,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Lesser Evocation Augmentation IX : Increases the wearer's caster level when casting ninth level or lower Evocation spells by one."
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+    },
+    {
+      "name": "Power Drain",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Power Drain : This item reserves some of your power in order to function. You lose 30 maximum spell points (or up to 60 if you are a Sorcerer or Favored Soul )."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This docent, imbued with powerful and unpredictable magic, seems to have gained its powers from Kythri originally. The denizens of Xoriat likely found its wild enchantments intriguing, so they seized it and brought it back with them to their own realm.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Reign of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Reign of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

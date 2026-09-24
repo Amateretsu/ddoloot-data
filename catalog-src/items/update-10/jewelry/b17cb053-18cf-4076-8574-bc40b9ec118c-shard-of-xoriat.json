@@ -1,0 +1,72 @@
+{
+  "id": "b17cb053-18cf-4076-8574-bc40b9ec118c",
+  "name": "Shard of Xoriat",
+  "wiki": {
+    "page_id": 16455,
+    "revision_id": 634625,
+    "title": "Item:Shard of Xoriat",
+    "url": "https://ddowiki.com/page/Item:Shard_of_Xoriat"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 15,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Gem",
+  "hardness": 8,
+  "durability": 70,
+  "base_value_cp": 3620000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Exceptional Charisma",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "exceptional",
+      "tooltip": "Exceptional Charisma +1 : This item makes the wearer have more flair, granting a +1 Exceptional bonus to Charisma."
+    },
+    {
+      "name": "Summon Xoriat Horror — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Summon Xoriat Horror Caster level: 20 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Enchantment Focus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Enchantment Focus +2 : +2 Equipment bonus to the DC of Enchantment spells."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A crystalline fragment of some Xoriat mineral. The magic it is enchanted with will make the wearer a more charismatic leader, and even grants the service of several Xoriat creatures each day.",
+  "notes": null,
+  "tips": "The monsters summoned by this item are: Chaos Beholder , CR16 Greater Evil Eye , CR15 Mind Flayer Mage , CR16 Taken , CR13 Xorian Render , CR15 (Flesh Render) Notes: Early version of this item was not exclusive . Even if you have the old non-exclusive version in your inventory, you cannot loot a new one. Using the clicky in public area displays the summoning animation and consumes a charge from the item without any effect.",
+  "source": {
+    "quests": [
+      "The Sane Asylum"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "The Sane Asylum , end chest"
+  },
+  "extraction_errors": {}
+}

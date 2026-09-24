@@ -1,0 +1,125 @@
+{
+  "id": "5ab548cb-de21-4f0b-b406-da396c554244",
+  "name": "Legendary Brutish Cuirass",
+  "wiki": {
+    "page_id": 101487,
+    "revision_id": 631898,
+    "title": "Item:Legendary Brutish Cuirass",
+    "url": "https://ddowiki.com/page/Item:Legendary_Brutish_Cuirass"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Adamantine",
+  "hardness": 52,
+  "durability": 510,
+  "base_value_cp": 14050000,
+  "weight": 50.0,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 40,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 6,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+15 Enhancement Bonus : +15 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Strength",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +14 : This item gives the wearer the power of Ogre Strength, granting a +14 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Fortitude Save",
+      "value": 12,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Fortitude Save +12 : This item gives a +12 Resistance bonus to your Fortitude saves."
+    },
+    {
+      "name": "Unstoppable Staggering Blow",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Unstoppable Staggering Blow : On a Vorpal strike with a Melee weapon, this weapon will trip your opponent, forcing them to fall prone for 2 seconds. There is no save against this effect."
+    },
+    {
+      "name": "Insightful Doublestrike",
+      "value": 7,
+      "value_kind": "percent",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Doublestrike 7% : Passive: 7% Insight bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    },
+    {
+      "name": "Adamantine",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Adamantine : Found only in meteorites and the rarest of veins in magical areas, this ultrahard metal adds to the quality of a weapon or suit of armor. Weapons made of adamantine have the ability to bypass the protective damage reduction of certain monsters."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This suit of armor seems to have been crafted for Droaam troops to enhance their aggressive tendencies. It invests the wearer's attacks with great fervor, causing them to stun enemies occasionally.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Blockade Buster"
+    ],
+    "detail": "Bash's Chest",
+    "crafted_from": [],
+    "raw": "Blockade Buster , Bash's Chest"
+  },
+  "extraction_errors": {}
+}

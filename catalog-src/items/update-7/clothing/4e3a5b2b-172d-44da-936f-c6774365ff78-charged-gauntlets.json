@@ -1,0 +1,88 @@
+{
+  "id": "4e3a5b2b-172d-44da-936f-c6774365ff78",
+  "name": "Charged Gauntlets",
+  "wiki": {
+    "page_id": 12392,
+    "revision_id": 628943,
+    "title": "Item:Charged Gauntlets",
+    "url": "https://ddowiki.com/page/Item:Charged_Gauntlets"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 11,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Charged Gauntlets",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Shocking Blow",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Shocking Blow : This item is charged with electricity. When in melee, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a large electric shock (10 to 60 electric damage). A successful Reflex save (DC 22) reduces this damage by half."
+    },
+    {
+      "name": "Strength",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +4 : This item gives the wearer the power of Ogre Strength, granting a +4 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Electric Resistance",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Electric Resistance +14 : Passive: +14 Enhancement bonus to your Electric Resistance."
+    },
+    {
+      "name": "Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "These gloves channel powerful electric energy into enemies that you strike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

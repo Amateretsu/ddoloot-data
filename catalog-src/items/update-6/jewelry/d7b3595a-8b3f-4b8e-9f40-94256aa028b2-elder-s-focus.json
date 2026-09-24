@@ -1,0 +1,79 @@
+{
+  "id": "d7b3595a-8b3f-4b8e-9f40-94256aa028b2",
+  "name": "Elder's Focus",
+  "wiki": {
+    "page_id": 12523,
+    "revision_id": 629716,
+    "title": "Item:Elder's Focus",
+    "url": "https://ddowiki.com/page/Item:Elder%27s_Focus"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Elder's Focus",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Efficient Metamagic - Extend",
+      "value": 1,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Extend I : The additional spell point cost for using the Extend Metamagic feat is reduced by 1 SP ."
+    },
+    {
+      "name": "Spellcraft",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Spellcraft +10 : Passive: +10 Competence bonus to the Spellcraft skill."
+    },
+    {
+      "name": "Wizardry",
+      "value": 60,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wizardry +60 : +60 Enhancement bonus to spell points ."
+    },
+    {
+      "name": "Elder's Knowledge",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Elder's Knowledge : +2% Artifact bonus to spell critical chance. 5% Legendary bonus to spell crit damage."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Tribal drow elders use these charms to focus their minds and recall past events. They are passed down through the generations but few of them remain in existence.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Last Stand"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Last Stand , End reward"
+  },
+  "extraction_errors": {}
+}

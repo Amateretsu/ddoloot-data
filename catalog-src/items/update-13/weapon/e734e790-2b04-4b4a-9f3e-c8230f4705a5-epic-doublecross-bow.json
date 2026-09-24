@@ -1,0 +1,111 @@
+{
+  "id": "e734e790-2b04-4b4a-9f3e-c8230f4705a5",
+  "name": "Epic Doublecross Bow",
+  "wiki": {
+    "page_id": 21474,
+    "revision_id": 666455,
+    "title": "Item:Epic Doublecross Bow",
+    "url": "https://ddowiki.com/page/Item:Epic_Doublecross_Bow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Repeating Light Crossbow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 25,
+  "durability": 280,
+  "base_value_cp": 8025000,
+  "weight": 6.0,
+  "upgradeable": "Legendary Crafting to Legendary Doublecross Bow",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Repeating Light Crossbow",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "DEX, INT",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Poison Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Poison Blast 4 : This weapon drips with vile poison, dealing 4d6 Poison damage on a successful hit, and an additional 4d6 Poison damage on a critical hit."
+    },
+    {
+      "name": "Crippling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Crippling : A crippling weapon is infused with binding power so that when a target is critically hit their movement is slowed by half. Note: Real slowdown is only 25%"
+    },
+    {
+      "name": "Armor-Piercing",
+      "value": 15,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Armor-Piercing 15% : Passive: +15% Enhancement bonus to Fortification Bypass. (Fortification Bypass makes your attacks ignore a percentage of enemy Fortification.)"
+    },
+    {
+      "name": "Nightshade Venom",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Nightshade Venom : Any creature struck by this weapon must succeed on a Difficulty Check 22 Fortitude save or fall unconscious. The target may attempt a new save to end the effect every several seconds; otherwise the sleep lasts for 20 seconds."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "The drow of Faerun's Underdark favor small handcrossbows that can be used quickly, silently, and with poisoned ammunition. The bolts fired from this light repeating weapon will inject a struck target with a venom that may put it to sleep instantly.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Doublecross Bow"
+    ],
+    "raw": "Epic version of Doublecross Bow"
+  },
+  "extraction_errors": {}
+}

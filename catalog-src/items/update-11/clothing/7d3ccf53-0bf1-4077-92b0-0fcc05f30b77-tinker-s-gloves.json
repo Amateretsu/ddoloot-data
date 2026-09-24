@@ -1,0 +1,86 @@
+{
+  "id": "7d3ccf53-0bf1-4077-92b0-0fcc05f30b77",
+  "name": "Tinker's Gloves",
+  "wiki": {
+    "page_id": 17885,
+    "revision_id": 635548,
+    "title": "Item:Tinker's Gloves",
+    "url": "https://ddowiki.com/page/Item:Tinker%27s_Gloves"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 16,
+  "durability": 110,
+  "base_value_cp": 10005000,
+  "weight": 0.1,
+  "upgradeable": "Nearly Finished",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dexterity",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +6 : This item makes the wearer more nimble and dexterous, granting a +6 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Insightful Seeker",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Seeker +2 : Provides a +2 Insight bonus to confirm critical hits, and a +2 Insight bonus to critical hit damage (before multipliers are applied)."
+    },
+    {
+      "name": "Open Lock",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Open Lock +10 : Passive: +10 Competence bonus to the Open Lock skill."
+    },
+    {
+      "name": "Enhanced Open Lock",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Open Lock +5 : Passive: +5 Enhancement bonus to the Open Lock skill."
+    },
+    {
+      "name": "Nearly Finished - Tinker's Finesse",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Tinker's Finesse : True Seeing , and equivalent to Sneak Attack Bonus +5 : Provides a +5 to attack rolls and +8 damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Gloves worn by House Cannith tinkers to grant them greater dexterity and aid them in working with complex devices.",
+  "notes": null,
+  "tips": "Upgrade: + + + +",
+  "source": {
+    "quests": [
+      "Schemes of the Enemy"
+    ],
+    "detail": "Whitefang 's chest some End chests ; House Cannith Manufactury Stellite 's chest (Rare Encounter).",
+    "crafted_from": [],
+    "raw": "Schemes of the Enemy , Whitefang 's chest, some End chests ; House Cannith Manufactury , Stellite 's chest (Rare Encounter)."
+  },
+  "extraction_errors": {}
+}

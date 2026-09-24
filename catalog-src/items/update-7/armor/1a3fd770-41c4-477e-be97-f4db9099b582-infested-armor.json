@@ -1,0 +1,102 @@
+{
+  "id": "1a3fd770-41c4-477e-be97-f4db9099b582",
+  "name": "Infested Armor",
+  "wiki": {
+    "page_id": 12403,
+    "revision_id": 708363,
+    "title": "Item:Infested Armor",
+    "url": "https://ddowiki.com/page/Item:Infested_Armor"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "on_equip",
+  "binding_raw": "Bound to Account on Equip",
+  "material": "Steel",
+  "hardness": 15,
+  "durability": 112,
+  "base_value_cp": 1750000,
+  "weight": 50.0,
+  "upgradeable": "Epic Crafting to Epic Infested Armor",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 11,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Fortification",
+      "value": 56,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fortification +56% : +56% Enhancement bonus to reduced chance of taking critical damage on a critical hit."
+    },
+    {
+      "name": "Disease Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disease Guard : This item carries the Maggot Plague disease, which deals 1d6 Constitution damage and may be contracted by enemies that hit you. A successful Fortitude save (DC 20) will negate this effect."
+    },
+    {
+      "name": "Sheltering",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sheltering +8 : +8 Enhancement bonus to Physical and Magical Resistance Ratings"
+    },
+    {
+      "name": "DR 5/Good",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 5/Good : Reduces physical damage by 5, except from Good attacks."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "An orthon warrior's body is crawling with hungry maggots that feed on its wounds. This suit of armor, crafted from the salvaged parts of an orthon's protective gear, is similarly infested and may impart a disease to those that attack the wearer.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "and (Legendary) Blood Plate 's Chest",
+    "crafted_from": [],
+    "raw": "The Chronoscope , and The Chronoscope (Legendary) , Blood Plate 's Chest"
+  },
+  "extraction_errors": {}
+}

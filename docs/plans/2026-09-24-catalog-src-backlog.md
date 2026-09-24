@@ -97,7 +97,7 @@ command sequence to continue.
 
 Test baseline before step 1: 321 passed, 1 skipped.
 
-Live request tally (SESSION_BUDGET 1200): step 1 used 8; step 2 used 0. Running total: 8 of 1200.
+Live request tally (SESSION_BUDGET 1200): step 1 used 8; step 2 used 0; batch 1 used 201. Running total: 209 of 1200.
 
 ### Step 1: discovery
 
@@ -161,3 +161,126 @@ Live request tally (SESSION_BUDGET 1200): step 1 used 8; step 2 used 0. Running 
 - No other test reads the Page Store. `test_catalog_integrity` and the registry test read
   committed `catalog-src/`, which stays sound as it grows.
 - Tests after step 2: 321 passed, 1 skipped.
+
+### Batch 1: Updates 5-13
+
+- **Worst case written before the run:** F = 8 unheld update pages (6-13) + at most 250
+  unheld items = 258, so 1 + 2F + min(F, 1) = 518 of the remaining 1,192. The Page Store
+  already held `Update_5_named_items` and 13 `Item:` pages.
+- **`--limit 250`:** the fresh queue holds only these 9 pages' rows, so the limit is a
+  safety cap. It was estimated from 198 category members plus about 10%. The update pages
+  actually listed 253 rows (5:29, 6:53, 7:51, 8:37, 9:24, 10:15, 11:11, 12:0, 13:33), so
+  250 would have left 3 rows pending anyway.
+- **`--max-retries 0`:** `sync_all` resets failed rows with `retry_count < max_retries` at
+  the start of every run, and `process_queue` reads each pending row once per run. With 0,
+  a failed row is never reset automatically on the persistent queue. Only the one
+  `--reset-failed` per batch can reset it. Later batches should keep `--max-retries 0`.
+- **Stop guard:** a scratch watchdog tailed the log. It would send SIGINT to the sync on 3
+  consecutive 429/5xx, or on more than 22 failed items (10% of about 218). It never fired.
+- **Command:** `.venv/bin/ddoloot sync --verbose --scraper-config $S/scraper.yaml --page
+  Update_5_named_items ... Update_13_named_items --limit 250 --max-retries 0`. The scratch
+  config is the committed values plus `max_retries: 0`, `consecutive_challenges: 1`,
+  `cache_dir` = repo `cache/pages`, browser enabled. It used the default `data/queue.db`,
+  created by this run.
+- **STOP: the WAF challenge was not cleared.** At 09:41, after about 13.5 minutes, the
+  browser fetch of `Item:Crimson_Chain` (Update 8) was challenged and did not clear. The run
+  stopped with exit 1, and no item was marked failed. Nothing was fetched after that, so
+  there was no `--reset-failed` and no re-run.
+- **Requests: 201**, from `grep -c 'GET '`:
+  - robots.txt;
+  - `Update_10_named_items` as plain 202, which switched the rest of the run to the
+    browser;
+  - 199 browser GETs: the 8 unheld update pages, including one reload after the first
+    challenge, then 189 items and the uncleared `Crimson_Chain`.
+  - No `api.php`, `index.php` or `Special:` URL.
+- **Queue (`sync --status`):** 253 total, 200 complete, 5 failed, 48 pending (24 each on
+  Updates 8 and 9, starting with `Crimson_Chain`).
+  - 5 of the pending rows are already held and cost 0 next time: the duplicates Beholder
+    Plate Armor, Beholder Plate Docent, Epic Envenomed Cloak, Epic Sirocco and Stormsinger
+    Cloak, listed on Update 9.
+  - About 43 still need fetching.
+  - Failed-item rate: 5 of 205 processed, 2.4%.
+- **Update pages are read in `page_name` order** (10, 11, 12, 13, 5, 6, ...). So rows
+  are queued, and items first written, in that order, and lowest-update-wins then moves
+  files down.
+- **Files: 185 new item files and 185 registry lines** (12 → 197 lines). No pilot file
+  changed.
+  - Per update: 5: 16, 6: 53, 7: 49, 8: 9, 9: 2, 10: 13, 11: 10, 13: 33. Update 12 lists no
+    items.
+  - Per category: armor 27, clothing 31, jewelry 43, other 23, shield 10, weapon 51.
+- **Moves:**
+  - Chulchannad's Claw, update-11 → update-5, during the live run.
+  - Beholder Plate Armor and Docent, update-10 → update-9, during the first offline
+    re-run, which processed their held Update 9 rows.
+  - Gem of Many Facets and Epic Gem of Many Facets are listed on Updates 6 and 7 and stay
+    in one file under update-6.
+  - Pending Update 8 and 9 rows can still move items down from update-10, 11 or 13.
+- **Failed, recorded by URL.** Each failed with `ExtractionError: no infobox table`. They
+  are crafting ingredients or an article, not equipment, and are held in the Page Store:
+  - `Item:Token_of_the_Twelve`;
+  - `Item:Mark_of_Rhesh_Turakbar`;
+  - `Item:Legendary_Mark_of_Rhesh_Turakbar`;
+  - `Item:Mark_of_Sheshka`;
+  - `Item:Legendary_Mark_of_Sheshka`.
+- **Report totals:** after the fix, from each update's `report.jsonl`. The writer keeps
+  one line per URL, so there are no duplicates. Update 5 counts only this batch's 16
+  items, not the pilot's 12.
+
+  | Update | Items | Unmapped | Unclassified | Errors | Warnings |
+  |---|---|---|---|---|---|
+  | 5 | 16 | 3 | 7 | 2 | 0 |
+  | 6 | 53 | 3 | 7 | 0 | 0 |
+  | 7 | 51 | 13 | 28 | 2 | 0 |
+  | 8 | 9 | 0 | 4 | 0 | 0 |
+  | 9 | 5 | 0 | 0 | 0 | 0 |
+  | 10 | 15 | 0 | 2 | 1 | 0 |
+  | 11 | 11 | 0 | 1 | 0 | 0 |
+  | 13 | 33 | 0 | 7 | 0 | 0 |
+  | **Total** | | **19** | **56** | **5** | **0** |
+
+  Before the fix, errors were 20.
+- **Gaps by kind, new in this batch:**
+  - Clicky charges: 44 in the pilot's `— N Charges` form (mostly Eternal Wands, 50/day),
+    plus 4 in a new hyphen form, `Negative Energy Absorption - 5 Charges (Recharged/Day:
+    5)`.
+  - `DR 5/Evil`-style alignment DR: 6.
+  - `Exceptional Fortification (+10%)`: 1.
+  - A wiki bug note inside an effect, `Improved Deception +17 ( Bug: ...)`: 1.
+  - Unmapped row `no umd check for`: 19 wands.
+  - Binding with no timing, `Bound to Character` (4) and `Bound to Account` (1): left
+    unmapped, because acquire and equip cannot be told apart.
+  - `extraction_failed` (no infobox): the 5 failed pages.
+- **Fix applied:** in `catalog/extractor/mappings.yaml`, binding `bound to character on
+  acquire , exclusive` → `character`, the pilot's Exclusive fix for the character form.
+  - It is tested through `extract()` with a new case in
+    `test_row_is_coerced_into_its_field`.
+  - The offline re-run changed exactly 15 item files (5: 1, 6: 1, 7: 13) and no registry
+    line, and the next re-run changed nothing.
+- **Gaps baseline:** regenerated. It only adds 66 pages (4 → 70 entries), with no removals
+  or changes.
+- **Offline harness (reusable), committed as `scripts/offline_rerun.py`:**
+  `.venv/bin/python scripts/offline_rerun.py Update_5_named_items ... Update_13_named_items`,
+  run from the repo root. It earns its place because every later batch and the next session
+  need it. It overrides `PageStore._fetch`, a private method, so it is a script, not a
+  test, and CI does not lint it.
+  - It calls `ddo_sync.cli.main(["sync", "--queue-db", <temp>, "--max-retries", "0",
+    "--page", ...])` in-process, with `ddo_sync.cli.PageStore` patched to
+    `PageStore(config, transport=<raises>, browser=<raises>, sleep=noop)`.
+  - An unheld page fails in the temporary queue before robots.txt or any transport is
+    touched; the harness reports it as "unheld pages skipped".
+  - It prints the transport fetch attempts and exits 1 if there were any.
+  - Every run here: 0 attempts, 43 unheld skipped. The last run left `git status` and all
+    checksums unchanged.
+  - In zsh, pass the titles literally or as `"${P[@]}"`.
+- Tests after batch 1: 322 passed, 1 skipped. ruff, black and isort are clean, and
+  `check_catalog('catalog-src')` finds 0 problems.
+- **Orchestrator verification:** the four checks pass and `check_catalog('catalog-src')`
+  returns 0 problems. My own harness run on a fresh queue made 0 fetch attempts and left
+  `git diff` byte-identical. The registry diff only adds lines.
+- **The session stops fetching here.** The brief lists an uncleared WAF challenge as a stop
+  condition, and ADR 0006 favours backing off over pushing through a challenge. So no
+  further live run was made in this session, even though 991 requests of the budget
+  remain. The log shows the `Crimson_Chain` browser GET at 09:41:16 and the stop at
+  09:41:47, about 13.5 minutes and 199 browser requests into the run. Why the challenge
+  did not clear is not known. One possibility, not verified, is that the WAF token expired
+  or a rate threshold was reached.

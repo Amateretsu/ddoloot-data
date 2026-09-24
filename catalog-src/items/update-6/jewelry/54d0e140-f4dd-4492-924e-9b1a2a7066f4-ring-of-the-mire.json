@@ -1,0 +1,79 @@
+{
+  "id": "54d0e140-f4dd-4492-924e-9b1a2a7066f4",
+  "name": "Ring of the Mire",
+  "wiki": {
+    "page_id": 12007,
+    "revision_id": 634298,
+    "title": "Item:Ring of the Mire",
+    "url": "https://ddowiki.com/page/Item:Ring_of_the_Mire"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Ring of the Mire",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spearblock",
+      "value": 3,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Spearblock III : Passive: Reduces physical damage taken by 6, except from Bludgeoning or Slashing weapons. (Damage Reduction: 6/Slash, Bludgeon)"
+    },
+    {
+      "name": "Feather Falling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather."
+    },
+    {
+      "name": "Fortitude Save",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Fortitude Save +5 : This item gives a +5 Resistance bonus to your Fortitude saves."
+    },
+    {
+      "name": "Marshwalker",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "enhancement",
+      "tooltip": "Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to Jump and Tumble"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This ring was crafted to ease travel through thick, overgrown marsh territory.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,133 @@
+{
+  "id": "582471fd-7dc7-4ec3-b7c8-391e693b10ad",
+  "name": "Scepter of the Ogre Magi",
+  "wiki": {
+    "page_id": 12683,
+    "revision_id": 634493,
+    "title": "Item:Scepter of the Ogre Magi",
+    "url": "https://ddowiki.com/page/Item:Scepter_of_the_Ogre_Magi"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 12,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 17,
+  "durability": 170,
+  "base_value_cp": 4800001,
+  "weight": 3.0,
+  "upgradeable": "Cauldron of Sora Katra to Master Transmuter's Staff",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Club",
+    "handedness": null,
+    "damage_multiplier": 1.4,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 12,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +12 : Passive: +12 Implement bonus to Universal Spell Power ."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Potency",
+      "value": 52,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Potency +52 : Passive: +52 Equipment bonus to each Spell Power ."
+    },
+    {
+      "name": "Concentration",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Concentration +14 : Passive: +14 Competence bonus to the Concentration skill."
+    },
+    {
+      "name": "Healing Lore",
+      "value": 12,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Healing Lore +12 : Passive: Your Positive Energy spells gain a 12% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Fragmented",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Fragmented : This item looks as though it is only one half of a greater item. Perhaps in the future it could be rejoined with its other half to reform the item in its original glory."
+    },
+    {
+      "name": "Cone of Cold — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cone of Cold Caster level: 9 Charges: 3 (3/day)"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Lost to time, this scepter was eventually recovered by ogre magi and put to use in combat. It improves the damage of one's spells and makes him or her less likely to be interrupted while casting them.",
+  "notes": null,
+  "tips": "This is a one handed club, which uses the two handed club wield animation.. Causes some really weird looking glitches if you equip a shield with it. This seems to be considered a two-handed weapon according to the Power Attack feat, meaning you get a -5 to-hit and a +10 to damage when it is active. This only applies when the Scepter of the Ogre Magi is in your main hand, though it will affect your off-hand weapon damage as well. This was tested using the dropdown in the inventory panel, so playtesting is required. [ Unverified ]",
+  "source": {
+    "quests": [
+      "Assault on Summerfield"
+    ],
+    "detail": "end chest",
+    "crafted_from": [],
+    "raw": "Assault on Summerfield , end chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,125 @@
+{
+  "id": "ba414f4a-36a2-46a8-8fb9-1028628b201c",
+  "name": "Luminous Truth",
+  "wiki": {
+    "page_id": 21004,
+    "revision_id": 633302,
+    "title": "Item:Luminous Truth",
+    "url": "https://ddowiki.com/page/Item:Luminous_Truth"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 26,
+  "durability": 240,
+  "base_value_cp": 6400001,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Luminous Truth",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "18-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spellcasting Implement",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "implement",
+      "tooltip": "Spellcasting Implement +15 : Passive: +15 Implement bonus to Universal Spell Power ."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Power of the Flames of Purity",
+      "value": 97,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Power of the Flames of Purity +97: Passive: +97 Equipment bonus to Fire and Light Spell Power."
+    },
+    {
+      "name": "Purifying Flame Lore",
+      "value": 14,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Purifying Flame Lore +14 : Passive: Your Fire and Light spells gain a +14% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Flaming Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Flaming Blast 4 : This weapon burns with deadly magical fire, dealing 4d6 Fire damage on a successful hit, and an additional 4d6 Fire damage on a critical hit."
+    },
+    {
+      "name": "Coruscating",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Coruscating 4 : This effect causes the edges of this weapon to coruscate, dealing 4d6 Light damage on each hit."
+    },
+    {
+      "name": "Incineration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Incineration: This weapon stores the power of a raging inferno deep within. Occasionally, this destructive power comes to the surface, devastating enemies with massive fire damage."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This tool was crafted for divine priests of the Silver Flame, as well as those who would wield a quarterstaff as a weapon in the Silver Flame's name. It deals fire and light damage to its targets and enhances the power of magical light and flames.",
+  "notes": null,
+  "tips": "Note the enhanced critical threat range.",
+  "source": {
+    "quests": [
+      "The Spinner of Shadows"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The Spinner of Shadows , End chest"
+  },
+  "extraction_errors": {}
+}

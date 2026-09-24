@@ -1,0 +1,127 @@
+{
+  "id": "908ab1b1-ed9c-4633-902f-292947525137",
+  "name": "Epic Hellstroke Great Axe",
+  "wiki": {
+    "page_id": 13006,
+    "revision_id": 640360,
+    "title": "Item:Epic Hellstroke Great Axe",
+    "url": "https://ddowiki.com/page/Item:Epic_Hellstroke_Great_Axe"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cold Iron",
+  "hardness": 30,
+  "durability": 300,
+  "base_value_cp": 8002000,
+  "weight": 12.0,
+  "upgradeable": "Legendary Crafting to Legendary Hellstroke Great Axe",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Axe",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Slashing",
+      "Cold Iron",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Cold Iron",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics."
+    },
+    {
+      "name": "Doublestrike",
+      "value": 11,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 11% : Passive: 11% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    },
+    {
+      "name": "Incite",
+      "value": 91,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Incite +91 : +91% Enhancement bonus to increased threat generation from melee damage"
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification ."
+    },
+    {
+      "name": "Maiming",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +4d8 damage."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A fearsome polearm that resembles the cruel implements orthon warriors use to rend their enemies. It occasionally allows the user to attack twice consecutively, much like an orthon.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Hellstroke Great Axe"
+    ],
+    "raw": "Epic version of Hellstroke Great Axe"
+  },
+  "extraction_errors": {}
+}

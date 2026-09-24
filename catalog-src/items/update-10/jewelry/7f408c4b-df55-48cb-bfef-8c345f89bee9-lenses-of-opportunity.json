@@ -1,0 +1,72 @@
+{
+  "id": "7f408c4b-df55-48cb-bfef-8c345f89bee9",
+  "name": "Lenses of Opportunity",
+  "wiki": {
+    "page_id": 16493,
+    "revision_id": 677094,
+    "title": "Item:Lenses of Opportunity",
+    "url": "https://ddowiki.com/page/Item:Lenses_of_Opportunity"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 15,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 8,
+  "durability": 70,
+  "base_value_cp": 3620000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Seeker",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +4 : Provides a +4 Enhancement bonus to confirm critical hits, and a +4 Enhancement bonus to critical hit damage (before multipliers are applied)."
+    },
+    {
+      "name": "Sneak Attack Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sneak Attack Bonus +3 : Provides a +3 Enhancement modifier to your attack bonus and a +5 Enhancement bonus to damage for any attack that would qualify as a Sneak Attack, even if the wielder is not a Rogue."
+    },
+    {
+      "name": "Overfocus",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Overfocus : This item helps you focus your attention, but it makes you somewhat oblivious to your surroundings, causing a -10 penalty to Search and Spot ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A valuable treasure of the servants of the Lord of Eyes. These goggles are extremely sensitive and will point out an enemy's every weakness, allowing you to strike where the most damage will be dealt. however, you are likely to miss the details of your environment while wearing them.",
+  "notes": null,
+  "tips": "You can remove the Overfocus penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "Acute Delirium"
+    ],
+    "detail": "The Lost Chest",
+    "crafted_from": [],
+    "raw": "Acute Delirium , The Lost Chest"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,72 @@
+{
+  "id": "1cd59d2d-5f7e-48e8-8434-a05111ecfe18",
+  "name": "Gloves of the Claw",
+  "wiki": {
+    "page_id": 12653,
+    "revision_id": 631145,
+    "title": "Item:Gloves of the Claw",
+    "url": "https://ddowiki.com/page/Item:Gloves_of_the_Claw"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Gloves of the Claw",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Vulkoor's Might",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Vulkoor's Might : 2 Pieces Equipped: +20% Artifact bonus to Threat Generation +3 Artifact bonus to Attack +3 Artifact bonus to Damage"
+    },
+    {
+      "name": "Strength",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Strength +5 : This item gives the wearer the power of Ogre Strength, granting a +5 Enhancement bonus to Strength."
+    },
+    {
+      "name": "Intimidate",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Intimidate +10 : Passive: +10 Competence bonus to the Intimidate skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Drow warriors don these gloves before combat and are granted great power in battle. They claim the gloves are infused with Vulkoor's wrath.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Claw of Vulkoor"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Claw of Vulkoor , End reward"
+  },
+  "extraction_errors": {}
+}

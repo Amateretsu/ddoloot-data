@@ -1,0 +1,125 @@
+{
+  "id": "05ac2546-e99f-451c-89d6-a4c77bf09760",
+  "name": "Epic Flameward",
+  "wiki": {
+    "page_id": 21482,
+    "revision_id": 689625,
+    "title": "Item:Epic Flameward",
+    "url": "https://ddowiki.com/page/Item:Epic_Flameward"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 25,
+  "durability": 250,
+  "base_value_cp": 8000001,
+  "weight": 3.0,
+  "upgradeable": "Legendary Crafting to Legendary Flameward",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Club",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d3",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Charisma",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+    },
+    {
+      "name": "Use Magic Device",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Use Magic Device +3 : Passive: +3 Competence bonus to the Use Magic Device skill."
+    },
+    {
+      "name": "Fire Absorption",
+      "value": 27,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Absorption +27% : Passive: 27% Enhancement Bonus to Fire Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Fire Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Resistance +36 : Passive: +36 Enhancement bonus to your Fire Resistance."
+    },
+    {
+      "name": "Exceptional Charisma",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "exceptional",
+      "tooltip": "Exceptional Charisma +1 : This item makes the wearer have more flair, granting a +1 Exceptional bonus to Charisma."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Purple Augment Slot",
+      "name": null,
+      "colour": "Purple",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A small implement that has been imbued with magic to shield the wielder from extreme heat. Apparently that protection was not quite enough to preserve its previous owner, but at least it also makes the wielder glowingly confident.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Flameward"
+    ],
+    "raw": "Epic version of Flameward"
+  },
+  "extraction_errors": {}
+}

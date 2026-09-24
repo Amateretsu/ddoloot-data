@@ -1,0 +1,103 @@
+{
+  "id": "f98c6fdf-aa5f-4226-8328-1011d0723506",
+  "name": "Epic Elder's Focus",
+  "wiki": {
+    "page_id": 12818,
+    "revision_id": 690949,
+    "title": "Item:Epic Elder's Focus",
+    "url": "https://ddowiki.com/page/Item:Epic_Elder%27s_Focus"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Elder's Focus",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Wizardry",
+      "value": 195,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wizardry +195 : +195 Enhancement bonus to spell points ."
+    },
+    {
+      "name": "Illusion Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Illusion Focus +6 : +6 Equipment bonus to the DC of Illusion spells."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 24,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +24 : +24 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Efficient Metamagic - Extend",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Extend II : The additional spell point cost for using the Extend Metamagic feat is reduced by 2 SP ."
+    },
+    {
+      "name": "Epic Elder's Knowledge",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Elder's Knowledge : 2 Pieces Equipped: +4% Artifact bonus to Spell Critical Chance 10% Legendary bonus to Spell Critical Damage"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Tribal drow elders use these charms to focus their minds and recall past events. They are passed down through the generations but few of them remain in existence.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Elder's Focus"
+    ],
+    "raw": "Epic version of Elder's Focus"
+  },
+  "extraction_errors": {}
+}

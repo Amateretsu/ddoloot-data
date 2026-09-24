@@ -1,0 +1,103 @@
+{
+  "id": "96ab9efd-b5cc-4abd-b881-bc38f72d4676",
+  "name": "Epic Shaman's Beads",
+  "wiki": {
+    "page_id": 11986,
+    "revision_id": 689830,
+    "title": "Item:Epic Shaman's Beads",
+    "url": "https://ddowiki.com/page/Item:Epic_Shaman%27s_Beads"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 19,
+  "durability": 100,
+  "base_value_cp": 8105000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Shaman's Beads",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Charisma",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +9 : This item makes the wearer have more flair, granting a +9 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+    },
+    {
+      "name": "Shield",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "shield",
+      "tooltip": "Shield +9 : While this item is equipped, you are partially protected by a field of magical force which can deflect enemy attacks. This item provides a +9 Shield bonus to Armor Class. It does not stack with an equipped shield."
+    },
+    {
+      "name": "Efficient Metamagic - Maximize",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Efficient Metamagic - Maximize II : The additional spell point cost for using the Maximize Metamagic feat is reduced by 4 SP ."
+    },
+    {
+      "name": "Epic Shaman's Fury",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Shaman's Fury : 2 Pieces Equipped: +4% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +20 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Favored by Drow shamans, necklaces such as this one are a powerful aid to spells in combat.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Shaman's Beads"
+    ],
+    "raw": "Epic version of Shaman's Beads"
+  },
+  "extraction_errors": {}
+}

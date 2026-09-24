@@ -1,0 +1,107 @@
+{
+  "id": "ec40406c-56a2-43c7-995b-da769ba12ab5",
+  "name": "Glorious Obscenity",
+  "wiki": {
+    "page_id": 18163,
+    "revision_id": 699609,
+    "title": "Item:Glorious Obscenity",
+    "url": "https://ddowiki.com/page/Item:Glorious_Obscenity"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 17,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": null,
+  "binding_raw": null,
+  "material": "Gem",
+  "hardness": 19,
+  "durability": 215,
+  "base_value_cp": 10625000,
+  "weight": 0.25,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Acid Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Enhanced Spot",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Spot +5 : Passive: +5 Enhancement bonus to the Spot skill."
+    },
+    {
+      "name": "Seeker",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Seeker +6 : Provides a +6 Enhancement bonus to confirm critical hits, and a +6 Enhancement bonus to critical hit damage (before multipliers are applied)."
+    },
+    {
+      "name": "Mind Turbulence",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty."
+    },
+    {
+      "name": "Taint of Chaos",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Taint of Chaos : Lawful aligned characters equipping this item suffer a temporary negative level until the item is removed."
+    },
+    {
+      "name": "Rune Arm Imbue : Acid",
+      "value": 4,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Acid IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of acid damage per hit."
+    },
+    {
+      "name": "Craftable Rune Arm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Carved into this rune arm is the phrase 'Call me crazy again and I'll eat your other eye'.",
+  "notes": "You can remove the Mind Turbulence penalty with a Sustaining Symbiont . When disjuncted for Essence Crafting, retains Mind Turbulence and Taint of Chaos, loses Seeker and Enhanced Spot The following image shows what the Runearm looks like after being disjuncted in a post-U32 Item Deconstruction machine.",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Reign of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Reign of Madness , End reward"
+  },
+  "extraction_errors": {
+    "binding": "Bound to Account"
+  }
+}

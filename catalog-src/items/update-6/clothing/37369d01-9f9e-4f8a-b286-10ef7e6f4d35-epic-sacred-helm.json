@@ -1,0 +1,110 @@
+{
+  "id": "37369d01-9f9e-4f8a-b286-10ef7e6f4d35",
+  "name": "Epic Sacred Helm",
+  "wiki": {
+    "page_id": 12020,
+    "revision_id": 630352,
+    "title": "Item:Epic Sacred Helm",
+    "url": "https://ddowiki.com/page/Item:Epic_Sacred_Helm"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Sacred Helm",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Negative Energy Absorption - 10 Charges (Recharged/Day: 5)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Negative Energy Absorption : This effect absorbs negative energy and energy drain effects."
+    },
+    {
+      "name": "Lifesealed",
+      "value": 27,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Lifesealed +27 : You are immune to magical effects that cause instant death. In addition, you have a +27% enhancement bonus to Negative Energy Absorption ."
+    },
+    {
+      "name": "Hallowed",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Hallowed : An item with this quality assists only wearers who have the ability to turn undead . Hallowed items provide an +9 Enhancement bonus to the maximum Hit Dice of undead turned."
+    },
+    {
+      "name": "Sacred",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Sacred +9 : An item with this quality assists only wearers who have the ability to turn undead . Sacred items provide an +9 Enhancement bonus to your effective level for Turning Undead ."
+    },
+    {
+      "name": "Radiance Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Radiance Guard : This item is imbued with a brilliant, radiant power. When the wearer of this item is successfully attacked in melee, the attacker has a chance of being hit by 4d6 points of light damage and has a chance of being blinded."
+    },
+    {
+      "name": "Epic Divine Blessing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Though used primarily by drow ascetics, this helm will protect any healer from death magic and the undead.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Sacred Helm"
+    ],
+    "raw": "Epic version of Sacred Helm"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,79 @@
+{
+  "id": "f1807a84-6567-4829-96c7-b76589b1e862",
+  "name": "Sustaining Symbiont",
+  "wiki": {
+    "page_id": 16503,
+    "revision_id": 635129,
+    "title": "Item:Sustaining Symbiont",
+    "url": "https://ddowiki.com/page/Item:Sustaining_Symbiont"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 15,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Flesh",
+  "hardness": 21,
+  "durability": 61,
+  "base_value_cp": 3620000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Greater False Life",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater False Life : This item grants the wearer +30 maximum health ."
+    },
+    {
+      "name": "Suppress Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Suppress Madness: This strange creature is enchanted with the ability to temporarily filter the maddening effects of certain Xoriat items. Wearing it will suppress the effects of the following: Curse Vector , Unwieldy , Overfocus , Mind Turbulence , Symbiotic Backlash , Metal Fatigue , Power Drain , and Single-Mindedness ."
+    },
+    {
+      "name": "Exceptional Constitution",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "exceptional",
+      "tooltip": "Exceptional Constitution +1 : This item gives the wearer improved health, granting a +1 Exceptional bonus to Constitution."
+    },
+    {
+      "name": "Exceptional Fortification (+10%)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Exceptional Fortification (+10%) : This item produces a magical force that protects vital areas of the wearer more effectively. When a critical hit or sneak attack is scored on the wearer, there is a +10% chance that the critical hit or sneak attack is negated and the damage is instead rolled normally. This ability is considered an Insight bonus when determining stacking with other sources of fortification"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A leech-like creature bred as a counterbalance to certain other symbiotic creatures that cause harm to their wearers. It also grants its host increased physical durability.",
+  "notes": null,
+  "tips": "The \"Suppress Madness\" effect is not currently affecting metal fatigue from Beholder Plate Docent (possibly others as well).",
+  "source": {
+    "quests": [
+      "The Sane Asylum"
+    ],
+    "detail": "Fred's chest",
+    "crafted_from": [],
+    "raw": "The Sane Asylum , Fred's chest"
+  },
+  "extraction_errors": {}
+}

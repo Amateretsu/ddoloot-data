@@ -1,0 +1,96 @@
+{
+  "id": "05107a06-fde9-4349-8238-01fafa855852",
+  "name": "Goggles of Time-Sensing",
+  "wiki": {
+    "page_id": 13254,
+    "revision_id": 669749,
+    "title": "Item:Goggles of Time-Sensing",
+    "url": "https://ddowiki.com/page/Item:Goggles_of_Time-Sensing"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 7,
+  "durability": 60,
+  "base_value_cp": 2020000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Goggles of Time-Sensing",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Haste — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Haste Caster level: 5 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Wisdom",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +4 : This item makes the wearer more in tune with her surroundings, granting a +4 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Spot",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Spot +7 : Passive: +7 Competence bonus to the Spot skill."
+    },
+    {
+      "name": "Search",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Search +7 : Passive: +7 Competence bonus to the Search skill."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A strange, complex pair of goggles that allows the wearer to view the passage of time more slowly than normal. Through this awareness the actions of the wearer and his or her allies can occasionally be hastened.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

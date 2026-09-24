@@ -1,0 +1,102 @@
+{
+  "id": "c227b4d4-ad9f-4423-953b-e4342393c7c1",
+  "name": "Dampened Shatterbow",
+  "wiki": {
+    "page_id": 11997,
+    "revision_id": 629307,
+    "title": "Item:Dampened Shatterbow",
+    "url": "https://ddowiki.com/page/Item:Dampened_Shatterbow"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "unbound",
+  "binding_raw": "Unbound",
+  "material": "Wood",
+  "hardness": 9,
+  "durability": 120,
+  "base_value_cp": 3207500,
+  "weight": 3.0,
+  "upgradeable": "Dampened to Shatterbow",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 1,
+    "damage_types": [
+      "Piercing",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dampened",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+    },
+    {
+      "name": "Enhancement Bonus",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+1 Enhancement Bonus : +1 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Screaming",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Screaming : Screaming weapons emit a piercing screech whenever they are used to make a successful attack. This screech does an additional 1 to 6 sonic damage."
+    },
+    {
+      "name": "Construct Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Construct Bane : A bane weapon excels at attacking one type or subtype of creature. Against Constructs, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+    },
+    {
+      "name": "Move Silently",
+      "value": -5,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Move Silently -5 : Passive: -5 penalty to the Move Silently skill."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Arrows fired from this bow are invested with powerful sonic energy, and are shot so fast that they shriek through the air. Constructs hit by these arrows are wounded grievously.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Claw of Vulkoor"
+    ],
+    "detail": "Scorpions optional chest (don't kill scorpions)",
+    "crafted_from": [],
+    "raw": "The Claw of Vulkoor , Scorpions optional chest (don't kill scorpions)"
+  },
+  "extraction_errors": {}
+}

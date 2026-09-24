@@ -1,0 +1,103 @@
+{
+  "id": "2156542a-5ca0-4d33-bbfb-fc01f6333d4d",
+  "name": "Epic Sacred Band",
+  "wiki": {
+    "page_id": 12022,
+    "revision_id": 630350,
+    "title": "Item:Epic Sacred Band",
+    "url": "https://ddowiki.com/page/Item:Epic_Sacred_Band"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Sacred Band",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Wisdom",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +9 : This item makes the wearer more in tune with her surroundings, granting a +9 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Heal",
+      "value": 17,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Heal +17 : Passive: +17 Competence bonus to the Heal skill."
+    },
+    {
+      "name": "Devotion",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +111 : Passive: +111 Equipment bonus to Positive (Healing) Spell Power ."
+    },
+    {
+      "name": "Turning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Turning : This will increase the total number of Turn Undead attempts you can use by 3. However, these additional Turn Undead attempts will only take effect after the wielder rests."
+    },
+    {
+      "name": "Epic Divine Blessing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Divine Blessing : 2 Pieces Equipped: +4% Artifact bonus to Light, Alignment, and Positive Spellcrit Chance +30 Artifact bonus to Light, Alignment, and Positive Spellpower"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Though used primarily by drow ascetics, this ring will aid any healer in his or her duties.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Sacred Band"
+    ],
+    "raw": "Epic version of Sacred Band"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,95 @@
+{
+  "id": "ce6a4350-4f45-449a-a367-cd32c53b31c6",
+  "name": "Souleater",
+  "wiki": {
+    "page_id": 11998,
+    "revision_id": 634907,
+    "title": "Item:Souleater",
+    "url": "https://ddowiki.com/page/Item:Souleater"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 17,
+  "durability": 150,
+  "base_value_cp": 2800001,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Souleater",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 3,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Mortal Strike",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mortal Strike : On an attack roll of 20 which is confirmed as a critical hit this weapon triggers the Slay Living spell and attempts to instantly snuff out the life force of the enemy (DC 17)."
+    },
+    {
+      "name": "Feeding",
+      "value": 10,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Feeding 10 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +10 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)"
+    },
+    {
+      "name": "Vampirism",
+      "value": 1,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Vampirism 1 : This weapon thirsts for the blood of your enemies, healing you for +1d2 hit points with each hit. Note: internal cooldown of 1 second."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This is the staff used by the sahuagin High Priestess Slikir to commune with and channel a demon. It took on many of the demon's aspects and is now a dangerous and corrupted implement.",
+  "notes": null,
+  "tips": "Was originally Steel, but someone mentioned it now being Wood (probably to match Epic Souleater ).",
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "Demon's chests",
+    "crafted_from": [],
+    "raw": "Into the Deep , Demon's chests"
+  },
+  "extraction_errors": {}
+}

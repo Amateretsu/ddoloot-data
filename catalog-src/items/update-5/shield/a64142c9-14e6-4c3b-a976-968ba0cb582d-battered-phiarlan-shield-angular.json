@@ -1,0 +1,106 @@
+{
+  "id": "a64142c9-14e6-4c3b-a976-968ba0cb582d",
+  "name": "Battered Phiarlan Shield (angular)",
+  "wiki": {
+    "page_id": 11842,
+    "revision_id": 677539,
+    "title": "Item:Battered Phiarlan Shield (angular)",
+    "url": "https://ddowiki.com/page/Item:Battered_Phiarlan_Shield_(angular)"
+  },
+  "template": "shield",
+  "category": "shield",
+  "item_type": "Large Shield",
+  "equip_slots": [
+    "off_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 115,
+  "base_value_cp": 1602000,
+  "weight": 15.0,
+  "upgradeable": "Stone of Change to Enhanced Phiarlan Veil Shield (angular)",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": {
+    "proficiency": "Shield Proficiency (General)",
+    "weapon_type": null,
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 3,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": {
+    "armor_type": null,
+    "armor_bonus": null,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": -1,
+    "arcane_spell_failure": 15
+  },
+  "shield_stats": {
+    "shield_type": "Large Shield",
+    "shield_bonus": 6,
+    "damage_reduction": 6
+  },
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Acid Guard",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Acid Guard +2: Chance to deal 2d8 Acid damage when hit."
+    },
+    {
+      "name": "Acid Absorption",
+      "value": 15,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Acid Absorption +15% : Passive: 15% Enhancement Bonus to Acid Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Absorb Enchantment Spells - 5 Charges (Recharged/Day: 5)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Absorb Enchantment Spells : This effect absorbs most enchantment -based spells. Only a few such spells can be absorbed before the item ceases to function and must have time to dissipate the absorbed energy."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A vine motif is just barely visible on the surface of this rusted, battle-worn shield. Perhaps there is some way to make the image clear again by combining this shield with another Phiarlan shield that is in better shape.",
+  "notes": null,
+  "tips": "You can change the appearance of the shield with the Phiarlan Veil Shield (angular) from the DDO Store .",
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

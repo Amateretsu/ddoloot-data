@@ -1,0 +1,103 @@
+{
+  "id": "5126a6d8-3ac7-4cd2-a48b-6f75e118cc6d",
+  "name": "Epic Necklace of Venom",
+  "wiki": {
+    "page_id": 11969,
+    "revision_id": 630256,
+    "title": "Item:Epic Necklace of Venom",
+    "url": "https://ddowiki.com/page/Item:Epic_Necklace_of_Venom"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 30,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Necklace of Venom",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Proof Against Poison",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Poison +8 : This item grants its wearer immunity to natural poisons. This item also grants a +8 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 9 + their Fortitude save)."
+    },
+    {
+      "name": "False Life",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "False Life +36 : +36 Enhancement bonus to hit points."
+    },
+    {
+      "name": "Protection",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "deflection",
+      "tooltip": "Protection +8 : Passive: +8 Deflection bonus to Armor Class ."
+    },
+    {
+      "name": "Insightful Assassinate",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Assassinate +5 : +5 Insight bonus to the DC of character's Assassinate attempts."
+    },
+    {
+      "name": "Epic Vulkoor's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +10 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Drow assassins say this necklace is infused with Vulkoor 's subtle poisons. Wearing it will make one's attack deft and lethal.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Necklace of Venom"
+    ],
+    "raw": "Epic version of Necklace of Venom"
+  },
+  "extraction_errors": {}
+}

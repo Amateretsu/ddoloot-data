@@ -1,0 +1,91 @@
+{
+  "id": "b19b6ba3-d98e-4957-93a8-69b28c50d5ca",
+  "name": "Chulchannad's Claw",
+  "wiki": {
+    "page_id": 17880,
+    "revision_id": 682835,
+    "title": "Item:Chulchannad's Claw",
+    "url": "https://ddowiki.com/page/Item:Chulchannad%27s_Claw"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 13,
+  "durability": 95,
+  "base_value_cp": 2375000,
+  "weight": 0.25,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 2,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Cold Bolts",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Cold Absorption",
+      "value": 10,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Absorption +10% : Passive: 10% Enhancement Bonus to Cold Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Inherent Cold Resistance -",
+      "value": 5,
+      "value_kind": "number",
+      "bonus_type": "insight",
+      "tooltip": "Inherent Cold Resistance - 5 : This item provides a +5 Insight bonus to your Cold resistance."
+    },
+    {
+      "name": "Rune Arm Imbue : Cold",
+      "value": 1,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Cold I: Wearing this Rune Arm will imbue any weapon you wield, dealing 1d4 points of cold damage per hit."
+    },
+    {
+      "name": "Craftable Rune Arm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Chulchannad, Herald of Winter, was an Ice Devil humbled by Malicia's plans. Part of his essence was used to power this Rune Arm.",
+  "notes": "Disjuncted version:",
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Maleficent Cabal"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Maleficent Cabal , End reward"
+  },
+  "extraction_errors": {}
+}

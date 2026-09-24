@@ -1,0 +1,102 @@
+{
+  "id": "c9a4a374-107b-4cb4-9cd2-ebd5404e1fff",
+  "name": "Helm of Frost",
+  "wiki": {
+    "page_id": 12394,
+    "revision_id": 631413,
+    "title": "Item:Helm of Frost",
+    "url": "https://ddowiki.com/page/Item:Helm_of_Frost"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 11,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Helm of Frost",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Frost Lance — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Frost Lance Caster level: 5 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Glaciation",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Glaciation +59 : Passive: +59 Equipment bonus to Cold Spell Power ."
+    },
+    {
+      "name": "Charisma",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +4 : This item makes the wearer have more flair, granting a +4 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +9 : +9 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Cold Resistance",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Cold Resistance +14 : Passive: +14 Enhancement bonus to your Cold Resistance."
+    },
+    {
+      "name": "Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This helm has a chill about it and is cold where it touches your skin. Nevertheless it will protect you from harmful cold magic, and allows you to release some of that energy against foes.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "end chest and (Legendary) heroic chest",
+    "crafted_from": [],
+    "raw": "The Chronoscope , end chest, and The Chronoscope (Legendary) , heroic chest"
+  },
+  "extraction_errors": {}
+}

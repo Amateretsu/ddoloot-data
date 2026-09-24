@@ -1,0 +1,100 @@
+{
+  "id": "82147552-5902-4333-bc4c-ef7655493505",
+  "name": "Animus",
+  "wiki": {
+    "page_id": 18254,
+    "revision_id": 699552,
+    "title": "Item:Animus",
+    "url": "https://ddowiki.com/page/Item:Animus"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 19,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": "Artificer Rune Arm Use",
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 10,
+  "durability": 135,
+  "base_value_cp": 4750000,
+  "weight": 0.25,
+  "upgradeable": "Essence Crafting",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Maximum Charge Tier",
+      "value": 5,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Exploding Fire Shot",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null
+    },
+    {
+      "name": "Banishing Weapons",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Banishing Weapons : While wearing this item, your melee and ranged weapons gain Vorpal Effect: In addition, on an attack roll of 20 which is confirmed as a critical hit this weapon will banish a creature from this plan of existence. Powerful creatures may resist the vorpal effect until sufficiently wounded."
+    },
+    {
+      "name": "Taint of Evil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Taint of Evil : Good aligned characters equipping this item suffer a temporary negative level until the item is removed."
+    },
+    {
+      "name": "Rune Arm Imbue : Fire",
+      "value": 4,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Rune Arm Imbue : Fire IV: Wearing this Rune Arm will imbue any weapon you wield, dealing 2d8 points of Fire damage per hit."
+    },
+    {
+      "name": "Craftable Rune Arm",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "This Rune Arm is craftable and can be customized using recipes at standard crafting devices after disjuncting."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4 and/or Mythic Shield Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A lemure's spirit is trapped within this rune arm. The loathing it has for you is exceeded only by its hatred of your enemies.",
+  "notes": "Drops on Normal and above for Heroic and Epic difficulties. Retains Banishing Weapons & Taint of Evil when disjuncted for Essence Crafting. Visual Disjuncted for Essence Crafting",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Devil Assault (quest)"
+    ],
+    "detail": "End Chest",
+    "crafted_from": [],
+    "raw": "Devil Assault (quest) , End Chest"
+  },
+  "extraction_errors": {}
+}

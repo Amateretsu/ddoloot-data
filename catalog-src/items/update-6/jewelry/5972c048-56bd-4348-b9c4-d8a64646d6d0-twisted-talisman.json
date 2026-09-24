@@ -1,0 +1,86 @@
+{
+  "id": "5972c048-56bd-4348-b9c4-d8a64646d6d0",
+  "name": "Twisted Talisman",
+  "wiki": {
+    "page_id": 12005,
+    "revision_id": 635639,
+    "title": "Item:Twisted Talisman",
+    "url": "https://ddowiki.com/page/Item:Twisted_Talisman"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Gold",
+  "hardness": 4,
+  "durability": 30,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Twisted Talisman",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Blood Sacrifice — 3 Charges (Recharged/Day:1)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Blood Sacrifice Caster level: 1 Charges: 3 (1/day)"
+    },
+    {
+      "name": "Blood Sacrifice",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Blood Sacrifice : Exchanges 25 hit points for 50 spell points. (This enchantment has no effect.)"
+    },
+    {
+      "name": "Void Lore",
+      "value": 10,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Void Lore +10 : Passive: Your Negative Energy and Poison spells gain a 10% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Nullification",
+      "value": 66,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +66 : Passive: +66 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+    },
+    {
+      "name": "Profane Lifeforce",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "profane",
+      "tooltip": "Profane Lifeforce +15 : +15 Profane bonus to Hit Points."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "The crystal on this necklace's chain glows darkly with a profane energy. It was found near High Priestess Slikir after her defeat, and will grant the wielder more power for his or her spells, but at a price...",
+  "notes": null,
+  "tips": "Bug: Blood sacrifice works a little different then the official description which states it only costs 25 hit points. It actually deals 38 untyped damage in exchange for 50 spell points. This damage is affected by dungeon scaling, so while solo you will generally see (roughly as dungeon scaling does vary from class to class) 7 15 20 26 38 damage.",
+  "source": {
+    "quests": [
+      "The Last Stand"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The Last Stand , End chest"
+  },
+  "extraction_errors": {}
+}

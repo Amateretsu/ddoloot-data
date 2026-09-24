@@ -1,0 +1,95 @@
+{
+  "id": "febea24b-633d-4f6f-a128-60fa93f8cff1",
+  "name": "Epic Envenomed Cloak",
+  "wiki": {
+    "page_id": 12658,
+    "revision_id": 630046,
+    "title": "Item:Epic Envenomed Cloak",
+    "url": "https://ddowiki.com/page/Item:Epic_Envenomed_Cloak"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Cloak",
+  "equip_slots": [
+    "back"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 22,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Envenomed Cloak",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Greater Poison Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Poison Guard : This item carries a potent venom that may be contracted by enemies that hit you, dealing 2d6 Strength damage. A successful Fortitude Save (DC 28) will negate this effect."
+    },
+    {
+      "name": "Constitution",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Constitution +9 : This item gives the wearer improved health, granting a +9 Enhancement bonus to Constitution."
+    },
+    {
+      "name": "Resistance",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+    },
+    {
+      "name": "Proof Against Poison",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Poison +8 : This item grants its wearer immunity to natural poisons. This item also grants a +8 Enhancement bonus to saving throws against magical poisons, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical poisons with a DC of less than 9 + their Fortitude save)."
+    },
+    {
+      "name": "Epic Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Epic Might of the Abishai : 3 Piece Equipped: +10 Profane bonus to PRR and MRR +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs 5 Piece Equipped: +15 Profane bonus to PRR and MRR +8 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A cloak with spikes that have been steeped in a dangerous poison. Enemies that attack the wearer may be subject to the effects of the venom that coats the cloak's barbs.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Envenomed Cloak"
+    ],
+    "raw": "Epic version of Envenomed Cloak"
+  },
+  "extraction_errors": {}
+}

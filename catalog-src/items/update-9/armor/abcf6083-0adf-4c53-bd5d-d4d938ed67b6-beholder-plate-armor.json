@@ -1,0 +1,93 @@
+{
+  "id": "abcf6083-0adf-4c53-bd5d-d4d938ed67b6",
+  "name": "Beholder Plate Armor",
+  "wiki": {
+    "page_id": 14532,
+    "revision_id": 708405,
+    "title": "Item:Beholder Plate Armor",
+    "url": "https://ddowiki.com/page/Item:Beholder_Plate_Armor"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Magesteel",
+  "hardness": 25,
+  "durability": 268,
+  "base_value_cp": 5750000,
+  "weight": 50.0,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 21,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Antimagic Spike",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Antimagic Spike : This item was made from powerful antimagic materials. When scoring a critical hit on an enemy with your ranged or melee weapons, the target must make a DC 28 Fortitude save or be unable to cast spells for a brief duration."
+    },
+    {
+      "name": "Telekinesis Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Telekinesis Guard : When enemies hit you, they may be assaulted by these psychic forces, falling to the ground unless they make a DC 35 Reflex save ."
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+    },
+    {
+      "name": "Metal Fatigue",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Metal Fatigue : The metal plates of this armor sometimes tire you out. When you are damaged there is a small chance that you will become Exhausted ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Some beholders of Xoriat are fitted with resilient metal plates to bolster their weak physical defenses. Metal from those same plates was used in crafting this suit of armor, granting it wondrous Antimagic properties.",
+  "notes": "You can remove the Metal Fatigue penalty with a Sustaining Symbiont .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Lord of Eyes"
+    ],
+    "detail": "Opuloxx chest; Harbinger of Madness Quest chain end reward",
+    "crafted_from": [],
+    "raw": "The Lord of Eyes , Opuloxx chest; Harbinger of Madness , Quest chain end reward"
+  },
+  "extraction_errors": {}
+}

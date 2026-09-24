@@ -1,0 +1,72 @@
+{
+  "id": "e81a4b22-5c45-46be-a9f9-53d876488ca6",
+  "name": "Shaman's Beads",
+  "wiki": {
+    "page_id": 12183,
+    "revision_id": 690604,
+    "title": "Item:Shaman's Beads",
+    "url": "https://ddowiki.com/page/Item:Shaman%27s_Beads"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Shaman's Beads",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Shaman's Fury",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Shaman's Fury : 2 Pieces Equipped: +2% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +10 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+    },
+    {
+      "name": "Charisma",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Charisma +5 : This item makes the wearer have more flair, granting a +5 Enhancement bonus to Charisma."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +2 : +2 Equipment bonus to the DC of Evocation spells."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Favored by Drow shamans, necklaces such as this one are a powerful aid to spells in combat.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Fathom the Depths"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Fathom the Depths , End reward"
+  },
+  "extraction_errors": {}
+}

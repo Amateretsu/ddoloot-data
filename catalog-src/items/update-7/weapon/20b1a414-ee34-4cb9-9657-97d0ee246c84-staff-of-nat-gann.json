@@ -1,0 +1,112 @@
+{
+  "id": "20b1a414-ee34-4cb9-9657-97d0ee246c84",
+  "name": "Staff of Nat Gann",
+  "wiki": {
+    "page_id": 12307,
+    "revision_id": 635013,
+    "title": "Item:Staff of Nat Gann",
+    "url": "https://ddowiki.com/page/Item:Staff_of_Nat_Gann"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Silver",
+  "hardness": 12,
+  "durability": 120,
+  "base_value_cp": 1618001,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Staff of Nat Gann",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Bludgeoning",
+      "Silver",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Dodge",
+      "value": 3,
+      "value_kind": "percent",
+      "bonus_type": "dodge",
+      "tooltip": "Dodge +3% : +3% Enhancement bonus to Dodge."
+    },
+    {
+      "name": "Dexterity",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +3 : This item makes the wearer more nimble and dexterous, granting a +3 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Deception",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +2 : +2 Enhancement bonus to hit and +3 to damage for any hit that would qualify as a sneak attack."
+    },
+    {
+      "name": "Silver , Alchemical",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This weapon belonged to the famed performer Nat Gann. Though he remains lost to time, his staff lives on in his memory, and is an ideal tool for the aspiring acrobat.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

@@ -1,0 +1,111 @@
+{
+  "id": "f500c7d1-88ad-423b-ae96-085e3eff5b00",
+  "name": "Unstable Handwraps",
+  "wiki": {
+    "page_id": 16456,
+    "revision_id": 672402,
+    "title": "Item:Unstable Handwraps",
+    "url": "https://ddowiki.com/page/Item:Unstable_Handwraps"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Handwrap",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cloth",
+  "hardness": 29,
+  "durability": 280,
+  "base_value_cp": 6403000,
+  "weight": 0.5,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Exotic Weapon Proficiency",
+    "weapon_type": "Handwrap",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Bludgeoning",
+      "Lawful",
+      "Chaotic",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR, DEX",
+    "damage_mod": "STR, DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Anarchic Burst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Anarchic Burst : An anarchic weapon is chaotically aligned and infused with the power of chaos. It makes the weapon chaos-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of lawful alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier."
+    },
+    {
+      "name": "Axiomatic Burst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Axiomatic Burst : An axiomatic weapon is lawfully aligned and infused with the power of law. It makes the weapon law-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2 to 12 points of damage against all of chaotic alignment and an extra 3 to 18 on a critical for weapons with a x2 critical multiplier, 4 to 24 for a x3 multiplier, and 5 to 30 for a x4 multiplier."
+    },
+    {
+      "name": "Lawful Outsider Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Lawful Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Lawful Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+    },
+    {
+      "name": "Chaotic Outsider Bane",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Chaotic Outsider Bane : A bane weapon excels at attacking one type or subtype of creature. Against Chaotic Outsiders, this weapon's effective enhancement bonus is +2 better than its normal enhancement bonus. It deals an extra 2 to 12 points of damage against the foe."
+    },
+    {
+      "name": "Mind Turbulence",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Mind Turbulence : This item fills your mind with chaos, disrupting your thoughts and causing a -10 Concentration penalty."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Once brimming with only the power of lawfulness, these handwraps have become slowly twisted by Xoriat. Yet they have not yet shed their original nature, leaving them in a state of confusing double-alignment that has a disorienting affect on the wearer's mind.",
+  "notes": null,
+  "tips": "You can remove the Mind Turbulence penalty with a Sustaining Symbiont .",
+  "source": {
+    "quests": [
+      "Reign of Madness"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Reign of Madness , End reward"
+  },
+  "extraction_errors": {}
+}

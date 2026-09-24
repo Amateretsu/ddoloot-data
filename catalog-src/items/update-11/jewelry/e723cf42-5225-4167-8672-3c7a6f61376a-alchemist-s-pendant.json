@@ -1,0 +1,79 @@
+{
+  "id": "e723cf42-5225-4167-8672-3c7a6f61376a",
+  "name": "Alchemist's Pendant",
+  "wiki": {
+    "page_id": 17943,
+    "revision_id": 628227,
+    "title": "Item:Alchemist's Pendant",
+    "url": "https://ddowiki.com/page/Item:Alchemist%27s_Pendant"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Necklace",
+  "equip_slots": [
+    "neck"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 20,
+  "durability": 110,
+  "base_value_cp": 10005000,
+  "weight": 0.1,
+  "upgradeable": "Nearly Finished",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Constitution",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Constitution +6 : This item gives the wearer improved health, granting a +6 Enhancement bonus to Constitution."
+    },
+    {
+      "name": "Alchemical Conservation",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Alchemical Conservation : This item modifies the user's energy expenditure in such a way that many abilities can be used more frequently than normal. You will gain +1 ki on every successful attack, and you will increase the number of Action Boosts , Turn Undead attempts, and Bard Songs you can use per rest by 1 each. These additional uses will only take effect after you rest."
+    },
+    {
+      "name": "Greater Elemental Energy",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Elemental Energy : Harnessing a small amount of power and potential of the raw elements, this item gives you a +20 bonus to your maximum hit points. This stacks with all bonuses except for Greater Elemental Energy."
+    },
+    {
+      "name": "Nearly Finished - Alchemist's Lore",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Alchemist's Lore : Reduces the cost of Empower, Empower Healing, and Maximize by 2 SP. Spells cost 10%/20%/30% less when you are below 50%/25%/10% hp."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "House Cannith alchemists often wear charms such as this to ward against the deadly materials they work with. It also boosts the wearer's ability to utilize his or her energy more efficiently.",
+  "notes": null,
+  "tips": "+ + + +",
+  "source": {
+    "quests": [
+      "Blown to Bits"
+    ],
+    "detail": "end chests including the optional one for destroying all the crates",
+    "crafted_from": [],
+    "raw": "Blown to Bits , end chests including the optional one for destroying all the crates"
+  },
+  "extraction_errors": {}
+}

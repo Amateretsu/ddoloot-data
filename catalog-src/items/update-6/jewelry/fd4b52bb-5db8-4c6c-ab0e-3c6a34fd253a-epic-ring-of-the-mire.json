@@ -1,0 +1,103 @@
+{
+  "id": "fd4b52bb-5db8-4c6c-ab0e-3c6a34fd253a",
+  "name": "Epic Ring of the Mire",
+  "wiki": {
+    "page_id": 16286,
+    "revision_id": 630337,
+    "title": "Item:Epic Ring of the Mire",
+    "url": "https://ddowiki.com/page/Item:Epic_Ring_of_the_Mire"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Ring of the Mire",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spearblock",
+      "value": 10,
+      "value_kind": "tier",
+      "bonus_type": null,
+      "tooltip": "Spearblock X : Passive: Reduces physical damage taken by 20, except from Bludgeoning or Slashing weapons. (Damage Reduction: 20/Slash, Bludgeon)"
+    },
+    {
+      "name": "Resistance",
+      "value": 8,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Resistance +8 : Passive: +8 Resistance bonus to Fortitude, Reflex, and Will Saving Throws."
+    },
+    {
+      "name": "Feather Falling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather."
+    },
+    {
+      "name": "Improved Earthen Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Earthen Guard : When you are successfully attacked, there is a 15% chance that a Stone Skin will be cast on you."
+    },
+    {
+      "name": "Epic Marshwalker",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "enhancement",
+      "tooltip": "Epic Marshwalker : 2 Pieces Equipped: +30% Enhancement bonus to movement speed +3 Artifact bonus to all Saving Throws +5 Artifact bonus to Jump and Tumble"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This ring was crafted to ease travel through thick, overgrown marsh territory.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Ring of the Mire"
+    ],
+    "raw": "Epic version of Ring of the Mire"
+  },
+  "extraction_errors": {}
+}

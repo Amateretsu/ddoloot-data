@@ -1,0 +1,109 @@
+{
+  "id": "10907ca2-a1dd-4fc5-a41c-b34eecfae371",
+  "name": "Epic Rakshasa Hide",
+  "wiki": {
+    "page_id": 22785,
+    "revision_id": 708466,
+    "title": "Item:Epic Rakshasa Hide",
+    "url": "https://ddowiki.com/page/Item:Epic_Rakshasa_Hide"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Light Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Light Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Spiritcraft Leather",
+  "hardness": 28,
+  "durability": 256,
+  "base_value_cp": 8001500,
+  "weight": 25.0,
+  "upgradeable": "Legendary Crafting to Legendary Rakshasa Hide",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Light Armor",
+    "armor_bonus": 13,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 18,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": 10
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Roar",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Roar : This item emits a frightening roar when melee attackers score a critical hit on the wearer, causing them to resist or be shaken with fear."
+    },
+    {
+      "name": "Heightened Awareness",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": "insight",
+      "tooltip": "Heightened Awareness 4 : This item helps you to quickly read situations with sharpness and clarity, allowing you to predict actions before they occur. You gain a +4 Insight bonus to AC."
+    },
+    {
+      "name": "Superior Nimbleness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Superior Nimbleness : This suit of armor looks much less restrictive than others of its type. A suit of armor that has this property has a maximum Dexterity bonus 4 higher than normal, and its armor check penalty is reduced by 4."
+    },
+    {
+      "name": "Accuracy",
+      "value": 15,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Accuracy +15 : Passive: +15 Competence bonus to attack rolls"
+    },
+    {
+      "name": "Rough Hide",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "primal",
+      "tooltip": "Rough Hide +3 : This item fuses with your body and toughens your skin, providing a +3 Primal bonus to your natural armor."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Blue Augment Slot",
+      "name": null,
+      "colour": "Blue",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Crafted from the tanned hide of a Rakshasa, this armor is lightweight and grants many of the magical traits and supernatural senses that a Rakshasa possesses.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Rakshasa Hide"
+    ],
+    "raw": "Epic version of Rakshasa Hide"
+  },
+  "extraction_errors": {}
+}

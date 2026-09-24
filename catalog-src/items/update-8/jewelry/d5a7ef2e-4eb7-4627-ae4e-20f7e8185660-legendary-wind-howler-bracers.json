@@ -1,0 +1,118 @@
+{
+  "id": "d5a7ef2e-4eb7-4627-ae4e-20f7e8185660",
+  "name": "Legendary Wind Howler Bracers",
+  "wiki": {
+    "page_id": 101490,
+    "revision_id": 633187,
+    "title": "Item:Legendary Wind Howler Bracers",
+    "url": "https://ddowiki.com/page/Item:Legendary_Wind_Howler_Bracers"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 31,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Steel",
+  "hardness": 33,
+  "durability": 330,
+  "base_value_cp": 12420000,
+  "weight": 0.1,
+  "upgradeable": null,
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Cyclonic Blast — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cyclonic Blast Caster level: 9 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Greater Marksmanship",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "competence",
+      "tooltip": "Greater Marksmanship : This item is enchanted to enhance your skill with ranged weapons. You gain a +3 Competence Bonus to Ranged Attack and a +2 Competence Bonus to Ranged Damage."
+    },
+    {
+      "name": "Insightful Doubleshot",
+      "value": 5,
+      "value_kind": "percent",
+      "bonus_type": "insight",
+      "tooltip": "Insightful Doubleshot 5% : Passive: 5% Insight bonus to Doubleshot. (Doubleshot is a chance to score an additional hit with a ranged attack.)"
+    },
+    {
+      "name": "Wind Through The Trees",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feat : Wind Through The Trees : When enemies hit or miss you, they have a 5% chance to be knocked down with no save. This may only trigger once every 12 seconds, and shares a cooldown with the Wind through the Trees feat."
+    },
+    {
+      "name": "Greater Shrieking Bolt",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Shrieking Bolt : This item resonates with sonic energy. On ranged attacks, on an attack roll of 20 which is confirmed as a critical hit it will punish the target with a blast of sound (20 to 120 sonic damage)."
+    },
+    {
+      "name": "Deception",
+      "value": 11,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +11 : +11 Enhancement bonus to hit and +17 to damage for any hit that would qualify as a sneak attack."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "mythic",
+      "raw": "Mythic Wrist Boost +1 or +3",
+      "name": null,
+      "colour": null,
+      "text": "Wrist Boost +1 or +3",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "These bracers were once worn by a harpy of the dangerous and elite Wind Howler flight. They dramatically increase the wearer's aptitude with ranged weaponry.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Blockade Buster"
+    ],
+    "detail": "engineers' chests",
+    "crafted_from": [],
+    "raw": "Blockade Buster , engineers' chests"
+  },
+  "extraction_errors": {}
+}

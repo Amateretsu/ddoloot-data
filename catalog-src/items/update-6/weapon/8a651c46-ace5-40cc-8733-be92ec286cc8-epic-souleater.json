@@ -1,0 +1,118 @@
+{
+  "id": "8a651c46-ace5-40cc-8733-be92ec286cc8",
+  "name": "Epic Souleater",
+  "wiki": {
+    "page_id": 12742,
+    "revision_id": 640376,
+    "title": "Item:Epic Souleater",
+    "url": "https://ddowiki.com/page/Item:Epic_Souleater"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Quarterstaff",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 30,
+  "durability": 280,
+  "base_value_cp": 8000002,
+  "weight": 4.0,
+  "upgradeable": "Legendary Crafting to Legendary Souleater",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Simple Weapon Proficiency",
+    "weapon_type": "Quarterstaff",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Epic Trap the Soul",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Epic Trap the Soul: This equipment stores an overwhelming, merciless power deep within. When you strike an enemy with a melee or missile attack, this power occasionally comes to the surface, sucking out the life force of an enemy and imprisoning the essence of their body and soul in a gem."
+    },
+    {
+      "name": "Demonic Might",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Demonic Might : This item gives the wearer the power of a demon, granting a +2 Profane bonus to Strength."
+    },
+    {
+      "name": "Feeding",
+      "value": 20,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Feeding 20 : On Vorpal Hit : Your target incurs one Negative Level , and you gain +20 temporary hit points . (These Temporary Hit Points last for one minute, or until used to negate incoming damage.)"
+    },
+    {
+      "name": "Vampirism",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Vampirism 2 : This weapon thirsts for the blood of your enemies, healing you for +2d2 hit points with each hit. Note: internal cooldown of 1 second."
+    },
+    {
+      "name": "Negativity",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Negativity 4 : This effect causes this weapon to be shrouded in dark mists, dealing 4d6 negative energy on each hit."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This is the staff used by the sahuagin High Priestess Slikir to commune with and channel a demon. It took on many of the demon's aspects and is now a dangerous and corrupted implement.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Souleater"
+    ],
+    "raw": "Epic version of Souleater"
+  },
+  "extraction_errors": {}
+}

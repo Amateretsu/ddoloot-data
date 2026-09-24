@@ -1,0 +1,79 @@
+{
+  "id": "a01e8553-ff5c-4eeb-9ed7-45e498657847",
+  "name": "Alchemist's Crown",
+  "wiki": {
+    "page_id": 18844,
+    "revision_id": 628226,
+    "title": "Item:Alchemist's Crown",
+    "url": "https://ddowiki.com/page/Item:Alchemist%27s_Crown"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gold",
+  "hardness": 16,
+  "durability": 110,
+  "base_value_cp": 10005000,
+  "weight": 0.1,
+  "upgradeable": "Cannith Reforging Station",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Wisdom",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +6 : This item makes the wearer more in tune with her surroundings, granting a +6 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Devotion",
+      "value": 72,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Devotion +72 : Passive: +72 Equipment bonus to Positive (Healing) Spell Power ."
+    },
+    {
+      "name": "Radiance",
+      "value": 72,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Radiance +72 : Passive: +72 Equipment bonus to Light and Alignment Spell Power ."
+    },
+    {
+      "name": "Nearly Finished - Alchemist's Lore",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Alchemist's Lore : Reduces the cost of Empower, Empower Healing, and Maximize by 2 SP. Spells cost 10%/20%/30% less when you are below 50%/25%/10% hp."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "House Cannith alchemists often don crowns such as this to grant them wisdom and foresight, allowing them to make decisions with greater clarity.",
+  "notes": null,
+  "tips": "+ + + +",
+  "source": {
+    "quests": [
+      "House Cannith Manufactury"
+    ],
+    "detail": "Tegan Darsit 's chest (Rare encounter)",
+    "crafted_from": [],
+    "raw": "House Cannith Manufactury , Tegan Darsit 's chest (Rare encounter)"
+  },
+  "extraction_errors": {}
+}

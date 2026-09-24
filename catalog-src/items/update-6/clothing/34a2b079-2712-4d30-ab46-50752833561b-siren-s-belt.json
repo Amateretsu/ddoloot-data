@@ -1,0 +1,72 @@
+{
+  "id": "34a2b079-2712-4d30-ab46-50752833561b",
+  "name": "Siren's Belt",
+  "wiki": {
+    "page_id": 12010,
+    "revision_id": 634802,
+    "title": "Item:Siren's Belt",
+    "url": "https://ddowiki.com/page/Item:Siren%27s_Belt"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Belt",
+  "equip_slots": [
+    "waist"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Siren's Belt",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Siren's Ward",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Siren's Ward : 2 Pieces Equipped: +3 Artifact bonus to Armor Class +3 Artifact bonus to all Saving Throws"
+    },
+    {
+      "name": "Proof Against Disease",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Proof Against Disease +6 : This item grants its wearer immunity to natural diseases. This item also grants a +6 Enhancement bonus to saving throws against magical diseases, and the wearer does not fail saving throws against them on a roll of a natural 1 (this renders the wearer immune to magical diseases with a DC of less than 7 + their Fortitude save)."
+    },
+    {
+      "name": "Armor Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": null,
+      "tooltip": "Armor Bonus +5 : This item surrounds the wearer with an invisible but tangible field of force, granting +5 armor bonus to AC, just as though he were wearing armor."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This rare belt is enchanted with the protective magic of a water spirit and is capable of defending the wearer from harm.",
+  "notes": null,
+  "tips": "See also: Siren's Charm",
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

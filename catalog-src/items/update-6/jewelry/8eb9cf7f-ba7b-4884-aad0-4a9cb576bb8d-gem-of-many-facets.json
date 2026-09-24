@@ -1,0 +1,67 @@
+{
+  "id": "8eb9cf7f-ba7b-4884-aad0-4a9cb576bb8d",
+  "name": "Gem of Many Facets",
+  "wiki": {
+    "page_id": 12194,
+    "revision_id": 684173,
+    "title": "Item:Gem of Many Facets",
+    "url": "https://ddowiki.com/page/Item:Gem_of_Many_Facets"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Trinket",
+  "equip_slots": [
+    "trinket"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 25,
+  "durability": 51,
+  "base_value_cp": 2020000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Gem of Many Facets",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Craftable (hidden)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Craftable : This item can be enhanced via Essence Crafting ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "From this chain hangs a gem that is very finely cut, giving it countless glittering faces. It can take the place of various other items for the purpose of activating certain set bonuses. This item will randomly choose from available set bonuses whenever it is re-acquired or upgraded to a higher level version. This item is also keyed for Essence Crafting, and may be Disjuncted so that it can be crafted upon. Note that upgrading this item to a higher level version through Epic or Legendary Crafting will destroy what has been crafted upon it, and will also re-roll available set bonuses.",
+  "notes": null,
+  "tips": "This item cannot be fed to sentient jewels . Note that although the gem itself is ML 5, the items it helps create sets with vary up to ML 11. Plan your gear around those items, not this one. The description about \"re-acquiring\" the Gem is misleading; it means that each new Gem will have a different pair of sets. Unlike the epic version , you cannot re-select the set bonuses at an altar. Warning : Don't trust the preview window in the Altar of Epic Rituals ! When you place the item into the altar, the preview window shows a random pair of set bonuses. However, when you do upgrade the item, you will get a different random pair.",
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "and (Legendary) optional chests",
+    "crafted_from": [],
+    "raw": "The Chronoscope , and The Chronoscope (Legendary) , optional chests"
+  },
+  "extraction_errors": {}
+}

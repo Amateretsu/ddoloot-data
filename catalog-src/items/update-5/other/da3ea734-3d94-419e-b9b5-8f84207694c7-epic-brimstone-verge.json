@@ -1,0 +1,91 @@
+{
+  "id": "da3ea734-3d94-419e-b9b5-8f84207694c7",
+  "name": "Epic Brimstone Verge",
+  "wiki": {
+    "page_id": 12648,
+    "revision_id": 706323,
+    "title": "Item:Epic Brimstone Verge",
+    "url": "https://ddowiki.com/page/Item:Epic_Brimstone_Verge"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 30,
+  "durability": 225,
+  "base_value_cp": 19600000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "45",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Delayed Blast Fireball (Instant) — 15 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Delayed Blast Fireball (Instant) Caster level: 20 Charges: 15 (15/day)"
+    },
+    {
+      "name": "Fire Lore",
+      "value": 16,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Fire Lore +16 : Passive: Your Fire spells gain a +16% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Combustion",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Combustion +111 : Passive: +111 Equipment bonus to Fire Spell Power ."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+    },
+    {
+      "name": "Fire Absorption",
+      "value": 27,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Fire Absorption +27% : Passive: 27% Enhancement Bonus to Fire Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Wand Maximizing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Wand Maximizing : Spells cast from this wand are treated as though they were Maximized, dealing 100% more damage than they normally would. This damage increase does not stack with bonuses granted by enhancements."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin rod of blackened wood containing charges of the Fireball spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Brimstone Verge"
+    ],
+    "raw": "Epic version of Brimstone Verge"
+  },
+  "extraction_errors": {}
+}

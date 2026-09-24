@@ -1,0 +1,102 @@
+{
+  "id": "7f37ce16-bec2-4889-bbb7-371c12876d05",
+  "name": "Watcher's Blade",
+  "wiki": {
+    "page_id": 16457,
+    "revision_id": 663193,
+    "title": "Item:Watcher's Blade",
+    "url": "https://ddowiki.com/page/Item:Watcher%27s_Blade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 26,
+  "durability": 230,
+  "base_value_cp": 6401500,
+  "weight": 4.0,
+  "upgradeable": null,
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Sword",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Heightened Awareness",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": "insight",
+      "tooltip": "Heightened Awareness 4 : This item helps you to quickly read situations with sharpness and clarity, allowing you to predict actions before they occur. You gain a +4 Insight bonus to AC."
+    },
+    {
+      "name": "Improved Cursespewing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Improved Cursespewing : On Vorpal Hit : Your enemy is cursed with a -4 morale penalty on attack rolls , saving throws , and skill checks . This painful curse also causes the victim to take 2d6 damage every two seconds for a duration of twelve seconds. Additional vorpal strikes while the curse is active will extend the duration by another twelve seconds."
+    },
+    {
+      "name": "Exceptional Wisdom",
+      "value": 1,
+      "value_kind": "flat",
+      "bonus_type": "exceptional",
+      "tooltip": "Exceptional Wisdom +1 : This item makes the wearer more in tune with her surroundings, granting a +1 Exceptional bonus to Wisdom."
+    },
+    {
+      "name": "Hidden Effect: On critical hits, this weapon saps the target.",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": null
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "An elegant but unsettling sword infused with the power of Belashyrra, the daelkyr Lord of Eyes. You feel as though someone is watching you as long as you're holding it. Nevertheless, it shares its awareness with you and is thus a good ward against danger.",
+  "notes": null,
+  "tips": "This weapon's hidden effect may not be functioning correctly. needs verification",
+  "source": {
+    "quests": [
+      "Acute Delirium"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Acute Delirium , End chest"
+  },
+  "extraction_errors": {}
+}

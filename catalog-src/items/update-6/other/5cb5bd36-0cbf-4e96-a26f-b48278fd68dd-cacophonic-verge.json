@@ -1,0 +1,72 @@
+{
+  "id": "5cb5bd36-0cbf-4e96-a26f-b48278fd68dd",
+  "name": "Cacophonic Verge",
+  "wiki": {
+    "page_id": 12655,
+    "revision_id": 628844,
+    "title": "Item:Cacophonic Verge",
+    "url": "https://ddowiki.com/page/Item:Cacophonic_Verge"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 15,
+  "durability": 75,
+  "base_value_cp": 1200000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Cacophonic Verge",
+  "accepts_sentience": null,
+  "umd_dc": "23",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Sonic Blast — 50 Charges (Recharged/Day:50)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Sonic Blast Caster level: 8 Charges: 50 (50/day)"
+    },
+    {
+      "name": "Sonic Lore",
+      "value": 9,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Sonic Lore +9 : Passive: Your Sonic spells gain a 9% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Resonance",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Resonance +59 : Passive: +59 Equipment bonus to Sonic Spell Power ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin rod of blackened wood containing charges of the Sonic Blast spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": "This wand recharges exceptionally quickly, at a rate of about 2 seconds per charge. This makes it effectively impossible to run out of charges.",
+  "tips": null,
+  "source": {
+    "quests": [
+      "Altar of Vulkoor"
+    ],
+    "detail": "Upgraded version of",
+    "crafted_from": [
+      "Dampened Cacophonic Verge"
+    ],
+    "raw": "Altar of Vulkoor , Upgraded version of Dampened Cacophonic Verge"
+  },
+  "extraction_errors": {}
+}

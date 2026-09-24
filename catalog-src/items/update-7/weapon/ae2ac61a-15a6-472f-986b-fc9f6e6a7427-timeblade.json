@@ -1,0 +1,111 @@
+{
+  "id": "ae2ac61a-15a6-472f-986b-fc9f6e6a7427",
+  "name": "Timeblade",
+  "wiki": {
+    "page_id": 12282,
+    "revision_id": 635544,
+    "title": "Item:Timeblade",
+    "url": "https://ddowiki.com/page/Item:Timeblade"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Sword",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 110,
+  "base_value_cp": 1601500,
+  "weight": 4.0,
+  "upgradeable": "Epic Crafting to Epic Timeblade",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Sword",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Slashing",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Paralyzing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Paralyzing : Any creature struck by this weapon must succeed on a DC 17 Will save or be paralyzed. The target may attempt a new save to end the effect every several seconds; otherwise the paralysis lasts for 1 minute."
+    },
+    {
+      "name": "Doublestrike",
+      "value": 4,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    },
+    {
+      "name": "Slowburst",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Slowburst : This weapon has an image of a snail worked into its hilt or grip, and it feels cold to the touch. Whenever you score a critical hit with this weapon, the target is slowed for 30 seconds. A DC 15 Will save negates this effect."
+    },
+    {
+      "name": "Feather Falling",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Feather Falling : This item is engraved with feathers and bestows a powerful magical effect. Whenever the wearer begins to fall from any height, this effect slows the descent dramatically, causing the wearer to fall like a feather."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A sword gifted with the power to bend time. Powerful blows against your enemies will slow their actions, and if you are falling and in danger it will slow your descent so that you land safely.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

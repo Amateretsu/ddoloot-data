@@ -1,0 +1,96 @@
+{
+  "id": "0db58bfd-47a5-4b5e-8b95-278d4398d75d",
+  "name": "Boots of Corrosion",
+  "wiki": {
+    "page_id": 12387,
+    "revision_id": 628667,
+    "title": "Item:Boots of Corrosion",
+    "url": "https://ddowiki.com/page/Item:Boots_of_Corrosion"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Boots",
+  "equip_slots": [
+    "feet"
+  ],
+  "minimum_level": 5,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 15,
+  "durability": 60,
+  "base_value_cp": 2005000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Boots of Corrosion",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Corrosion",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Corrosion +59 : Passive: +59 Equipment bonus to Acid Spell Power ."
+    },
+    {
+      "name": "Nullification",
+      "value": 59,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +59 : Passive: +59 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+    },
+    {
+      "name": "Acid Resistance",
+      "value": 14,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Acid Resistance +14 : Passive: +14 Enhancement bonus to your Acid Resistance."
+    },
+    {
+      "name": "Might of the Abishai",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "profane",
+      "tooltip": "Might of the Abishai : 3 Piece Equipped: +3 Profane bonus to Natural Armor +1 Profane bonus to all Ability Scores +1 Profane bonus to DCs 5 Piece Equipped: +5 Profane bonus to Natural Armor +2 Profane bonus to all Ability Scores +2 Profane bonus to DCs"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Green Augment Slot",
+      "name": null,
+      "colour": "Green",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "These boots are filled with caustic, entropic power. They appear to have almost fallen apart from containing such energy.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Chronoscope , End reward"
+  },
+  "extraction_errors": {}
+}

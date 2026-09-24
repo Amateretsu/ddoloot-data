@@ -1,0 +1,79 @@
+{
+  "id": "637fe5fa-11a4-47ff-9b88-2672a3908569",
+  "name": "Mask of Tragedy",
+  "wiki": {
+    "page_id": 12218,
+    "revision_id": 633437,
+    "title": "Item:Mask of Tragedy",
+    "url": "https://ddowiki.com/page/Item:Mask_of_Tragedy"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Helm",
+  "equip_slots": [
+    "head"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Leather",
+  "hardness": 24,
+  "durability": 140,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Mask of Tragedy",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Crushing Despair — 3 Charges",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Crushing Despair Caster level: 7 Charges: 3 (3/day)"
+    },
+    {
+      "name": "Wisdom",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +3 : This item makes the wearer more in tune with her surroundings, granting a +3 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Void Lore",
+      "value": 8,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Void Lore +8 : Passive: Your Negative Energy and Poison spells gain a 8% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Nullification",
+      "value": 55,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Nullification +55 : Passive: +55 Equipment bonus to Negative (Necrotic) and Poison Spell Power ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A mask crafted for and used by the actors of the Livewood Theater . It represents sadness and misfortune, and is invested with magic to match.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Partycrashers"
+    ],
+    "detail": "Theater Rest Room or End chests",
+    "crafted_from": [],
+    "raw": "Partycrashers , Theater, Rest Room or End chests"
+  },
+  "extraction_errors": {}
+}

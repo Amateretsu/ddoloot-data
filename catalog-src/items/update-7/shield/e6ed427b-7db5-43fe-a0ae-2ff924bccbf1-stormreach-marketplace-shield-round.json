@@ -1,0 +1,87 @@
+{
+  "id": "e6ed427b-7db5-43fe-a0ae-2ff924bccbf1",
+  "name": "Stormreach Marketplace Shield (round)",
+  "wiki": {
+    "page_id": 25230,
+    "revision_id": 677549,
+    "title": "Item:Stormreach Marketplace Shield (round)",
+    "url": "https://ddowiki.com/page/Item:Stormreach_Marketplace_Shield_(round)"
+  },
+  "template": "shield",
+  "category": "shield",
+  "item_type": "Large Shield",
+  "equip_slots": [
+    "off_hand"
+  ],
+  "minimum_level": null,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": null,
+  "binding_raw": null,
+  "material": "Steel",
+  "hardness": 19,
+  "durability": 165,
+  "base_value_cp": 8102000,
+  "weight": 15.0,
+  "upgradeable": "Stone of Change to Enhanced Stormreach Marketplace Shield (round)",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": {
+    "proficiency": "Shield Proficiency (General)",
+    "weapon_type": null,
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d6",
+    "damage_bonus": 0,
+    "enhancement_bonus": 3,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": {
+    "armor_type": null,
+    "armor_bonus": null,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": null,
+    "armor_check_penalty": -1,
+    "arcane_spell_failure": 15
+  },
+  "shield_stats": {
+    "shield_type": "Large Shield",
+    "shield_bonus": 6,
+    "damage_reduction": 6
+  },
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class , attack and damage rolls ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "This shield depicts the market place tent, center of Stormreach commerce and trade and beating heart of the city.",
+  "notes": null,
+  "tips": "This item cannot be fed to sentient jewels . You can change the appearance of the Battered Marketplace Shield (round) with the Stormreach Marketplace Shield (round) by placing both shields into the Stone of Change , combine and you'll have the Enhanced Stormreach Marketplace Shield (round) .",
+  "source": {
+    "quests": [
+      "DDO Store"
+    ],
+    "detail": null,
+    "crafted_from": [],
+    "raw": "DDO Store"
+  },
+  "extraction_errors": {
+    "binding": "Bound to Character"
+  }
+}

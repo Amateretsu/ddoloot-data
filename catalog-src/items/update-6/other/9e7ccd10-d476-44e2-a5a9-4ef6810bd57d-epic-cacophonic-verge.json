@@ -1,0 +1,91 @@
+{
+  "id": "9e7ccd10-d476-44e2-a5a9-4ef6810bd57d",
+  "name": "Epic Cacophonic Verge",
+  "wiki": {
+    "page_id": 12001,
+    "revision_id": 690567,
+    "title": "Item:Epic Cacophonic Verge",
+    "url": "https://ddowiki.com/page/Item:Epic_Cacophonic_Verge"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 30,
+  "durability": 225,
+  "base_value_cp": 84800000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "45",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Greater Shout — 15 Charges (Recharged/Day:15)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Shout Caster level: 20 Charges: 15 (15/day)"
+    },
+    {
+      "name": "Sonic Lore",
+      "value": 16,
+      "value_kind": "percent",
+      "bonus_type": "equipment",
+      "tooltip": "Sonic Lore +16 : Passive: Your Sonic spells gain a +16% Equipment bonus to their chance to critical hit."
+    },
+    {
+      "name": "Resonance",
+      "value": 111,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Resonance +111 : Passive: +111 Equipment bonus to Sonic Spell Power ."
+    },
+    {
+      "name": "Evocation Focus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Evocation Focus +6 : +6 Equipment bonus to the DC of Evocation spells."
+    },
+    {
+      "name": "Sonic Absorption",
+      "value": 27,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Sonic Absorption +27% : Passive: 27% Enhancement Bonus to Sonic Absorption. (Absorption reduces damage from an element by a percentage, after resistance have been taken into account.)"
+    },
+    {
+      "name": "Wand Maximizing",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Wand Maximizing : Spells cast from this wand are treated as though they were Maximized, dealing 100% more damage than they normally would. This damage increase does not stack with bonuses granted by enhancements."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin rod of blackened wood containing charges of the Greater Shout spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Cacophonic Verge"
+    ],
+    "raw": "Epic version of Cacophonic Verge"
+  },
+  "extraction_errors": {}
+}

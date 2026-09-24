@@ -1,0 +1,121 @@
+{
+  "id": "a0e6f982-f115-4131-a6a2-1234ed192ddc",
+  "name": "Bow of the Silver Flame",
+  "wiki": {
+    "page_id": 20961,
+    "revision_id": 628710,
+    "title": "Item:Bow of the Silver Flame",
+    "url": "https://ddowiki.com/page/Item:Bow_of_the_Silver_Flame"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Long Bow",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 16,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 19,
+  "durability": 240,
+  "base_value_cp": 6443500,
+  "weight": 3.0,
+  "upgradeable": "Epic Crafting to Epic Bow of the Silver Flame",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Long Bow",
+    "handedness": null,
+    "damage_multiplier": 2.2,
+    "damage_dice": "1d8",
+    "damage_bonus": 0,
+    "enhancement_bonus": 5,
+    "damage_types": [
+      "Piercing",
+      "Bludgeoning",
+      "Good",
+      "Silver",
+      "Magic"
+    ],
+    "critical_range": "20",
+    "critical_multiplier": 3,
+    "attack_mod": "DEX",
+    "damage_mod": "DEX"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Silver , Alchemical",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Silver : A complex process involving metallurgy and alchemy can bond silver to a weapon made of steel so that it bypasses the damage reduction of creatures such as devils and vampires. Silver weapons have 2 points lower hardness then equivalent steel weapons, and as such aren't quite as durable."
+    },
+    {
+      "name": "Holy Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Holy Burst 4 : This weapon sings of virtue, dealing 4d6 Good damage on a successful hit to Evil enemies, and 9d6 Good damage on a critical hit to Evil enemies. This effect makes the weapon good aligned. Evil characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Undead Bane",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Undead Bane 4 : Those that have died must return, and this weapon is attuned specifically to lay them to rest. This weapon deals an additional 4d10 bane damage vs. Undead."
+    },
+    {
+      "name": "Weaken Undead",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Weaken Undead : Undead creatures struck by this weapon find themselves more vulnerable. Each time this weapon deals damage to an undead creature, the target loses 20% of its Fortification for the next 20 seconds. This effect does not stack with itself."
+    },
+    {
+      "name": "Blunted Ammunition",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Blunted Ammunition : The ammunition fired by this weapon deals blunt damage in addition to its other damage types."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Weapon Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Weapon Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "When Templars of the Silver Flame requested a powerful bow for use against the undead, the Bow of the Silver Flame was the answer. It blunts the ammunition used with it such that even skeletons will crumble beneath its assault.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Servants of the Overlord"
+    ],
+    "detail": "Drow Ritual chest",
+    "crafted_from": [],
+    "raw": "Servants of the Overlord , Drow Ritual chest"
+  },
+  "extraction_errors": {}
+}

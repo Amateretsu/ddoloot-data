@@ -1,0 +1,111 @@
+{
+  "id": "b4dcb873-2a30-4e98-ba32-2844eb69264c",
+  "name": "Epic Greatclub of the Scrag",
+  "wiki": {
+    "page_id": 11949,
+    "revision_id": 640436,
+    "title": "Item:Epic Greatclub of the Scrag",
+    "url": "https://ddowiki.com/page/Item:Epic_Greatclub_of_the_Scrag"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Club",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Wood",
+  "hardness": 25,
+  "durability": 275,
+  "base_value_cp": 8000500,
+  "weight": 8.0,
+  "upgradeable": "Legendary Crafting to Legendary Greatclub of the Scrag",
+  "accepts_sentience": true,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Club",
+    "handedness": null,
+    "damage_multiplier": 3.0,
+    "damage_dice": "1d10",
+    "damage_bonus": 0,
+    "enhancement_bonus": 6,
+    "damage_types": [
+      "Bludgeoning",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 2,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 6,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+6 Enhancement Bonus : +6 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Greater Regeneration",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Greater Regeneration : This item is imbued with an undeniable goodness that freely flows outward in a pleasant palpable current, constantly healing the wearer over time."
+    },
+    {
+      "name": "Anarchic Burst",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Anarchic Burst 4 : This weapon is a chaotic conduit, dealing 4d6 Chaos damage on a successful hit to Lawful enemies, and 10d6 Chaos damage on a critical hit to Lawful enemies. This effect makes the weapon chaotically aligned. Lawful characters wielding this weapon will suffer one negative level."
+    },
+    {
+      "name": "Icy Blast",
+      "value": 4,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Icy Blast 4 : This weapon is sheathed in icy cold, dealing 4d6 Cold damage on a successful hit, and an additional 4d6 Cold damage on a critical hit."
+    },
+    {
+      "name": "Impact",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Impact : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification ."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "This particularly nasty weapon once belonged to one of the Scrag in High Priestess' Slikir's service. It seems that when the troll was killed, its blood seeped into this club, granting the weapon some of the creature's characteristics.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Greatclub of the Scrag"
+    ],
+    "raw": "Epic version of Greatclub of the Scrag"
+  },
+  "extraction_errors": {}
+}

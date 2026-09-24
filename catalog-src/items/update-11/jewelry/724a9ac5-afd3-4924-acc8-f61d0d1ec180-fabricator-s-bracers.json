@@ -1,0 +1,86 @@
+{
+  "id": "724a9ac5-afd3-4924-acc8-f61d0d1ec180",
+  "name": "Fabricator's Bracers",
+  "wiki": {
+    "page_id": 17877,
+    "revision_id": 630710,
+    "title": "Item:Fabricator's Bracers",
+    "url": "https://ddowiki.com/page/Item:Fabricator%27s_Bracers"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Bracers",
+  "equip_slots": [
+    "wrist"
+  ],
+  "minimum_level": 18,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 16,
+  "durability": 110,
+  "base_value_cp": 10005000,
+  "weight": 0.1,
+  "upgradeable": "Nearly Finished",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Cannith Combat Infusion",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "alchemical",
+      "tooltip": "Cannith Combat Infusion : Your ranged and melee attacks have a chance to cause this item to inject a Cannith Combat Infusion into your bloodstream. For the next ten seconds, this will grant a +4 Alchemical bonus to Strength, Constitution and Dexterity, as well as a 5% Alchemical bonus to your chance to doublestrike and a +2 Alchemical bonus to Armor Class ."
+    },
+    {
+      "name": "Incite",
+      "value": 20,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Incite +20 : +20% Enhancement bonus to increased threat generation from melee damage"
+    },
+    {
+      "name": "Balance",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Balance +10 : Passive: +10 Competence bonus to the Balance skill."
+    },
+    {
+      "name": "Enhanced Balance",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Enhanced Balance +5 : Passive: +5 Enhancement bonus to the Balance skill."
+    },
+    {
+      "name": "Nearly Finished - Fabricator's Ingenuity",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Fabricator's Ingenuity : +25% stacking fortification and +2 artifact bonus to your attack and damage rolls."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Fabricators of House Cannith wear sturdy bracers like these to protect them from the dangerous machinery they work with.",
+  "notes": null,
+  "tips": "+ + + +",
+  "source": {
+    "quests": [
+      "Blown to Bits"
+    ],
+    "detail": "Iron Fire Bomber 's chest",
+    "crafted_from": [],
+    "raw": "Blown to Bits , Iron Fire Bomber 's chest"
+  },
+  "extraction_errors": {}
+}

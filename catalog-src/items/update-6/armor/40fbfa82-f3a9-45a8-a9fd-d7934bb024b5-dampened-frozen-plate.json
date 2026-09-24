@@ -1,0 +1,72 @@
+{
+  "id": "40fbfa82-f3a9-45a8-a9fd-d7934bb024b5",
+  "name": "Dampened Frozen Plate",
+  "wiki": {
+    "page_id": 18371,
+    "revision_id": 708370,
+    "title": "Item:Dampened Frozen Plate",
+    "url": "https://ddowiki.com/page/Item:Dampened_Frozen_Plate"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Heavy Armor",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 6,
+  "required_race": null,
+  "excluded_race": "Warforged",
+  "required_class": null,
+  "required_feat": "Heavy Armor Proficiency",
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 11,
+  "durability": 96,
+  "base_value_cp": 150000,
+  "weight": 50.0,
+  "upgradeable": "Altar of Vulkoor to Frozen Plate",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Heavy Armor",
+    "armor_bonus": 15,
+    "armor_bonus_variants": null,
+    "max_dex_bonus": 1,
+    "armor_check_penalty": -5,
+    "arcane_spell_failure": 35
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 3,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+3 Enhancement Bonus : +3 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Dampened",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Dampened : This item has been in a wet environment for too long and its original power has been weakened. Combine it with a Token of Vulkoor at the Altar of Vulkoor in the Red Fens to restore it back to its former glory."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A sturdy suit of armor covered in a thin layer of ice and infused with the power of cold. It seems to have been left on the ocean floor and taken on the properties of the freezing, forbidding depths.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "Into the Deep , End chest"
+  },
+  "extraction_errors": {}
+}

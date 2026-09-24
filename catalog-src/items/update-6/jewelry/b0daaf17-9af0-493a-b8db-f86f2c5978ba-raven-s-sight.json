@@ -1,0 +1,72 @@
+{
+  "id": "b0daaf17-9af0-493a-b8db-f86f2c5978ba",
+  "name": "Raven's Sight",
+  "wiki": {
+    "page_id": 12006,
+    "revision_id": 634136,
+    "title": "Item:Raven's Sight",
+    "url": "https://ddowiki.com/page/Item:Raven%27s_Sight"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Goggles",
+  "equip_slots": [
+    "eye"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Steel",
+  "hardness": 14,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Raven's Sight",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Raven's Eye",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot"
+    },
+    {
+      "name": "Wisdom",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wisdom +5 : This item makes the wearer more in tune with her surroundings, granting a +5 Enhancement bonus to Wisdom."
+    },
+    {
+      "name": "Reflex Save",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "resistance",
+      "tooltip": "Reflex Save +5 : This item gives a +5 Resistance bonus to your Reflex saves."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Goggles like these make the wearer's vision much sharper and are often employed by drow scouts and spies.",
+  "notes": null,
+  "tips": "Old versions had Wisdom +2 and Reflex Save +4 . They don't retroactive change but have to be reacquired.",
+  "source": {
+    "quests": [
+      "The Last Stand"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "The Last Stand , End reward"
+  },
+  "extraction_errors": {}
+}

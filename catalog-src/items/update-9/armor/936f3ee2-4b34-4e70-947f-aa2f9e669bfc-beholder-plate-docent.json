@@ -1,0 +1,106 @@
+{
+  "id": "936f3ee2-4b34-4e70-947f-aa2f9e669bfc",
+  "name": "Beholder Plate Docent",
+  "wiki": {
+    "page_id": 14533,
+    "revision_id": 628510,
+    "title": "Item:Beholder Plate Docent",
+    "url": "https://ddowiki.com/page/Item:Beholder_Plate_Docent"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Docent",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 14,
+  "required_race": "Warforged",
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 18,
+  "durability": 130,
+  "base_value_cp": 6410000,
+  "weight": null,
+  "upgradeable": "Altar of Insanity",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Docent",
+    "armor_bonus": null,
+    "armor_bonus_variants": [
+      {
+        "name": "Adamantine Body",
+        "value": 16
+      },
+      {
+        "name": "Mithral Body",
+        "value": 7
+      },
+      {
+        "name": "Composite Plating",
+        "value": 2
+      }
+    ],
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+5 Enhancement Bonus : +5 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "Antimagic Spike",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Antimagic Spike : This item was made from powerful antimagic materials. When scoring a critical hit on an enemy with your ranged or melee weapons, the target must make a DC 28 Fortitude save or be unable to cast spells for a brief duration."
+    },
+    {
+      "name": "Telekinesis Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Telekinesis Guard : When enemies hit you, they may be assaulted by these psychic forces, falling to the ground unless they make a DC 35 Reflex save ."
+    },
+    {
+      "name": "Trace of Madness",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Trace of Madness : You can almost hear faint, panicked voices when this item is close to you. Perhaps the latent power of this item's hint of madness could be brought out by some catalyst."
+    },
+    {
+      "name": "Metal Fatigue",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Metal Fatigue : The metal plates of this armor sometimes tire you out. When you are damaged there is a small chance that you will become Exhausted ."
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Some beholders of Xoriat are fitted with resilient metal plates to bolster their weak physical defenses. Metal from those same plates was used in crafting this docent, granting it wondrous Antimagic properties.",
+  "notes": "You can remove the Metal Fatigue penalty with a Sustaining Symbiont .",
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Lord of Eyes"
+    ],
+    "detail": "Opuloxx chest; Harbinger of Madness Quest chain end reward",
+    "crafted_from": [],
+    "raw": "The Lord of Eyes , Opuloxx chest; Harbinger of Madness , Quest chain end reward"
+  },
+  "extraction_errors": {}
+}

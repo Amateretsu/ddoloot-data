@@ -1,0 +1,56 @@
+{
+  "id": "52c9de5e-b742-49d3-888c-ea6d6b5e68ba",
+  "name": "+11 Eternal Wand of Disrupt Undead",
+  "wiki": {
+    "page_id": 28829,
+    "revision_id": 627682,
+    "title": "Item:+11 Eternal Wand of Disrupt Undead",
+    "url": "https://ddowiki.com/page/Item:%2B11_Eternal_Wand_of_Disrupt_Undead"
+  },
+  "template": "accessory_untyped",
+  "category": "other",
+  "item_type": null,
+  "equip_slots": [],
+  "minimum_level": 1,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "character",
+  "binding_raw": "Bound to Character on Acquire , Exclusive",
+  "material": "Wood",
+  "hardness": 10,
+  "durability": 25,
+  "base_value_cp": 200000,
+  "weight": 0.1,
+  "upgradeable": "Not upgradeable",
+  "accepts_sentience": null,
+  "umd_dc": "15",
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Disrupt Undead — 50 Charges (Recharged/Day:50)",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Disrupt Undead Caster level: 11 Charges: 50 (50/day)"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "A thin baton of carved bone containing charges of the Disrupt Undead spell. Eternal wands recharge over time if they are not actively being used.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "Mabar Endless Night Festival"
+    ],
+    "detail": "Upgrade of 9 Eternal Wand of Disrupt Undead",
+    "crafted_from": [],
+    "raw": "Mabar Endless Night Festival , Upgrade of +9 Eternal Wand of Disrupt Undead"
+  },
+  "extraction_errors": {}
+}

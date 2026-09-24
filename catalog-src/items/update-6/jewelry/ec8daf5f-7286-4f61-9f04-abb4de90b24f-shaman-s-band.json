@@ -1,0 +1,72 @@
+{
+  "id": "ec8daf5f-7286-4f61-9f04-abb4de90b24f",
+  "name": "Shaman's Band",
+  "wiki": {
+    "page_id": 12016,
+    "revision_id": 634609,
+    "title": "Item:Shaman's Band",
+    "url": "https://ddowiki.com/page/Item:Shaman%27s_Band"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Shaman's Band",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Spell Penetration",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "equipment",
+      "tooltip": "Spell Penetration +2 : Passive: +2 Equipment bonus to Spell Penetration checks."
+    },
+    {
+      "name": "Wizardry",
+      "value": 60,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Wizardry +60 : +60 Enhancement bonus to spell points ."
+    },
+    {
+      "name": "Shaman's Fury",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Shaman's Fury : 2 Pieces Equipped: +2% Artifact bonus to Fire, Cold, Electric, and Acid Spellcrit Chance +10 Artifact bonus to Fire, Cold, Electric, and Acid Spellpower"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Drow shamans often carry these rings to make their fearsome spells more likely to strike their foes.",
+  "notes": null,
+  "tips": "Pre- Update 36 versions had Spell Penetration I ; BtC. They don't retroactive change but have to be reacquired.",
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}

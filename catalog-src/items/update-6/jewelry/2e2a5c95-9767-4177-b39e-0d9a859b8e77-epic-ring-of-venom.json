@@ -1,0 +1,103 @@
+{
+  "id": "2e2a5c95-9767-4177-b39e-0d9a859b8e77",
+  "name": "Epic Ring of Venom",
+  "wiki": {
+    "page_id": 13698,
+    "revision_id": 630327,
+    "title": "Item:Epic Ring of Venom",
+    "url": "https://ddowiki.com/page/Item:Epic_Ring_of_Venom"
+  },
+  "template": "accessory",
+  "category": "jewelry",
+  "item_type": "Ring",
+  "equip_slots": [
+    "finger"
+  ],
+  "minimum_level": 20,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 26,
+  "durability": 210,
+  "base_value_cp": 8005000,
+  "weight": 0.1,
+  "upgradeable": "Legendary Crafting to Legendary Ring of Venom",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dexterity",
+      "value": 9,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +9 : This item makes the wearer more nimble and dexterous, granting a +9 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Deception",
+      "value": 7,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Deception +7 : +7 Enhancement bonus to hit and +11 to damage for any hit that would qualify as a sneak attack."
+    },
+    {
+      "name": "Vitality",
+      "value": 32,
+      "value_kind": "flat",
+      "bonus_type": "vitality",
+      "tooltip": "Vitality +32 : Passive: +32 Vitality bonus to Hit Points."
+    },
+    {
+      "name": "Poison Resistance",
+      "value": 36,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Poison Resistance +36 : Passive: +36 Enhancement bonus to your Poison Resistance."
+    },
+    {
+      "name": "Epic Vulkoor's Cunning",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Epic Vulkoor's Cunning : 2 Pieces Equipped: -20% Artifact bonus to Melee Threat Reduction +10 Artifact bonus to Melee and Ranged Power You gain On Vorpal: You apply a Vulkoorim Constitution Poison"
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Yellow Augment Slot",
+      "name": null,
+      "colour": "Yellow",
+      "text": null,
+      "children": []
+    },
+    {
+      "kind": "augment_slot",
+      "raw": "Colorless Augment Slot",
+      "name": null,
+      "colour": "Colorless",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Drow assassins say this ring is infused with Vulkoor's subtle poisons. Wearing it will make one's attacks deft and lethal.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [],
+    "detail": "Epic version of",
+    "crafted_from": [
+      "Ring of Venom"
+    ],
+    "raw": "Epic version of Ring of Venom"
+  },
+  "extraction_errors": {}
+}

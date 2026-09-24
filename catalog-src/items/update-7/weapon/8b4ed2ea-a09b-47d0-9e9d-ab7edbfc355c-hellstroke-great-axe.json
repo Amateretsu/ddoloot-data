@@ -1,0 +1,112 @@
+{
+  "id": "8b4ed2ea-a09b-47d0-9e9d-ab7edbfc355c",
+  "name": "Hellstroke Great Axe",
+  "wiki": {
+    "page_id": 12396,
+    "revision_id": 631407,
+    "title": "Item:Hellstroke Great Axe",
+    "url": "https://ddowiki.com/page/Item:Hellstroke_Great_Axe"
+  },
+  "template": "weapon",
+  "category": "weapon",
+  "item_type": "Great Axe",
+  "equip_slots": [
+    "main_hand"
+  ],
+  "minimum_level": 4,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Cold Iron",
+  "hardness": 14,
+  "durability": 140,
+  "base_value_cp": 1602000,
+  "weight": 12.0,
+  "upgradeable": "Epic Crafting to Epic Hellstroke Great Axe",
+  "accepts_sentience": false,
+  "umd_dc": "No UMD needed",
+  "weapon_stats": {
+    "proficiency": "Martial Weapon Proficiency",
+    "weapon_type": "Great Axe",
+    "handedness": null,
+    "damage_multiplier": 1.0,
+    "damage_dice": "1d12",
+    "damage_bonus": 0,
+    "enhancement_bonus": 2,
+    "damage_types": [
+      "Slashing",
+      "Cold Iron",
+      "Magic"
+    ],
+    "critical_range": "19-20",
+    "critical_multiplier": 3,
+    "attack_mod": "STR",
+    "damage_mod": "STR"
+  },
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 2,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+2 Enhancement Bonus : +2 enhancement bonus to attack and damage rolls ."
+    },
+    {
+      "name": "Doublestrike",
+      "value": 4,
+      "value_kind": "percent",
+      "bonus_type": "enhancement",
+      "tooltip": "Doublestrike 4% : Passive: 4% Enhancement bonus to Doublestrike. (Doublestrike is a chance to score an additional hit with a melee attack.)"
+    },
+    {
+      "name": "Keen",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Keen : Passive: The base critical threat range of this weapon is doubled. This does not stack with Improved Critical feat. Vorpal Strikes by this weapon also bypass all Fortification ."
+    },
+    {
+      "name": "Cold Iron",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Cold Iron : This iron mined deep underground, known for its effectiveness against fey creatures, is forged at a lower temperature to preserve its delicate properties. When combined with Good damage types, Cold Iron weapons are able to overcome the damage reduction of most Demons like Fire Reavers or Flesh Renders . See Monster DR and weaknesses for specifics."
+    },
+    {
+      "name": "Maiming",
+      "value": 2,
+      "value_kind": "number",
+      "bonus_type": null,
+      "tooltip": "Maiming : This weapon has a twisted haft or grip and spikes along its blade, head, or point. When you score a critical hit with this weapon, it does an additional +2d8 damage."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "augment_slot",
+      "raw": "Red Augment Slot",
+      "name": null,
+      "colour": "Red",
+      "text": null,
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "A fearsome polearm that resembles the cruel implements orthon warriors use to rend their enemies. It occasionally allows the user to attack twice consecutively, much like an orthon.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Chronoscope"
+    ],
+    "detail": "and (Legendary) Blood Plate 's chest",
+    "crafted_from": [],
+    "raw": "The Chronoscope , and The Chronoscope (Legendary) , Blood Plate 's chest"
+  },
+  "extraction_errors": {}
+}

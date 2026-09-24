@@ -1,0 +1,115 @@
+{
+  "id": "291c8065-c27f-4375-be57-d52b435737fc",
+  "name": "Templar's Docent",
+  "wiki": {
+    "page_id": 21008,
+    "revision_id": 635260,
+    "title": "Item:Templar's Docent",
+    "url": "https://ddowiki.com/page/Item:Templar%27s_Docent"
+  },
+  "template": "armor",
+  "category": "armor",
+  "item_type": "Docent",
+  "equip_slots": [
+    "body"
+  ],
+  "minimum_level": 16,
+  "required_race": "Warforged",
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Gem",
+  "hardness": 37,
+  "durability": 210,
+  "base_value_cp": 18400000,
+  "weight": 0.0,
+  "upgradeable": "Epic Crafting to Epic Templar's Docent",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": {
+    "armor_type": "Docent",
+    "armor_bonus": null,
+    "armor_bonus_variants": [
+      {
+        "name": "Adamantine Body",
+        "value": 16
+      },
+      {
+        "name": "Mithral Body",
+        "value": 7
+      },
+      {
+        "name": "Composite Plating",
+        "value": 2
+      }
+    ],
+    "max_dex_bonus": null,
+    "armor_check_penalty": null,
+    "arcane_spell_failure": null
+  },
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Enhancement Bonus",
+      "value": 4,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "+4 Enhancement Bonus : +4 enhancement bonus to Armor Class ."
+    },
+    {
+      "name": "DR 5/Evil",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Damage Reduction 5/Evil : Reduces physical damage by 5, except from Evil attacks."
+    },
+    {
+      "name": "Spell Resistance",
+      "value": 23,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Spell Resistance +23: +23 Enhancement bonus to Spell Resistance ."
+    },
+    {
+      "name": "Magical Sheltering",
+      "value": 20,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Magical Sheltering +20 : +20 Enhancement bonus to Magical Resistance Rating"
+    },
+    {
+      "name": "Light Guard",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": null,
+      "tooltip": "Light Guard : This armor blasts those that attack the wearer, causing 1d6 light damage on a successful melee attack."
+    }
+  ],
+  "customisation_hints": [
+    {
+      "kind": "mythic",
+      "raw": "Mythic Armor Boost +2 or +4",
+      "name": null,
+      "colour": null,
+      "text": "Armor Boost +2 or +4",
+      "children": []
+    }
+  ],
+  "named_set": null,
+  "flavor_text": "Templars of the Silver Flame wear these resilient docents, said to be blessed by Tira Miron, to protect themselves from weapon blows and harmful magic alike.",
+  "notes": null,
+  "tips": null,
+  "source": {
+    "quests": [
+      "The Spinner of Shadows"
+    ],
+    "detail": "End chest",
+    "crafted_from": [],
+    "raw": "The Spinner of Shadows , End chest"
+  },
+  "extraction_errors": {}
+}

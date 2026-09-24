@@ -1,0 +1,72 @@
+{
+  "id": "3cfa7ac1-fe0b-4dab-9686-9e0281357cd8",
+  "name": "Raven's Talons",
+  "wiki": {
+    "page_id": 12009,
+    "revision_id": 675558,
+    "title": "Item:Raven's Talons",
+    "url": "https://ddowiki.com/page/Item:Raven%27s_Talons"
+  },
+  "template": "accessory",
+  "category": "clothing",
+  "item_type": "Gloves",
+  "equip_slots": [
+    "hand"
+  ],
+  "minimum_level": 7,
+  "required_race": null,
+  "excluded_race": null,
+  "required_class": null,
+  "required_feat": null,
+  "required_trait": null,
+  "binding": "account",
+  "binding_raw": "Bound to Account on Acquire",
+  "material": "Leather",
+  "hardness": 10,
+  "durability": 50,
+  "base_value_cp": 1605000,
+  "weight": 0.1,
+  "upgradeable": "Epic Crafting to Epic Raven's Talons",
+  "accepts_sentience": null,
+  "umd_dc": null,
+  "weapon_stats": null,
+  "armor_stats": null,
+  "shield_stats": null,
+  "effects": [
+    {
+      "name": "Dexterity",
+      "value": 5,
+      "value_kind": "flat",
+      "bonus_type": "enhancement",
+      "tooltip": "Dexterity +5 : This item makes the wearer more nimble and dexterous, granting a +5 Enhancement bonus to Dexterity."
+    },
+    {
+      "name": "Bluff",
+      "value": 10,
+      "value_kind": "flat",
+      "bonus_type": "competence",
+      "tooltip": "Bluff +10 : Passive: +10 Competence bonus to the Bluff skill."
+    },
+    {
+      "name": "Raven's Eye",
+      "value": null,
+      "value_kind": null,
+      "bonus_type": "artifact",
+      "tooltip": "Raven's Eye : 2 Pieces Equipped: +3 Artifact bonus to Attack and Damage +3 Artifact bonus to Search and Spot"
+    }
+  ],
+  "customisation_hints": [],
+  "named_set": null,
+  "flavor_text": "Gloves like these make the wearer's attacks more precise and are often employed by drow scouts and spies.",
+  "notes": null,
+  "tips": "Old versions had Dex 3 and Bluff 7, BtC. They don't retroactively change but have to be reacquired.",
+  "source": {
+    "quests": [
+      "Into the Deep"
+    ],
+    "detail": "End reward",
+    "crafted_from": [],
+    "raw": "Into the Deep , End reward"
+  },
+  "extraction_errors": {}
+}
