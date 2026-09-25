@@ -28,9 +28,9 @@ class ExtractionError(ValueError):
 
 
 class NotEquipmentError(ExtractionError):
-    """The page is a wiki item article with no infobox that is filed as a crafting
-    ingredient or a consumable: a real item, but not an equippable Named Item. Not a
-    failure."""
+    """The page is a wiki item article with no infobox that is not an equippable Named
+    Item: a crafting ingredient, a consumable, or the hub page of a tiered item, whose
+    tiers each have their own page. Not a failure."""
 
 
 # Wiki categories of item articles that are not equipment: crafting ingredients, and
@@ -40,6 +40,10 @@ class NotEquipmentError(ExtractionError):
 _NON_EQUIPMENT_CATEGORY_RE = re.compile(
     r"^(?:Ingredients|Raw ingredients|Consumables without a type|.+ consumables)$"
 )
+
+# The wiki's category for the hub page of a tiered item. Some hubs lack it, so a hub is
+# also recognised by a link to one of its own tiers, "Item:<title> (level 17)".
+_TIER_HUB_CATEGORY = "Tiered items not in Item namespace"
 
 
 def _set_path(target: dict[str, Any], path: str, value: Any) -> None:
@@ -113,6 +117,19 @@ def _wiki_categories(html: str) -> list[str]:
     return [c for c in categories if isinstance(c, str)]
 
 
+def _tier_hub_reason(html: str, soup: BeautifulSoup, content: Tag) -> str | None:
+    """Why a page with no infobox is a tiered item's hub page, or None if it is not."""
+    if _TIER_HUB_CATEGORY in _wiki_categories(html):
+        return f"wiki category {_TIER_HUB_CATEGORY!r}"
+    title = _page_meta(html, soup, "")["title"]
+    if not title:
+        return None
+    for link in content.find_all("a", title=True):
+        if link["title"].startswith(f"{title} ("):
+            return f"links its tier {link['title']!r}"
+    return None
+
+
 def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, Any]]:
     """Extract a Scraped Item and a report of everything the config did not cover.
 
@@ -126,7 +143,8 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
     Raises:
         NotEquipmentError: no infobox table, and the page is filed in a crafting
             ingredient category (``Ingredients``, ``Raw ingredients``) or a consumable
-            category (``Consumables without a type``, ``… consumables``).
+            category (``Consumables without a type``, ``… consumables``), or it is a
+            tiered item's hub page (see :func:`_tier_hub_reason`).
         ExtractionError: no infobox table could be found.
     """
     soup = BeautifulSoup(html, "html.parser")
@@ -140,6 +158,9 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
                 raise NotEquipmentError(
                     f"not an equippable named item: wiki category {category!r}"
                 )
+        hub_reason = _tier_hub_reason(html, soup, content)
+        if hub_reason:
+            raise NotEquipmentError(f"tiered item hub page: {hub_reason}")
         raise ExtractionError("no infobox table")
     rows = _rows(table)
 

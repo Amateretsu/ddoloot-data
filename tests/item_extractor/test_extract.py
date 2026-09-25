@@ -227,6 +227,37 @@ def test_ingredient_category_page_with_an_infobox_still_extracts(cfg):
     assert item.name == "Breaker of Bodies"
 
 
+def test_tier_hub_page_in_the_tiered_category_is_not_equipment(cfg):
+    # The real Nether Orb page: a hub with no infobox and no rendered tier links, in the
+    # wiki's "Tiered items not in Item namespace" category. Its tiers have their own pages.
+    with pytest.raises(NotEquipmentError, match="'Tiered items not in Item namespace'"):
+        extract(page("Item_Nether_Orb.html"), "u", cfg)
+
+
+def test_tier_hub_page_linking_its_own_tiers_is_not_equipment(cfg):
+    # The real Giant's Fist page: a hub with no infobox and no tiered category, whose
+    # table links "Item:Giant's Fist (level 17)" and the other tiers.
+    with pytest.raises(NotEquipmentError, match=r"Item:Giant's Fist \(level 17\)"):
+        extract(page("Item_Giant_s_Fist.html"), "u", cfg)
+
+
+def test_page_without_infobox_linking_another_items_tiers_fails(cfg):
+    html = page("Item_Giant_s_Fist.html").replace(
+        "Item:Giant's Fist (", "Item:Other Maul ("
+    )
+    with pytest.raises(ExtractionError, match="no infobox table") as raised:
+        extract(html, "u", cfg)
+    assert not isinstance(raised.value, NotEquipmentError)
+
+
+def test_tiered_category_page_with_an_infobox_still_extracts(cfg):
+    html = page("Item_Breaker_of_Bodies.html").replace(
+        '"Named shields",', '"Named shields","Tiered items not in Item namespace",'
+    )
+    item, _ = extract(html, "u", cfg)
+    assert item.name == "Breaker of Bodies"
+
+
 def test_aggregate_counts_templates_and_unmapped(cfg):
     _, r1 = extract(WEAPON, "u", cfg)
     _, r2 = extract(ACCESSORY, "u", cfg)

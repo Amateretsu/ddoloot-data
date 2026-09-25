@@ -1565,3 +1565,34 @@ nothing left to decide.
   gaps baseline moves the 3 pages from `extraction_failed` to `skipped`. A second run left
   the tree identical, and `check_catalog` returns [].
 - Tests: 469 passed, 1 skipped (4 new `extract()` tests; 3 fail on the old code).
+
+### Fix: skip tiered item hub pages
+
+- **Evidence:** runs 9-14 (Update 19) each stopped with guard exit 3 after about 16
+  items. Update 19 is mostly tiered items: a hub page with no infobox (`Item:Nether Orb`)
+  and one page per tier (`Nether Orb (Level 17)` … `(Level 28)`). Every hub failed with
+  `no infobox table`, so 1 item in 7 failed, over the guard's 10%. Every fetch was a 200;
+  the wiki was not pushing back. Update 17's three dragon helm hubs were the same case.
+- **Held pages:** all 21 held item pages that fail with `no infobox table` are such hubs.
+  16 are in the wiki category `Tiered items not in Item namespace`. The other 5 (Elemental
+  Fury, Giant's Fist, Magistrate's Scepter, Master's Riposte, The Morning Star) are not,
+  but their tables link their own tiers, `Item:<title> (level 17)`. Some hubs in the
+  category render no tier links (Nether Orb), so neither signal alone covers all 21.
+- **Decision:** a hub is not a Named Item; its tiers are, and they are queued separately.
+  A page with no infobox is skipped like the ingredients and consumables when it is in
+  that category or links a page titled `<its own title> (…)`. The skip reason starts
+  `tiered item hub page:`. The check still runs only when there is no infobox, and a page
+  linking another item's tiers still fails.
+- **Fixtures:** `Item_Nether_Orb.html` (category, no links) and `Item_Giant_s_Fist.html`
+  (links, no category), unmodified. `NOTICE` now lists all nine fixture pages; Mark of
+  Sheshka was missing from it.
+- **Offline re-run over every update page in the queue (5-20):** 0 fetch attempts, 21
+  hubs skipped, no item-file or registry change, and `check_catalog` returns []. The 82
+  failures are unheld pages the harness does not fetch. The gaps baseline adds the 21
+  skips plus the Update 17-19 gaps from runs 4-14, which had not been recorded (quiver
+  rows, `Venomed Ammunition`, `(only from chest)` qualifiers, `Required Trait`); those
+  still await review.
+- Tests: 499 passed, 1 skipped (4 new `extract()` tests; 2 fail on the old code).
+- **Before the next run:** `.venv/bin/ddoloot sync --reset-failed`, offline. The hubs are
+  held, so they are re-read as skipped at no cost; Violet Gelatinous Cube-let costs 1
+  request and fails again as a 404.
