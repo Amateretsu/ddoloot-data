@@ -1,7 +1,77 @@
 {
+  "Item:Arkat's Cord (level 12)": {
+    "unclassified_effects": [
+      "Vitality +20 (only from chain end reward)"
+    ]
+  },
+  "Item:Belt of the Seven Ideals (historic)": {
+    "unclassified_effects": [
+      "Required Trait: Lawful ( UMD: 24 )"
+    ]
+  },
   "Item:Commendation of Heroism": {
     "skipped": [
       "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Elemental Fury": {
+    "skipped": [
+      "tiered item hub page: links its tier 'Item:Elemental Fury (level 17)'"
+    ]
+  },
+  "Item:Experience Elixir": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Fell Shiv": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:First Blood": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Giant's Fist": {
+    "skipped": [
+      "tiered item hub page: links its tier \"Item:Giant's Fist (level 17)\""
+    ]
+  },
+  "Item:Glorious Dawn": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Gloves of the Master Illusionist": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Helm of the Black Dragon": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Helm of the Blue Dragon": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Helm of the White Dragon": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Jeweled Cloak (level 12)": {
+    "unclassified_effects": [
+      "Magnetism +66 (only from chest)"
+    ]
+  },
+  "Item:Jeweled Cloak (level 23)": {
+    "unclassified_effects": [
+      "Magnetism +108 (only from chest)"
     ]
   },
   "Item:Legendary Mark of Bal Molesh": {
@@ -24,6 +94,11 @@
       "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
+  "Item:Magistrate's Scepter": {
+    "skipped": [
+      "tiered item hub page: links its tier \"Item:Magistrate's Scepter (level 17)\""
+    ]
+  },
   "Item:Mark of Bal Molesh": {
     "skipped": [
       "not an equippable named item: wiki category 'Raw ingredients'"
@@ -44,6 +119,16 @@
       "not an equippable named item: wiki category 'Raw ingredients'"
     ]
   },
+  "Item:Master's Riposte": {
+    "skipped": [
+      "tiered item hub page: links its tier \"Item:Master's Riposte (level 17)\""
+    ]
+  },
+  "Item:Nether Orb": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
   "Item:Pirate Treasure Map": {
     "skipped": [
       "not an equippable named item: wiki category 'Consumables without a type'"
@@ -54,15 +139,119 @@
       "not an equippable named item: wiki category 'Consumables without a type'"
     ]
   },
+  "Item:Prison Break": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Prisoner's Manacles": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Quiver of Poison (level 12)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d2"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
+  "Item:Quiver of Poison (level 13)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d3"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
+  "Item:Quiver of Poison (level 14)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d4"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
+  "Item:Quiver of Poison (level 23)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d6"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
+  "Item:Quiver of Poison (level 24)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d8"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
+  "Item:Quiver of Poison (level 25)": {
+    "unclassified_effects": [
+      "Venomed Ammunition - 1d10"
+    ],
+    "unmapped_rows": [
+      "max stack size",
+      "unique item capacity"
+    ]
+  },
   "Item:Quivering Quiver": {
     "unmapped_rows": [
       "max stack size",
       "unique item capacity"
     ]
   },
+  "Item:Shade's Hood": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Shadowsight": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Shield of Morning": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Shred of Tapestry": {
+    "skipped": [
+      "not an equippable named item: wiki category 'Raw ingredients'"
+    ]
+  },
+  "Item:Skullduggery Kit": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Stolen Necklace": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:The Morning Star": {
+    "skipped": [
+      "tiered item hub page: links its tier 'Item:The Morning Star (level 14)'"
+    ]
+  },
   "Item:Token of the Twelve": {
     "skipped": [
       "not an equippable named item: wiki category 'Ingredients'"
+    ]
+  },
+  "Item:Trapsmith's Crossbow": {
+    "skipped": [
+      "tiered item hub page: links its tier \"Item:Trapsmith's Crossbow (level 25)\""
     ]
   }
 }
