@@ -10,6 +10,7 @@ import pytest
 import yaml
 
 from item_extractor import (
+    DisambiguationError,
     ExtractionError,
     NotEquipmentError,
     ScrapedItem,
@@ -222,6 +223,22 @@ def test_a_category_merely_mentioning_consumables_is_not_a_skip(cfg):
 def test_ingredient_category_page_with_an_infobox_still_extracts(cfg):
     html = page("Item_Breaker_of_Bodies.html").replace(
         '"Named shields",', '"Named shields","Raw ingredients",'
+    )
+    item, _ = extract(html, "u", cfg)
+    assert item.name == "Breaker of Bodies"
+
+
+def test_disambiguation_page_is_skipped_with_its_item_links(cfg):
+    # The real Prismatic Cloak page: no infobox, in the wiki's "Disambiguations"
+    # category, linking the five coloured cloaks, which are Named Items.
+    with pytest.raises(DisambiguationError, match="'Disambiguations'") as raised:
+        extract(page("Item_Prismatic_Cloak.html"), "u", cfg)
+    assert isinstance(raised.value, NotEquipmentError)
+
+
+def test_disambiguation_page_with_an_infobox_still_extracts(cfg):
+    html = page("Item_Breaker_of_Bodies.html").replace(
+        '"Named shields",', '"Named shields","Disambiguations",'
     )
     item, _ = extract(html, "u", cfg)
     assert item.name == "Breaker of Bodies"

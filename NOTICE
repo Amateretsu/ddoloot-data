@@ -14,7 +14,7 @@ art is included.
 
 Test fixtures
 
-tests/fixtures/pages/ holds nine unmodified item pages from the Dungeons & Dragons
+tests/fixtures/pages/ holds ten unmodified item pages from the Dungeons & Dragons
 Online Wiki (https://ddowiki.com), used under the Creative Commons
 Attribution-ShareAlike 2.5 licence (https://creativecommons.org/licenses/by-sa/2.5/).
 Authors are the contributors listed in each page's history on ddowiki.com.
@@ -37,6 +37,8 @@ Authors are the contributors listed in each page's history on ddowiki.com.
     https://ddowiki.com/page/Item:Giant%27s_Fist (revision 608462)
   Item_Nether_Orb.html
     https://ddowiki.com/page/Item:Nether_Orb (revision 659583)
+  Item_Prismatic_Cloak.html
+    https://ddowiki.com/page/Item:Prismatic_Cloak (revision 257321)
 
 tests/fixtures/ddowiki_robots.txt is an unmodified copy of https://ddowiki.com/robots.txt
 (saved 2026-09-24), kept so the Page Store's robots.txt handling is tested against the

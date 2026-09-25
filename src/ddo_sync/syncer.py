@@ -31,12 +31,18 @@ from typing import List, Optional, Tuple
 
 from loguru import logger
 
-from ddo_sync.discovery import read_update_page, update_page_url
+from ddo_sync.discovery import item_links, read_update_page, update_page_url
 from ddo_sync.exceptions import UpdatePageError
-from ddo_sync.models import ItemLink, SyncStatus
+from ddo_sync.models import ItemLink, QueueItem, SyncStatus
 from ddo_sync.protocols import PageStoreProtocol, ScrapedItemWriterProtocol
 from ddo_sync.queue_db import QueueRepository
-from item_extractor import Config, NotEquipmentError, extract, load_config
+from item_extractor import (
+    Config,
+    DisambiguationError,
+    NotEquipmentError,
+    extract,
+    load_config,
+)
 from page_store import RunStoppedError
 
 
@@ -228,11 +234,14 @@ class DDOSyncer:
                         page.html, queue_item.wiki_url, self._extractor_config
                     )
                 except NotEquipmentError as exc:
+                    reason = str(exc)
+                    if isinstance(exc, DisambiguationError):
+                        reason += self._queue_disambiguated(page.html, queue_item)
                     self._writer.skip(
                         queue_item.wiki_url,
-                        {"update_page": queue_item.update_page, "skipped": str(exc)},
+                        {"update_page": queue_item.update_page, "skipped": reason},
                     )
-                    logger.info(f"Skipped: {queue_item.item_name!r} — {exc}")
+                    logger.info(f"Skipped: {queue_item.item_name!r} — {reason}")
                 else:
                     report = {"update_page": queue_item.update_page, **report}
                     self._writer.write(item, report)
@@ -276,6 +285,24 @@ class DDOSyncer:
         return SyncStatus(queue_stats=stats, update_pages=pages)
 
     # ── Internal helpers ─────────────────────────────────────────────────────
+
+    def _queue_disambiguated(self, html: str, queue_item: QueueItem) -> str:
+        """Queue the item pages a disambiguation page links, under its update page.
+
+        Returns the suffix for the skip reason. The count is of links found, not rows
+        inserted, so the reason reads the same on a re-run.
+        """
+        links = [
+            link
+            for link in item_links(html, queue_item.update_page)
+            if link.wiki_url != queue_item.wiki_url
+        ]
+        inserted = self._queue_repo.enqueue_items(links)
+        logger.info(
+            f"{queue_item.item_name!r} links {len(links)} item page(s); "
+            f"{inserted} newly queued"
+        )
+        return f"; queued {len(links)} linked item page(s)"
 
     def _record_failure(self, item_name: str, item_id: int, exc: Exception) -> None:
         error_msg = f"{type(exc).__name__}: {exc}"

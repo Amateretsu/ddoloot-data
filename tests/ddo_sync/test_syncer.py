@@ -285,6 +285,44 @@ class TestProcessQueue:
             "warnings": [],
         }
 
+    def test_disambiguation_page_is_skipped_and_its_items_queued(
+        self, store, queue_repo, tmp_path
+    ):
+        disambiguation = (PAGES / "Item_Prismatic_Cloak.html").read_text(
+            encoding="utf-8"
+        )
+        store.serve = lambda _url: disambiguation
+        writer = CatalogWriter(
+            Registry.load(tmp_path / "registry.jsonl"), tmp_path / "items", tmp_path
+        )
+        cloak = ItemLink(
+            item_name="Prismatic Cloak",
+            wiki_url="https://ddowiki.com/page/Item:Prismatic_Cloak",
+            update_page=PAGE_NAME,
+        )
+        queue_repo.register_update_page(PAGE_NAME, PAGE_URL)
+        queue_repo.enqueue_items([cloak])
+
+        success, failures = DDOSyncer(store, writer, queue_repo).process_queue()
+
+        assert (success, failures) == (1, 0)
+        rows = {i.item_name: i for i in queue_repo.get_items_for_update_page(PAGE_NAME)}
+        assert rows.pop("Prismatic Cloak").status == "complete"
+        colours = ["Blue", "Green", "Grey", "Red", "Violet"]
+        assert {name: (row.wiki_url, row.status) for name, row in rows.items()} == {
+            f"Prismatic Cloak, {c}": (
+                f"https://ddowiki.com/page/Item:Prismatic_Cloak,_{c}",
+                "pending",
+            )
+            for c in colours
+        }
+        report_path = tmp_path / "update-5" / "report.jsonl"
+        [line] = [json.loads(raw) for raw in report_path.read_text().splitlines()]
+        assert line["skipped"] == (
+            "disambiguation page: wiki category 'Disambiguations'; "
+            "queued 5 linked item page(s)"
+        )
+
     def test_nameless_set_warning_reaches_the_report_line(
         self, store, queue_repo, tmp_path
     ):

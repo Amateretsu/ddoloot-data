@@ -1596,3 +1596,31 @@ nothing left to decide.
 - **Before the next run:** `.venv/bin/ddoloot sync --reset-failed`, offline. The hubs are
   held, so they are re-read as skipped at no cost; Violet Gelatinous Cube-let costs 1
   request and fails again as a 404.
+
+### Fix: follow disambiguation pages
+
+- **Evidence:** run 15 skipped all 21 hubs and 4 new ones, then stopped with guard exit 3
+  at 3 of 29 failed. Two were Violet Gelatinous Cube-let's 404s (queued under Updates 14
+  and 17, and put back by `--reset-failed`). The third was `Item:Prismatic Cloak`, a
+  disambiguation page: no infobox, wiki category `Disambiguations`, linking
+  `Item:Prismatic Cloak, Blue`, `…, Green`, `…, Grey`, `…, Red` and `…, Violet`. Update 19
+  links the disambiguation page, not the colours, so none of the five was queued.
+- **Decision (maintainer, option A):** follow the links. Skipping it like a hub would lose
+  five Named Items without an error.
+  - `extract()` raises `DisambiguationError`, a `NotEquipmentError`, for a page with no
+    infobox in `Disambiguations`. It stays a pure function and reads no links.
+  - The syncer skips the page as before and queues its `Item:` links under the same
+    update page, through discovery's new `item_links()`, the loop update pages already
+    used. The skip reason ends `; queued N linked item page(s)`, N being links found, so
+    it reads the same on a re-run. A linked item that belongs to another update is filed
+    under the lowest update, as for any item queued twice.
+  - The new rows are processed by the next run, not the current one.
+- **Fixture:** `Item_Prismatic_Cloak.html`, unmodified; `NOTICE` lists ten pages.
+- **Offline re-run over Updates 5-20:** 0 fetch attempts, Prismatic Cloak skipped with 5
+  links queued (unheld, so not fetched), no item-file or registry change, and
+  `check_catalog` returns []. The gaps baseline adds Prismatic Cloak and run 15's 4 new
+  hubs.
+- **Live queue:** only the Prismatic Cloak row was put back to pending (the same update
+  `--reset-failed` makes), so Violet's two 404s stay failed.
+- Tests: 502 passed, 1 skipped (1 new `extract()` test that fails on the old code, 1
+  guard test, 1 syncer test).
