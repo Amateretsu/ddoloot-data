@@ -33,6 +33,11 @@ class NotEquipmentError(ExtractionError):
     tiers each have their own page. Not a failure."""
 
 
+class DisambiguationError(NotEquipmentError):
+    """The page is a wiki disambiguation page with no infobox. It is not a Named Item,
+    but the item pages it links may be, so the caller queues them."""
+
+
 # Wiki categories of item articles that are not equipment: crafting ingredients, and
 # consumables ("Consumables without a type", "Minimum level 1 consumables", "Three-Barrel
 # Cove (heroic) consumables"). Only a page with no infobox is checked, so an equipment
@@ -40,6 +45,8 @@ class NotEquipmentError(ExtractionError):
 _NON_EQUIPMENT_CATEGORY_RE = re.compile(
     r"^(?:Ingredients|Raw ingredients|Consumables without a type|.+ consumables)$"
 )
+
+_DISAMBIGUATION_CATEGORY = "Disambiguations"
 
 # The wiki's category for the hub page of a tiered item. Some hubs lack it, so a hub is
 # also recognised by a link to one of its own tiers, "Item:<title> (level 17)".
@@ -145,6 +152,8 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
             ingredient category (``Ingredients``, ``Raw ingredients``) or a consumable
             category (``Consumables without a type``, ``… consumables``), or it is a
             tiered item's hub page (see :func:`_tier_hub_reason`).
+        DisambiguationError: no infobox table, and the page is in the wiki category
+            ``Disambiguations``.
         ExtractionError: no infobox table could be found.
     """
     soup = BeautifulSoup(html, "html.parser")
@@ -158,6 +167,10 @@ def extract(html: str, url: str, cfg: Config) -> tuple[ScrapedItem, dict[str, An
                 raise NotEquipmentError(
                     f"not an equippable named item: wiki category {category!r}"
                 )
+        if _DISAMBIGUATION_CATEGORY in _wiki_categories(html):
+            raise DisambiguationError(
+                f"disambiguation page: wiki category {_DISAMBIGUATION_CATEGORY!r}"
+            )
         hub_reason = _tier_hub_reason(html, soup, content)
         if hub_reason:
             raise NotEquipmentError(f"tiered item hub page: {hub_reason}")

@@ -14,6 +14,11 @@
       "not an equippable named item: wiki category 'Consumables without a type'"
     ]
   },
+  "Item:Consuming Darkness": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
   "Item:Elemental Fury": {
     "skipped": [
       "tiered item hub page: links its tier 'Item:Elemental Fury (level 17)'"
@@ -34,6 +39,11 @@
       "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
     ]
   },
+  "Item:Frostbite Blade": {
+    "skipped": [
+      "tiered item hub page: links its tier 'Item:Frostbite Blade (level 17)'"
+    ]
+  },
   "Item:Giant's Fist": {
     "skipped": [
       "tiered item hub page: links its tier \"Item:Giant's Fist (level 17)\""
@@ -45,6 +55,11 @@
     ]
   },
   "Item:Gloves of the Master Illusionist": {
+    "skipped": [
+      "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
+    ]
+  },
+  "Item:Goatskin Boots": {
     "skipped": [
       "tiered item hub page: wiki category 'Tiered items not in Item namespace'"
     ]
@@ -137,6 +152,11 @@
   "Item:Potion of Restoration": {
     "skipped": [
       "not an equippable named item: wiki category 'Consumables without a type'"
+    ]
+  },
+  "Item:Prismatic Cloak": {
+    "skipped": [
+      "disambiguation page: wiki category 'Disambiguations'"
     ]
   },
   "Item:Prison Break": {
@@ -242,6 +262,11 @@
   "Item:The Morning Star": {
     "skipped": [
       "tiered item hub page: links its tier 'Item:The Morning Star (level 14)'"
+    ]
+  },
+  "Item:Thunder and Lightning": {
+    "skipped": [
+      "tiered item hub page: links its tier 'Item:Thunder and Lightning (level 17)'"
     ]
   },
   "Item:Token of the Twelve": {

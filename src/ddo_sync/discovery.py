@@ -154,6 +154,19 @@ def read_update_page(
     name = page_name.replace(" ", "_")
     url = update_page_url(name)
     html = _get(page_store, url, refresh)
+    links = item_links(html, name)
+    match = _REVISION_RE.search(html)
+    revision_id = int(match.group(1)) if match else None
+    logger.debug(f"{name!r} (revision {revision_id}): {len(links)} item link(s)")
+    return UpdatePage(page_name=name, url=url, revision_id=revision_id, links=links)
+
+
+def item_links(html: str, update_page: str) -> List[ItemLink]:
+    """The ``Item:`` pages linked from *html*'s article body, filed under *update_page*.
+
+    One link per URL, in document order. Used for update pages, and for disambiguation
+    pages, whose linked items belong to the update page that linked the disambiguation.
+    """
     links: dict[str, ItemLink] = {}
     for title, wiki_url in _page_links(html):
         if not title.startswith("Item:"):
@@ -161,14 +174,9 @@ def read_update_page(
         item_name = title.removeprefix("Item:").replace("_", " ").strip()
         if item_name and wiki_url not in links:
             links[wiki_url] = ItemLink(
-                item_name=item_name, wiki_url=wiki_url, update_page=name
+                item_name=item_name, wiki_url=wiki_url, update_page=update_page
             )
-    match = _REVISION_RE.search(html)
-    revision_id = int(match.group(1)) if match else None
-    logger.debug(f"{name!r} (revision {revision_id}): {len(links)} item link(s)")
-    return UpdatePage(
-        page_name=name, url=url, revision_id=revision_id, links=list(links.values())
-    )
+    return list(links.values())
 
 
 def _update_pages(titles: Iterable[str]) -> List[str]:
